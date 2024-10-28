@@ -1,0 +1,8 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Sat Jul 20 00:07:31 2024
+regular, 60, 5, One Tree, 0, 2, 2, 6, 0.200000, 0.000351, 4.265923
+regular, 60, 5, One Tree Checkpoint, 0, 6, 2, 12, 0.400000, 0.001990, 16.929184
+regular, 60, 5, One Tree, 1, inf, inf, inf, 0.000000, 0.025584, 4.444138
+regular, 60, 5, One Tree Checkpoint, 1, inf, inf, inf, 0.000000, 0.005507, 16.660316
+regular, 60, 5, One Tree, 2, inf, inf, inf, 0.000000, 0.026100, 4.542748
+regular, 60, 5, One Tree Checkpoint, 2, inf, inf, inf, 0.000000, 0.083205, 16.681787

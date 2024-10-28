@@ -1,0 +1,2102 @@
+Tue Jun 25 12:54:52 2024
+Tue Jun 25 12:54:52 2024 attack CLUSTER
+0 ./benchmark_graphs/Geant2001.graphml n_before= 27 n_after= 27 m_after= 76 connectivity= 1 degree= 1
+0 [10] failure number list Tue Jun 25 12:54:52 2024
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  5  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  23  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  4  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  24  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  1  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  0
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  5  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  0
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  23  to  0
+Routing in faces started for :  23  ->  25
+Faces : 
+[25, 21, 23]
+[25, 21, 23]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  25  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  4  ->  0
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  4  to  0
+Routing in faces started for :  4  ->  2
+Faces : 
+[2, 7, 4]
+[2, 7, 4]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Routing failed via Tree from CP to D 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  0
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  24  to  0
+Routing in faces started for :  24  ->  25
+Faces : 
+[25, 21, 24]
+[25, 21, 24]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  25  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  1  ->  0
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  1  to  0
+Routing in faces started for :  1  ->  21
+Faces : 
+[21, 25, 0, 3, 6, 2, 1]
+[3, 6, 9, 1]
+[3, 2, 9, 1]
+[21, 25, 0, 3, 6, 2, 9, 1]
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  5  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  23  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  4  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  24  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  0  to  1
+Source :  0  Destination :  1
+Edp :  [0, 5, 8, 9, 1]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  5
+ 
+Source :  0  Destination :  1
+Edp :  [0, 5, 8, 9, 1]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  0
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  1
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  5  to  1
+Routing in faces started for :  5  ->  3
+Faces : 
+[3, 9, 8, 0, 5]
+[3, 9, 8, 0, 5]
+[3, 9, 8, 0, 5]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  3  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  1
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  23  to  1
+Routing in faces started for :  23  ->  3
+Faces : 
+[3, 21, 23]
+[3, 21, 23]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  3  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  4  ->  1
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  4  to  1
+Routing in faces started for :  4  ->  2
+Faces : 
+[2, 7, 4]
+[2, 7, 4]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  1
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  24  to  1
+Routing in faces started for :  24  ->  3
+Faces : 
+[3, 21, 24]
+[3, 21, 24]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  3  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  1
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  0  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  5  to  2
+Source :  5  Destination :  2
+Edp :  [5, 0, 3, 2]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  0
+ 
+Source :  5  Destination :  2
+Edp :  [5, 0, 3, 2]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  5
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  23  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  4  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  24  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  0  to  2
+Source :  0  Destination :  2
+Edp :  [0, 25, 21, 20, 2]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  21
+ 
+Source :  0  Destination :  2
+Edp :  [0, 25, 21, 20, 2]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  25
+ 
+Source :  0  Destination :  2
+Edp :  [0, 25, 21, 20, 2]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  0
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  2
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  5  to  2
+Routing in faces started for :  5  ->  9
+Faces : 
+[9, 3, 0, 8, 5]
+[9, 3, 0, 8, 5]
+[9, 3, 0, 8, 5]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  9  to  2
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  2
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  23  to  2
+Routing in faces started for :  23  ->  3
+Faces : 
+[3, 21, 23]
+[3, 21, 23]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  3  to  2
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  4  ->  2
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  4  to  2
+Routing in faces started for :  4  ->  7
+Faces : 
+[7, 4]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  2
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  24  to  2
+Routing in faces started for :  24  ->  3
+Faces : 
+[3, 21, 24]
+[3, 21, 24]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  3  to  2
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  2
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  0  to  2
+Routing in faces started for :  0  ->  9
+Faces : 
+[9, 1, 2, 3, 21, 25, 8, 5, 0]
+[9, 1, 2, 3, 21, 25, 8, 5, 0]
+[9, 1, 2, 3, 21, 25, 8, 5, 0]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  9  to  2
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  5  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  23  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  4  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  24  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  0  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  3
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  5  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  3
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  23  to  3
+Routing in faces started for :  23  ->  21
+Faces : 
+[21, 23]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  4  ->  3
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  4  to  3
+Routing in faces started for :  4  ->  2
+Faces : 
+[2, 7, 4]
+[2, 7, 4]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  3
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  3
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  24  to  3
+Routing in faces started for :  24  ->  21
+Faces : 
+[21, 24]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  3
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  0  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  5  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  23  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  3  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  24  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing started for  0  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  4
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  5  to  4
+Routing in faces started for :  5  ->  2
+Faces : 
+[2, 1, 9, 8, 3, 0, 5]
+[2, 1, 9, 8, 3, 0, 5]
+[2, 1, 9, 8, 3, 0, 5]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  4
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  23  to  4
+Routing in faces started for :  23  ->  2
+Faces : 
+[2, 3, 21, 23]
+[2, 3, 21, 23]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  3  ->  4
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  3  to  4
+Routing in faces started for :  3  ->  7
+Faces : 
+[2, 3, 6, 7, 17, 26]
+[1, 2, 3, 6, 7, 9]
+[2, 3, 16, 17, 20, 26]
+[2, 1, 20, 9, 21, 25, 0, 3]
+[16, 19, 3, 20]
+[0, 3, 19, 20, 21, 25]
+[7, 6, 2, 1, 17, 20, 9, 26, 16, 19, 21, 25, 0, 3]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  7  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  4
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  24  to  4
+Routing in faces started for :  24  ->  2
+Faces : 
+[2, 3, 21, 24]
+[2, 3, 21, 24]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  4
+Fails in CP Routing :  [(17, 18), (9, 13), (2, 18), (2, 20), (9, 1), (2, 17), (8, 9), (9, 12), (2, 3), (17, 26)]
+Routing via EDPs started for  0  to  4
+Routing in faces started for :  0  ->  2
+Faces : 
+[2, 1, 9, 8, 5, 3, 21, 25, 0]
+[2, 1, 9, 8, 5, 3, 21, 25, 0]
+[2, 1, 9, 8, 5, 3, 21, 25, 0]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+10 failures
+#connected destination component of size 1: 0.0 repetitions 5
+(mean(cc_size)-1)/(n-1): 0.23232323232323232
+mean success ratio, min, std
+6.0000E-01, 1.0000E+00, 3.5777E-01 : One Tree
+8.4000E-01, 1.0000E+00, 1.4967E-01 : One Tree Checkpoint
+1 ./benchmark_graphs/BtEurope.graphml n_before= 24 n_after= 24 m_after= 74 connectivity= 1 degree= 1
+1 [10] failure number list Tue Jun 25 12:55:00 2024
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  15  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  7  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  5  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  1  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  20  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  0
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  15  to  0
+Routing in faces started for :  15  ->  16
+Faces : 
+[16, 23, 15]
+[16, 23, 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  0
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  7  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  0
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  5  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  1  ->  0
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  1  to  0
+Routing in faces started for :  1  ->  5
+Faces : 
+[5, 4, 1]
+[5, 4, 1]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  0
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  20  to  0
+Routing in faces started for :  20  ->  17
+Faces : 
+[17, 20]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  15  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  7  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  5  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  0  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  20  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  1
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  15  to  1
+Routing in faces started for :  15  ->  21
+Faces : 
+[21, 23, 15]
+[21, 23, 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  1
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  7  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  1
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  5  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  1
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  0  to  1
+Routing in faces started for :  0  ->  5
+Faces : 
+[5, 17, 0]
+[5, 17, 0]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  1
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  20  to  1
+Routing in faces started for :  20  ->  5
+Faces : 
+[5, 17, 20]
+[5, 17, 20]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  15  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  7  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  5  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  0  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  20  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  2
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  15  to  2
+Routing in faces started for :  15  ->  16
+Faces : 
+[16, 23, 15]
+[16, 23, 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  2
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  7  to  2
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  2
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  5  to  2
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  2
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  0  to  2
+Routing in faces started for :  0  ->  16
+Faces : 
+[16, 2, 5, 17, 0]
+[16, 2, 5, 17, 0]
+[16, 2, 5, 17, 0]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  2
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  20  to  2
+Routing in faces started for :  20  ->  16
+Faces : 
+[16, 17, 20]
+[16, 17, 20]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  15  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  7  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  5  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  0  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  20  to  3
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  3
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  15  to  3
+Routing in faces started for :  15  ->  21
+Faces : 
+[21, 23, 15]
+[21, 23, 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  3
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  3
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  7  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  3
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  5  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  3
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  0  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  3
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  20  to  3
+Routing in faces started for :  20  ->  5
+Faces : 
+[5, 17, 20]
+[5, 17, 20]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  3
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  15  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  7  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  5  to  4
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  0  to  4
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing started for  20  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  4
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  15  to  4
+Routing in faces started for :  15  ->  21
+Faces : 
+[21, 23, 15]
+[21, 23, 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  4
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  4
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  7  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  4
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  5  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  4
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  0  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  4
+Fails in CP Routing :  [(21, 22), (16, 2), (17, 11), (7, 21), (21, 9), (17, 13), (5, 8), (1, 4), (23, 14), (19, 21)]
+Routing via EDPs started for  20  to  4
+Routing in faces started for :  20  ->  5
+Faces : 
+[5, 17, 20]
+[5, 17, 20]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  4
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+10 failures
+#connected destination component of size 1: 0.0 repetitions 5
+(mean(cc_size)-1)/(n-1): 0.1919191919191919
+mean success ratio, min, std
+1.0000E+00, 1.0000E+00, 0.0000E+00 : One Tree
+9.6000E-01, 1.0000E+00, 8.0000E-02 : One Tree Checkpoint
+2 ./benchmark_graphs/Bics.graphml n_before= 33 n_after= 33 m_after= 96 connectivity= 1 degree= 1
+2 [10] failure number list Tue Jun 25 12:55:06 2024
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  19  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  30  to  0
+Source :  30  Destination :  0
+Edp :  [30, 31, 15, 13, 19, 2, 0]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  31
+ 
+Source :  30  Destination :  0
+Edp :  [30, 31, 15, 13, 19, 2, 0]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  20  to  0
+Source :  20  Destination :  0
+Edp :  [20, 14, 12, 11, 19, 2, 0]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  12
+ 
+Source :  20  Destination :  0
+Edp :  [20, 14, 12, 11, 19, 2, 0]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  14
+ 
+Source :  20  Destination :  0
+Edp :  [20, 14, 12, 11, 19, 2, 0]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  20
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  1  to  0
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  0
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  19  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  0
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  30  to  0
+Routing in faces started for :  30  ->  19
+Faces : 
+[19, 14, 22, 1, 31, 16, 30]
+[19, 14, 22, 28, 29, 1, 16, 30]
+[22, 28, 29, 31, 30]
+[19, 14, 22, 28, 29, 1, 31, 16, 30]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  19  to  0
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  0
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  20  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  1  ->  0
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  1  to  0
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  19  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  30  to  1
+Source :  30  Destination :  1
+Edp :  [30, 31, 15, 13, 19, 1]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  31
+ 
+Source :  30  Destination :  1
+Edp :  [30, 31, 15, 13, 19, 1]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  20  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  0  to  1
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  1
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  19  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  1
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  30  to  1
+Routing in faces started for :  30  ->  14
+Faces : 
+[14, 21, 22, 19, 31, 1, 16, 30]
+[14, 21, 22, 28, 29, 19, 1, 16, 30]
+[22, 28, 29, 31, 30]
+[14, 21, 22, 28, 29, 19, 31, 1, 16, 30]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  1
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  1
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  20  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  1
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  0  to  1
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  19  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  30  to  2
+Source :  30  Destination :  2
+Edp :  [30, 31, 15, 13, 19, 2]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  31
+ 
+Source :  30  Destination :  2
+Edp :  [30, 31, 15, 13, 19, 2]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  20  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  0  to  2
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  2
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  19  to  2
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  2
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  30  to  2
+Routing in faces started for :  30  ->  14
+Faces : 
+[14, 21, 22, 19, 31, 1, 16, 30]
+[14, 21, 22, 28, 29, 19, 1, 16, 30]
+[22, 28, 29, 31, 30]
+[14, 21, 22, 28, 29, 19, 31, 1, 16, 30]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  2
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  2
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  20  to  2
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  2
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  0  to  2
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  19  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  30  to  3
+Source :  30  Destination :  3
+Edp :  [30, 31, 22, 14, 3]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  31
+ 
+Source :  30  Destination :  3
+Edp :  [30, 31, 22, 14, 3]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  20  to  3
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  0  to  3
+Source :  0  Destination :  3
+Edp :  [0, 1, 19, 20, 3]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  1
+ 
+Source :  0  Destination :  3
+Edp :  [0, 1, 19, 20, 3]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  0
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  3
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  19  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  3
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  30  to  3
+Routing in faces started for :  30  ->  19
+Faces : 
+[19, 14, 22, 1, 31, 16, 30]
+[19, 14, 22, 28, 29, 1, 16, 30]
+[22, 28, 29, 31, 30]
+[19, 14, 22, 28, 29, 1, 31, 16, 30]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  19  to  3
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  3
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  20  to  3
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  3
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  0  to  3
+Routing in faces started for :  0  ->  19
+Faces : 
+[19, 24, 25, 8, 5, 2, 0]
+[19, 24, 25, 8, 5, 1, 0]
+[19, 1, 2, 0]
+[19, 24, 25, 8, 5, 1, 2, 0]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  19  to  3
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  19  to  4
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  30  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  20  to  4
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing started for  0  to  4
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  4
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  19  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  4
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  30  to  4
+Routing in faces started for :  30  ->  15
+Faces : 
+[15, 22, 28, 29, 13, 16, 30]
+[15, 22, 28, 29, 31, 30]
+[15, 13, 31, 16, 30]
+[15, 22, 28, 29, 13, 31, 16, 30]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  15  to  4
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Routing failed via Tree from CP to D 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  20  ->  4
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  20  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  4
+Fails in CP Routing :  [(22, 28), (15, 22), (19, 20), (16, 30), (21, 27), (13, 10), (19, 11), (14, 22), (19, 23), (13, 15)]
+Routing via EDPs started for  0  to  4
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+10 failures
+#connected destination component of size 1: 0.0 repetitions 5
+(mean(cc_size)-1)/(n-1): 0.29292929292929293
+mean success ratio, min, std
+6.0000E-01, 6.0000E-01, 0.0000E+00 : One Tree
+7.6000E-01, 8.0000E-01, 8.0000E-02 : One Tree Checkpoint
+3 ./benchmark_graphs/Garr201105.graphml n_before= 59 n_after= 59 m_after= 148 connectivity= 1 degree= 1
+3 [10] failure number list Tue Jun 25 12:55:21 2024
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  19  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  17  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  42  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  33  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  53  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  0
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  19  to  0
+Routing in faces started for :  19  ->  44
+Faces : 
+[44, 10, 21, 19]
+[44, 10, 21, 19]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  44  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  17  ->  0
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  17  to  0
+Routing in faces started for :  17  ->  33
+Faces : 
+[33, 54, 32, 17]
+[33, 54, 32, 17]
+[33, 54, 32, 17]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  33  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  42  ->  0
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  42  to  0
+Routing in faces started for :  42  ->  14
+Faces : 
+[14, 44, 10, 53, 42]
+[14, 44, 10, 53, 42]
+[14, 44, 10, 53, 42]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  33  ->  0
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  33  to  0
+Routing in faces started for :  33  ->  0
+Faces : 
+[33, 0]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  53  ->  0
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  53  to  0
+Routing in faces started for :  53  ->  33
+Faces : 
+[33, 54, 35, 37, 57, 28, 14, 44, 10, 47, 18, 53]
+[14, 44, 10, 47, 18, 53]
+[33, 54, 35, 37, 57, 28, 14, 44, 10, 47, 18, 53]
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  33  to  0
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  19  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  17  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  42  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  33  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  53  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  1
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  19  to  1
+Routing in faces started for :  19  ->  10
+Faces : 
+[10, 21, 19]
+[10, 21, 19]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  10  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  17  ->  1
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  17  to  1
+Routing in faces started for :  17  ->  53
+Faces : 
+[53, 35, 54, 14, 32, 17]
+[53, 35, 54, 14, 32, 17]
+[53, 35, 54, 14, 32, 17]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  53  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  42  ->  1
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  42  to  1
+Routing in faces started for :  42  ->  4
+Faces : 
+[4, 53, 10, 42]
+[4, 53, 10, 42]
+[4, 53, 10, 42]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  4  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  33  ->  1
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  33  to  1
+Routing in faces started for :  33  ->  53
+Faces : 
+[53, 10, 44, 14, 28, 57, 38, 35, 54, 32, 33]
+[14, 28, 57, 38, 35, 32, 15, 33]
+[33, 35, 54, 15]
+[53, 10, 44, 14, 28, 57, 38, 35, 54, 32, 15, 33]
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  53  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  53  ->  1
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  53  to  1
+Routing in faces started for :  53  ->  4
+Faces : 
+[4, 10, 53]
+[4, 10, 53]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  4  to  1
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  19  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  17  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  42  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  33  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Fails in  ONETREE Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing started for  53  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  2
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  19  to  2
+Routing in faces started for :  19  ->  44
+Faces : 
+[44, 10, 21, 19]
+[44, 10, 21, 19]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  44  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  17  ->  2
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  17  to  2
+Routing in faces started for :  17  ->  33
+Faces : 
+[33, 54, 32, 17]
+[33, 54, 32, 17]
+[33, 54, 32, 17]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  33  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  42  ->  2
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  42  to  2
+Routing in faces started for :  42  ->  14
+Faces : 
+[14, 44, 10, 53, 42]
+[14, 44, 10, 53, 42]
+[14, 44, 10, 53, 42]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  33  ->  2
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  33  to  2
+Routing in faces started for :  33  ->  2
+Faces : 
+[33, 2]
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  53  ->  2
+Fails in CP Routing :  [(35, 3), (14, 28), (32, 30), (35, 54), (14, 55), (53, 5), (33, 54), (32, 16), (10, 42), (35, 34)]
+Routing via EDPs started for  53  to  2
+Routing in faces started for :  53  ->  33
+Faces : 
+[33, 54, 35, 37, 57, 28, 14, 44, 10, 47, 18, 53]
+[14, 44, 10, 47, 18, 53]
+[33, 54, 35, 37, 57, 28, 14, 44, 10, 47, 18, 53]
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  33  to  2
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Not enough nodes in connected component of destination (0 nodes, 5 sample size), adapting it
+0 5 1 <function RouteOneTree at 0x7f4568434860> sample size doesn't match number of experiments
