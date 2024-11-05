@@ -479,6 +479,7 @@ def experiment_SRLG_node_failures(method, name, seed=11):
                 print(method, name, seed, f)
 
     outstretch.close()
+    
 # erstellt die graphen
 # generate rep random k-regular graphs with connectivity k using seed and
 # write them to file
