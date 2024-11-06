@@ -3,10 +3,10 @@ import networkx as nx
 import numpy as np
 from scipy.spatial import Delaunay
 
-from clustered_experiments import shuffle_and_run
+#from clustered_experiments import shuffle_and_run WENN ICH MIT CLUSTERED FAILURES RUNNEN WILL
 
-# Importiere alle anderen nötigen Module und Funktionen hier
-# ...
+from one_tree_experiments import shuffle_and_run
+
 
 def create_unit_disk_graph(num_nodes, initial_radius=0.1):
     """
@@ -65,28 +65,35 @@ def apply_gabriel_graph(G):
                     H.add_edge(i, j)
     return H
 
-def run_planar(out=None, seed=0, rep=5, method="Delaunay"):
+def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
     """
     Führt Experimente mit planaren Graphen durch. Erstellt einen Unit-Disk-Graph,
     der anschließend mit einer Methode wie Delaunay oder Gabriel planarisierbar gemacht wird.
+    
+    Parameter:
+    - out: File-Handle für das Schreiben der Ergebnisse
+    - seed: Seed für Zufallszahlengenerator
+    - rep: Anzahl der Wiederholungen
+    - method: Planarisierungsmethode, entweder "Delaunay" oder "Gabriel"
+    - num_nodes: Anzahl der Knoten im Graphen
+    - f_num: Anzahl der Kanten, die als fehlgeschlagen markiert werden
     """
     random.seed(seed)
-    num_nodes = 50  # Anzahl Knoten für den Unit-Disk-Graphen
-    
     try:
+        # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
         G = create_unit_disk_graph(num_nodes)
         
         # Wähle die Planarisierungsmethode
-        if method == "Delaunay":
+        if method.lower() == "delaunay":
             planar_graph = apply_delaunay_triangulation(G)
-        elif method == "Gabriel":
+        elif method.lower() == "gabriel":
             planar_graph = apply_gabriel_graph(G)
         else:
             raise ValueError("Unbekannte Methode für Planarisierung")
 
-        # Setze den Key 'k' und 'fails' in `planar_graph`
-        planar_graph.graph['k'] = 5  # Oder ein anderer geeigneter Wert
-        fails = random.sample(list(planar_graph.edges()), min(len(planar_graph.edges()) // 4, rep))
+        # Setze die Konnektivität und die fehlgeschlagenen Kanten
+        planar_graph.graph['k'] = 5  # Beispiel für Basis-Konnektivität
+        fails = random.sample(list(planar_graph.edges()), min(len(planar_graph.edges()), f_num))
         planar_graph.graph['fails'] = fails
 
         # Führe das Experiment aus
@@ -94,3 +101,4 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay"):
         
     except ValueError as e:
         print("Fehler bei der Erstellung eines zusammenhängenden planaren Graphen:", e)
+

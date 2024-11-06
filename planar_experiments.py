@@ -121,41 +121,38 @@ def start_file(filename):
 
 
 
-# run experiments
-# seed is used for pseudorandom number generation in this run
-# switch determines which experiments are run
-def experiments(switch="all", seed=0, rep=100):
-
+def experiments(switch="all", seed=0, rep=100, num_nodes=60, f_num=0, main_loop_index=0):
     method = "delaunay"
     
     if switch in ["planar", "all"]:
-        out = start_file("results/benchmark-planar-" + method.lower())
-        run_planar(out=out, seed=seed, rep=rep, method="Delaunay")  # Oder "Gabriel"
-        out.close()
+        for i in range(rep):
+            # Verwende main_loop_index, um eindeutige Dateinamen zu erstellen
+            filename = f"results/benchmark-planar-{method.lower()}-FR{main_loop_index}_{i}"
+            out = start_file(filename)
+            run_planar(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
+            out.close()
 
 
-    print()
-    for (algoname, algo) in algos.items():
-        print('%s \t %.5E' % (algoname, np.mean(algo[2:])))
-    print("\nlower is better")
 
 
 
 if __name__ == "__main__":
     f_num = 0
-    for i in range(1,20):
-        
-        f_num = 6 + f_num #number of failed links
-        n = 60 # number of nodes
-        k = 5 #base connectivity
-        samplesize = 5 #number of sources to route a packet to destination
-        rep = 3 #number of experiments
-        switch = 'all' #which experiments to run with same parameters
-        seed = 0  #random seed
-        name = "benchmark-" #result files start with this name
-        short = None #if true only small zoo graphs < 25 nodes are run
+    for i in range(1, 20):
+        f_num = 6 + f_num  # Anzahl der fehlgeschlagenen Verbindungen
+        n = 60              # Anzahl der Knoten
+        k = 5               # Basis-Konnektivität
+        samplesize = 5      # Anzahl der Quellen, die zu einem Ziel weitergeleitet werden sollen
+        rep = 3             # Anzahl der Experimente
+        switch = 'all'      # Bestimmt, welche Experimente ausgeführt werden
+        seed = 0            # Seed für den Zufallszahlengenerator
+        name = "benchmark-" # Präfix für Ergebnisdateien
+        short = None        # Falls true, werden nur kleine Zoo-Graphen (< 25 Knoten) ausgeführt
         start = time.time()
         print(time.asctime(time.localtime(start)))
+        print("[main] i : ", i)
+        
+        # Falls Kommandozeilenargumente angegeben werden
         if len(sys.argv) > 1:
             switch = sys.argv[1]
         if len(sys.argv) > 2:
@@ -164,11 +161,15 @@ if __name__ == "__main__":
             rep = int(sys.argv[3])
         if len(sys.argv) > 4:
             n = int(sys.argv[4])
-        if len(sys.argv) > 4:
+        if len(sys.argv) > 5:
             samplesize = int(sys.argv[5])
+
         random.seed(seed)
         set_parameters([n, rep, k, samplesize, f_num, seed, "benchmark-"])
-        experiments(switch=switch, seed=seed, rep=rep)
+
+        # Aufruf der experiments-Funktion mit den Variablen f_num, n, rep und i (als main_loop_index)
+        experiments(switch=switch, seed=seed, rep=rep, num_nodes=n, f_num=f_num, main_loop_index=i)
+        
         end = time.time()
         print("time elapsed", end - start)
         print("start time", time.asctime(time.localtime(start)))
