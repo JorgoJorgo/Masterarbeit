@@ -13180,3 +13180,2284 @@ Routing OTCP via EDPs started for  56  to  33
 EDPs: [[56, 45, 13, np.int32(49), 33], [56, np.int32(58), 13, 6, np.int32(15), 33], [56, 7, np.int32(19), np.int32(20), np.int32(23), 9, 33], [56, 27, np.int32(45), 22, 13, np.int32(36), 14, 33]]
 Routing OneTreeCP done via EDP
 ------------------------------------------------------
+After simulate
+success 20 <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+[run_planar] fails :  42
+experiment for  <function one_tree_pre at 0x72506e129120>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  13  to  12
+EDPs:  [[13, np.int32(56), 53, 15, 12], [13, 10, np.int32(34), np.int32(54), 28, 12], [13, np.int32(39), np.int32(57), 49, 5, 12], [13, np.int32(47), 42, np.int32(53), 7, 12], [13, np.int32(35), np.int32(39), 10, 8, 7, np.int32(9), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  34  to  12
+EDPs:  [[34, 8, 7, 12], [34, np.int32(49), 28, 12], [34, np.int32(54), 9, 12], [34, 22, 7, np.int32(15), 12], [34, np.int32(57), 49, 5, 12]]
+Source :  34  Destination :  12
+Edp :  [34, 8, 7, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  8
+ 
+Source :  34  Destination :  12
+Edp :  [34, 8, 7, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  34
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  30  to  12
+EDPs:  [[30, 21, np.int32(45), 32, 15, 12], [30, 0, np.int32(41), 14, np.int32(49), 28, 12], [30, np.int32(48), 27, 24, 15, 7, 12], [30, 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12], [30, 25, 0, np.int32(40), 14, np.int32(55), 5, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  37  to  12
+EDPs:  [[37, 15, 12], [37, 2, np.int32(32), np.int32(55), 5, 12], [37, 24, np.int32(53), 7, np.int32(9), 12], [37, 31, 24, 15, 7, 12], [37, 32, 15, 5, np.int32(28), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  45  to  12
+EDPs:  [[45, 2, np.int32(37), 15, 12], [45, 32, np.int32(38), 5, 12], [45, 43, 32, 15, 7, 12], [45, 40, 14, np.int32(55), 5, np.int32(28), 12], [45, 21, np.int32(48), 27, np.int32(53), 7, np.int32(9), 12]]
+Source :  45  Destination :  12
+Edp :  [45, 2, np.int32(37), 15, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  2
+ 
+Source :  45  Destination :  12
+Edp :  [45, 2, np.int32(37), 15, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  45
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  43  to  12
+EDPs:  [[43, 32, np.int32(38), 15, 12], [43, 36, np.int32(55), 5, 12], [43, 40, 14, np.int32(49), 28, 12], [43, np.int32(45), 32, 15, 7, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  48  to  12
+EDPs:  [[48, 23, np.int32(27), np.int32(53), 15, 12], [48, np.int32(59), 24, 15, 7, 12], [48, 21, np.int32(40), 14, np.int32(49), 28, 12], [48, 27, 24, np.int32(53), 7, np.int32(9), 12], [48, 30, 0, np.int32(41), 14, np.int32(55), 5, 12]]
+Source :  48  Destination :  12
+Edp :  [48, 21, np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  14
+ 
+Source :  48  Destination :  12
+Edp :  [48, 21, np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  40
+ 
+Source :  48  Destination :  12
+Edp :  [48, 21, np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  21
+ 
+Source :  48  Destination :  12
+Edp :  [48, 21, np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  48
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  5  to  12
+EDPs:  [[5, np.int32(12)], [5, np.int32(49), 28, 12], [5, np.int32(38), 15, 12], [5, np.int32(28), 9, 12], [5, np.int32(15), 7, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  7  to  12
+EDPs:  [[7, np.int32(12)], [7, np.int32(15), 12], [7, np.int32(9), 12], [7, np.int32(53), 15, 5, 12], [7, np.int32(22), 9, np.int32(28), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  51  to  12
+EDPs:  [[51, np.int32(59), 24, 15, 12], [51, 3, np.int32(24), np.int32(53), 7, 12], [51, 33, 2, np.int32(32), np.int32(55), 5, 12], [51, 26, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Source :  51  Destination :  12
+Edp :  [51, 33, 2, np.int32(32), np.int32(55), 5, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  33
+ 
+Source :  51  Destination :  12
+Edp :  [51, 33, 2, np.int32(32), np.int32(55), 5, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  51
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  56  to  12
+EDPs:  [[56, 53, 7, 12], [56, 8, 7, np.int32(9), 12], [56, 42, np.int32(53), 15, 12], [56, 10, np.int32(57), 49, 28, 12], [56, 13, 10, np.int32(34), np.int32(49), 5, 12]]
+Source :  56  Destination :  12
+Edp :  [56, 53, 7, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  53
+ 
+Source :  56  Destination :  12
+Edp :  [56, 53, 7, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  56
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  58  to  12
+EDPs:  [[58, 16, np.int32(29), np.int32(42), np.int32(53), 15, 12], [58, 20, np.int32(48), 27, np.int32(53), 7, 12], [58, 23, np.int32(27), 24, 15, 5, 12], [58, 17, np.int32(25), 0, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  24  to  12
+EDPs:  [[24, 15, 12], [24, np.int32(53), 7, 12], [24, np.int32(37), 15, 5, np.int32(28), 12], [24, 3, 2, np.int32(32), np.int32(55), 5, 12], [24, np.int32(27), np.int32(53), 15, 7, np.int32(9), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  28  to  12
+EDPs:  [[28, 12], [28, 9, 12], [28, 5, np.int32(15), 12], [28, np.int32(49), 5, 12], [28, np.int32(54), 9, 7, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  29  to  12
+EDPs:  [[29, np.int32(52), 42, np.int32(53), 7, 12], [29, 6, np.int32(47), np.int32(56), 53, 15, 12], [29, np.int32(35), np.int32(39), np.int32(57), 49, 5, 12], [29, np.int32(42), np.int32(56), 8, 7, np.int32(9), 12], [29, np.int32(47), 13, 10, np.int32(34), np.int32(54), 28, 12]]
+Source :  29  Destination :  12
+Edp :  [29, np.int32(52), 42, np.int32(53), 7, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  52
+ 
+Source :  29  Destination :  12
+Edp :  [29, np.int32(52), 42, np.int32(53), 7, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  29
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  59  to  12
+EDPs:  [[59, 27, np.int32(53), 7, 12], [59, 3, 2, np.int32(37), 15, 12], [59, 24, 15, 7, np.int32(9), 12], [59, 26, 21, np.int32(45), 32, 15, 5, 12], [59, 48, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Source :  59  Destination :  12
+Edp :  [59, 27, np.int32(53), 7, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  59  Destination :  12
+Edp :  [59, 27, np.int32(53), 7, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  27
+ 
+Source :  59  Destination :  12
+Edp :  [59, 27, np.int32(53), 7, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  59
+ 
+Source :  59  Destination :  12
+Edp :  [59, 3, 2, np.int32(37), 15, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  2
+ 
+Source :  59  Destination :  12
+Edp :  [59, 3, 2, np.int32(37), 15, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  3
+ 
+Source :  59  Destination :  12
+Edp :  [59, 3, 2, np.int32(37), 15, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  59
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  0  to  12
+EDPs:  [[0, np.int32(40), 14, np.int32(49), 28, 12], [0, np.int32(41), 14, np.int32(55), 5, 12], [0, np.int32(21), np.int32(45), 32, 15, 12], [0, np.int32(30), np.int32(48), 27, 24, 15, 7, 12], [0, np.int32(25), 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  1  to  12
+EDPs:  [[1, np.int32(27), np.int32(53), 15, 12], [1, np.int32(42), np.int32(53), 7, 12], [1, np.int32(4), np.int32(23), np.int32(27), 24, 15, 5, 12], [1, np.int32(52), 42, np.int32(56), 8, 7, np.int32(9), 12], [1, np.int32(23), np.int32(48), 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  42  to  12
+EDPs:  [[42, 27, 24, 15, 12], [42, np.int32(53), 15, 5, 12], [42, np.int32(56), 53, 7, np.int32(9), 12], [42, np.int32(47), np.int32(56), 8, 7, 12], [42, 29, np.int32(35), np.int32(39), np.int32(57), 49, 28, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  39  to  12
+EDPs:  [[39, np.int32(57), 49, 5, 12], [39, 10, 8, 7, np.int32(9), 12], [39, 13, np.int32(56), 53, 15, 12], [39, 35, 29, np.int32(42), np.int32(53), 7, 12]]
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 17 <function one_tree_pre at 0x72506e129120>
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[13, np.int32(56), 53, 15, 12], [13, 10, np.int32(34), np.int32(54), 28, 12], [13, np.int32(39), np.int32(57), 49, 5, 12], [13, np.int32(47), 42, np.int32(53), 7, 12], [13, np.int32(35), np.int32(39), 10, 8, 7, np.int32(9), 12]]
+Routing OTCP via EDPs started for  13  to  12
+EDPs: [[13, np.int32(56), 53, 15, 12], [13, 10, np.int32(34), np.int32(54), 28, 12], [13, np.int32(39), np.int32(57), 49, 5, 12], [13, np.int32(47), 42, np.int32(53), 7, 12], [13, np.int32(35), np.int32(39), 10, 8, 7, np.int32(9), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  34  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[34, 8, 7, 12], [34, np.int32(49), 28, 12], [34, np.int32(54), 9, 12], [34, 22, 7, np.int32(15), 12], [34, np.int32(57), 49, 5, 12]]
+Routing OTCP via EDPs started for  34  to  12
+EDPs: [[34, 8, 7, 12], [34, np.int32(49), 28, 12], [34, np.int32(54), 9, 12], [34, 22, 7, np.int32(15), 12], [34, np.int32(57), 49, 5, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[30, 21, np.int32(45), 32, 15, 12], [30, 0, np.int32(41), 14, np.int32(49), 28, 12], [30, np.int32(48), 27, 24, 15, 7, 12], [30, 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12], [30, 25, 0, np.int32(40), 14, np.int32(55), 5, 12]]
+Routing OTCP via EDPs started for  30  to  12
+EDPs: [[30, 21, np.int32(45), 32, 15, 12], [30, 0, np.int32(41), 14, np.int32(49), 28, 12], [30, np.int32(48), 27, 24, 15, 7, 12], [30, 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12], [30, 25, 0, np.int32(40), 14, np.int32(55), 5, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  37  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[37, 15, 12], [37, 2, np.int32(32), np.int32(55), 5, 12], [37, 24, np.int32(53), 7, np.int32(9), 12], [37, 31, 24, 15, 7, 12], [37, 32, 15, 5, np.int32(28), 12]]
+Routing OTCP via EDPs started for  37  to  12
+EDPs: [[37, 15, 12], [37, 2, np.int32(32), np.int32(55), 5, 12], [37, 24, np.int32(53), 7, np.int32(9), 12], [37, 31, 24, 15, 7, 12], [37, 32, 15, 5, np.int32(28), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  45  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[45, 2, np.int32(37), 15, 12], [45, 32, np.int32(38), 5, 12], [45, 43, 32, 15, 7, 12], [45, 40, 14, np.int32(55), 5, np.int32(28), 12], [45, 21, np.int32(48), 27, np.int32(53), 7, np.int32(9), 12]]
+Routing OTCP via EDPs started for  45  to  12
+EDPs: [[45, 2, np.int32(37), 15, 12], [45, 32, np.int32(38), 5, 12], [45, 43, 32, 15, 7, 12], [45, 40, 14, np.int32(55), 5, np.int32(28), 12], [45, 21, np.int32(48), 27, np.int32(53), 7, np.int32(9), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  43  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[43, 32, np.int32(38), 15, 12], [43, 36, np.int32(55), 5, 12], [43, 40, 14, np.int32(49), 28, 12], [43, np.int32(45), 32, 15, 7, 12]]
+Routing OTCP via EDPs started for  43  to  12
+EDPs: [[43, 32, np.int32(38), 15, 12], [43, 36, np.int32(55), 5, 12], [43, 40, 14, np.int32(49), 28, 12], [43, np.int32(45), 32, 15, 7, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  48  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[48, 23, np.int32(27), np.int32(53), 15, 12], [48, np.int32(59), 24, 15, 7, 12], [48, 21, np.int32(40), 14, np.int32(49), 28, 12], [48, 27, 24, np.int32(53), 7, np.int32(9), 12], [48, 30, 0, np.int32(41), 14, np.int32(55), 5, 12]]
+Routing OTCP via EDPs started for  48  to  12
+EDPs: [[48, 23, np.int32(27), np.int32(53), 15, 12], [48, np.int32(59), 24, 15, 7, 12], [48, 21, np.int32(40), 14, np.int32(49), 28, 12], [48, 27, 24, np.int32(53), 7, np.int32(9), 12], [48, 30, 0, np.int32(41), 14, np.int32(55), 5, 12]]
+Routing in faces started for :  48  ->  14
+Faces : 
+[14, np.int32(49), 34, 8, np.int32(53), 27, np.int32(40), np.int32(59), np.int32(0), np.int32(26), np.int32(25), np.int32(20), 48]
+[14, np.int32(49), 34, 8, np.int32(53), 27, 23, np.int32(40), np.int32(21), 48]
+[27, 48, 23, np.int32(26), np.int32(59)]
+[np.int32(0), np.int32(40), 48, np.int32(21), np.int32(30)]
+[np.int32(0), 48, np.int32(20), np.int32(25), np.int32(30)]
+[14, np.int32(49), 34, 8, np.int32(53), 27, 23, np.int32(40), np.int32(59), np.int32(0), np.int32(21), np.int32(26), np.int32(25), np.int32(30), np.int32(20), 48]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  12
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[5, np.int32(12)], [5, np.int32(49), 28, 12], [5, np.int32(38), 15, 12], [5, np.int32(28), 9, 12], [5, np.int32(15), 7, 12]]
+Routing OTCP via EDPs started for  5  to  12
+EDPs: [[5, np.int32(12)], [5, np.int32(49), 28, 12], [5, np.int32(38), 15, 12], [5, np.int32(28), 9, 12], [5, np.int32(15), 7, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[7, np.int32(12)], [7, np.int32(15), 12], [7, np.int32(9), 12], [7, np.int32(53), 15, 5, 12], [7, np.int32(22), 9, np.int32(28), 12]]
+Routing OTCP via EDPs started for  7  to  12
+EDPs: [[7, np.int32(12)], [7, np.int32(15), 12], [7, np.int32(9), 12], [7, np.int32(53), 15, 5, 12], [7, np.int32(22), 9, np.int32(28), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  51  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[51, np.int32(59), 24, 15, 12], [51, 3, np.int32(24), np.int32(53), 7, 12], [51, 33, 2, np.int32(32), np.int32(55), 5, 12], [51, 26, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing OTCP via EDPs started for  51  to  12
+EDPs: [[51, np.int32(59), 24, 15, 12], [51, 3, np.int32(24), np.int32(53), 7, 12], [51, 33, 2, np.int32(32), np.int32(55), 5, 12], [51, 26, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing in faces started for :  51  ->  14
+Faces : 
+[14, np.int32(49), 5, np.int32(15), np.int32(24), np.int32(40), np.int32(3), np.int32(21), np.int32(33), np.int32(26), 51]
+[14, np.int32(49), 5, np.int32(15), np.int32(24), np.int32(59), np.int32(40), np.int32(21), np.int32(26), 51]
+[np.int32(33), np.int32(3), 51, np.int32(24), np.int32(59)]
+[14, np.int32(49), 5, np.int32(15), np.int32(24), np.int32(59), np.int32(40), np.int32(3), np.int32(21), np.int32(33), np.int32(26), 51]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  12
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[56, 53, 7, 12], [56, 8, 7, np.int32(9), 12], [56, 42, np.int32(53), 15, 12], [56, 10, np.int32(57), 49, 28, 12], [56, 13, 10, np.int32(34), np.int32(49), 5, 12]]
+Routing OTCP via EDPs started for  56  to  12
+EDPs: [[56, 53, 7, 12], [56, 8, 7, np.int32(9), 12], [56, 42, np.int32(53), 15, 12], [56, 10, np.int32(57), 49, 28, 12], [56, 13, 10, np.int32(34), np.int32(49), 5, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  58  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[58, 16, np.int32(29), np.int32(42), np.int32(53), 15, 12], [58, 20, np.int32(48), 27, np.int32(53), 7, 12], [58, 23, np.int32(27), 24, 15, 5, 12], [58, 17, np.int32(25), 0, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing OTCP via EDPs started for  58  to  12
+EDPs: [[58, 16, np.int32(29), np.int32(42), np.int32(53), 15, 12], [58, 20, np.int32(48), 27, np.int32(53), 7, 12], [58, 23, np.int32(27), 24, 15, 5, 12], [58, 17, np.int32(25), 0, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing in faces started for :  58  ->  40
+Faces : 
+[np.int32(40), np.int32(41), 0, np.int32(21), np.int32(25), np.int32(48), np.int32(20), np.int32(23), 58]
+[np.int32(40), np.int32(41), 0, np.int32(50), 44, 16, np.int32(21), np.int32(48), np.int32(23), 58]
+[0, np.int32(50), 44, np.int32(25), np.int32(17), np.int32(20), 58]
+[16, np.int32(17), 58, 44]
+[np.int32(40), np.int32(41), 0, np.int32(50), 44, 16, np.int32(21), np.int32(25), np.int32(17), np.int32(48), np.int32(20), np.int32(23), 58]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  40  to  12
+Source :  40  Destination :  12
+Edp :  [np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  14
+ 
+Source :  40  Destination :  12
+Edp :  [np.int32(40), 14, np.int32(49), 28, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  40
+ 
+Source :  40  Destination :  12
+Edp :  [np.int32(40), np.int32(43), 32, 15, 7, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  32
+ 
+Source :  40  Destination :  12
+Edp :  [np.int32(40), np.int32(43), 32, 15, 7, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  43
+ 
+Source :  40  Destination :  12
+Edp :  [np.int32(40), np.int32(43), 32, 15, 7, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  40
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Routing failed via Tree from CP to D 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[24, 15, 12], [24, np.int32(53), 7, 12], [24, np.int32(37), 15, 5, np.int32(28), 12], [24, 3, 2, np.int32(32), np.int32(55), 5, 12], [24, np.int32(27), np.int32(53), 15, 7, np.int32(9), 12]]
+Routing OTCP via EDPs started for  24  to  12
+EDPs: [[24, 15, 12], [24, np.int32(53), 7, 12], [24, np.int32(37), 15, 5, np.int32(28), 12], [24, 3, 2, np.int32(32), np.int32(55), 5, 12], [24, np.int32(27), np.int32(53), 15, 7, np.int32(9), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[28, 12], [28, 9, 12], [28, 5, np.int32(15), 12], [28, np.int32(49), 5, 12], [28, np.int32(54), 9, 7, 12]]
+Routing OTCP via EDPs started for  28  to  12
+EDPs: [[28, 12], [28, 9, 12], [28, 5, np.int32(15), 12], [28, np.int32(49), 5, 12], [28, np.int32(54), 9, 7, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  29  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[29, np.int32(52), 42, np.int32(53), 7, 12], [29, 6, np.int32(47), np.int32(56), 53, 15, 12], [29, np.int32(35), np.int32(39), np.int32(57), 49, 5, 12], [29, np.int32(42), np.int32(56), 8, 7, np.int32(9), 12], [29, np.int32(47), 13, 10, np.int32(34), np.int32(54), 28, 12]]
+Routing OTCP via EDPs started for  29  to  12
+EDPs: [[29, np.int32(52), 42, np.int32(53), 7, 12], [29, 6, np.int32(47), np.int32(56), 53, 15, 12], [29, np.int32(35), np.int32(39), np.int32(57), 49, 5, 12], [29, np.int32(42), np.int32(56), 8, 7, np.int32(9), 12], [29, np.int32(47), 13, 10, np.int32(34), np.int32(54), 28, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  59  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[59, 27, np.int32(53), 7, 12], [59, 3, 2, np.int32(37), 15, 12], [59, 24, 15, 7, np.int32(9), 12], [59, 26, 21, np.int32(45), 32, 15, 5, 12], [59, 48, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing OTCP via EDPs started for  59  to  12
+EDPs: [[59, 27, np.int32(53), 7, 12], [59, 3, 2, np.int32(37), 15, 12], [59, 24, 15, 7, np.int32(9), 12], [59, 26, 21, np.int32(45), 32, 15, 5, 12], [59, 48, 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing in faces started for :  59  ->  14
+Faces : 
+[14, np.int32(49), 34, 8, np.int32(53), np.int32(40), np.int32(24), np.int32(21), np.int32(3), np.int32(26), np.int32(51), 59]
+[14, np.int32(49), 34, 8, np.int32(53), 27, np.int32(40), np.int32(21), np.int32(48), 59]
+[np.int32(3), 27, np.int32(51), np.int32(53), np.int32(24), 59]
+[np.int32(48), np.int32(26), 59, np.int32(21)]
+[14, np.int32(49), 34, 8, np.int32(53), 27, np.int32(40), np.int32(24), np.int32(21), np.int32(3), np.int32(48), np.int32(26), np.int32(51), 59]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  14  to  12
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[0, np.int32(40), 14, np.int32(49), 28, 12], [0, np.int32(41), 14, np.int32(55), 5, 12], [0, np.int32(21), np.int32(45), 32, 15, 12], [0, np.int32(30), np.int32(48), 27, 24, 15, 7, 12], [0, np.int32(25), 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12]]
+Routing OTCP via EDPs started for  0  to  12
+EDPs: [[0, np.int32(40), 14, np.int32(49), 28, 12], [0, np.int32(41), 14, np.int32(55), 5, 12], [0, np.int32(21), np.int32(45), 32, 15, 12], [0, np.int32(30), np.int32(48), 27, 24, 15, 7, 12], [0, np.int32(25), 20, np.int32(23), np.int32(27), np.int32(53), 7, np.int32(9), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  1  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[1, np.int32(27), np.int32(53), 15, 12], [1, np.int32(42), np.int32(53), 7, 12], [1, np.int32(4), np.int32(23), np.int32(27), 24, 15, 5, 12], [1, np.int32(52), 42, np.int32(56), 8, 7, np.int32(9), 12], [1, np.int32(23), np.int32(48), 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing OTCP via EDPs started for  1  to  12
+EDPs: [[1, np.int32(27), np.int32(53), 15, 12], [1, np.int32(42), np.int32(53), 7, 12], [1, np.int32(4), np.int32(23), np.int32(27), 24, 15, 5, 12], [1, np.int32(52), 42, np.int32(56), 8, 7, np.int32(9), 12], [1, np.int32(23), np.int32(48), 21, np.int32(40), 14, np.int32(49), 28, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  42  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[42, 27, 24, 15, 12], [42, np.int32(53), 15, 5, 12], [42, np.int32(56), 53, 7, np.int32(9), 12], [42, np.int32(47), np.int32(56), 8, 7, 12], [42, 29, np.int32(35), np.int32(39), np.int32(57), 49, 28, 12]]
+Routing OTCP via EDPs started for  42  to  12
+EDPs: [[42, 27, 24, 15, 12], [42, np.int32(53), 15, 5, 12], [42, np.int32(56), 53, 7, np.int32(9), 12], [42, np.int32(47), np.int32(56), 8, 7, 12], [42, 29, np.int32(35), np.int32(39), np.int32(57), 49, 28, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  12
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[39, np.int32(57), 49, 5, 12], [39, 10, 8, 7, np.int32(9), 12], [39, 13, np.int32(56), 53, 15, 12], [39, 35, 29, np.int32(42), np.int32(53), 7, 12]]
+Routing OTCP via EDPs started for  39  to  12
+EDPs: [[39, np.int32(57), 49, 5, 12], [39, 10, 8, 7, np.int32(9), 12], [39, 13, np.int32(56), 53, 15, 12], [39, 35, 29, np.int32(42), np.int32(53), 7, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 19 <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+experiment for  <function one_tree_pre at 0x72506e129120>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  25  to  33
+EDPs:  [[25, 0, np.int32(21), 33], [25, 20, np.int32(48), 26, 33], [25, np.int32(50), 0, np.int32(40), np.int32(45), 33], [25, np.int32(30), 21, np.int32(45), 2, 33], [25, 19, np.int32(30), np.int32(48), np.int32(59), 3, 33], [25, 17, 16, np.int32(23), np.int32(27), np.int32(59), 51, 33], [25, np.int32(44), 16, 4, 1, np.int32(27), 24, 3, 2, np.int32(11), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  59  to  33
+EDPs:  [[59, 3, 33], [59, 26, 33], [59, 51, 33], [59, 48, 21, 33], [59, 24, 15, np.int32(32), np.int32(45), 33], [59, 27, 24, 3, 2, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  22  to  33
+EDPs:  [[22, 8, np.int32(53), 27, np.int32(48), 26, 33], [22, 9, 7, np.int32(53), 24, 3, 33], [22, 18, 7, np.int32(15), np.int32(32), np.int32(45), 33], [22, np.int32(34), np.int32(49), np.int32(55), 32, 2, 33], [22, np.int32(54), 49, 14, np.int32(40), 21, 33], [22, 7, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33]]
+Source :  22  Destination :  33
+Edp :  [22, 8, np.int32(53), 27, np.int32(48), 26, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  22  Destination :  33
+Edp :  [22, 8, np.int32(53), 27, np.int32(48), 26, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  8
+ 
+Source :  22  Destination :  33
+Edp :  [22, 8, np.int32(53), 27, np.int32(48), 26, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Source :  22  Destination :  33
+Edp :  [22, 9, 7, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  53
+ 
+Source :  22  Destination :  33
+Edp :  [22, 9, 7, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  7
+ 
+Source :  22  Destination :  33
+Edp :  [22, 9, 7, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  9
+ 
+Source :  22  Destination :  33
+Edp :  [22, 9, 7, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Source :  22  Destination :  33
+Edp :  [22, 18, 7, np.int32(15), np.int32(32), np.int32(45), 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  18
+ 
+Source :  22  Destination :  33
+Edp :  [22, 18, 7, np.int32(15), np.int32(32), np.int32(45), 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Source :  22  Destination :  33
+Edp :  [22, np.int32(34), np.int32(49), np.int32(55), 32, 2, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  34
+ 
+Source :  22  Destination :  33
+Edp :  [22, np.int32(34), np.int32(49), np.int32(55), 32, 2, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  9  to  33
+EDPs:  [[9, np.int32(12), np.int32(15), np.int32(37), 2, 33], [9, 7, np.int32(53), 24, np.int32(59), 26, 33], [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33], [9, np.int32(54), 49, 14, np.int32(40), 21, 33], [9, np.int32(22), 7, np.int32(15), np.int32(32), np.int32(45), 33]]
+Source :  9  Destination :  33
+Edp :  [9, np.int32(12), np.int32(15), np.int32(37), 2, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  12
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(12), np.int32(15), np.int32(37), 2, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  9
+ 
+Source :  9  Destination :  33
+Edp :  [9, 7, np.int32(53), 24, np.int32(59), 26, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  9  Destination :  33
+Edp :  [9, 7, np.int32(53), 24, np.int32(59), 26, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  7
+ 
+Source :  9  Destination :  33
+Edp :  [9, 7, np.int32(53), 24, np.int32(59), 26, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  9
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  15
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  5
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  28
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  9
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  2  to  33
+EDPs:  [[2, np.int32(33)], [2, np.int32(3), 33], [2, np.int32(11), 33], [2, np.int32(32), np.int32(45), 33], [2, np.int32(45), 21, 33], [2, np.int32(31), 3, np.int32(51), 33], [2, np.int32(37), 24, np.int32(59), 26, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  5  to  33
+EDPs:  [[5, np.int32(55), 32, np.int32(45), 33], [5, np.int32(15), np.int32(32), 2, 33], [5, np.int32(49), 14, np.int32(40), 21, 33], [5, np.int32(38), 15, np.int32(24), np.int32(59), 26, 33], [5, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33], [5, np.int32(28), 9, 7, np.int32(53), 24, 3, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  40  to  33
+EDPs:  [[40, 21, 33], [40, np.int32(43), np.int32(45), 33], [40, np.int32(45), 11, 33], [40, 36, 32, 2, np.int32(3), 33], [40, np.int32(41), 0, np.int32(21), np.int32(26), 33], [40, 0, np.int32(30), np.int32(48), 26, np.int32(51), 33], [40, 14, np.int32(55), 32, np.int32(37), 2, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  43  to  33
+EDPs:  [[43, 32, np.int32(45), 33], [43, 40, 21, 33], [43, np.int32(45), 11, 33], [43, 36, 32, 2, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  23  to  33
+EDPs:  [[23, np.int32(48), 26, 33], [23, 20, np.int32(30), 21, 33], [23, np.int32(27), 24, 3, 33], [23, 4, 1, np.int32(27), np.int32(59), 51, 33], [23, 1, np.int32(42), np.int32(53), 15, np.int32(37), 2, 33], [23, 16, np.int32(17), np.int32(25), 0, np.int32(40), np.int32(45), 33], [23, np.int32(58), 20, np.int32(48), 21, np.int32(45), 11, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  41  to  33
+EDPs:  [[41, 0, np.int32(21), 33], [41, 40, np.int32(45), 33], [41, 14, np.int32(55), 32, 2, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  54  to  33
+EDPs:  [[54, 49, 14, np.int32(40), 21, 33], [54, 22, 7, np.int32(15), np.int32(32), np.int32(45), 33], [54, 28, 5, np.int32(55), 32, 2, 33], [54, 34, 8, np.int32(53), 24, 3, 33], [54, 9, 7, np.int32(53), 27, np.int32(48), 26, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  58  to  33
+EDPs:  [[58, 16, np.int32(23), np.int32(48), 26, 33], [58, 17, np.int32(20), np.int32(30), 21, 33], [58, 20, np.int32(48), 21, np.int32(45), 33], [58, 23, np.int32(27), 24, 3, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  18  to  33
+EDPs:  [[18, 8, np.int32(53), 24, 3, 33], [18, 7, np.int32(53), 27, np.int32(59), 26, 33], [18, np.int32(22), 7, np.int32(15), np.int32(32), 2, 33]]
+Source :  18  Destination :  33
+Edp :  [18, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  18  Destination :  33
+Edp :  [18, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  8
+ 
+Source :  18  Destination :  33
+Edp :  [18, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  18
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  10  to  33
+EDPs:  [[10, 8, np.int32(53), 24, 3, 33], [10, np.int32(34), np.int32(49), np.int32(55), 32, np.int32(45), 33], [10, np.int32(57), 49, 14, np.int32(40), 21, 33], [10, np.int32(56), 53, 15, np.int32(37), 2, 33], [10, np.int32(39), 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [10, np.int32(13), np.int32(56), 42, 1, np.int32(27), np.int32(59), 51, 33]]
+Source :  10  Destination :  33
+Edp :  [10, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  10  Destination :  33
+Edp :  [10, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  8
+ 
+Source :  10  Destination :  33
+Edp :  [10, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  10
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  3  to  33
+EDPs:  [[3, np.int32(33)], [3, np.int32(51), 33], [3, 2, np.int32(11), 33], [3, np.int32(59), 26, 33], [3, np.int32(31), 2, 33], [3, np.int32(24), 15, np.int32(32), np.int32(45), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  11  to  33
+EDPs:  [[11, np.int32(33)], [11, 2, 33], [11, np.int32(45), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  19  to  33
+EDPs:  [[19, np.int32(30), 21, 33], [19, np.int32(20), np.int32(48), 26, 33], [19, np.int32(25), 0, np.int32(40), np.int32(45), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  15  to  33
+EDPs:  [[15, np.int32(32), np.int32(45), 33], [15, np.int32(37), 2, 33], [15, np.int32(24), np.int32(59), 26, 33], [15, np.int32(53), 24, 3, 33], [15, np.int32(38), 32, 2, np.int32(11), 33], [15, 5, np.int32(55), 14, np.int32(40), 21, 33], [15, 7, np.int32(53), 27, np.int32(48), 21, np.int32(26), np.int32(51), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  35  to  33
+EDPs:  [[35, 29, 16, np.int32(23), np.int32(48), 26, 33], [35, np.int32(47), 42, 27, 24, 3, 33], [35, 13, np.int32(56), 53, 15, np.int32(32), np.int32(45), 33], [35, np.int32(39), np.int32(57), 49, 14, np.int32(40), 21, 33], [35, 6, np.int32(29), np.int32(42), np.int32(53), 24, np.int32(31), 2, 33]]
+Source :  35  Destination :  33
+Edp :  [35, np.int32(47), 42, 27, 24, 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  47
+ 
+Source :  35  Destination :  33
+Edp :  [35, np.int32(47), 42, 27, 24, 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  35
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  56  to  33
+EDPs:  [[56, 8, np.int32(53), 24, 3, 33], [56, 53, 15, np.int32(32), np.int32(45), 33], [56, 42, 1, np.int32(27), np.int32(59), 51, 33], [56, 10, 8, 7, np.int32(15), np.int32(37), 2, 33], [56, 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [56, 47, 29, 16, np.int32(23), np.int32(48), 21, 33]]
+Source :  56  Destination :  33
+Edp :  [56, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  53
+ 
+Source :  56  Destination :  33
+Edp :  [56, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  8
+ 
+Source :  56  Destination :  33
+Edp :  [56, 8, np.int32(53), 24, 3, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  56
+ 
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 19 <function one_tree_pre at 0x72506e129120>
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  25  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[25, 0, np.int32(21), 33], [25, 20, np.int32(48), 26, 33], [25, np.int32(50), 0, np.int32(40), np.int32(45), 33], [25, np.int32(30), 21, np.int32(45), 2, 33], [25, 19, np.int32(30), np.int32(48), np.int32(59), 3, 33], [25, 17, 16, np.int32(23), np.int32(27), np.int32(59), 51, 33], [25, np.int32(44), 16, 4, 1, np.int32(27), 24, 3, 2, np.int32(11), 33]]
+Routing OTCP via EDPs started for  25  to  33
+EDPs: [[25, 0, np.int32(21), 33], [25, 20, np.int32(48), 26, 33], [25, np.int32(50), 0, np.int32(40), np.int32(45), 33], [25, np.int32(30), 21, np.int32(45), 2, 33], [25, 19, np.int32(30), np.int32(48), np.int32(59), 3, 33], [25, 17, 16, np.int32(23), np.int32(27), np.int32(59), 51, 33], [25, np.int32(44), 16, 4, 1, np.int32(27), 24, 3, 2, np.int32(11), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  59  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[59, 3, 33], [59, 26, 33], [59, 51, 33], [59, 48, 21, 33], [59, 24, 15, np.int32(32), np.int32(45), 33], [59, 27, 24, 3, 2, 33]]
+Routing OTCP via EDPs started for  59  to  33
+EDPs: [[59, 3, 33], [59, 26, 33], [59, 51, 33], [59, 48, 21, 33], [59, 24, 15, np.int32(32), np.int32(45), 33], [59, 27, 24, 3, 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  22  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[22, 8, np.int32(53), 27, np.int32(48), 26, 33], [22, 9, 7, np.int32(53), 24, 3, 33], [22, 18, 7, np.int32(15), np.int32(32), np.int32(45), 33], [22, np.int32(34), np.int32(49), np.int32(55), 32, 2, 33], [22, np.int32(54), 49, 14, np.int32(40), 21, 33], [22, 7, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33]]
+Routing OTCP via EDPs started for  22  to  33
+EDPs: [[22, 8, np.int32(53), 27, np.int32(48), 26, 33], [22, 9, 7, np.int32(53), 24, 3, 33], [22, 18, 7, np.int32(15), np.int32(32), np.int32(45), 33], [22, np.int32(34), np.int32(49), np.int32(55), 32, 2, 33], [22, np.int32(54), 49, 14, np.int32(40), 21, 33], [22, 7, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33]]
+Routing in faces started for :  22  ->  37
+Faces : 
+[np.int32(37), 32, 15, 5, np.int32(28), np.int32(54), np.int32(53), np.int32(8), 22]
+[15, 5, np.int32(7), np.int32(49), np.int32(18), np.int32(34), 22]
+[np.int32(7), np.int32(8), 15, np.int32(18), np.int32(53), 22]
+[np.int32(34), 5, np.int32(9), np.int32(49), 22, np.int32(28)]
+[np.int32(9), np.int32(28), np.int32(54), 22]
+[np.int32(37), 32, 15, 5, np.int32(28), np.int32(54), np.int32(53), np.int32(7), np.int32(49), np.int32(9), np.int32(8), np.int32(18), np.int32(34), 22]
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  37  to  33
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  9  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[9, np.int32(12), np.int32(15), np.int32(37), 2, 33], [9, 7, np.int32(53), 24, np.int32(59), 26, 33], [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33], [9, np.int32(54), 49, 14, np.int32(40), 21, 33], [9, np.int32(22), 7, np.int32(15), np.int32(32), np.int32(45), 33]]
+Routing OTCP via EDPs started for  9  to  33
+EDPs: [[9, np.int32(12), np.int32(15), np.int32(37), 2, 33], [9, 7, np.int32(53), 24, np.int32(59), 26, 33], [9, np.int32(28), 5, np.int32(15), np.int32(24), 3, 33], [9, np.int32(54), 49, 14, np.int32(40), 21, 33], [9, np.int32(22), 7, np.int32(15), np.int32(32), np.int32(45), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  2  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[2, np.int32(33)], [2, np.int32(3), 33], [2, np.int32(11), 33], [2, np.int32(32), np.int32(45), 33], [2, np.int32(45), 21, 33], [2, np.int32(31), 3, np.int32(51), 33], [2, np.int32(37), 24, np.int32(59), 26, 33]]
+Routing OTCP via EDPs started for  2  to  33
+EDPs: [[2, np.int32(33)], [2, np.int32(3), 33], [2, np.int32(11), 33], [2, np.int32(32), np.int32(45), 33], [2, np.int32(45), 21, 33], [2, np.int32(31), 3, np.int32(51), 33], [2, np.int32(37), 24, np.int32(59), 26, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[5, np.int32(55), 32, np.int32(45), 33], [5, np.int32(15), np.int32(32), 2, 33], [5, np.int32(49), 14, np.int32(40), 21, 33], [5, np.int32(38), 15, np.int32(24), np.int32(59), 26, 33], [5, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33], [5, np.int32(28), 9, 7, np.int32(53), 24, 3, 33]]
+Routing OTCP via EDPs started for  5  to  33
+EDPs: [[5, np.int32(55), 32, np.int32(45), 33], [5, np.int32(15), np.int32(32), 2, 33], [5, np.int32(49), 14, np.int32(40), 21, 33], [5, np.int32(38), 15, np.int32(24), np.int32(59), 26, 33], [5, np.int32(12), np.int32(15), np.int32(37), 2, np.int32(11), 33], [5, np.int32(28), 9, 7, np.int32(53), 24, 3, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[40, 21, 33], [40, np.int32(43), np.int32(45), 33], [40, np.int32(45), 11, 33], [40, 36, 32, 2, np.int32(3), 33], [40, np.int32(41), 0, np.int32(21), np.int32(26), 33], [40, 0, np.int32(30), np.int32(48), 26, np.int32(51), 33], [40, 14, np.int32(55), 32, np.int32(37), 2, 33]]
+Routing OTCP via EDPs started for  40  to  33
+EDPs: [[40, 21, 33], [40, np.int32(43), np.int32(45), 33], [40, np.int32(45), 11, 33], [40, 36, 32, 2, np.int32(3), 33], [40, np.int32(41), 0, np.int32(21), np.int32(26), 33], [40, 0, np.int32(30), np.int32(48), 26, np.int32(51), 33], [40, 14, np.int32(55), 32, np.int32(37), 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  43  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[43, 32, np.int32(45), 33], [43, 40, 21, 33], [43, np.int32(45), 11, 33], [43, 36, 32, 2, 33]]
+Routing OTCP via EDPs started for  43  to  33
+EDPs: [[43, 32, np.int32(45), 33], [43, 40, 21, 33], [43, np.int32(45), 11, 33], [43, 36, 32, 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[23, np.int32(48), 26, 33], [23, 20, np.int32(30), 21, 33], [23, np.int32(27), 24, 3, 33], [23, 4, 1, np.int32(27), np.int32(59), 51, 33], [23, 1, np.int32(42), np.int32(53), 15, np.int32(37), 2, 33], [23, 16, np.int32(17), np.int32(25), 0, np.int32(40), np.int32(45), 33], [23, np.int32(58), 20, np.int32(48), 21, np.int32(45), 11, 33]]
+Routing OTCP via EDPs started for  23  to  33
+EDPs: [[23, np.int32(48), 26, 33], [23, 20, np.int32(30), 21, 33], [23, np.int32(27), 24, 3, 33], [23, 4, 1, np.int32(27), np.int32(59), 51, 33], [23, 1, np.int32(42), np.int32(53), 15, np.int32(37), 2, 33], [23, 16, np.int32(17), np.int32(25), 0, np.int32(40), np.int32(45), 33], [23, np.int32(58), 20, np.int32(48), 21, np.int32(45), 11, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[41, 0, np.int32(21), 33], [41, 40, np.int32(45), 33], [41, 14, np.int32(55), 32, 2, 33]]
+Routing OTCP via EDPs started for  41  to  33
+EDPs: [[41, 0, np.int32(21), 33], [41, 40, np.int32(45), 33], [41, 14, np.int32(55), 32, 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[54, 49, 14, np.int32(40), 21, 33], [54, 22, 7, np.int32(15), np.int32(32), np.int32(45), 33], [54, 28, 5, np.int32(55), 32, 2, 33], [54, 34, 8, np.int32(53), 24, 3, 33], [54, 9, 7, np.int32(53), 27, np.int32(48), 26, 33]]
+Routing OTCP via EDPs started for  54  to  33
+EDPs: [[54, 49, 14, np.int32(40), 21, 33], [54, 22, 7, np.int32(15), np.int32(32), np.int32(45), 33], [54, 28, 5, np.int32(55), 32, 2, 33], [54, 34, 8, np.int32(53), 24, 3, 33], [54, 9, 7, np.int32(53), 27, np.int32(48), 26, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  58  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[58, 16, np.int32(23), np.int32(48), 26, 33], [58, 17, np.int32(20), np.int32(30), 21, 33], [58, 20, np.int32(48), 21, np.int32(45), 33], [58, 23, np.int32(27), 24, 3, 33]]
+Routing OTCP via EDPs started for  58  to  33
+EDPs: [[58, 16, np.int32(23), np.int32(48), 26, 33], [58, 17, np.int32(20), np.int32(30), 21, 33], [58, 20, np.int32(48), 21, np.int32(45), 33], [58, 23, np.int32(27), 24, 3, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  18  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[18, 8, np.int32(53), 24, 3, 33], [18, 7, np.int32(53), 27, np.int32(59), 26, 33], [18, np.int32(22), 7, np.int32(15), np.int32(32), 2, 33]]
+Routing OTCP via EDPs started for  18  to  33
+EDPs: [[18, 8, np.int32(53), 24, 3, 33], [18, 7, np.int32(53), 27, np.int32(59), 26, 33], [18, np.int32(22), 7, np.int32(15), np.int32(32), 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  10  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[10, 8, np.int32(53), 24, 3, 33], [10, np.int32(34), np.int32(49), np.int32(55), 32, np.int32(45), 33], [10, np.int32(57), 49, 14, np.int32(40), 21, 33], [10, np.int32(56), 53, 15, np.int32(37), 2, 33], [10, np.int32(39), 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [10, np.int32(13), np.int32(56), 42, 1, np.int32(27), np.int32(59), 51, 33]]
+Routing OTCP via EDPs started for  10  to  33
+EDPs: [[10, 8, np.int32(53), 24, 3, 33], [10, np.int32(34), np.int32(49), np.int32(55), 32, np.int32(45), 33], [10, np.int32(57), 49, 14, np.int32(40), 21, 33], [10, np.int32(56), 53, 15, np.int32(37), 2, 33], [10, np.int32(39), 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [10, np.int32(13), np.int32(56), 42, 1, np.int32(27), np.int32(59), 51, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  3  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[3, np.int32(33)], [3, np.int32(51), 33], [3, 2, np.int32(11), 33], [3, np.int32(59), 26, 33], [3, np.int32(31), 2, 33], [3, np.int32(24), 15, np.int32(32), np.int32(45), 33]]
+Routing OTCP via EDPs started for  3  to  33
+EDPs: [[3, np.int32(33)], [3, np.int32(51), 33], [3, 2, np.int32(11), 33], [3, np.int32(59), 26, 33], [3, np.int32(31), 2, 33], [3, np.int32(24), 15, np.int32(32), np.int32(45), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  11  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[11, np.int32(33)], [11, 2, 33], [11, np.int32(45), 33]]
+Routing OTCP via EDPs started for  11  to  33
+EDPs: [[11, np.int32(33)], [11, 2, 33], [11, np.int32(45), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[19, np.int32(30), 21, 33], [19, np.int32(20), np.int32(48), 26, 33], [19, np.int32(25), 0, np.int32(40), np.int32(45), 33]]
+Routing OTCP via EDPs started for  19  to  33
+EDPs: [[19, np.int32(30), 21, 33], [19, np.int32(20), np.int32(48), 26, 33], [19, np.int32(25), 0, np.int32(40), np.int32(45), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[15, np.int32(32), np.int32(45), 33], [15, np.int32(37), 2, 33], [15, np.int32(24), np.int32(59), 26, 33], [15, np.int32(53), 24, 3, 33], [15, np.int32(38), 32, 2, np.int32(11), 33], [15, 5, np.int32(55), 14, np.int32(40), 21, 33], [15, 7, np.int32(53), 27, np.int32(48), 21, np.int32(26), np.int32(51), 33]]
+Routing OTCP via EDPs started for  15  to  33
+EDPs: [[15, np.int32(32), np.int32(45), 33], [15, np.int32(37), 2, 33], [15, np.int32(24), np.int32(59), 26, 33], [15, np.int32(53), 24, 3, 33], [15, np.int32(38), 32, 2, np.int32(11), 33], [15, 5, np.int32(55), 14, np.int32(40), 21, 33], [15, 7, np.int32(53), 27, np.int32(48), 21, np.int32(26), np.int32(51), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  35  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[35, 29, 16, np.int32(23), np.int32(48), 26, 33], [35, np.int32(47), 42, 27, 24, 3, 33], [35, 13, np.int32(56), 53, 15, np.int32(32), np.int32(45), 33], [35, np.int32(39), np.int32(57), 49, 14, np.int32(40), 21, 33], [35, 6, np.int32(29), np.int32(42), np.int32(53), 24, np.int32(31), 2, 33]]
+Routing OTCP via EDPs started for  35  to  33
+EDPs: [[35, 29, 16, np.int32(23), np.int32(48), 26, 33], [35, np.int32(47), 42, 27, 24, 3, 33], [35, 13, np.int32(56), 53, 15, np.int32(32), np.int32(45), 33], [35, np.int32(39), np.int32(57), 49, 14, np.int32(40), 21, 33], [35, 6, np.int32(29), np.int32(42), np.int32(53), 24, np.int32(31), 2, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  33
+Fails in CP Routing :  [(21, np.int32(26)), (24, np.int32(59)), (1, np.int32(42)), (14, np.int32(41)), (31, np.int32(37)), (28, np.int32(49)), (23, np.int32(27)), (16, np.int32(29)), (27, np.int32(42)), (20, np.int32(58)), (40, np.int32(41)), (10, np.int32(56)), (30, np.int32(48)), (7, np.int32(15)), (15, np.int32(37)), (42, np.int32(53)), (4, np.int32(52)), (13, np.int32(47)), (32, np.int32(37)), (7, np.int32(12)), (16, np.int32(58)), (4, np.int32(16)), (3, np.int32(24)), (17, np.int32(46)), (27, np.int32(48)), (36, np.int32(55)), (20, np.int32(25)), (25, np.int32(50)), (16, np.int32(23)), (10, np.int32(34)), (44, np.int32(50)), (25, np.int32(46)), (32, np.int32(36)), (49, np.int32(55)), (2, np.int32(32)), (0, np.int32(50)), (4, np.int32(23)), (22, np.int32(54)), (0, np.int32(40)), (16, np.int32(52))]
+EDPS s to d : [[56, 8, np.int32(53), 24, 3, 33], [56, 53, 15, np.int32(32), np.int32(45), 33], [56, 42, 1, np.int32(27), np.int32(59), 51, 33], [56, 10, 8, 7, np.int32(15), np.int32(37), 2, 33], [56, 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [56, 47, 29, 16, np.int32(23), np.int32(48), 21, 33]]
+Routing OTCP via EDPs started for  56  to  33
+EDPs: [[56, 8, np.int32(53), 24, 3, 33], [56, 53, 15, np.int32(32), np.int32(45), 33], [56, 42, 1, np.int32(27), np.int32(59), 51, 33], [56, 10, 8, 7, np.int32(15), np.int32(37), 2, 33], [56, 13, np.int32(47), 42, 27, np.int32(48), 26, 33], [56, 47, 29, 16, np.int32(23), np.int32(48), 21, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 20 <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+time elapsed 105.70627689361572
+start time Thu Nov  7 12:49:49 2024
+end time Thu Nov  7 12:51:34 2024
+Thu Nov  7 12:51:34 2024
+[main] i :  8
+[run_planar] fails :  48
+experiment for  <function one_tree_pre at 0x72506e129120>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  13  to  12
+EDPs:  [[13, np.int32(45), 27, 26, np.int32(51), 12], [13, 10, np.int32(58), np.int32(59), 43, 5, 12], [13, np.int32(25), np.int32(44), np.int32(58), 43, 1, 12], [13, np.int32(30), np.int32(49), 36, np.int32(54), 46, 12], [13, np.int32(17), np.int32(37), 15, np.int32(57), 24, 4, np.int32(42), 12], [13, np.int32(21), 3, np.int32(18), np.int32(20), np.int32(39), np.int32(47), 11, 12]]
+Source :  13  Destination :  12
+Edp :  [13, np.int32(45), 27, 26, np.int32(51), 12]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  26
+ 
+Source :  13  Destination :  12
+Edp :  [13, np.int32(45), 27, 26, np.int32(51), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  27
+ 
+Source :  13  Destination :  12
+Edp :  [13, np.int32(45), 27, 26, np.int32(51), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  45
+ 
+Source :  13  Destination :  12
+Edp :  [13, np.int32(45), 27, 26, np.int32(51), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  13
+ 
+Source :  13  Destination :  12
+Edp :  [13, 10, np.int32(58), np.int32(59), 43, 5, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  58
+ 
+Source :  13  Destination :  12
+Edp :  [13, 10, np.int32(58), np.int32(59), 43, 5, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  10
+ 
+Source :  13  Destination :  12
+Edp :  [13, 10, np.int32(58), np.int32(59), 43, 5, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  13
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  34  to  12
+EDPs:  [[34, 24, np.int32(51), 12], [34, 4, np.int32(51), 46, 12], [34, 9, np.int32(22), np.int32(42), 12], [34, 31, np.int32(42), 5, 12], [34, np.int32(50), 22, 2, np.int32(5), 1, 12], [34, np.int32(57), 26, 7, np.int32(54), 46, 11, 12]]
+Source :  34  Destination :  12
+Edp :  [34, 24, np.int32(51), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  24
+ 
+Source :  34  Destination :  12
+Edp :  [34, 24, np.int32(51), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  34
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  30  to  12
+EDPs:  [[30, np.int32(49), 36, np.int32(54), 46, 12], [30, 13, np.int32(45), 27, 26, np.int32(51), 12], [30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12], [30, 3, np.int32(6), np.int32(58), np.int32(59), 43, 5, 12], [30, 21, 13, 10, np.int32(58), 43, 1, 12], [30, np.int32(45), 15, np.int32(57), 34, 4, np.int32(42), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  37  to  12
+EDPs:  [[37, 15, np.int32(57), 24, np.int32(51), 12], [37, 17, np.int32(44), np.int32(58), 43, 1, 12], [37, np.int32(45), 27, np.int32(36), np.int32(54), 46, 12], [37, 0, np.int32(32), np.int32(57), 34, 31, np.int32(42), 12], [37, np.int32(38), 32, np.int32(56), 34, 4, np.int32(42), 5, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  45  to  12
+EDPs:  [[45, 27, 26, np.int32(51), 12], [45, np.int32(49), 36, np.int32(54), 46, 12], [45, 15, np.int32(57), 24, 4, np.int32(42), 12], [45, 17, np.int32(44), np.int32(58), 43, 1, 12], [45, 13, 10, np.int32(58), np.int32(59), 43, 5, 12], [45, 30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12]]
+Source :  45  Destination :  12
+Edp :  [45, 27, 26, np.int32(51), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  26
+ 
+Source :  45  Destination :  12
+Edp :  [45, 27, 26, np.int32(51), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  27
+ 
+Source :  45  Destination :  12
+Edp :  [45, 27, 26, np.int32(51), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  45
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  43  to  12
+EDPs:  [[43, 1, 12], [43, 5, 12], [43, np.int32(47), 11, 12], [43, 40, 28, np.int32(47), 46, 12], [43, 28, np.int32(39), np.int32(54), 51, 42, 12], [43, np.int32(58), 23, np.int32(39), 36, 7, np.int32(51), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  48  to  12
+EDPs:  [[48, 9, np.int32(31), np.int32(42), 12], [48, 22, 2, np.int32(5), 12], [48, 31, 4, np.int32(51), 12], [48, 42, 5, 1, 12]]
+Source :  48  Destination :  12
+Edp :  [48, 9, np.int32(31), np.int32(42), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  9
+ 
+Source :  48  Destination :  12
+Edp :  [48, 9, np.int32(31), np.int32(42), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  48
+ 
+Source :  48  Destination :  12
+Edp :  [48, 31, 4, np.int32(51), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  4
+ 
+Source :  48  Destination :  12
+Edp :  [48, 31, 4, np.int32(51), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  31
+ 
+Source :  48  Destination :  12
+Edp :  [48, 31, 4, np.int32(51), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  48
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  5  to  12
+EDPs:  [[5, np.int32(12)], [5, np.int32(42), 12], [5, 1, np.int32(11), 12], [5, np.int32(43), 1, 12], [5, 2, np.int32(42), np.int32(51), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  7  to  12
+EDPs:  [[7, np.int32(54), 46, 12], [7, np.int32(51), 42, 12], [7, np.int32(26), np.int32(51), 12], [7, np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  51  to  12
+EDPs:  [[51, 12], [51, 4, np.int32(42), 12], [51, 42, 5, 12], [51, 46, 11, 12], [51, 7, np.int32(54), 46, 12], [51, np.int32(54), 39, np.int32(47), 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  56  to  12
+EDPs:  [[56, np.int32(57), 24, np.int32(51), 12], [56, 19, np.int32(50), 22, np.int32(42), 12], [56, 32, np.int32(57), 26, np.int32(51), 46, 12], [56, 34, 4, np.int32(51), 42, 5, 1, 12], [56, 33, 14, np.int32(50), 9, np.int32(22), 2, np.int32(5), 12], [56, 16, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, np.int32(11), 12]]
+Source :  56  Destination :  12
+Edp :  [56, np.int32(57), 24, np.int32(51), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  24
+ 
+Source :  56  Destination :  12
+Edp :  [56, np.int32(57), 24, np.int32(51), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  57
+ 
+Source :  56  Destination :  12
+Edp :  [56, np.int32(57), 24, np.int32(51), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  56
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  58  to  12
+EDPs:  [[58, 43, 5, 12], [58, np.int32(59), 43, 1, 12], [58, 23, np.int32(39), np.int32(47), 11, 12], [58, 6, np.int32(35), np.int32(39), np.int32(54), 46, 12], [58, 10, np.int32(13), np.int32(45), 27, 26, np.int32(51), 42, 12], [58, 29, 3, np.int32(18), np.int32(20), np.int32(36), 7, np.int32(51), 12]]
+Source :  58  Destination :  12
+Edp :  [58, 43, 5, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  43
+ 
+Source :  58  Destination :  12
+Edp :  [58, 43, 5, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  58
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  24  to  12
+EDPs:  [[24, np.int32(51), 12], [24, 4, np.int32(42), 12], [24, np.int32(34), 31, np.int32(42), 5, 12], [24, np.int32(57), 26, np.int32(51), 46, 12], [24, np.int32(26), np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  28  to  12
+EDPs:  [[28, np.int32(47), 46, np.int32(51), 12], [28, np.int32(43), np.int32(47), 11, 12], [28, np.int32(39), np.int32(54), 46, 12], [28, np.int32(40), np.int32(43), 5, 12], [28, np.int32(52), 39, np.int32(47), 1, 12], [28, np.int32(41), np.int32(43), 1, np.int32(5), np.int32(42), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  29  to  12
+EDPs:  [[29, 10, np.int32(58), 43, 1, 12], [29, 6, np.int32(58), np.int32(59), 43, 5, 12], [29, np.int32(58), 23, np.int32(39), np.int32(47), 11, 12], [29, 3, np.int32(18), np.int32(35), np.int32(39), np.int32(54), 46, 12], [29, 21, 13, np.int32(45), 27, 26, np.int32(51), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  59  to  12
+EDPs:  [[59, 43, 5, 12], [59, 58, 43, 1, 12], [59, 40, np.int32(43), np.int32(47), 46, 12], [59, 52, 28, np.int32(47), 11, 12], [59, 23, np.int32(39), np.int32(47), np.int32(55), 46, np.int32(51), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  0  to  12
+EDPs:  [[0, np.int32(15), np.int32(57), 24, np.int32(51), 12], [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12], [0, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, 12], [0, np.int32(37), 15, np.int32(32), np.int32(56), 34, 4, np.int32(42), 12]]
+Source :  0  Destination :  12
+Edp :  [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  26
+ 
+Source :  0  Destination :  12
+Edp :  [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  57
+ 
+Source :  0  Destination :  12
+Edp :  [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  32
+ 
+Source :  0  Destination :  12
+Edp :  [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  0
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  1  to  12
+EDPs:  [[1, np.int32(12)], [1, np.int32(11), 12], [1, np.int32(47), 46, 12], [1, np.int32(43), 5, 12], [1, np.int32(5), np.int32(42), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  42  to  12
+EDPs:  [[42, 12], [42, np.int32(51), 12], [42, 2, np.int32(5), 12], [42, 5, 1, 12], [42, 4, np.int32(51), np.int32(54), 46, 12], [42, 31, 4, np.int32(24), np.int32(51), 46, 11, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  39  to  12
+EDPs:  [[39, np.int32(47), 1, 12], [39, np.int32(55), 46, 12], [39, 28, np.int32(43), 5, 12], [39, np.int32(54), 46, np.int32(51), 12], [39, 36, 7, np.int32(51), 42, 12], [39, np.int32(52), 28, np.int32(47), 11, 12]]
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 19 <function one_tree_pre at 0x72506e129120>
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[13, np.int32(45), 27, 26, np.int32(51), 12], [13, 10, np.int32(58), np.int32(59), 43, 5, 12], [13, np.int32(25), np.int32(44), np.int32(58), 43, 1, 12], [13, np.int32(30), np.int32(49), 36, np.int32(54), 46, 12], [13, np.int32(17), np.int32(37), 15, np.int32(57), 24, 4, np.int32(42), 12], [13, np.int32(21), 3, np.int32(18), np.int32(20), np.int32(39), np.int32(47), 11, 12]]
+Routing OTCP via EDPs started for  13  to  12
+EDPs: [[13, np.int32(45), 27, 26, np.int32(51), 12], [13, 10, np.int32(58), np.int32(59), 43, 5, 12], [13, np.int32(25), np.int32(44), np.int32(58), 43, 1, 12], [13, np.int32(30), np.int32(49), 36, np.int32(54), 46, 12], [13, np.int32(17), np.int32(37), 15, np.int32(57), 24, 4, np.int32(42), 12], [13, np.int32(21), 3, np.int32(18), np.int32(20), np.int32(39), np.int32(47), 11, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  34  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[34, 24, np.int32(51), 12], [34, 4, np.int32(51), 46, 12], [34, 9, np.int32(22), np.int32(42), 12], [34, 31, np.int32(42), 5, 12], [34, np.int32(50), 22, 2, np.int32(5), 1, 12], [34, np.int32(57), 26, 7, np.int32(54), 46, 11, 12]]
+Routing OTCP via EDPs started for  34  to  12
+EDPs: [[34, 24, np.int32(51), 12], [34, 4, np.int32(51), 46, 12], [34, 9, np.int32(22), np.int32(42), 12], [34, 31, np.int32(42), 5, 12], [34, np.int32(50), 22, 2, np.int32(5), 1, 12], [34, np.int32(57), 26, 7, np.int32(54), 46, 11, 12]]
+Routing in faces started for :  34  ->  54
+Faces : 
+[np.int32(54), np.int32(55), 46, 12, np.int32(42), np.int32(51), np.int32(4), np.int32(24), np.int32(57), np.int32(56), 34]
+[np.int32(54), np.int32(55), 46, 12, np.int32(42), 31, np.int32(51), np.int32(24), np.int32(57), np.int32(56), 34]
+[34, np.int32(42), np.int32(50), np.int32(19), np.int32(22), 31]
+[34, np.int32(4), np.int32(9), np.int32(42), np.int32(48)]
+[34, np.int32(9), np.int32(42), np.int32(48), np.int32(50), np.int32(19), np.int32(22)]
+[np.int32(54), np.int32(55), 46, 12, np.int32(42), 31, np.int32(51), np.int32(4), np.int32(48), np.int32(22), np.int32(24), np.int32(9), np.int32(50), np.int32(57), np.int32(19), np.int32(56), 34]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  54  to  12
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  30  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[30, np.int32(49), 36, np.int32(54), 46, 12], [30, 13, np.int32(45), 27, 26, np.int32(51), 12], [30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12], [30, 3, np.int32(6), np.int32(58), np.int32(59), 43, 5, 12], [30, 21, 13, 10, np.int32(58), 43, 1, 12], [30, np.int32(45), 15, np.int32(57), 34, 4, np.int32(42), 12]]
+Routing OTCP via EDPs started for  30  to  12
+EDPs: [[30, np.int32(49), 36, np.int32(54), 46, 12], [30, 13, np.int32(45), 27, 26, np.int32(51), 12], [30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12], [30, 3, np.int32(6), np.int32(58), np.int32(59), 43, 5, 12], [30, 21, 13, 10, np.int32(58), 43, 1, 12], [30, np.int32(45), 15, np.int32(57), 34, 4, np.int32(42), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  37  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[37, 15, np.int32(57), 24, np.int32(51), 12], [37, 17, np.int32(44), np.int32(58), 43, 1, 12], [37, np.int32(45), 27, np.int32(36), np.int32(54), 46, 12], [37, 0, np.int32(32), np.int32(57), 34, 31, np.int32(42), 12], [37, np.int32(38), 32, np.int32(56), 34, 4, np.int32(42), 5, 12]]
+Routing OTCP via EDPs started for  37  to  12
+EDPs: [[37, 15, np.int32(57), 24, np.int32(51), 12], [37, 17, np.int32(44), np.int32(58), 43, 1, 12], [37, np.int32(45), 27, np.int32(36), np.int32(54), 46, 12], [37, 0, np.int32(32), np.int32(57), 34, 31, np.int32(42), 12], [37, np.int32(38), 32, np.int32(56), 34, 4, np.int32(42), 5, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  45  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[45, 27, 26, np.int32(51), 12], [45, np.int32(49), 36, np.int32(54), 46, 12], [45, 15, np.int32(57), 24, 4, np.int32(42), 12], [45, 17, np.int32(44), np.int32(58), 43, 1, 12], [45, 13, 10, np.int32(58), np.int32(59), 43, 5, 12], [45, 30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12]]
+Routing OTCP via EDPs started for  45  to  12
+EDPs: [[45, 27, 26, np.int32(51), 12], [45, np.int32(49), 36, np.int32(54), 46, 12], [45, 15, np.int32(57), 24, 4, np.int32(42), 12], [45, 17, np.int32(44), np.int32(58), 43, 1, 12], [45, 13, 10, np.int32(58), np.int32(59), 43, 5, 12], [45, 30, 18, np.int32(35), np.int32(39), np.int32(47), 11, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  43  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[43, 1, 12], [43, 5, 12], [43, np.int32(47), 11, 12], [43, 40, 28, np.int32(47), 46, 12], [43, 28, np.int32(39), np.int32(54), 51, 42, 12], [43, np.int32(58), 23, np.int32(39), 36, 7, np.int32(51), 12]]
+Routing OTCP via EDPs started for  43  to  12
+EDPs: [[43, 1, 12], [43, 5, 12], [43, np.int32(47), 11, 12], [43, 40, 28, np.int32(47), 46, 12], [43, 28, np.int32(39), np.int32(54), 51, 42, 12], [43, np.int32(58), 23, np.int32(39), 36, 7, np.int32(51), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  48  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[48, 9, np.int32(31), np.int32(42), 12], [48, 22, 2, np.int32(5), 12], [48, 31, 4, np.int32(51), 12], [48, 42, 5, 1, 12]]
+Routing OTCP via EDPs started for  48  to  12
+EDPs: [[48, 9, np.int32(31), np.int32(42), 12], [48, 22, 2, np.int32(5), 12], [48, 31, 4, np.int32(51), 12], [48, 42, 5, 1, 12]]
+Routing in faces started for :  48  ->  5
+Faces : 
+[5, np.int32(12), np.int32(51), 4, np.int32(42), np.int32(31), np.int32(22), 48]
+[5, np.int32(12), np.int32(51), 4, np.int32(34), 9, np.int32(42), np.int32(22), 48]
+[4, np.int32(34), 9, np.int32(31), 48]
+[5, np.int32(12), np.int32(51), 4, np.int32(34), 9, np.int32(42), np.int32(31), np.int32(22), 48]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  5  to  12
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[5, np.int32(12)], [5, np.int32(42), 12], [5, 1, np.int32(11), 12], [5, np.int32(43), 1, 12], [5, 2, np.int32(42), np.int32(51), 12]]
+Routing OTCP via EDPs started for  5  to  12
+EDPs: [[5, np.int32(12)], [5, np.int32(42), 12], [5, 1, np.int32(11), 12], [5, np.int32(43), 1, 12], [5, 2, np.int32(42), np.int32(51), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  7  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[7, np.int32(54), 46, 12], [7, np.int32(51), 42, 12], [7, np.int32(26), np.int32(51), 12], [7, np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing OTCP via EDPs started for  7  to  12
+EDPs: [[7, np.int32(54), 46, 12], [7, np.int32(51), 42, 12], [7, np.int32(26), np.int32(51), 12], [7, np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  51  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[51, 12], [51, 4, np.int32(42), 12], [51, 42, 5, 12], [51, 46, 11, 12], [51, 7, np.int32(54), 46, 12], [51, np.int32(54), 39, np.int32(47), 1, 12]]
+Routing OTCP via EDPs started for  51  to  12
+EDPs: [[51, 12], [51, 4, np.int32(42), 12], [51, 42, 5, 12], [51, 46, 11, 12], [51, 7, np.int32(54), 46, 12], [51, np.int32(54), 39, np.int32(47), 1, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[56, np.int32(57), 24, np.int32(51), 12], [56, 19, np.int32(50), 22, np.int32(42), 12], [56, 32, np.int32(57), 26, np.int32(51), 46, 12], [56, 34, 4, np.int32(51), 42, 5, 1, 12], [56, 33, 14, np.int32(50), 9, np.int32(22), 2, np.int32(5), 12], [56, 16, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, np.int32(11), 12]]
+Routing OTCP via EDPs started for  56  to  12
+EDPs: [[56, np.int32(57), 24, np.int32(51), 12], [56, 19, np.int32(50), 22, np.int32(42), 12], [56, 32, np.int32(57), 26, np.int32(51), 46, 12], [56, 34, 4, np.int32(51), 42, 5, 1, 12], [56, 33, 14, np.int32(50), 9, np.int32(22), 2, np.int32(5), 12], [56, 16, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, np.int32(11), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  58  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[58, 43, 5, 12], [58, np.int32(59), 43, 1, 12], [58, 23, np.int32(39), np.int32(47), 11, 12], [58, 6, np.int32(35), np.int32(39), np.int32(54), 46, 12], [58, 10, np.int32(13), np.int32(45), 27, 26, np.int32(51), 42, 12], [58, 29, 3, np.int32(18), np.int32(20), np.int32(36), 7, np.int32(51), 12]]
+Routing OTCP via EDPs started for  58  to  12
+EDPs: [[58, 43, 5, 12], [58, np.int32(59), 43, 1, 12], [58, 23, np.int32(39), np.int32(47), 11, 12], [58, 6, np.int32(35), np.int32(39), np.int32(54), 46, 12], [58, 10, np.int32(13), np.int32(45), 27, 26, np.int32(51), 42, 12], [58, 29, 3, np.int32(18), np.int32(20), np.int32(36), 7, np.int32(51), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  24  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[24, np.int32(51), 12], [24, 4, np.int32(42), 12], [24, np.int32(34), 31, np.int32(42), 5, 12], [24, np.int32(57), 26, np.int32(51), 46, 12], [24, np.int32(26), np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing OTCP via EDPs started for  24  to  12
+EDPs: [[24, np.int32(51), 12], [24, 4, np.int32(42), 12], [24, np.int32(34), 31, np.int32(42), 5, 12], [24, np.int32(57), 26, np.int32(51), 46, 12], [24, np.int32(26), np.int32(36), np.int32(39), np.int32(47), 1, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[28, np.int32(47), 46, np.int32(51), 12], [28, np.int32(43), np.int32(47), 11, 12], [28, np.int32(39), np.int32(54), 46, 12], [28, np.int32(40), np.int32(43), 5, 12], [28, np.int32(52), 39, np.int32(47), 1, 12], [28, np.int32(41), np.int32(43), 1, np.int32(5), np.int32(42), 12]]
+Routing OTCP via EDPs started for  28  to  12
+EDPs: [[28, np.int32(47), 46, np.int32(51), 12], [28, np.int32(43), np.int32(47), 11, 12], [28, np.int32(39), np.int32(54), 46, 12], [28, np.int32(40), np.int32(43), 5, 12], [28, np.int32(52), 39, np.int32(47), 1, 12], [28, np.int32(41), np.int32(43), 1, np.int32(5), np.int32(42), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  29  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[29, 10, np.int32(58), 43, 1, 12], [29, 6, np.int32(58), np.int32(59), 43, 5, 12], [29, np.int32(58), 23, np.int32(39), np.int32(47), 11, 12], [29, 3, np.int32(18), np.int32(35), np.int32(39), np.int32(54), 46, 12], [29, 21, 13, np.int32(45), 27, 26, np.int32(51), 12]]
+Routing OTCP via EDPs started for  29  to  12
+EDPs: [[29, 10, np.int32(58), 43, 1, 12], [29, 6, np.int32(58), np.int32(59), 43, 5, 12], [29, np.int32(58), 23, np.int32(39), np.int32(47), 11, 12], [29, 3, np.int32(18), np.int32(35), np.int32(39), np.int32(54), 46, 12], [29, 21, 13, np.int32(45), 27, 26, np.int32(51), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  59  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[59, 43, 5, 12], [59, 58, 43, 1, 12], [59, 40, np.int32(43), np.int32(47), 46, 12], [59, 52, 28, np.int32(47), 11, 12], [59, 23, np.int32(39), np.int32(47), np.int32(55), 46, np.int32(51), 12]]
+Routing OTCP via EDPs started for  59  to  12
+EDPs: [[59, 43, 5, 12], [59, 58, 43, 1, 12], [59, 40, np.int32(43), np.int32(47), 46, 12], [59, 52, 28, np.int32(47), 11, 12], [59, 23, np.int32(39), np.int32(47), np.int32(55), 46, np.int32(51), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  0  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[0, np.int32(15), np.int32(57), 24, np.int32(51), 12], [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12], [0, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, 12], [0, np.int32(37), 15, np.int32(32), np.int32(56), 34, 4, np.int32(42), 12]]
+Routing OTCP via EDPs started for  0  to  12
+EDPs: [[0, np.int32(15), np.int32(57), 24, np.int32(51), 12], [0, np.int32(32), np.int32(57), 26, np.int32(51), 46, 12], [0, np.int32(38), 17, np.int32(44), np.int32(58), 43, 1, 12], [0, np.int32(37), 15, np.int32(32), np.int32(56), 34, 4, np.int32(42), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  1  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[1, np.int32(12)], [1, np.int32(11), 12], [1, np.int32(47), 46, 12], [1, np.int32(43), 5, 12], [1, np.int32(5), np.int32(42), 12]]
+Routing OTCP via EDPs started for  1  to  12
+EDPs: [[1, np.int32(12)], [1, np.int32(11), 12], [1, np.int32(47), 46, 12], [1, np.int32(43), 5, 12], [1, np.int32(5), np.int32(42), 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  42  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[42, 12], [42, np.int32(51), 12], [42, 2, np.int32(5), 12], [42, 5, 1, 12], [42, 4, np.int32(51), np.int32(54), 46, 12], [42, 31, 4, np.int32(24), np.int32(51), 46, 11, 12]]
+Routing OTCP via EDPs started for  42  to  12
+EDPs: [[42, 12], [42, np.int32(51), 12], [42, 2, np.int32(5), 12], [42, 5, 1, 12], [42, 4, np.int32(51), np.int32(54), 46, 12], [42, 31, 4, np.int32(24), np.int32(51), 46, 11, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  12
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[39, np.int32(47), 1, 12], [39, np.int32(55), 46, 12], [39, 28, np.int32(43), 5, 12], [39, np.int32(54), 46, np.int32(51), 12], [39, 36, 7, np.int32(51), 42, 12], [39, np.int32(52), 28, np.int32(47), 11, 12]]
+Routing OTCP via EDPs started for  39  to  12
+EDPs: [[39, np.int32(47), 1, 12], [39, np.int32(55), 46, 12], [39, 28, np.int32(43), 5, 12], [39, np.int32(54), 46, np.int32(51), 12], [39, 36, 7, np.int32(51), 42, 12], [39, np.int32(52), 28, np.int32(47), 11, 12]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 20 <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+experiment for  <function one_tree_pre at 0x72506e129120>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  25  to  33
+EDPs:  [[25, np.int32(44), 17, np.int32(38), 16, 33], [25, 13, np.int32(45), 27, np.int32(57), 56, 33], [25, 17, np.int32(45), 15, np.int32(57), 34, 19, 33], [25, np.int32(53), 13, np.int32(17), np.int32(37), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  59  to  33
+EDPs:  [[59, 58, 44, 17, np.int32(38), 16, 33], [59, 52, 39, 36, 26, np.int32(57), 56, 33], [59, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [59, 43, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [59, 40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  22  to  33
+EDPs:  [[22, np.int32(50), 14, 33], [22, 9, np.int32(50), 19, 33], [22, np.int32(48), 9, np.int32(34), np.int32(56), 33], [22, np.int32(42), 4, np.int32(34), 19, 8, 33], [22, 2, np.int32(42), np.int32(51), 24, np.int32(57), 32, 16, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  9  to  33
+EDPs:  [[9, np.int32(34), np.int32(56), 33], [9, np.int32(50), 19, 33], [9, np.int32(22), np.int32(50), 14, 33], [9, np.int32(31), np.int32(34), 19, 8, 33], [9, np.int32(48), 31, 4, np.int32(24), np.int32(57), 32, 16, 33]]
+Source :  9  Destination :  33
+Edp :  [9, np.int32(50), 19, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  50
+ 
+Source :  9  Destination :  33
+Edp :  [9, np.int32(50), 19, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  9
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  2  to  33
+EDPs:  [[2, np.int32(22), np.int32(50), 14, 33], [2, np.int32(42), 4, np.int32(34), 19, 33], [2, np.int32(5), np.int32(42), 31, np.int32(34), np.int32(56), 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  5  to  33
+EDPs:  [[5, np.int32(42), 4, np.int32(34), np.int32(56), 33], [5, 2, np.int32(22), 9, np.int32(50), 14, 33], [5, 1, np.int32(12), np.int32(42), 22, np.int32(50), 19, 33], [5, np.int32(43), np.int32(58), 44, 17, np.int32(38), 16, 33], [5, np.int32(12), np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  40  to  33
+EDPs:  [[40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33], [40, np.int32(52), 39, 36, 26, np.int32(57), 56, 33], [40, 28, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33], [40, np.int32(41), np.int32(43), 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  43  to  33
+EDPs:  [[43, 5, 2, np.int32(22), np.int32(50), 14, 33], [43, np.int32(58), 44, 17, np.int32(38), 16, 33], [43, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [43, 1, np.int32(5), np.int32(42), 4, np.int32(34), np.int32(50), 19, 33], [43, np.int32(47), 46, np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  23  to  33
+EDPs:  [[23, np.int32(39), 36, 27, np.int32(57), 56, 33], [23, np.int32(58), 44, 17, np.int32(38), 16, 33], [23, np.int32(59), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [23, np.int32(52), 39, np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33], [23, np.int32(35), 20, np.int32(36), 26, np.int32(57), 34, 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  41  to  33
+EDPs:  [[41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [41, np.int32(43), 5, 2, np.int32(22), np.int32(50), 14, 33], [41, 40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33]]
+Source :  41  Destination :  33
+Edp :  [41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  39
+ 
+Source :  41  Destination :  33
+Edp :  [41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  28
+ 
+Source :  41  Destination :  33
+Edp :  [41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  41
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  54  to  33
+EDPs:  [[54, 7, np.int32(26), np.int32(57), 56, 33], [54, 36, 27, 15, np.int32(32), 16, 33], [54, 51, 4, np.int32(34), 19, 8, 33], [54, 46, 12, np.int32(42), 22, np.int32(50), 14, 33], [54, 39, 36, 26, 24, np.int32(34), np.int32(50), 19, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  58  to  33
+EDPs:  [[58, 44, 17, np.int32(38), 16, 33], [58, 6, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [58, 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [58, 10, np.int32(13), np.int32(45), 15, np.int32(32), np.int32(56), 19, 33], [58, 23, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  18  to  33
+EDPs:  [[18, np.int32(30), 13, np.int32(17), np.int32(38), 16, 33], [18, 3, np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 33], [18, np.int32(20), np.int32(36), 26, 24, np.int32(34), 19, 33], [18, np.int32(49), 27, np.int32(57), 56, 19, 8, 33], [18, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33]]
+Source :  18  Destination :  33
+Edp :  [18, 3, np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  3
+ 
+Source :  18  Destination :  33
+Edp :  [18, 3, np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  18
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  10  to  33
+EDPs:  [[10, np.int32(44), 17, np.int32(38), 16, 33], [10, np.int32(53), 13, np.int32(45), 27, np.int32(57), 56, 33], [10, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [10, np.int32(13), np.int32(17), np.int32(37), 15, np.int32(57), 34, 19, 33], [10, np.int32(21), np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  3  to  33
+EDPs:  [[3, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [3, np.int32(29), 10, np.int32(44), 17, np.int32(38), 16, 33], [3, np.int32(30), 13, np.int32(45), 15, np.int32(57), 34, 19, 33], [3, np.int32(6), np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [3, np.int32(21), 13, np.int32(17), np.int32(37), 0, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  11  to  33
+EDPs:  [[11, np.int32(12), np.int32(51), 24, np.int32(34), np.int32(56), 33], [11, np.int32(46), np.int32(51), 4, np.int32(34), 19, 33], [11, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [11, np.int32(47), 39, 36, 27, 15, np.int32(32), 16, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  19  to  33
+EDPs:  [[19, np.int32(33)], [19, 8, 33], [19, 14, 33], [19, np.int32(34), np.int32(56), 33], [19, np.int32(56), 16, 33]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  15  to  33
+EDPs:  [[15, np.int32(32), 16, 33], [15, 0, np.int32(32), np.int32(56), 33], [15, np.int32(57), 56, 19, 33], [15, np.int32(27), np.int32(57), 34, np.int32(50), 14, 33], [15, np.int32(45), 27, 26, 24, np.int32(34), 19, 8, 33]]
+Source :  15  Destination :  33
+Edp :  [15, np.int32(57), 56, 19, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  56
+ 
+Source :  15  Destination :  33
+Edp :  [15, np.int32(57), 56, 19, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  57
+ 
+Source :  15  Destination :  33
+Edp :  [15, np.int32(57), 56, 19, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  15
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  35  to  33
+EDPs:  [[35, 18, np.int32(49), 27, np.int32(57), 56, 33], [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33], [35, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33], [35, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [35, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33]]
+Source :  35  Destination :  33
+Edp :  [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  36
+ 
+Source :  35  Destination :  33
+Edp :  [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  20
+ 
+Source :  35  Destination :  33
+Edp :  [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  35
+ 
+Source :  35  Destination :  33
+Edp :  [35, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  39
+ 
+Source :  35  Destination :  33
+Edp :  [35, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  35
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  56  to  33
+EDPs:  [[56, 33], [56, 16, 33], [56, 19, 33], [56, 34, np.int32(50), 14, 33], [56, np.int32(57), 34, 19, 8, 33]]
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 17 <function one_tree_pre at 0x72506e129120>
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  25  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[25, np.int32(44), 17, np.int32(38), 16, 33], [25, 13, np.int32(45), 27, np.int32(57), 56, 33], [25, 17, np.int32(45), 15, np.int32(57), 34, 19, 33], [25, np.int32(53), 13, np.int32(17), np.int32(37), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OTCP via EDPs started for  25  to  33
+EDPs: [[25, np.int32(44), 17, np.int32(38), 16, 33], [25, 13, np.int32(45), 27, np.int32(57), 56, 33], [25, 17, np.int32(45), 15, np.int32(57), 34, 19, 33], [25, np.int32(53), 13, np.int32(17), np.int32(37), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  59  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[59, 58, 44, 17, np.int32(38), 16, 33], [59, 52, 39, 36, 26, np.int32(57), 56, 33], [59, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [59, 43, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [59, 40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33]]
+Routing OTCP via EDPs started for  59  to  33
+EDPs: [[59, 58, 44, 17, np.int32(38), 16, 33], [59, 52, 39, 36, 26, np.int32(57), 56, 33], [59, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [59, 43, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [59, 40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  22  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[22, np.int32(50), 14, 33], [22, 9, np.int32(50), 19, 33], [22, np.int32(48), 9, np.int32(34), np.int32(56), 33], [22, np.int32(42), 4, np.int32(34), 19, 8, 33], [22, 2, np.int32(42), np.int32(51), 24, np.int32(57), 32, 16, 33]]
+Routing OTCP via EDPs started for  22  to  33
+EDPs: [[22, np.int32(50), 14, 33], [22, 9, np.int32(50), 19, 33], [22, np.int32(48), 9, np.int32(34), np.int32(56), 33], [22, np.int32(42), 4, np.int32(34), 19, 8, 33], [22, 2, np.int32(42), np.int32(51), 24, np.int32(57), 32, 16, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  9  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[9, np.int32(34), np.int32(56), 33], [9, np.int32(50), 19, 33], [9, np.int32(22), np.int32(50), 14, 33], [9, np.int32(31), np.int32(34), 19, 8, 33], [9, np.int32(48), 31, 4, np.int32(24), np.int32(57), 32, 16, 33]]
+Routing OTCP via EDPs started for  9  to  33
+EDPs: [[9, np.int32(34), np.int32(56), 33], [9, np.int32(50), 19, 33], [9, np.int32(22), np.int32(50), 14, 33], [9, np.int32(31), np.int32(34), 19, 8, 33], [9, np.int32(48), 31, 4, np.int32(24), np.int32(57), 32, 16, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  2  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[2, np.int32(22), np.int32(50), 14, 33], [2, np.int32(42), 4, np.int32(34), 19, 33], [2, np.int32(5), np.int32(42), 31, np.int32(34), np.int32(56), 33]]
+Routing OTCP via EDPs started for  2  to  33
+EDPs: [[2, np.int32(22), np.int32(50), 14, 33], [2, np.int32(42), 4, np.int32(34), 19, 33], [2, np.int32(5), np.int32(42), 31, np.int32(34), np.int32(56), 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  5  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[5, np.int32(42), 4, np.int32(34), np.int32(56), 33], [5, 2, np.int32(22), 9, np.int32(50), 14, 33], [5, 1, np.int32(12), np.int32(42), 22, np.int32(50), 19, 33], [5, np.int32(43), np.int32(58), 44, 17, np.int32(38), 16, 33], [5, np.int32(12), np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing OTCP via EDPs started for  5  to  33
+EDPs: [[5, np.int32(42), 4, np.int32(34), np.int32(56), 33], [5, 2, np.int32(22), 9, np.int32(50), 14, 33], [5, 1, np.int32(12), np.int32(42), 22, np.int32(50), 19, 33], [5, np.int32(43), np.int32(58), 44, 17, np.int32(38), 16, 33], [5, np.int32(12), np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33], [40, np.int32(52), 39, 36, 26, np.int32(57), 56, 33], [40, 28, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33], [40, np.int32(41), np.int32(43), 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33]]
+Routing OTCP via EDPs started for  40  to  33
+EDPs: [[40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33], [40, np.int32(52), 39, 36, 26, np.int32(57), 56, 33], [40, 28, np.int32(39), np.int32(54), 51, 4, np.int32(34), 19, 33], [40, np.int32(43), 5, np.int32(42), 31, 9, np.int32(50), 19, 8, 33], [40, np.int32(41), np.int32(43), 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  43  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[43, 5, 2, np.int32(22), np.int32(50), 14, 33], [43, np.int32(58), 44, 17, np.int32(38), 16, 33], [43, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [43, 1, np.int32(5), np.int32(42), 4, np.int32(34), np.int32(50), 19, 33], [43, np.int32(47), 46, np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing OTCP via EDPs started for  43  to  33
+EDPs: [[43, 5, 2, np.int32(22), np.int32(50), 14, 33], [43, np.int32(58), 44, 17, np.int32(38), 16, 33], [43, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [43, 1, np.int32(5), np.int32(42), 4, np.int32(34), np.int32(50), 19, 33], [43, np.int32(47), 46, np.int32(51), 24, np.int32(34), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  23  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[23, np.int32(39), 36, 27, np.int32(57), 56, 33], [23, np.int32(58), 44, 17, np.int32(38), 16, 33], [23, np.int32(59), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [23, np.int32(52), 39, np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33], [23, np.int32(35), 20, np.int32(36), 26, np.int32(57), 34, 19, 8, 33]]
+Routing OTCP via EDPs started for  23  to  33
+EDPs: [[23, np.int32(39), 36, 27, np.int32(57), 56, 33], [23, np.int32(58), 44, 17, np.int32(38), 16, 33], [23, np.int32(59), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [23, np.int32(52), 39, np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33], [23, np.int32(35), 20, np.int32(36), 26, np.int32(57), 34, 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [41, np.int32(43), 5, 2, np.int32(22), np.int32(50), 14, 33], [41, 40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33]]
+Routing OTCP via EDPs started for  41  to  33
+EDPs: [[41, 28, np.int32(39), 36, 26, np.int32(57), 56, 33], [41, np.int32(43), 5, 2, np.int32(22), np.int32(50), 14, 33], [41, 40, np.int32(59), 58, 44, 17, np.int32(38), 16, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[54, 7, np.int32(26), np.int32(57), 56, 33], [54, 36, 27, 15, np.int32(32), 16, 33], [54, 51, 4, np.int32(34), 19, 8, 33], [54, 46, 12, np.int32(42), 22, np.int32(50), 14, 33], [54, 39, 36, 26, 24, np.int32(34), np.int32(50), 19, 33]]
+Routing OTCP via EDPs started for  54  to  33
+EDPs: [[54, 7, np.int32(26), np.int32(57), 56, 33], [54, 36, 27, 15, np.int32(32), 16, 33], [54, 51, 4, np.int32(34), 19, 8, 33], [54, 46, 12, np.int32(42), 22, np.int32(50), 14, 33], [54, 39, 36, 26, 24, np.int32(34), np.int32(50), 19, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  58  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[58, 44, 17, np.int32(38), 16, 33], [58, 6, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [58, 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [58, 10, np.int32(13), np.int32(45), 15, np.int32(32), np.int32(56), 19, 33], [58, 23, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33]]
+Routing OTCP via EDPs started for  58  to  33
+EDPs: [[58, 44, 17, np.int32(38), 16, 33], [58, 6, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [58, 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [58, 10, np.int32(13), np.int32(45), 15, np.int32(32), np.int32(56), 19, 33], [58, 23, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  18  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[18, np.int32(30), 13, np.int32(17), np.int32(38), 16, 33], [18, 3, np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 33], [18, np.int32(20), np.int32(36), 26, 24, np.int32(34), 19, 33], [18, np.int32(49), 27, np.int32(57), 56, 19, 8, 33], [18, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33]]
+Routing OTCP via EDPs started for  18  to  33
+EDPs: [[18, np.int32(30), 13, np.int32(17), np.int32(38), 16, 33], [18, 3, np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 33], [18, np.int32(20), np.int32(36), 26, 24, np.int32(34), 19, 33], [18, np.int32(49), 27, np.int32(57), 56, 19, 8, 33], [18, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33]]
+Routing in faces started for :  18  ->  2
+Faces : 
+[2, np.int32(22), 9, np.int32(34), np.int32(57), 27, np.int32(5), np.int32(36), np.int32(43), np.int32(20), np.int32(58), np.int32(35), np.int32(6), 18]
+[2, np.int32(22), 9, np.int32(34), np.int32(57), 27, np.int32(49), np.int32(5), np.int32(43), np.int32(58), np.int32(6), 18]
+[np.int32(3), np.int32(45), np.int32(49), 18, 27, np.int32(30)]
+[np.int32(3), np.int32(35), np.int32(36), np.int32(45), 18, np.int32(20), 27, np.int32(30)]
+[2, np.int32(22), 9, np.int32(34), np.int32(57), 27, np.int32(49), np.int32(5), np.int32(36), np.int32(45), np.int32(43), np.int32(20), np.int32(30), np.int32(58), np.int32(35), np.int32(3), np.int32(6), 18]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  2  to  33
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  10  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[10, np.int32(44), 17, np.int32(38), 16, 33], [10, np.int32(53), 13, np.int32(45), 27, np.int32(57), 56, 33], [10, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [10, np.int32(13), np.int32(17), np.int32(37), 15, np.int32(57), 34, 19, 33], [10, np.int32(21), np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OTCP via EDPs started for  10  to  33
+EDPs: [[10, np.int32(44), 17, np.int32(38), 16, 33], [10, np.int32(53), 13, np.int32(45), 27, np.int32(57), 56, 33], [10, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [10, np.int32(13), np.int32(17), np.int32(37), 15, np.int32(57), 34, 19, 33], [10, np.int32(21), np.int32(30), np.int32(45), 15, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  3  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[3, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [3, np.int32(29), 10, np.int32(44), 17, np.int32(38), 16, 33], [3, np.int32(30), 13, np.int32(45), 15, np.int32(57), 34, 19, 33], [3, np.int32(6), np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [3, np.int32(21), 13, np.int32(17), np.int32(37), 0, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OTCP via EDPs started for  3  to  33
+EDPs: [[3, np.int32(18), np.int32(49), 27, np.int32(57), 56, 33], [3, np.int32(29), 10, np.int32(44), 17, np.int32(38), 16, 33], [3, np.int32(30), 13, np.int32(45), 15, np.int32(57), 34, 19, 33], [3, np.int32(6), np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 14, 33], [3, np.int32(21), 13, np.int32(17), np.int32(37), 0, np.int32(32), np.int32(56), 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  11  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[11, np.int32(12), np.int32(51), 24, np.int32(34), np.int32(56), 33], [11, np.int32(46), np.int32(51), 4, np.int32(34), 19, 33], [11, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [11, np.int32(47), 39, 36, 27, 15, np.int32(32), 16, 33]]
+Routing OTCP via EDPs started for  11  to  33
+EDPs: [[11, np.int32(12), np.int32(51), 24, np.int32(34), np.int32(56), 33], [11, np.int32(46), np.int32(51), 4, np.int32(34), 19, 33], [11, 1, np.int32(5), 2, np.int32(22), np.int32(50), 14, 33], [11, np.int32(47), 39, 36, 27, 15, np.int32(32), 16, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  19  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[19, np.int32(33)], [19, 8, 33], [19, 14, 33], [19, np.int32(34), np.int32(56), 33], [19, np.int32(56), 16, 33]]
+Routing OTCP via EDPs started for  19  to  33
+EDPs: [[19, np.int32(33)], [19, 8, 33], [19, 14, 33], [19, np.int32(34), np.int32(56), 33], [19, np.int32(56), 16, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  15  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[15, np.int32(32), 16, 33], [15, 0, np.int32(32), np.int32(56), 33], [15, np.int32(57), 56, 19, 33], [15, np.int32(27), np.int32(57), 34, np.int32(50), 14, 33], [15, np.int32(45), 27, 26, 24, np.int32(34), 19, 8, 33]]
+Routing OTCP via EDPs started for  15  to  33
+EDPs: [[15, np.int32(32), 16, 33], [15, 0, np.int32(32), np.int32(56), 33], [15, np.int32(57), 56, 19, 33], [15, np.int32(27), np.int32(57), 34, np.int32(50), 14, 33], [15, np.int32(45), 27, 26, 24, np.int32(34), 19, 8, 33]]
+Routing in faces started for :  15  ->  24
+Faces : 
+[24, np.int32(34), np.int32(56), 32, np.int32(57), np.int32(38), np.int32(27), np.int32(37), np.int32(45), 15]
+[24, np.int32(34), np.int32(56), 32, 0, np.int32(57), np.int32(27), np.int32(45), 15]
+[32, 0, np.int32(37), np.int32(38), 15]
+[24, np.int32(34), np.int32(56), 32, 0, np.int32(57), np.int32(38), np.int32(27), np.int32(37), np.int32(45), 15]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  24  to  33
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  35  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[35, 18, np.int32(49), 27, np.int32(57), 56, 33], [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33], [35, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33], [35, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [35, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33]]
+Routing OTCP via EDPs started for  35  to  33
+EDPs: [[35, 18, np.int32(49), 27, np.int32(57), 56, 33], [35, 20, np.int32(36), 27, 15, np.int32(32), 16, 33], [35, np.int32(39), 36, 26, np.int32(57), 34, 19, 8, 33], [35, 6, np.int32(58), 43, 5, 2, np.int32(22), np.int32(50), 19, 33], [35, 23, np.int32(39), np.int32(54), 51, 4, np.int32(34), np.int32(50), 14, 33]]
+Routing in faces started for :  35  ->  4
+Faces : 
+[4, np.int32(31), np.int32(42), 12, 1, np.int32(24), np.int32(43), np.int32(26), np.int32(58), np.int32(36), np.int32(23), np.int32(20), 35]
+[4, np.int32(31), np.int32(42), 12, 1, np.int32(47), 39, np.int32(24), np.int32(26), np.int32(36), np.int32(20), 35]
+[1, 35, np.int32(6), 39, np.int32(43), np.int32(47), np.int32(18), np.int32(58)]
+[35, np.int32(6), np.int32(18), np.int32(23), np.int32(58)]
+[4, np.int32(31), np.int32(42), 12, 1, np.int32(47), 39, np.int32(24), np.int32(43), np.int32(26), np.int32(58), np.int32(36), np.int32(23), np.int32(6), np.int32(20), np.int32(18), 35]
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  4  to  33
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  33
+Fails in CP Routing :  [(23, np.int32(35)), (26, np.int32(36)), (2, np.int32(42)), (15, np.int32(27)), (34, np.int32(56)), (31, np.int32(42)), (25, np.int32(44)), (18, np.int32(35)), (31, np.int32(34)), (22, np.int32(48)), (43, np.int32(47)), (13, np.int32(17)), (34, np.int32(50)), (8, np.int32(14)), (17, np.int32(25)), (43, np.int32(59)), (5, np.int32(12)), (15, np.int32(57)), (37, np.int32(38)), (9, np.int32(34)), (18, np.int32(49)), (6, np.int32(58)), (4, np.int32(34)), (19, np.int32(33)), (30, np.int32(45)), (40, np.int32(43)), (21, np.int32(29)), (27, np.int32(49)), (18, np.int32(30)), (12, np.int32(51)), (46, np.int32(51)), (28, np.int32(47)), (52, np.int32(59)), (3, np.int32(29)), (0, np.int32(37)), (5, np.int32(42)), (24, np.int32(26)), (0, np.int32(32)), (18, np.int32(20)), (15, np.int32(32))]
+EDPS s to d : [[56, 33], [56, 16, 33], [56, 19, 33], [56, 34, np.int32(50), 14, 33], [56, np.int32(57), 34, 19, 8, 33]]
+Routing OTCP via EDPs started for  56  to  33
+EDPs: [[56, 33], [56, 16, 33], [56, 19, 33], [56, 34, np.int32(50), 14, 33], [56, np.int32(57), 34, 19, 8, 33]]
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 20 <function one_tree_with_random_checkpoint_pre at 0x725050082160>
+[run_planar] fails :  48
+experiment for  <function one_tree_pre at 0x72506e129120>
+Done with precomputation algo
+Start routing
+Before simulate graph
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  13  to  12
+EDPs:  [[13, 3, np.int32(45), 18, np.int32(22), 12], [13, np.int32(39), 6, np.int32(29), np.int32(32), 12], [13, np.int32(17), 3, np.int32(29), 20, 12], [13, np.int32(30), 9, np.int32(14), np.int32(59), 12], [13, np.int32(41), 36, 9, 8, np.int32(14), 1, 12], [13, np.int32(52), 15, np.int32(40), 9, np.int32(26), np.int32(58), 2, 12]]
+Source :  13  Destination :  12
+Edp :  [13, np.int32(30), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  9
+ 
+Source :  13  Destination :  12
+Edp :  [13, np.int32(30), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  30
+ 
+Source :  13  Destination :  12
+Edp :  [13, np.int32(30), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  13
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  34  to  12
+EDPs:  [[34, np.int32(51), 20, 12], [34, np.int32(48), 2, 12], [34, 4, np.int32(51), 48, 20, np.int32(32), 12], [34, 33, np.int32(37), 2, np.int32(14), np.int32(59), 12], [34, np.int32(46), 21, np.int32(55), 2, 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  30  to  12
+EDPs:  [[30, 9, np.int32(26), 14, np.int32(59), 12], [30, 17, 3, np.int32(29), np.int32(32), 12], [30, np.int32(36), 9, np.int32(14), 2, 12], [30, np.int32(57), 8, np.int32(14), 1, 12], [30, 13, np.int32(17), np.int32(53), 47, 18, np.int32(22), 12], [30, np.int32(41), 13, 3, np.int32(6), np.int32(29), 20, 12]]
+Source :  30  Destination :  12
+Edp :  [30, 9, np.int32(26), 14, np.int32(59), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  9
+ 
+Source :  30  Destination :  12
+Edp :  [30, 9, np.int32(26), 14, np.int32(59), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Source :  30  Destination :  12
+Edp :  [30, np.int32(57), 8, np.int32(14), 1, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  8
+ 
+Source :  30  Destination :  12
+Edp :  [30, np.int32(57), 8, np.int32(14), 1, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  57
+ 
+Source :  30  Destination :  12
+Edp :  [30, np.int32(57), 8, np.int32(14), 1, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Source :  30  Destination :  12
+Edp :  [30, 13, np.int32(17), np.int32(53), 47, 18, np.int32(22), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  13
+ 
+Source :  30  Destination :  12
+Edp :  [30, 13, np.int32(17), np.int32(53), 47, 18, np.int32(22), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  30
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  37  to  12
+EDPs:  [[37, np.int32(55), 2, 12], [37, 2, np.int32(20), np.int32(32), 12], [37, 33, np.int32(48), 20, 12], [37, np.int32(48), 2, 1, 12], [37, 21, np.int32(55), np.int32(58), 14, np.int32(59), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  45  to  12
+EDPs:  [[45, 18, np.int32(22), 12], [45, 29, 20, 2, 12], [45, np.int32(47), 35, np.int32(59), 12], [45, np.int32(49), 10, np.int32(32), 12], [45, 3, np.int32(29), np.int32(32), 20, 12], [45, np.int32(53), 16, 8, np.int32(14), 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  43  to  12
+EDPs:  [[43, 32, 12], [43, 10, np.int32(22), 12], [43, 29, 20, 12], [43, np.int32(49), 18, np.int32(35), np.int32(59), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  48  to  12
+EDPs:  [[48, 20, np.int32(32), 12], [48, np.int32(51), 20, 12], [48, 37, 2, 1, 12], [48, 2, np.int32(14), np.int32(35), 22, 12], [48, 34, 33, 21, np.int32(55), 2, 12], [48, 33, np.int32(37), np.int32(55), np.int32(58), 14, np.int32(59), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  5  to  12
+EDPs:  [[5, np.int32(40), 9, np.int32(14), np.int32(59), 12], [5, np.int32(11), 4, np.int32(51), 20, 12], [5, np.int32(27), np.int32(52), 6, np.int32(29), np.int32(32), 12], [5, np.int32(23), np.int32(24), np.int32(26), 14, 1, 12], [5, np.int32(42), 7, np.int32(26), np.int32(58), 14, 2, 12], [5, np.int32(15), np.int32(52), 13, 3, np.int32(45), 18, np.int32(22), 12]]
+Source :  5  Destination :  12
+Edp :  [5, np.int32(40), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  9
+ 
+Source :  5  Destination :  12
+Edp :  [5, np.int32(40), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  40
+ 
+Source :  5  Destination :  12
+Edp :  [5, np.int32(40), 9, np.int32(14), np.int32(59), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  5
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  7  to  12
+EDPs:  [[7, np.int32(26), np.int32(58), 2, 12], [7, np.int32(24), np.int32(26), 14, np.int32(59), 12], [7, np.int32(54), 9, np.int32(14), 1, 12], [7, np.int32(23), 11, 4, np.int32(51), 20, 12], [7, np.int32(42), 40, 9, 8, np.int32(35), 22, 12], [7, np.int32(31), 5, np.int32(15), np.int32(52), 6, np.int32(29), np.int32(32), 12]]
+Source :  7  Destination :  12
+Edp :  [7, np.int32(26), np.int32(58), 2, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  26
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(26), np.int32(58), 2, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  7
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(24), np.int32(26), 14, np.int32(59), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  24
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(24), np.int32(26), 14, np.int32(59), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  7
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(54), 9, np.int32(14), 1, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  9
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(54), 9, np.int32(14), 1, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  54
+ 
+Source :  7  Destination :  12
+Edp :  [7, np.int32(54), 9, np.int32(14), 1, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  7
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  51  to  12
+EDPs:  [[51, 20, np.int32(32), 12], [51, 48, 2, 12], [51, 34, np.int32(48), 20, 12], [51, 4, 0, np.int32(24), np.int32(26), 14, 1, 12]]
+Source :  51  Destination :  12
+Edp :  [51, 34, np.int32(48), 20, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  34
+ 
+Source :  51  Destination :  12
+Edp :  [51, 34, np.int32(48), 20, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  51
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing via Tree failed
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  56  to  12
+EDPs:  [[56, 0, np.int32(28), np.int32(55), 2, 12], [56, 4, np.int32(51), 20, np.int32(32), 12], [56, 46, 33, np.int32(48), 20, 12], [56, 50, 46, 21, np.int32(37), 2, 1, 12]]
+Source :  56  Destination :  12
+Edp :  [56, 4, np.int32(51), 20, np.int32(32), 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  4
+ 
+Source :  56  Destination :  12
+Edp :  [56, 4, np.int32(51), 20, np.int32(32), 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  56
+ 
+Source :  56  Destination :  12
+Edp :  [56, 46, 33, np.int32(48), 20, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  33
+ 
+Source :  56  Destination :  12
+Edp :  [56, 46, 33, np.int32(48), 20, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  46
+ 
+Source :  56  Destination :  12
+Edp :  [56, 46, 33, np.int32(48), 20, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  56
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  58  to  12
+EDPs:  [[58, 2, np.int32(20), 12], [58, 14, np.int32(59), 12], [58, 55, 2, 12], [58, 26, 14, 1, 12], [58, 44, 26, 9, 8, np.int32(35), 22, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  24  to  12
+EDPs:  [[24, 7, np.int32(26), np.int32(58), 2, 12], [24, np.int32(25), np.int32(26), 14, 1, 12], [24, 0, np.int32(4), np.int32(51), 20, np.int32(32), 12], [24, 11, 4, np.int32(34), np.int32(48), 20, 12], [24, np.int32(26), 9, 8, np.int32(35), 22, 12], [24, 23, 5, np.int32(40), 9, np.int32(14), np.int32(59), 12]]
+Source :  24  Destination :  12
+Edp :  [24, 7, np.int32(26), np.int32(58), 2, 12]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  26
+ 
+Source :  24  Destination :  12
+Edp :  [24, 7, np.int32(26), np.int32(58), 2, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  7
+ 
+Source :  24  Destination :  12
+Edp :  [24, 7, np.int32(26), np.int32(58), 2, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  24
+ 
+Source :  24  Destination :  12
+Edp :  [24, np.int32(25), np.int32(26), 14, 1, 12]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  25
+ 
+Source :  24  Destination :  12
+Edp :  [24, np.int32(25), np.int32(26), 14, 1, 12]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  24
+ 
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  28  to  12
+EDPs:  [[28, 21, np.int32(37), 2, 12], [28, np.int32(55), 2, 1, 12], [28, np.int32(44), np.int32(58), 14, np.int32(59), 12], [28, np.int32(46), 33, np.int32(48), 20, 12], [28, 0, np.int32(4), np.int32(51), 20, np.int32(32), 12], [28, 25, np.int32(26), 14, np.int32(35), 22, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  29  to  12
+EDPs:  [[29, 20, 12], [29, np.int32(43), 32, 12], [29, np.int32(32), 20, 2, 12], [29, np.int32(49), 10, np.int32(22), 12], [29, 3, np.int32(45), np.int32(47), 35, np.int32(59), 12], [29, np.int32(45), 18, np.int32(22), np.int32(59), 1, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  59  to  12
+EDPs:  [[59, 12], [59, 1, 12], [59, 14, 2, 12], [59, 22, np.int32(32), 12], [59, 35, 22, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  0  to  12
+EDPs:  [[0, np.int32(28), np.int32(55), 2, 12], [0, np.int32(4), np.int32(51), 20, np.int32(32), 12], [0, np.int32(24), np.int32(26), 14, 1, 12], [0, np.int32(56), 46, 33, np.int32(48), 20, 12], [0, np.int32(11), 5, np.int32(40), 9, np.int32(14), np.int32(59), 12], [0, np.int32(25), np.int32(26), 9, 8, np.int32(35), 22, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  1  to  12
+EDPs:  [[1, np.int32(12)], [1, np.int32(59), 12], [1, np.int32(2), np.int32(20), 12], [1, np.int32(14), 2, 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  42  to  12
+EDPs:  [[42, 40, 9, np.int32(14), 2, 12], [42, 31, 7, np.int32(26), 14, np.int32(59), 12], [42, np.int32(54), 9, 8, np.int32(14), 1, 12], [42, 5, np.int32(11), 4, np.int32(51), 20, np.int32(32), 12], [42, 7, np.int32(54), 26, np.int32(58), 2, np.int32(20), 12]]
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+Routing OT started for  39  to  12
+EDPs:  [[39, 6, np.int32(29), np.int32(32), 12], [39, 3, np.int32(45), 18, np.int32(22), 12], [39, 13, np.int32(30), 9, np.int32(14), 1, 12], [39, np.int32(52), 13, 3, np.int32(29), 20, 12]]
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 18 <function one_tree_pre at 0x72506e129120>
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x725050082160>
