@@ -93,7 +93,10 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
 
         # Setze die Konnektivität und die fehlgeschlagenen Kanten
         planar_graph.graph['k'] = 5  # Beispiel für Basis-Konnektivität
+        
         fails = random.sample(list(planar_graph.edges()), min(len(planar_graph.edges()), f_num))
+
+        print("[run_planar] fails : ", len(fails))
         planar_graph.graph['fails'] = fails
 
         # Führe das Experiment aus

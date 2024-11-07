@@ -125,12 +125,16 @@ def experiments(switch="all", seed=0, rep=100, num_nodes=60, f_num=0, main_loop_
     method = "delaunay"
     
     if switch in ["planar", "all"]:
+        
+        filename = f"results/benchmark-planar-{method.lower()}-FR{main_loop_index}"
+        out = start_file(filename)
+        
         for i in range(rep):
             # Verwende main_loop_index, um eindeutige Dateinamen zu erstellen
-            filename = f"results/benchmark-planar-{method.lower()}-FR{main_loop_index}_{i}"
-            out = start_file(filename)
+            
             run_planar(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
-            out.close()
+
+        out.close()
 
 
 
@@ -142,8 +146,8 @@ if __name__ == "__main__":
         f_num = 6 + f_num  # Anzahl der fehlgeschlagenen Verbindungen
         n = 60              # Anzahl der Knoten
         k = 5               # Basis-Konnektivität
-        samplesize = 5      # Anzahl der Quellen, die zu einem Ziel weitergeleitet werden sollen
-        rep = 3             # Anzahl der Experimente
+        samplesize = 3      # Anzahl der Quellen, die zu einem Ziel weitergeleitet werden sollen
+        rep = 2             # Anzahl der Experimente
         switch = 'all'      # Bestimmt, welche Experimente ausgeführt werden
         seed = 0            # Seed für den Zufallszahlengenerator
         name = "benchmark-" # Präfix für Ergebnisdateien
