@@ -3,7 +3,7 @@ import networkx as nx
 from scipy.spatial import Delaunay
 import math
 
-from one_tree_experiments import shuffle_and_run
+#from one_tree_experiments import shuffle_and_run
 
 def create_unit_disk_graph(num_nodes, initial_radius=0.1):
     """
@@ -69,46 +69,3 @@ def apply_gabriel_graph(G):
                 
     return H
 
-def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
-    """
-    Führt Experimente mit planaren Graphen durch. Erstellt einen Unit-Disk-Graph,
-    der anschließend mit einer Methode wie Delaunay oder Gabriel planarisierbar gemacht wird.
-    
-    Parameter:
-    - out: File-Handle für das Schreiben der Ergebnisse
-    - seed: Seed für Zufallszahlengenerator
-    - rep: Anzahl der Wiederholungen
-    - method: Planarisierungsmethode, entweder "Delaunay" oder "Gabriel"
-    - num_nodes: Anzahl der Knoten im Graphen
-    - f_num: Anzahl der Kanten, die als fehlgeschlagen markiert werden
-    """
-    random.seed(seed)
-    try:
-        # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
-        G = create_unit_disk_graph(num_nodes)
-        
-        # Wähle die Planarisierungsmethode
-        if method.lower() == "delaunay":
-            planar_graph = apply_delaunay_triangulation(G)
-        elif method.lower() == "gabriel":
-            planar_graph = apply_gabriel_graph(G)
-        else:
-            raise ValueError("Unbekannte Methode für Planarisierung")
-
-        # Setze die Konnektivität und die fehlgeschlagenen Kanten
-        planar_graph.graph['k'] = 5  # Beispiel für Basis-Konnektivität
-        fails = random.sample(list(planar_graph.edges()), min(len(planar_graph.edges()), f_num))
-        planar_graph.graph['fails'] = fails
-
-        print("[run_planar] len(nodes) : ", len(planar_graph.nodes))
-        print("[run_planar] nodes :", planar_graph.nodes)
-        print("[run_planar] len(edges) : ", len(planar_graph.edges))
-        print("[run_planar] edges :", planar_graph.edges)
-        print("[run_planar] len(fails) : ", len(fails))
-        print("[run_planar] fails :", fails)
-        
-        # Führe das Experiment aus
-        shuffle_and_run(planar_graph, out, seed, rep, method)
-        
-    except ValueError as e:
-        print("Fehler bei der Erstellung eines zusammenhängenden planaren Graphen:", e)

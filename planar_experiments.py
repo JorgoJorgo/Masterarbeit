@@ -1,54 +1,21 @@
-import sys
-from typing import List, Any, Union
-
 import networkx as nx
-import numpy as np
-import itertools
 import random
 import time
-import glob
 from objective_function_experiments import *
-from planar_graphs import run_planar
+from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import one_tree_pre
 from routing import RouteOneTree, RouteWithOneCheckpointOneTree
 from masterarbeit_trees_with_cp import one_tree_with_random_checkpoint_pre
+import matplotlib.pyplot as plt
 DEBUG = True
 
-# Data structure containing the algorithms under
-# scrutiny. Each entry contains a name and a pair
-# of algorithms.
-#
-# The first algorithm is used for any precomputation
-# to produce data structures later needed for routing
-# on the graph passed along in args. If the precomputation
-# fails, the algorithm must return -1.
-# Examples for precomputation algorithms can be found in
-# arborescences.py
-#
-# The second algorithm decides how to forward a
-# packet from source s to destination d, despite the
-# link failures fails using data structures from precomputation
-# Examples for precomputation algorithms can be found in
-# routing.py
-#
+algos = {'One Tree PE': [one_tree_pre, RouteOneTree],
+         'One Tree Checkpoint PE': [one_tree_with_random_checkpoint_pre, RouteWithOneCheckpointOneTree]}
 
-
-#Hier erfolgt die Ausführung von OneTree
-algos = {'One Tree': [one_tree_pre, RouteOneTree],
-         'One Tree Checkpoint':[one_tree_with_random_checkpoint_pre,RouteWithOneCheckpointOneTree]}
-
-# run one experiment with graph g
-# out denotes file handle to write results to
-# seed is used for pseudorandom number generation in this run
-# returns a score for the performance:
-#       if precomputation fails : 10^9
-#       if success_ratio == 0: 10^6
-#       otherwise (2 - success_ratio) * (stretch + load)
 def one_experiment(g, seed, out, algo):
     [precomputation_algo, routing_algo] = algo[:2]
     if DEBUG: print('experiment for ', algo[0])
 
-    # precomputation
     reset_arb_attribute(g)
     random.seed(seed)
     t = time.time()
@@ -61,27 +28,21 @@ def one_experiment(g, seed, out, algo):
         score = 1000*1000*1000
         return score
 
-    # routing simulation (hier gebe ich den routing algorithmus mit)#################################################################################################################################
     print("Start routing")
     stat = Statistic(routing_algo, str(routing_algo))
     stat.reset(g.nodes())
     random.seed(seed)
     t = time.time()
-    print("Before simulate graph")
-    #hier sage ich dass ich den routing algorithmus simulieren soll (in stat steht welchen routing algorithmus ich ausführen will))#################################################################################################################################
     SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
     print("After simulate")
     rt = (time.time() - t)/samplesize
-    success_ratio = stat.succ/ samplesize
-    # write results
+    success_ratio = stat.succ / samplesize
     if stat.succ > 0:
         if DEBUG: print('success', stat.succ, algo[0])
-        # stretch, load, hops, success, routing time, precomputation time
         out.write(', %i, %i, %i, %f, %f, %f\n' %
                   (np.max(stat.stretch), stat.load, np.max(stat.hops),
                    success_ratio, rt, pt))
         score = (2 - success_ratio) * (np.max(stat.stretch) + stat.load)
-
     else:
         if DEBUG: print('no success_ratio', algo[0])
         out.write(', %f, %f, %f, %f, %f, %f\n' %
@@ -89,25 +50,25 @@ def one_experiment(g, seed, out, algo):
         score = 1000*1000
     return score
 
-
-
-# shuffle root nodes and run algorithm
 def shuffle_and_run(g, out, seed, rep, x):
     random.seed(seed)
     nodes = list(g.nodes())
     random.shuffle(nodes)
-    for count in range(rep):
-        g.graph['root'] = nodes[count % len(nodes)]
-        for (algoname, algo) in algos.items():
-            # graph, size, connectivity, algorithm, index,
+    count = random.randint(1, rep)
+    g.graph['root'] = nodes[count % len(nodes)]
+    for (algoname, algo) in algos.items():
+        if(algoname == "One Tree PE"):
+            converted_back_to_graph = convert_planar_embedding_to_graph(g)
+            converted_back_to_graph.graph['k'] = g.graph['k']
+            converted_back_to_graph.graph['fails'] = g.graph['fails']
+            converted_back_to_graph.graph['root'] = g.graph['root']
+            out.write('%s, %i, %i, %s, %i' % (x, len(nodes), g.graph['k'], algoname, count))
+            algos[algoname] += [one_experiment(converted_back_to_graph, seed + count, out, algo)]
+        else:
+
             out.write('%s, %i, %i, %s, %i' % (x, len(nodes), g.graph['k'], algoname, count))
             algos[algoname] += [one_experiment(g, seed + count, out, algo)]
 
-
-
-#hier möchte ich dann eine run_planar haben die die vorherigen funktionen zur planaren Graphen Erstellung nutzt
-
-# start file to capture results
 def start_file(filename):
     out = open(filename + ".txt", 'w')
     out.write(
@@ -118,10 +79,95 @@ def start_file(filename):
         "#" + str(time.asctime(time.localtime(time.time()))) + "\n")
     return out
 
+def convert_planar_embedding_to_graph(planar_embedding):
+    """
+    Konvertiert einen PlanarEmbedding-Graph zurück in einen normalen networkx-Graph.
+    Knoten und Kanten werden kopiert, inklusive der Knotenpositionen.
+    """
+    G = nx.Graph()
+    
+    # Kopiere die Knoten und ihre Positionen (falls vorhanden)
+    for node in planar_embedding.nodes():
+        pos = planar_embedding.nodes[node].get('pos')
+        if pos is not None:
+            G.add_node(node, pos=pos)
+        else:
+            G.add_node(node)
+    
+    # Kopiere die Kanten
+    for edge in planar_embedding.edges():
+        G.add_edge(*edge)
+    
+    return G
 
 
+def convert_to_planar_embedding(graph):
+    """
+    Konvertiert einen planaren Graphen in eine PlanarEmbedding-Struktur.
+    """
+    is_planar, embedding = nx.check_planarity(graph)
+    if not is_planar:
+        raise ValueError("Graph ist nicht planar und kann nicht in eine PlanarEmbedding umgewandelt werden.")
+    # Übertrage die Knotenpositionen in das PlanarEmbedding-Objekt
+    for node, data in graph.nodes(data=True):
+        embedding.add_node(node, **data)
+    return embedding
 
-def experiments(switch="all", seed=0, rep=100, num_nodes=60, f_num=0, main_loop_index=0):
+def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
+    random.seed(seed)
+    try:
+        # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
+        G = create_unit_disk_graph(num_nodes)
+        
+        # Zeichne den ursprünglichen Graphen
+        #draw_graph_with_positions(G, title="Ursprünglicher Unit Disk Graph")
+        
+        # Wähle die Planarisierungsmethode
+        if method.lower() == "delaunay":
+            planar_graph = apply_delaunay_triangulation(G)
+        elif method.lower() == "gabriel":
+            planar_graph = apply_gabriel_graph(G)
+        else:
+            raise ValueError("Unbekannte Methode für Planarisierung")
+
+        
+        #draw_graph_with_positions(planar_graph, title="Planarer Graph mit Delaunay")
+        
+        # Wandelt den Graphen in eine PlanarEmbedding-Struktur um
+        planar_embedding = convert_to_planar_embedding(planar_graph)
+
+        # Zeichne den planaren Graphen
+        #draw_graph_with_positions(planar_embedding, title="Planarer Graph in PlanarEmbedding-Struktur")
+
+        
+
+        fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), f_num))
+        planar_embedding.graph['k'] = 5  # Beispiel für Basis-Konnektivität
+        planar_embedding.graph['fails'] = fails
+
+        print("[run_planar] len(nodes) : ", len(planar_embedding.nodes))
+        print("[run_planar] nodes :", planar_embedding.nodes)
+        print("[run_planar] len(edges) : ", len(planar_embedding.edges))
+        print("[run_planar] edges :", planar_embedding.edges)
+        print("[run_planar] len(fails) : ", len(fails))
+        print("[run_planar] fails :", fails)
+
+        shuffle_and_run(planar_embedding, out, seed, rep, method)
+        
+    except ValueError as e:
+        print("Fehler bei der Erstellung eines zusammenhängenden planaren Graphen:", e)
+
+def draw_graph_with_positions(G, title="Graph"):
+    """
+    Zeichnet einen Graphen mit gespeicherten Knotenpositionen.
+    """
+    pos = nx.get_node_attributes(G, 'pos')  # Holt die Positionen der Knoten
+    plt.figure(figsize=(8, 8))
+    nx.draw(G, pos, with_labels=True, node_size=100, node_color="skyblue", edge_color="gray")
+    plt.title(title)
+    plt.show()
+
+def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop_index=0):
     method = "delaunay"
     
     if switch in ["planar", "all"]:
@@ -130,33 +176,24 @@ def experiments(switch="all", seed=0, rep=100, num_nodes=60, f_num=0, main_loop_
         out = start_file(filename)
         
         for i in range(rep):
-            # Verwende main_loop_index, um eindeutige Dateinamen zu erstellen
-            
             run_planar(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
 
         out.close()
 
-
-
-
-
 if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
-        f_num = 10 + f_num  # Anzahl der fehlgeschlagenen Verbindungen
-        n = 60              # Anzahl der Knoten
-        k = 5               # Basis-Konnektivität
-        samplesize = 1      # Anzahl der Quellen, die zu einem Ziel weitergeleitet werden sollen
-        rep = 2             # Anzahl der Experimente
-        switch = 'all'      # Bestimmt, welche Experimente ausgeführt werden
-        seed = 0            # Seed für den Zufallszahlengenerator
-        name = "benchmark-" # Präfix für Ergebnisdateien
-        short = None        # Falls true, werden nur kleine Zoo-Graphen (< 25 Knoten) ausgeführt
+        f_num = 8 + f_num
+        n = 60
+        k = 5
+        samplesize = 1
+        rep = 6
+        switch = 'all'
+        seed = 33
         start = time.time()
         print(time.asctime(time.localtime(start)))
         print("[main] i : ", i)
         
-        # Falls Kommandozeilenargumente angegeben werden
         if len(sys.argv) > 1:
             switch = sys.argv[1]
         if len(sys.argv) > 2:
@@ -171,7 +208,6 @@ if __name__ == "__main__":
         random.seed(seed)
         set_parameters([n, rep, k, samplesize, f_num, seed, "benchmark-"])
 
-        # Aufruf der experiments-Funktion mit den Variablen f_num, n, rep und i (als main_loop_index)
         experiments(switch=switch, seed=seed, rep=rep, num_nodes=n, f_num=f_num, main_loop_index=i)
         
         end = time.time()

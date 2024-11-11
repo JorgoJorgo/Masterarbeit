@@ -624,9 +624,9 @@ def RouteFaces(s,d,fails,faces):
         faces[0].add_edge(s, d)
 
     imaginary_edge = (s,d)
-    print("Faces : ")
-    for face in faces:
-        print(face.nodes())
+    #print("Faces : ")
+    #for face in faces:
+    #    print(face.nodes())
     
     
     try:
@@ -1329,6 +1329,7 @@ def RouteOneTree (s,d,fails,paths):
         #als erstes anhand der EDPs (außer dem längsten, also dem letzten) versuchen zu routen
         for edp in edps_for_s_d:
 
+            print("[RouteOneTree] current EDP:", edp)
             currentNode = s
             last_node = s 
 
@@ -1345,6 +1346,10 @@ def RouteOneTree (s,d,fails,paths):
                     #dies beruht auf lokalen Informationen, da EDPs nur eine eingehende Kante haben ( auf der das Paket ankommt ) und eine ausgehende Kante (auf der das Paket nicht ankommt)
                     if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
                         
+                        matching_fails = [edge for edge in fails if edp[edpIndex] in edge]
+                        print("[RouteOneTree] Kante im EDP ist kaputt")
+                        print("[RouteOneTree] Untersuche Kante im EDP:", (edp[edpIndex], edp[edpIndex +1]))
+                        print("[RouteOneTree] passende fails:", matching_fails)
 
                         #wenn man auf eine fehlerhafte Kante stößt dann wechselt man den Pfad
                         switches += 1
@@ -1448,6 +1453,7 @@ def RouteOneTree (s,d,fails,paths):
                     last_node = currentNode
                     currentNode = children[0]
                     hops += 1
+                    print("[RouteOneTree] keine Kinder mehr da, gehe hoch")
                    
 
                 else: #wenn alle Kanten zu den Kindern kaputt sind dann ist man fertig wenn man an der source ist oder man muss eine kante hoch
@@ -1461,7 +1467,7 @@ def RouteOneTree (s,d,fails,paths):
                     detour_edges.append( (currentNode, last_node) )
                     last_node = currentNode
                     currentNode = get_parent_node(tree,currentNode)
-
+                    print("[RouteOneTree] keine Kinder mehr da, ENDE")
                 #endif
             #endif
 
