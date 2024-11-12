@@ -1983,6 +1983,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
             if precomputation is None:
                return -1
     fails = edg[:f]
+    
     if targeted: #neu eingefügt für die clustered failures
         fails = []
         

@@ -185,12 +185,12 @@ if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
         f_num = 8 + f_num
-        n = 60
+        n = 100
         k = 5
-        samplesize = 1
-        rep = 6
+        samplesize = 5
+        rep = 3
         switch = 'all'
-        seed = 33
+        seed = random.randint(1,2000)
         start = time.time()
         print(time.asctime(time.localtime(start)))
         print("[main] i : ", i)
