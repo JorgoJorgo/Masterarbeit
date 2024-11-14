@@ -4,7 +4,7 @@ import time
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import one_tree_pre
-from routing import RouteOneTree, RouteWithOneCheckpointOneTree
+from routing import RouteOneTree, RouteWithOneCheckpointOneTree, SimulateGraph
 from masterarbeit_trees_with_cp import one_tree_with_random_checkpoint_pre
 import matplotlib.pyplot as plt
 DEBUG = True
@@ -33,7 +33,11 @@ def one_experiment(g, seed, out, algo):
     stat.reset(g.nodes())
     random.seed(seed)
     t = time.time()
-    SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
+    if attack == "CLUSTER":
+        SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation,targeted=True)
+    else:
+        SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
+
     print("After simulate")
     rt = (time.time() - t)/samplesize
     success_ratio = stat.succ / samplesize
@@ -80,6 +84,43 @@ def start_file(filename):
         "#" + str(time.asctime(time.localtime(time.time()))) + "\n")
     return out
 
+# Funktion für gezielte Angriffe auf Kanten um Cluster
+def targeted_attacks_against_clusters(g, f_num):
+    candidate_links_to_fail = list()
+    links_to_fail = list()
+    clustering_coefficients = nx.clustering(g)
+
+    for (v, cc) in clustering_coefficients.items():
+        if cc == 0.0:
+            continue
+        neighbors = nx.neighbors(g, v)
+        for w in neighbors:
+            if not (v, w) in candidate_links_to_fail and not (w, v) in candidate_links_to_fail:
+                candidate_links_to_fail.append((v, w))
+
+    # Wähle bis zu f_num bidirektionale Kanten, die deaktiviert werden sollen
+    if len(candidate_links_to_fail) > f_num:
+        links_to_fail = random.sample(candidate_links_to_fail, f_num)
+    else:
+        links_to_fail.extend(candidate_links_to_fail)
+
+    # Füge die entgegengesetzten Richtungen der Kanten hinzu, falls dies nicht schon erfolgt ist
+    for (v, w) in links_to_fail:
+        if not (w, v) in links_to_fail:
+            links_to_fail.append((w, v))
+
+    # Sicherstellen, dass alle Fails in konsistenter Reihenfolge sind
+    links_to_fail = [tuple(sorted(edge)) for edge in links_to_fail]
+
+    # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
+    invalid_fails = [edge for edge in links_to_fail if edge not in g.edges() and (edge[1], edge[0]) not in g.edges()]
+    if invalid_fails:
+        print("[targeted_attacks] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
+        print("Ungültige Fails:", invalid_fails)
+        input("Checke die Fehler Liste")
+
+    return links_to_fail
+
 def convert_planar_embedding_to_graph(planar_embedding):
     """
     Konvertiert einen PlanarEmbedding-Graph zurück in einen normalen networkx-Graph.
@@ -114,14 +155,11 @@ def convert_to_planar_embedding(graph):
         embedding.add_node(node, **data)
     return embedding
 
-def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
+def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0, attack="RANDOM"):
     random.seed(seed)
     try:
         # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
         G = create_unit_disk_graph(num_nodes)
-        
-        # Zeichne den ursprünglichen Graphen
-        #draw_graph_with_positions(G, title="Ursprünglicher Unit Disk Graph")
         
         # Wähle die Planarisierungsmethode
         if method.lower() == "delaunay":
@@ -131,18 +169,27 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
         else:
             raise ValueError("Unbekannte Methode für Planarisierung")
 
-        
-        #draw_graph_with_positions(planar_graph, title="Planarer Graph mit Delaunay")
-        
         # Wandelt den Graphen in eine PlanarEmbedding-Struktur um
         planar_embedding = convert_to_planar_embedding(planar_graph)
 
-        # Zeichne den planaren Graphen
-        #draw_graph_with_positions(planar_embedding, title="Planarer Graph in PlanarEmbedding-Struktur")
-
+        # Erstelle die Fails basierend auf dem gewählten Angriffstyp
+        if attack == "RANDOM":
+            fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), f_num))
+        elif attack == "CLUSTER":
+            convert_for_clustered_fails = convert_planar_embedding_to_graph(G)
+            fails = targeted_attacks_against_clusters(convert_for_clustered_fails, f_num)
         
+        # Sicherstellen, dass alle Fails als (kleinerer Knoten, größerer Knoten) gespeichert sind, um Richtungskonflikte zu vermeiden
+        fails = [tuple(sorted(edge)) for edge in fails]
 
-        fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), f_num))
+        # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
+        invalid_fails = [edge for edge in fails if edge not in planar_embedding.edges() and (edge[1], edge[0]) not in planar_embedding.edges()]
+        if invalid_fails:
+            print("[run_planar] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
+            print("Ungültige Fails:", invalid_fails)
+            input("Checke die Fehler Liste")
+
+        # Setze die Konnektivität und speichere die Fails im Graph
         planar_embedding.graph['k'] = 5  # Beispiel für Basis-Konnektivität
         planar_embedding.graph['fails'] = fails
 
@@ -153,10 +200,12 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
         print("[run_planar] len(fails) : ", len(fails))
         print("[run_planar] fails :", fails)
 
+        # Führe die Experimente durch
         shuffle_and_run(planar_embedding, out, seed, rep, method)
         
     except ValueError as e:
         print("Fehler bei der Erstellung eines zusammenhängenden planaren Graphen:", e)
+
 
 def draw_graph_with_positions(G, title="Graph"):
     """
@@ -185,10 +234,17 @@ if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
         f_num = 6 + f_num
-        n = 100
+        #n = 100
+        #k = 5
+        #samplesize = 8
+        #rep = 3
+        
+        n = 50
         k = 5
-        samplesize = 8
-        rep = 3
+        samplesize = 1
+        rep = 1
+        
+        attack = 'CLUSTER' # CLUSTER or RANDOM , determines how the fialures are chosen
         switch = 'all'
         seed = random.randint(1,20000)
         start = time.time()

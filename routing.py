@@ -1966,6 +1966,7 @@ def Route_Stretch(s, d, fails, T):
 def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=None, tree=None, targeted=False):
     edg = list(g.edges())
     fails = g.graph['fails']
+    print("[SimulateGraph] len(fails):" , len(fails))
     if fails != None:
         if len(fails) < f:
             fails = fails + edg[:f - len(fails) + 1]
@@ -1992,6 +1993,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
 
     g = g.copy(as_view=False)
     g.remove_edges_from(failures1.keys())
+
     nodes = list(set(connected_component_nodes_with_d_after_failures(g,[],d))-set([dest, d]))
     dist = nx.shortest_path_length(g, target=d)
     if len(nodes) < samplesize:
