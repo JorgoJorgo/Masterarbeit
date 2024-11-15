@@ -32,7 +32,7 @@ def calculate_averages(directory):
     algo_hops = {}     # Speichert Hops-Mittelwerte für jeden Algorithmus
     failed_frs = set() # Speichert die FR-Nummern, bei denen mindestens ein Algorithmus success == 0 hatte
 
-    files = sorted([f for f in os.listdir(directory) if f.startswith("benchmark-planar-delaunay-CLUSTER-FR") and f.endswith(".txt")],
+    files = sorted([f for f in os.listdir(directory) if f.startswith("benchmark-planar-delaunay-RANDOM-FR") and f.endswith(".txt")],
                    key=lambda x: int(''.join(filter(str.isdigit, x))))
 
     # Einzelne FR-Dateien verarbeiten und detaillierte Anzeige ausgeben
@@ -109,5 +109,5 @@ def plot_results(algo_success, algo_hops):
     plt.show()
 
 # Beispiel: Verzeichnis 'results' durchsuchen
-directory = 'results'
+directory = 'results14_11'
 calculate_averages(directory)

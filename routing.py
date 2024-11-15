@@ -55,7 +55,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     ##################################
     print()
     print("Routing with a checkpoint started for : ", s , " -> " , d) 
-    print("Fails in CP Routing : ", fails)
+    #print("Fails in CP Routing : ", fails)
     detour_edges = []
     hops = 0
     switches = 0
@@ -66,7 +66,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     tree_cp_to_d  = paths[s][d]['tree_cp_to_d']
     edps_cp_to_d   = paths[s][d]['edps_cp_to_d']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
-    print("EDPS s to d :", edps_s_to_d)
+    #print("EDPS s to d :", edps_s_to_d)
     #before routing through the structure, the edps are traversed
 
     currentNode = -1
@@ -78,7 +78,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     edps_for_s_d = edps_s_to_d
 
     print('Routing OTCP via EDPs started for ' , s , " to " , d )
-    print('EDPs:', edps_for_s_d)
+    #print('EDPs:', edps_for_s_d)
     for edp in edps_for_s_d:
         
         currentNode = s
@@ -1325,11 +1325,11 @@ def RouteOneTree (s,d,fails,paths):
         edps_for_s_d = paths[s][d]['edps']
 
         print('Routing OT started for ' , s , " to " , d )
-        print("EDPs: ", edps_for_s_d)
+        #print("EDPs: ", edps_for_s_d)
         #als erstes anhand der EDPs (außer dem längsten, also dem letzten) versuchen zu routen
         for edp in edps_for_s_d:
 
-            print("[RouteOneTree] current EDP:", edp)
+            #print("[RouteOneTree] current EDP:", edp)
             currentNode = s
             last_node = s 
 
@@ -1347,9 +1347,9 @@ def RouteOneTree (s,d,fails,paths):
                     if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
                         
                         matching_fails = [edge for edge in fails if edp[edpIndex] in edge]
-                        print("[RouteOneTree] Kante im EDP ist kaputt")
-                        print("[RouteOneTree] Untersuche Kante im EDP:", (edp[edpIndex], edp[edpIndex +1]))
-                        print("[RouteOneTree] passende fails:", matching_fails)
+                        #print("[RouteOneTree] Kante im EDP ist kaputt")
+                        #print("[RouteOneTree] Untersuche Kante im EDP:", (edp[edpIndex], edp[edpIndex +1]))
+                        #print("[RouteOneTree] passende fails:", matching_fails)
 
                         #wenn man auf eine fehlerhafte Kante stößt dann wechselt man den Pfad
                         switches += 1
@@ -1393,11 +1393,11 @@ def RouteOneTree (s,d,fails,paths):
                     printIndex = edpIndex-1
                     
                     
-                    print("Source : ", s , " Destination : ", d)
-                    print("Edp : ", edp)
-                    print("EdpIndex-1 : ", printIndex)
-                    print("edp[edpIndex-1] : ", edp[edpIndex-1])
-                    print(" ")
+                    #print("Source : ", s , " Destination : ", d)
+                    #print("Edp : ", edp)
+                    #print("EdpIndex-1 : ", printIndex)
+                    #print("edp[edpIndex-1] : ", edp[edpIndex-1])
+                    #print(" ")
                     
                     
                     currentNode = edp[edpIndex-1] #man kann auch hier direkt den edp index verwenden da man genau 1 eingehende kante hat
@@ -1453,7 +1453,7 @@ def RouteOneTree (s,d,fails,paths):
                     last_node = currentNode
                     currentNode = children[0]
                     hops += 1
-                    print("[RouteOneTree] keine Kinder mehr da, gehe hoch")
+                    #print("[RouteOneTree] keine Kinder mehr da, gehe hoch")
                    
 
                 else: #wenn alle Kanten zu den Kindern kaputt sind dann ist man fertig wenn man an der source ist oder man muss eine kante hoch
@@ -1467,7 +1467,7 @@ def RouteOneTree (s,d,fails,paths):
                     detour_edges.append( (currentNode, last_node) )
                     last_node = currentNode
                     currentNode = get_parent_node(tree,currentNode)
-                    print("[RouteOneTree] keine Kinder mehr da, ENDE")
+                    #print("[RouteOneTree] keine Kinder mehr da, ENDE")
                 #endif
             #endif
 
@@ -2224,7 +2224,7 @@ def RouteWithOneCheckpointOneTreeCLUSTERED(s,d,fails,paths):
     ##################################
     print()
     print("Routing with a checkpoint started for : ", s , " -> " , d) 
-    print("Fails : ", len(fails))
+    #print("Fails : ", len(fails))
     
     detour_edges = []
     hops = 0
