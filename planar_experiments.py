@@ -151,7 +151,7 @@ def targeted_attacks_against_clusters(g, f_num):
 
 
 # Anpassung der run_planar Funktion
-def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0, attack_type="RANDOM"):
+def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
     random.seed(seed)
     try:
         # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
@@ -169,12 +169,14 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
         planar_embedding = convert_to_planar_embedding(planar_graph)
 
         # Erstelle die Fails basierend auf dem gewählten Angriffstyp
-        if attack_type == "RANDOM":
+        if attack == "RANDOM":
+            print("Ausgewähltes Fehlermuster : RANDOM")
             fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), f_num))
-        elif attack_type == "CLUSTER":
+        elif attack  == "CLUSTER":
+            print("Ausgewähltes Fehlermuster : CLUSTER")
             fails = targeted_attacks_against_clusters(planar_embedding, f_num)
         else:
-            raise ValueError("Unbekannter Angriffstyp: " + attack_type)
+            raise ValueError("Unbekannter Angriffstyp: " + attack)
 
         # Setze die Konnektivität und speichere die Fails im Graph
         planar_embedding.graph['k'] = 5  # Beispiel für Basis-Konnektivität
