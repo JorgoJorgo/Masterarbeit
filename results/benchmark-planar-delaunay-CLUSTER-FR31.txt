@@ -1,0 +1,8 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Mon Nov 18 05:03:38 2024
+Delaunay, 100, 5, One Tree PE, 2, 13, 2, 16, 0.500000, 0.000286, 22.649275
+Delaunay, 100, 5, One Tree Checkpoint PE, 2, 16, 4, 22, 0.800000, 0.003603, 199.948127
+Delaunay, 100, 5, One Tree PE, 2, 13, 2, 16, 0.500000, 0.000290, 22.423690
+Delaunay, 100, 5, One Tree Checkpoint PE, 2, 16, 4, 22, 0.800000, 0.003510, 189.949604
+Delaunay, 100, 5, One Tree PE, 2, 13, 2, 16, 0.500000, 0.000282, 23.983316
+Delaunay, 100, 5, One Tree Checkpoint PE, 2, 16, 4, 22, 0.800000, 0.003503, 200.170657

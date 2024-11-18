@@ -230,7 +230,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
 if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
-        f_num = 6 + f_num
+        f_num = 3 + f_num
         n = 100
         k = 5
         samplesize = 10
