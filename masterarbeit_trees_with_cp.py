@@ -81,9 +81,9 @@ def one_tree_with_random_checkpoint_pre(graph):
                 
                 #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
                 
-                faces_cp_to_s = one_tree_with_random_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True).copy()
+                faces_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True).copy()
                 
-                tree_cp_to_d = one_tree_with_random_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False).copy()
+                tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False).copy()
                 
                 #bc the tree cp->s got build reverse direction the edges need to be reversed again
                 #data structure to give the needed information for the routing (edps, trees, checkpoint)
@@ -106,7 +106,7 @@ def one_tree_with_random_checkpoint_pre(graph):
 
 #special: because the second tree that is required to build by the one_tree_with_random_checkpoint_pre is the tree cp->s
 #its directed edges need to flipped (arg: reverse)
-def one_tree_with_random_checkpoint(source, destination, graph, longest_edp, reverse):
+def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
     
     tree = nx.DiGraph()
     assert source == longest_edp[0] , 'Source is not start of edp'
@@ -252,11 +252,11 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_random_checkpoint(
+                faces_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
                 ).copy()
                 
-                tree_cp_to_d = one_tree_with_random_checkpoint(
+                tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
                 ).copy()
                 
@@ -274,97 +274,14 @@ def one_tree_with_degree_checkpoint_pre(graph):
 
 
 
-
-#this algorithm builds a tree for the one_tree_with_checpoint function
-#the tree has the source as root of the tree and every leaf is connected with the destination at the end
-#the tree is build by expanding the longest edp as much as possible and only keeping the paths that lead to the destination
-
-#special: because the second tree that is required to build by the one_tree_with_random_checkpoint_pre is the tree cp->s
-#its directed edges need to flipped (arg: reverse)
-def one_tree_with_degree_checkpoint(source, destination, graph, longest_edp, reverse):
-    
-    tree = nx.DiGraph()
-    assert source == longest_edp[0] , 'Source is not start of edp'
-    tree.add_node(source) # source = longest_edp[0]
-
-    # We need to include the EDP itself here
-    for i in range(1,len(longest_edp)-1): # -2 since we don't want to insert the destination
-        tree.add_node(longest_edp[i])
-        tree.add_edge(longest_edp[i-1],longest_edp[i])
-
-    pathToExtend = longest_edp
-    
-    for i in range(0,len(pathToExtend)-1): # i max 7
-        
-        nodes = pathToExtend[:len(pathToExtend) -2]
-        it = 0 # to get the neighbors of the neighbors
-        while it < len(nodes):
-
-            neighbors = list(nx.neighbors(graph, nodes[it]))
-            for j in neighbors:
-                if (not tree.has_node(j)) and (j!= destination): #not part of tree already and not the destiantion
-                    nodes.append(j)
-                    tree.add_node(j) #add neighbors[j] to tree
-                    tree.add_edge(nodes[it], j) # add edge to new node
-                #end if
-            #end for
-            it = it+1
-        #end while
-    #end for
-    
-    changed = True 
-    
-    while changed == True: #keep trying to shorten until no more can be shortened 
-        
-        old_tree = tree.copy()
-        remove_redundant_paths(source, destination, tree, graph)
-        changed = tree.order() != old_tree.order() # order returns the number of nodes in the graph.
-
-    #before ranking the tree, if the the is build for cp->s the edges need to be flipped
-    if(reverse):
-        
-        #the current tree has:
-        # source = cp (from the global graph)
-        # destination = source (from the global graph)
-        
-        
-        connect_leaf_to_destination(tree,source,destination)
-        
-        #in order to find and traverse faces the tree need to be an undirected graph
-        undirected_tree = tree.to_undirected()
-        
-        tree = undirected_tree
-        
-        faces = find_faces(graph)
-        
-        return faces
-
-
-    else: #if the tree build is for cp->d nothing is changed
-    
-        rank_tree(tree , source,longest_edp)
-    
-        connect_leaf_to_destination(tree, source, destination)
-    
-        tree.add_edge(longest_edp[len(longest_edp)-2],destination)
-        
-        #add 'rank' property to the added destinaton, -1 for highest priority in routing
-        tree.nodes[destination]["rank"] = -1
-        
-        return tree    
-        
-    #end if
-
-
-
 ######################################################################################################################################################
 
-#################################################### ONETREE WITH DEGREE CHECKPOINT ######################################################
+#################################################### ONETREE WITH BETWEENNESS CHECKPOINT ######################################################
 
 ##########################################################################################################################################
 
 
-def one_tree_with_betweeness_checkpoint_pre(graph):
+def one_tree_with_betweenness_checkpoint_pre(graph):
     debug = False
     paths = {}
     
@@ -393,20 +310,21 @@ def one_tree_with_betweeness_checkpoint_pre(graph):
                     }
                     continue
                 
-                # Calculate Degree Centrality for nodes in the graph
-                degree_centrality = nx.degree_centrality(graph)
-                print("[OneTreeDegreeCheckpoint] longestEDP:", longest_edp)
-                # Print the Degree Centrality of all nodes in the longest EDP
-                print(f"[OneTreeDegreeCheckpoint] Degree Centralities for longest EDP (Source: {source}, Destination: {destination}):")
+                # Calculate Betweenness Centrality for nodes in the graph
+                betweenness_centrality = nx.betweenness_centrality(graph, normalized=True)
+                print("[OneTreeBetweennessCheckpoint] longestEDP:", longest_edp)
+                
+                # Print the Betweenness Centrality of all nodes in the longest EDP
+                print(f"[OneTreeBetweennessCheckpoint] Betweenness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
                 for node in longest_edp:
-                    print(f"Node {node}: Centrality {degree_centrality[node]:.4f}")
+                    print(f"Node {node}: Centrality {betweenness_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
                 
                 # Handle the case where no valid cp is available after filtering
                 if not filtered_edp:
-                    print(f"[OneTreeDegreeCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
+                    print(f"[OneTreeBetweennessCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
                     paths[source][destination] = {
                         'cp': None,
                         'faces_cp_to_s': [],
@@ -417,9 +335,9 @@ def one_tree_with_betweeness_checkpoint_pre(graph):
                     }
                     continue
                 
-                # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
-                cp = max(filtered_edp, key=lambda node: degree_centrality[node])
-                print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
+                # Select the node with the highest Betweenness Centrality in the filtered EDP as the checkpoint
+                cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
+                print(f"[OneTreeBetweennessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {betweenness_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -429,11 +347,11 @@ def one_tree_with_betweeness_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_random_checkpoint(
+                faces_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
                 ).copy()
                 
-                tree_cp_to_d = one_tree_with_random_checkpoint(
+                tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
                 ).copy()
                 
@@ -448,89 +366,6 @@ def one_tree_with_betweeness_checkpoint_pre(graph):
                 }
                                     
     return paths
-
-
-
-
-#this algorithm builds a tree for the one_tree_with_checpoint function
-#the tree has the source as root of the tree and every leaf is connected with the destination at the end
-#the tree is build by expanding the longest edp as much as possible and only keeping the paths that lead to the destination
-
-#special: because the second tree that is required to build by the one_tree_with_random_checkpoint_pre is the tree cp->s
-#its directed edges need to flipped (arg: reverse)
-def one_tree_with_betweeness_checkpoint(source, destination, graph, longest_edp, reverse):
-    
-    tree = nx.DiGraph()
-    assert source == longest_edp[0] , 'Source is not start of edp'
-    tree.add_node(source) # source = longest_edp[0]
-
-    # We need to include the EDP itself here
-    for i in range(1,len(longest_edp)-1): # -2 since we don't want to insert the destination
-        tree.add_node(longest_edp[i])
-        tree.add_edge(longest_edp[i-1],longest_edp[i])
-
-    pathToExtend = longest_edp
-    
-    for i in range(0,len(pathToExtend)-1): # i max 7
-        
-        nodes = pathToExtend[:len(pathToExtend) -2]
-        it = 0 # to get the neighbors of the neighbors
-        while it < len(nodes):
-
-            neighbors = list(nx.neighbors(graph, nodes[it]))
-            for j in neighbors:
-                if (not tree.has_node(j)) and (j!= destination): #not part of tree already and not the destiantion
-                    nodes.append(j)
-                    tree.add_node(j) #add neighbors[j] to tree
-                    tree.add_edge(nodes[it], j) # add edge to new node
-                #end if
-            #end for
-            it = it+1
-        #end while
-    #end for
-    
-    changed = True 
-    
-    while changed == True: #keep trying to shorten until no more can be shortened 
-        
-        old_tree = tree.copy()
-        remove_redundant_paths(source, destination, tree, graph)
-        changed = tree.order() != old_tree.order() # order returns the number of nodes in the graph.
-
-    #before ranking the tree, if the the is build for cp->s the edges need to be flipped
-    if(reverse):
-        
-        #the current tree has:
-        # source = cp (from the global graph)
-        # destination = source (from the global graph)
-        
-        
-        connect_leaf_to_destination(tree,source,destination)
-        
-        #in order to find and traverse faces the tree need to be an undirected graph
-        undirected_tree = tree.to_undirected()
-        
-        tree = undirected_tree
-        
-        faces = find_faces(graph)
-        
-        return faces
-
-
-    else: #if the tree build is for cp->d nothing is changed
-    
-        rank_tree(tree , source,longest_edp)
-    
-        connect_leaf_to_destination(tree, source, destination)
-    
-        tree.add_edge(longest_edp[len(longest_edp)-2],destination)
-        
-        #add 'rank' property to the added destinaton, -1 for highest priority in routing
-        tree.nodes[destination]["rank"] = -1
-        
-        return tree    
-        
-    #end if
 
 
 

@@ -5,13 +5,14 @@ from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import one_tree_pre
 from routing import RouteOneTree, RouteWithOneCheckpointOneTree
-from masterarbeit_trees_with_cp import one_tree_with_degree_checkpoint_pre, one_tree_with_random_checkpoint_pre
+from masterarbeit_trees_with_cp import one_tree_with_betweenness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_random_checkpoint_pre
 import matplotlib.pyplot as plt
 DEBUG = True
 
 algos = {#'One Tree PE': [one_tree_pre, RouteOneTree],
          'One Tree Random Checkpoint PE': [one_tree_with_random_checkpoint_pre, RouteWithOneCheckpointOneTree],
-         'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],}
+         'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
+         'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],}
 
 def one_experiment(g, seed, out, algo):
     [precomputation_algo, routing_algo] = algo[:2]
@@ -232,7 +233,7 @@ if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
         f_num = 3 + f_num
-        n = 100
+        n = 40
         k = 5
         samplesize = 1
         rep = 3
