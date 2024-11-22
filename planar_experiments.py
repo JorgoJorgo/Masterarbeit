@@ -5,12 +5,13 @@ from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import one_tree_pre
 from routing import RouteOneTree, RouteWithOneCheckpointOneTree
-from masterarbeit_trees_with_cp import one_tree_with_random_checkpoint_pre
+from masterarbeit_trees_with_cp import one_tree_with_degree_checkpoint_pre, one_tree_with_random_checkpoint_pre
 import matplotlib.pyplot as plt
 DEBUG = True
 
-algos = {'One Tree PE': [one_tree_pre, RouteOneTree],
-         'One Tree Checkpoint PE': [one_tree_with_random_checkpoint_pre, RouteWithOneCheckpointOneTree]}
+algos = {#'One Tree PE': [one_tree_pre, RouteOneTree],
+         'One Tree Random Checkpoint PE': [one_tree_with_random_checkpoint_pre, RouteWithOneCheckpointOneTree],
+         'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],}
 
 def one_experiment(g, seed, out, algo):
     [precomputation_algo, routing_algo] = algo[:2]
@@ -190,12 +191,12 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
             input("Checke die Fehler Liste")
 
         # Debug-Informationen
-        print("[run_planar] len(nodes) : ", len(planar_embedding.nodes))
-        print("[run_planar] nodes :", planar_embedding.nodes)
-        print("[run_planar] len(edges) : ", len(planar_embedding.edges))
-        print("[run_planar] edges :", planar_embedding.edges)
-        print("[run_planar] len(fails) : ", len(fails))
-        print("[run_planar] fails :", fails)
+        #print("[run_planar] len(nodes) : ", len(planar_embedding.nodes))
+        #print("[run_planar] nodes :", planar_embedding.nodes)
+        #print("[run_planar] len(edges) : ", len(planar_embedding.edges))
+        #print("[run_planar] edges :", planar_embedding.edges)
+        #print("[run_planar] len(fails) : ", len(fails))
+        #print("[run_planar] fails :", fails)
 
         # Führe die Experimente durch
         shuffle_and_run(planar_embedding, out, seed, rep, method)
@@ -233,13 +234,17 @@ if __name__ == "__main__":
         f_num = 3 + f_num
         n = 100
         k = 5
-        samplesize = 10
+        samplesize = 1
         rep = 3
         switch = 'all'
         attack = "CLUSTER" # RANDOM or CLUSTER
+
         seed = random.randint(1,20000)
+        
         start = time.time()
+        
         print(time.asctime(time.localtime(start)))
+        
         print("[main] i : ", i)
         
         if len(sys.argv) > 1:
