@@ -1,0 +1,14 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Sun Nov 24 18:13:31 2024
+Delaunay, 100, 5, One Tree Random Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.003715, 194.170654
+Delaunay, 100, 5, One Tree Degree Checkpoint PE, 2, 9, 4, 15, 0.600000, 0.003581, 192.635387
+Delaunay, 100, 5, One Tree Betweenness Checkpoint PE, 2, 9, 4, 15, 0.700000, 0.003578, 317.341438
+Delaunay, 100, 5, One Tree Closeness Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.003652, 227.377753
+Delaunay, 100, 5, One Tree Random Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.003658, 182.154271
+Delaunay, 100, 5, One Tree Degree Checkpoint PE, 2, 9, 4, 15, 0.600000, 0.003659, 207.287199
+Delaunay, 100, 5, One Tree Betweenness Checkpoint PE, 2, 9, 4, 15, 0.700000, 0.003562, 305.031199
+Delaunay, 100, 5, One Tree Closeness Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.002626, 227.515105
+Delaunay, 100, 5, One Tree Random Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.002990, 197.068153
+Delaunay, 100, 5, One Tree Degree Checkpoint PE, 2, 9, 4, 15, 0.600000, 0.002615, 182.401005
+Delaunay, 100, 5, One Tree Betweenness Checkpoint PE, 2, 9, 4, 15, 0.700000, 0.003592, 322.954476
+Delaunay, 100, 5, One Tree Closeness Checkpoint PE, 2, 11, 2, 15, 0.700000, 0.003606, 215.622237

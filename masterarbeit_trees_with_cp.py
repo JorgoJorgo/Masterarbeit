@@ -61,9 +61,9 @@ def one_tree_with_random_checkpoint_pre(graph):
                     continue
                 
                 #then select the middle node of the longest_edp
-                print("[OneTreeRandomCheckpoint] longestEDP: ", longest_edp)
+               #p("[OneTreeRandomCheckpoint] longestEDP: ", longest_edp)
                 cp = longest_edp[ int(len(longest_edp)/2)]
-                print("[OneTreeRandomCheckpoint] Checkpoint: ",cp)
+               #p("[OneTreeRandomCheckpoint] Checkpoint: ",cp)
                 #then get the edps + longest_edps_cp_s and the longest_edps_cp_d
                 
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -218,18 +218,18 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 
                 # Calculate Degree Centrality for nodes in the graph
                 degree_centrality = nx.degree_centrality(graph)
-                print("[OneTreeDegreeCheckpoint] longestEDP:", longest_edp)
-                # Print the Degree Centrality of all nodes in the longest EDP
-                print(f"[OneTreeDegreeCheckpoint] Degree Centralities for longest EDP (Source: {source}, Destination: {destination}):")
-                for node in longest_edp:
-                    print(f"Node {node}: Centrality {degree_centrality[node]:.4f}")
+                #print("[OneTreeDegreeCheckpoint] longestEDP:", longest_edp)
+                ##print the Degree Centrality of all nodes in the longest EDP
+                #print(f"[OneTreeDegreeCheckpoint] Degree Centralities for longest EDP (Source: {source}, Destination: {destination}):")
+                #for node in longest_edp:
+                #   #print(f"Node {node}: Centrality {degree_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
                 
                 # Handle the case where no valid cp is available after filtering
                 if not filtered_edp:
-                    print(f"[OneTreeDegreeCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
+                   #print(f"[OneTreeDegreeCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
                     paths[source][destination] = {
                         'cp': None,
                         'faces_cp_to_s': [],
@@ -242,7 +242,7 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 
                 # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: degree_centrality[node])
-                print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
+               #print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -312,19 +312,19 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                 
                 # Calculate Betweenness Centrality for nodes in the graph
                 betweenness_centrality = nx.betweenness_centrality(graph, normalized=True)
-                print("[OneTreeBetweennessCheckpoint] longestEDP:", longest_edp)
+               #print("[OneTreeBetweennessCheckpoint] longestEDP:", longest_edp)
                 
-                # Print the Betweenness Centrality of all nodes in the longest EDP
-                print(f"[OneTreeBetweennessCheckpoint] Betweenness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
-                for node in longest_edp:
-                    print(f"Node {node}: Centrality {betweenness_centrality[node]:.4f}")
+                ##print the Betweenness Centrality of all nodes in the longest EDP
+                #print(f"[OneTreeBetweennessCheckpoint] Betweenness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
+                #for node in longest_edp:
+                #   #print(f"Node {node}: Centrality {betweenness_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
                 
                 # Handle the case where no valid cp is available after filtering
                 if not filtered_edp:
-                    print(f"[OneTreeBetweennessCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
+                   #print(f"[OneTreeBetweennessCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
                     paths[source][destination] = {
                         'cp': None,
                         'faces_cp_to_s': [],
@@ -337,7 +337,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                 
                 # Select the node with the highest Betweenness Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
-                print(f"[OneTreeBetweennessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {betweenness_centrality[cp]:.4f}\n")
+               #print(f"[OneTreeBetweennessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {betweenness_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -370,6 +370,98 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
 
 
 ######################################################################################################################################################
+#################################################### ONETREE WITH BETWEENNESS CHECKPOINT ######################################################
+
+##########################################################################################################################################
+
+
+def one_tree_with_closeness_checkpoint_pre(graph):
+    debug = False
+    paths = {}
+    
+    for source in graph.nodes:
+        for destination in graph.nodes:
+            if source != destination:
+                if source not in paths:
+                    paths[source] = {}
+                
+                # Compute all EDPs between source and destination
+                edps = all_edps(source, destination, graph)
+                edps.sort(key=len)
+                
+                # Get the longest EDP
+                longest_edp = edps[len(edps) - 1]
+                
+                # Special case if the source and destination are directly connected
+                if len(longest_edp) == 2:
+                    paths[source][destination] = {
+                        'cp': destination,
+                        'faces_cp_to_s': [], 
+                        'edps_cp_to_s': [[source, destination]],
+                        'tree_cp_to_d': [], 
+                        'edps_cp_to_d': [[source, destination]],
+                        'edps_s_to_d': [[source, destination]]
+                    }
+                    continue
+                
+                # Calculate Closeness Centrality for nodes in the graph
+                closeness_centrality = nx.closeness_centrality(graph)
+               #print("[OneTreeClosenessCheckpoint] longestEDP:", longest_edp)
+                
+                ##print the Closeness Centrality of all nodes in the longest EDP
+                #print(f"[OneTreeClosenessCheckpoint] Closeness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
+                #for node in longest_edp:
+                #   #print(f"Node {node}: Centrality {closeness_centrality[node]:.4f}")
+                
+                # Filter out source and destination from the longest EDP
+                filtered_edp = [node for node in longest_edp if node != source and node != destination]
+                
+                # Handle the case where no valid cp is available after filtering
+                if not filtered_edp:
+                   #print(f"[OneTreeClosenessCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
+                    paths[source][destination] = {
+                        'cp': None,
+                        'faces_cp_to_s': [],
+                        'edps_cp_to_s': [],
+                        'tree_cp_to_d': [],
+                        'edps_cp_to_d': [],
+                        'edps_s_to_d': edps
+                    }
+                    continue
+                
+                # Select the node with the highest Closeness Centrality in the filtered EDP as the checkpoint
+                cp = max(filtered_edp, key=lambda node: closeness_centrality[node])
+               #print(f"[OneTreeClosenessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {closeness_centrality[cp]:.4f}\n")
+                
+                # Get EDPs from the checkpoint to the source and destination
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                # Build trees and faces
+                faces_cp_to_s = one_tree_with_checkpoint(
+                    cp, source, graph, edps_cp_to_s[-1], True
+                ).copy()
+                
+                tree_cp_to_d = one_tree_with_checkpoint(
+                    cp, destination, graph, edps_cp_to_d[-1], False
+                ).copy()
+                
+                # Store the result in the paths dictionary
+                paths[source][destination] = {
+                    'cp': cp,
+                    'faces_cp_to_s': faces_cp_to_s, 
+                    'edps_cp_to_s': edps_cp_to_s,
+                    'tree_cp_to_d': tree_cp_to_d, 
+                    'edps_cp_to_d': edps_cp_to_d,
+                    'edps_s_to_d': edps
+                }
+                                    
+    return paths
+
+
 
 
 # Andere benötigte Importe und Funktionen...
@@ -395,7 +487,7 @@ def find_faces(G):
                     nx.draw(G, pos, with_labels=True, node_size=700, node_color="red", font_size=8)
                     plt.show()
                     traceback.print_exc()
-                    print(f"An unexpected error occurred: {e}")
+                   #print(f"An unexpected error occurred: {e}")
 
                 half_edges_in_faces.update(found_half_edges)
                 face_graph = G.subgraph(face_nodes).copy()
