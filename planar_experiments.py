@@ -152,6 +152,7 @@ def targeted_attacks_against_clusters(g, f_num):
 
     return links_to_fail
 
+
 # run experiments with zoo graphs
 def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
     global f_num
@@ -162,36 +163,45 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
 
     zoo_list = list(glob.glob("./benchmark_graphs/*.graphml"))
 
-    for i in range(len(zoo_list)):
+    for graph_index in range(len(zoo_list)):
         random.seed(seed)
-        g = read_zoo(i, min_connectivity)
+        g = read_zoo(graph_index, min_connectivity)
 
-        if g is None:
+        # Nur spezifische Graphen auswählen
+        if g is None or (len(g.nodes) < 60 and len(g.nodes) > 90) :
             continue
 
         print("Len(g) = ", len(g.nodes))
-        kk = nx.edge_connectivity(g)
+        kk = nx.edge_connectivity(g)  # Berechnung der Konnektivität
         nn = len(g.nodes())
+
         if nn < 200:
             print("Passender Graph")
             mm = len(g.edges())
             ss = min(int(nn / 2), samplesize)
-            f_num = kk * fr
+
+            # Berechne f_num basierend auf `i` und `kk`
+            f_num = i * kk
             fn = min(int(mm / 4), f_num)
             if fn == int(mm / 4):
                 print("SKIP ITERATION")
                 continue
-            print("Fehleranzahl: ", fn)
+            print("Fehleranzahl (f_num): ", f_num)
+            print("Fehleranzahl (fn): ", fn)
 
             # Prüfe, ob der Graph planar ist
             is_planar, planar_embedding = nx.check_planarity(g)
             if not is_planar:
-                print(f"Graph {i} ist nicht planar, wird übersprungen.")
+                print(f"Graph {graph_index} ist nicht planar, wird übersprungen.")
                 continue
 
             # Wandle den planaren Graph in eine PlanarEmbedding-Struktur um
-            planar_graph = nx.Graph(planar_embedding)  # Falls nötig
+            planar_graph = nx.Graph(planar_embedding)
             planar_embedding = convert_to_planar_embedding(planar_graph)
+
+            # Füge Positionen zu den Knoten hinzu
+            pos = nx.planar_layout(planar_graph)
+            nx.set_node_attributes(planar_embedding, pos, 'pos')
 
             # Erstelle die Fails basierend auf dem gewählten Angriffstyp
             if attack == "RANDOM":
@@ -210,24 +220,28 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
             # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
             invalid_fails = [edge for edge in fails if edge not in planar_embedding.edges()]
             if invalid_fails:
-                print("[run_zoo_with_planar] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
+                print("[run_zoo] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
                 print("Ungültige Fails:", invalid_fails)
                 input("Checke die Fehler Liste")
 
             set_parameters([nn, rep, kk, ss, fn, seed, name + "zoo-"])
+            print("[run_zoo] Parameter:")
             print("Node Number: ", nn)
             print("Connectivity: ", kk)
             print("Failure Number: ", fn)
+            print("Fails: ", len(fails))
 
             # Shuffle and run experiments
-            shuffle_and_run(planar_embedding, out, seed, rep, str(i))
+            shuffle_and_run(planar_embedding, out, seed, rep, str(graph_index))
             set_parameters(original_params)
-            
+
             # Ausgabe der Zwischenergebnisse
             for (algoname, algo) in algos.items():
                 index_1 = len(algo) - rep
                 index_2 = len(algo)
                 print('intermediate result: %s \t %.5E' % (algoname, np.mean(algo[index_1:index_2])))
+
+
 
 
 # Anpassung der run_planar Funktion
@@ -312,7 +326,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out = start_file(filename)
 
         for i in range(rep):
-            run_zoo(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
+            run_zoo(out=out, seed=seed, rep=rep)
 
         out.close()
 
@@ -320,10 +334,10 @@ if __name__ == "__main__":
     f_num = 0
     for i in range(1, 50):
         f_num = 3 + f_num
-        n = 100
+        n = 20
         k = 5
-        samplesize = 4
-        rep = 3
+        samplesize = 1
+        rep = 1
         switch = 'all'
         attack = "CLUSTER" # RANDOM or CLUSTER
 

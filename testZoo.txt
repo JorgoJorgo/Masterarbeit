@@ -1,0 +1,453 @@
+Tue Nov 26 16:41:05 2024
+[main] i :  1
+n_before, n_after, m_after, connectivity, degree
+0 ./benchmark_graphs/Geant2001.graphml n_before= 27 n_after= 18 m_after= 64 connectivity= 2 degree= 4
+1 ./benchmark_graphs/BtEurope.graphml n_before= 24 n_after= 17 m_after= 63 connectivity= 2 degree= 4
+2 ./benchmark_graphs/Bics.graphml n_before= 33 n_after= 19 m_after= 78 connectivity= 2 degree= 6
+3 ./benchmark_graphs/Garr201105.graphml n_before= 59 n_after= 17 m_after= 77 connectivity= 2 degree= 6
+4 ./benchmark_graphs/Columbus.graphml n_before= 70 n_after= 37 m_after= 131 connectivity= 2 degree= 6
+5 ./benchmark_graphs/Renater2004.graphml n_before= 30 n_after= 19 m_after= 52 connectivity= 2 degree= 4
+6 ./benchmark_graphs/Easynet.graphml n_before= 19 n_after= 13 m_after= 44 connectivity= 2 degree= 4
+7 ./benchmark_graphs/GtsSlovakia.graphml n_before= 35 n_after= 6 m_after= 22 connectivity= 2 degree= 6
+9 ./benchmark_graphs/Spiralight.graphml n_before= 15 n_after= 15 m_after= 32 connectivity= 2 degree= 1
+10 ./benchmark_graphs/PionierL3.graphml n_before= 38 n_after= 28 m_after= 76 connectivity= 2 degree= 4
+12 ./benchmark_graphs/Ulaknet.graphml n_before= 82 n_after= 3 m_after= 9 connectivity= 2 degree= 6
+13 ./benchmark_graphs/Quest.graphml n_before= 20 n_after= 19 m_after= 61 connectivity= 2 degree= 4
+14 ./benchmark_graphs/Tw.graphml n_before= 76 n_after= 37 m_after= 178 connectivity= 2 degree= 6
+15 ./benchmark_graphs/Cesnet2001.graphml n_before= 23 n_after= 3 m_after= 9 connectivity= 2 degree= 6
+16 ./benchmark_graphs/Globenet.graphml n_before= 67 n_after= 36 m_after= 149 connectivity= 2 degree= 6
+17 ./benchmark_graphs/Nordu2005.graphml n_before= 9 n_after= 3 m_after= 8 connectivity= 2 degree= 4
+18 ./benchmark_graphs/Garr201010.graphml n_before= 56 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+19 ./benchmark_graphs/BtAsiaPac.graphml n_before= 20 n_after= 14 m_after= 53 connectivity= 2 degree= 4
+21 ./benchmark_graphs/Arpanet19723.graphml n_before= 25 n_after= 24 m_after= 55 connectivity= 2 degree= 4
+23 ./benchmark_graphs/Syringa.graphml n_before= 74 n_after= 21 m_after= 63 connectivity= 2 degree= 6
+24 ./benchmark_graphs/Tinet.graphml n_before= 53 n_after= 36 m_after= 162 connectivity= 2 degree= 6
+25 ./benchmark_graphs/HiberniaIreland.graphml n_before= 8 n_after= 5 m_after= 12 connectivity= 2 degree= 4
+26 ./benchmark_graphs/HiberniaUs.graphml n_before= 22 n_after= 12 m_after= 44 connectivity= 2 degree= 6
+27 ./benchmark_graphs/Cesnet200706.graphml n_before= 44 n_after= 11 m_after= 46 connectivity= 2 degree= 6
+29 ./benchmark_graphs/Cogentco.graphml n_before= 197 n_after= 105 m_after= 384 connectivity= 2 degree= 6
+Len(g) =  105
+Passender Graph
+Fehleranzahl (f_num):  2
+Fehleranzahl (fn):  2
+Graph 29 ist nicht planar, wird übersprungen.
+30 ./benchmark_graphs/Garr200902.graphml n_before= 54 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+31 ./benchmark_graphs/Pacificwave.graphml n_before= 18 n_after= 10 m_after= 30 connectivity= 2 degree= 4
+32 ./benchmark_graphs/Bbnplanet.graphml n_before= 27 n_after= 10 m_after= 31 connectivity= 2 degree= 4
+33 ./benchmark_graphs/KentmanJul2005.graphml n_before= 16 n_after= 4 m_after= 12 connectivity= 2 degree= 6
+34 ./benchmark_graphs/Garr200404.graphml n_before= 22 n_after= 4 m_after= 16 connectivity= 3 degree= 4
+35 ./benchmark_graphs/Uunet.graphml n_before= 49 n_after= 38 m_after= 155 connectivity= 2 degree= 4
+36 ./benchmark_graphs/Iinet.graphml n_before= 31 n_after= 7 m_after= 29 connectivity= 2 degree= 6
+37 ./benchmark_graphs/Sinet.graphml n_before= 74 n_after= 12 m_after= 40 connectivity= 2 degree= 6
+38 ./benchmark_graphs/Geant2009.graphml n_before= 34 n_after= 30 m_after= 100 connectivity= 2 degree= 4
+39 ./benchmark_graphs/Belnet2007.graphml n_before= 21 n_after= 21 m_after= 48 connectivity= 2 degree= 1
+40 ./benchmark_graphs/Sanet.graphml n_before= 43 n_after= 14 m_after= 46 connectivity= 2 degree= 6
+41 ./benchmark_graphs/Darkstrand.graphml n_before= 28 n_after= 28 m_after= 62 connectivity= 2 degree= 1
+43 ./benchmark_graphs/Myren.graphml n_before= 37 n_after= 5 m_after= 19 connectivity= 2 degree= 6
+44 ./benchmark_graphs/Gridnet.graphml n_before= 9 n_after= 9 m_after= 40 connectivity= 4 degree= 1
+45 ./benchmark_graphs/Renater2001.graphml n_before= 24 n_after= 8 m_after= 30 connectivity= 2 degree= 6
+46 ./benchmark_graphs/Garr201005.graphml n_before= 55 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+47 ./benchmark_graphs/Compuserve.graphml n_before= 14 n_after= 11 m_after= 29 connectivity= 2 degree= 4
+50 ./benchmark_graphs/Napnet.graphml n_before= 6 n_after= 4 m_after= 11 connectivity= 2 degree= 4
+51 ./benchmark_graphs/KentmanFeb2008.graphml n_before= 26 n_after= 4 m_after= 14 connectivity= 2 degree= 6
+53 ./benchmark_graphs/Iij.graphml n_before= 37 n_after= 27 m_after= 117 connectivity= 2 degree= 4
+54 ./benchmark_graphs/Geant2012.graphml n_before= 40 n_after= 32 m_after= 113 connectivity= 2 degree= 4
+55 ./benchmark_graphs/Dataxchange.graphml n_before= 6 n_after= 5 m_after= 21 connectivity= 4 degree= 4
+57 ./benchmark_graphs/Netrail.graphml n_before= 7 n_after= 7 m_after= 20 connectivity= 2 degree= 1
+58 ./benchmark_graphs/Arpanet19706.graphml n_before= 9 n_after= 3 m_after= 9 connectivity= 2 degree= 6
+59 ./benchmark_graphs/Telecomserbia.graphml n_before= 6 n_after= 6 m_after= 12 connectivity= 2 degree= 1
+60 ./benchmark_graphs/Nsfcnet.graphml n_before= 10 n_after= 6 m_after= 16 connectivity= 2 degree= 4
+62 ./benchmark_graphs/Belnet2006.graphml n_before= 23 n_after= 20 m_after= 77 connectivity= 2 degree= 4
+63 ./benchmark_graphs/Garr201103.graphml n_before= 58 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+64 ./benchmark_graphs/Ilan.graphml n_before= 14 n_after= 5 m_after= 14 connectivity= 2 degree= 4
+65 ./benchmark_graphs/Canerie.graphml n_before= 32 n_after= 12 m_after= 48 connectivity= 2 degree= 6
+66 ./benchmark_graphs/Litnet.graphml n_before= 43 n_after= 5 m_after= 15 connectivity= 2 degree= 4
+67 ./benchmark_graphs/York.graphml n_before= 23 n_after= 20 m_after= 44 connectivity= 2 degree= 4
+68 ./benchmark_graphs/Arpanet196912.graphml n_before= 4 n_after= 3 m_after= 7 connectivity= 2 degree= 4
+69 ./benchmark_graphs/Niif.graphml n_before= 36 n_after= 19 m_after= 57 connectivity= 2 degree= 4
+70 ./benchmark_graphs/Internode.graphml n_before= 66 n_after= 16 m_after= 70 connectivity= 2 degree= 6
+71 ./benchmark_graphs/Garr201008.graphml n_before= 55 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+72 ./benchmark_graphs/Cesnet200304.graphml n_before= 29 n_after= 9 m_after= 33 connectivity= 2 degree= 6
+74 ./benchmark_graphs/Claranet.graphml n_before= 15 n_after= 9 m_after= 28 connectivity= 2 degree= 4
+76 ./benchmark_graphs/AsnetAm.graphml n_before= 65 n_after= 14 m_after= 53 connectivity= 2 degree= 6
+77 ./benchmark_graphs/GtsCzechRepublic.graphml n_before= 32 n_after= 19 m_after= 47 connectivity= 2 degree= 4
+79 ./benchmark_graphs/Integra.graphml n_before= 27 n_after= 13 m_after= 49 connectivity= 2 degree= 6
+80 ./benchmark_graphs/Palmetto.graphml n_before= 45 n_after= 15 m_after= 68 connectivity= 3 degree= 8
+81 ./benchmark_graphs/Garr201111.graphml n_before= 60 n_after= 16 m_after= 72 connectivity= 2 degree= 6
+82 ./benchmark_graphs/Sprint.graphml n_before= 11 n_after= 10 m_after= 35 connectivity= 2 degree= 4
+83 ./benchmark_graphs/Interoute.graphml n_before= 110 n_after= 102 m_after= 282 connectivity= 2 degree= 4
+Len(g) =  102
+Passender Graph
+Fehleranzahl (f_num):  2
+Fehleranzahl (fn):  2
+Ausgewähltes Fehlermuster: RANDOM
+[run_zoo] Parameter:
+Node Number:  102
+Connectivity:  2
+Failure Number:  2
+Fails:  2
+[planar_experiments] root: 15
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x78c9891374c0>
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 2
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  95  ->  15
+Routing OTCP via EDPs started for  95  to  15
+Routing in faces started for :  95  ->  21
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  15
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 1 <function one_tree_with_random_checkpoint_pre at 0x78c9891374c0>
+experiment for  <function one_tree_with_degree_checkpoint_pre at 0x78c989137600>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 2
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  95  ->  15
+Routing OTCP via EDPs started for  95  to  15
+Routing in faces started for :  95  ->  16
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  15
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 1 <function one_tree_with_degree_checkpoint_pre at 0x78c989137600>
+experiment for  <function one_tree_with_betweenness_checkpoint_pre at 0x78c9891376a0>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 2
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  95  ->  15
+Routing OTCP via EDPs started for  95  to  15
+Routing in faces started for :  95  ->  16
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  15
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 1 <function one_tree_with_betweenness_checkpoint_pre at 0x78c9891376a0>
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x78c989137740>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 2
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  95  ->  15
+Routing OTCP via EDPs started for  95  to  15
+Routing in faces started for :  95  ->  16
+Routing succesful via Start-Faces
+------------------------------------------------------
+ 
+Routing started for  16  to  15
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 1 <function one_tree_with_closeness_checkpoint_pre at 0x78c989137740>
+intermediate result: One Tree Random Checkpoint PE 	 5.20000E+01
+intermediate result: One Tree Degree Checkpoint PE 	 4.00000E+00
+intermediate result: One Tree Betweenness Checkpoint PE 	 4.00000E+00
+intermediate result: One Tree Closeness Checkpoint PE 	 4.00000E+00
+84 ./benchmark_graphs/Garr201110.graphml n_before= 59 n_after= 17 m_after= 77 connectivity= 2 degree= 6
+85 ./benchmark_graphs/Oteglobe.graphml n_before= 93 n_after= 39 m_after= 143 connectivity= 2 degree= 6
+86 ./benchmark_graphs/Nextgen.graphml n_before= 17 n_after= 7 m_after= 23 connectivity= 2 degree= 6
+87 ./benchmark_graphs/Getnet.graphml n_before= 7 n_after= 5 m_after= 14 connectivity= 2 degree= 4
+88 ./benchmark_graphs/Belnet2008.graphml n_before= 21 n_after= 21 m_after= 48 connectivity= 2 degree= 1
+91 ./benchmark_graphs/Shentel.graphml n_before= 28 n_after= 16 m_after= 54 connectivity= 2 degree= 6
+92 ./benchmark_graphs/Esnet.graphml n_before= 68 n_after= 22 m_after= 84 connectivity= 2 degree= 6
+93 ./benchmark_graphs/Sunet.graphml n_before= 26 n_after= 4 m_after= 16 connectivity= 3 degree= 8
+94 ./benchmark_graphs/Twaren.graphml n_before= 20 n_after= 4 m_after= 12 connectivity= 2 degree= 4
+95 ./benchmark_graphs/Surfnet.graphml n_before= 50 n_after= 12 m_after= 54 connectivity= 3 degree= 8
+96 ./benchmark_graphs/Peer1.graphml n_before= 16 n_after= 7 m_after= 26 connectivity= 2 degree= 6
+97 ./benchmark_graphs/Aconet.graphml n_before= 23 n_after= 18 m_after= 53 connectivity= 2 degree= 4
+98 ./benchmark_graphs/WideJpn.graphml n_before= 30 n_after= 7 m_after= 21 connectivity= 2 degree= 6
+99 ./benchmark_graphs/Garr201004.graphml n_before= 54 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+100 ./benchmark_graphs/HiberniaUk.graphml n_before= 15 n_after= 13 m_after= 28 connectivity= 2 degree= 4
+101 ./benchmark_graphs/Ans.graphml n_before= 18 n_after= 17 m_after= 49 connectivity= 2 degree= 4
+102 ./benchmark_graphs/KentmanAug2005.graphml n_before= 28 n_after= 5 m_after= 19 connectivity= 2 degree= 6
+104 ./benchmark_graphs/Bandcon.graphml n_before= 22 n_after= 20 m_after= 55 connectivity= 2 degree= 4
+105 ./benchmark_graphs/Ntt.graphml n_before= 47 n_after= 17 m_after= 95 connectivity= 3 degree= 6
+106 ./benchmark_graphs/Garr201104.graphml n_before= 59 n_after= 17 m_after= 77 connectivity= 2 degree= 6
+107 ./benchmark_graphs/Garr200908.graphml n_before= 54 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+108 ./benchmark_graphs/Dfn.graphml n_before= 58 n_after= 51 m_after= 164 connectivity= 2 degree= 4
+109 ./benchmark_graphs/KentmanJan2011.graphml n_before= 38 n_after= 3 m_after= 9 connectivity= 2 degree= 6
+110 ./benchmark_graphs/Ibm.graphml n_before= 18 n_after= 17 m_after= 47 connectivity= 2 degree= 4
+112 ./benchmark_graphs/Marnet.graphml n_before= 20 n_after= 10 m_after= 37 connectivity= 2 degree= 4
+113 ./benchmark_graphs/RedBestel.graphml n_before= 84 n_after= 35 m_after= 120 connectivity= 2 degree= 6
+114 ./benchmark_graphs/Psinet.graphml n_before= 24 n_after= 10 m_after= 32 connectivity= 2 degree= 6
+115 ./benchmark_graphs/Biznet.graphml n_before= 29 n_after= 14 m_after= 50 connectivity= 2 degree= 6
+116 ./benchmark_graphs/Renater2008.graphml n_before= 33 n_after= 27 m_after= 78 connectivity= 2 degree= 4
+117 ./benchmark_graphs/KentmanApr2007.graphml n_before= 23 n_after= 4 m_after= 14 connectivity= 2 degree= 6
+118 ./benchmark_graphs/Grnet.graphml n_before= 37 n_after= 9 m_after= 35 connectivity= 2 degree= 6
+119 ./benchmark_graphs/Belnet2010.graphml n_before= 22 n_after= 22 m_after= 50 connectivity= 2 degree= 1
+121 ./benchmark_graphs/Xeex.graphml n_before= 24 n_after= 22 m_after= 66 connectivity= 2 degree= 4
+122 ./benchmark_graphs/Gambia.graphml n_before= 28 n_after= 4 m_after= 12 connectivity= 2 degree= 6
+123 ./benchmark_graphs/Garr199901.graphml n_before= 16 n_after= 4 m_after= 16 connectivity= 3 degree= 4
+125 ./benchmark_graphs/Savvis.graphml n_before= 19 n_after= 17 m_after= 38 connectivity= 2 degree= 4
+128 ./benchmark_graphs/Deltacom.graphml n_before= 113 n_after= 70 m_after= 277 connectivity= 2 degree= 6
+129 ./benchmark_graphs/Belnet2003.graphml n_before= 23 n_after= 18 m_after= 70 connectivity= 2 degree= 4
+130 ./benchmark_graphs/DeutscheTelekom.graphml n_before= 39 n_after= 18 m_after= 90 connectivity= 2 degree= 6
+131 ./benchmark_graphs/Abvt.graphml n_before= 23 n_after= 22 m_after= 61 connectivity= 2 degree= 4
+132 ./benchmark_graphs/Rhnet.graphml n_before= 16 n_after= 5 m_after= 15 connectivity= 2 degree= 6
+133 ./benchmark_graphs/UsCarrier.graphml n_before= 158 n_after= 23 m_after= 99 connectivity= 2 degree= 8
+134 ./benchmark_graphs/VtlWavenet2011.graphml n_before= 92 n_after= 49 m_after= 154 connectivity= 2 degree= 6
+135 ./benchmark_graphs/Latnet.graphml n_before= 69 n_after= 10 m_after= 36 connectivity= 2 degree= 6
+136 ./benchmark_graphs/HostwayInternational.graphml n_before= 16 n_after= 7 m_after= 24 connectivity= 2 degree= 6
+137 ./benchmark_graphs/Garr199905.graphml n_before= 23 n_after= 4 m_after= 16 connectivity= 3 degree= 4
+138 ./benchmark_graphs/Colt.graphml n_before= 153 n_after= 57 m_after= 205 connectivity= 2 degree= 6
+139 ./benchmark_graphs/Garr199904.graphml n_before= 23 n_after= 4 m_after= 16 connectivity= 3 degree= 4
+140 ./benchmark_graphs/BeyondTheNetwork.graphml n_before= 53 n_after= 28 m_after= 90 connectivity= 2 degree= 4
+142 ./benchmark_graphs/PionierL1.graphml n_before= 36 n_after= 29 m_after= 75 connectivity= 2 degree= 4
+143 ./benchmark_graphs/Cesnet200511.graphml n_before= 39 n_after= 9 m_after= 35 connectivity= 2 degree= 6
+144 ./benchmark_graphs/Chinanet.graphml n_before= 42 n_after= 20 m_after= 97 connectivity= 2 degree= 4
+145 ./benchmark_graphs/BsonetEurope.graphml n_before= 18 n_after= 7 m_after= 29 connectivity= 2 degree= 6
+146 ./benchmark_graphs/Garr200912.graphml n_before= 54 n_after= 17 m_after= 75 connectivity= 2 degree= 6
+147 ./benchmark_graphs/HiberniaNireland.graphml n_before= 18 n_after= 17 m_after= 41 connectivity= 2 degree= 4
+148 ./benchmark_graphs/Iris.graphml n_before= 51 n_after= 25 m_after= 98 connectivity= 2 degree= 6
+151 ./benchmark_graphs/Noel.graphml n_before= 19 n_after= 10 m_after= 39 connectivity= 2 degree= 6
+152 ./benchmark_graphs/Bellsouth.graphml n_before= 51 n_after= 12 m_after= 54 connectivity= 2 degree= 6
+153 ./benchmark_graphs/Roedunet.graphml n_before= 42 n_after= 7 m_after= 29 connectivity= 2 degree= 4
+154 ./benchmark_graphs/Cesnet200603.graphml n_before= 39 n_after= 9 m_after= 35 connectivity= 2 degree= 6
+155 ./benchmark_graphs/Abilene.graphml n_before= 11 n_after= 11 m_after= 28 connectivity= 2 degree= 1
+156 ./benchmark_graphs/Highwinds.graphml n_before= 18 n_after= 12 m_after= 50 connectivity= 2 degree= 6
+157 ./benchmark_graphs/Switch.graphml n_before= 74 n_after= 32 m_after= 120 connectivity= 2 degree= 6
+158 ./benchmark_graphs/Garr200112.graphml n_before= 24 n_after= 4 m_after= 16 connectivity= 3 degree= 4
+160 ./benchmark_graphs/Belnet2005.graphml n_before= 23 n_after= 20 m_after= 77 connectivity= 2 degree= 4
+161 ./benchmark_graphs/TataNld.graphml n_before= 145 n_after= 136 m_after= 363 connectivity= 2 degree= 4
+Len(g) =  136
+Passender Graph
+Fehleranzahl (f_num):  2
+Fehleranzahl (fn):  2
+Ausgewähltes Fehlermuster: RANDOM
+[run_zoo] Parameter:
+Node Number:  136
+Connectivity:  2
+Failure Number:  2
+Fails:  2
+[planar_experiments] root: 142
+experiment for  <function one_tree_with_random_checkpoint_pre at 0x78c9891374c0>
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check
+[OTC Random Pre] check

@@ -31,7 +31,7 @@ def one_tree_with_random_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
-
+        print("[OTC Random Pre] check")
         for destination in graph.nodes:
             
             if source != destination:
@@ -192,6 +192,7 @@ def one_tree_with_degree_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
+        #print("[OTC Degree Pre] check")
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
@@ -286,6 +287,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
+        #print("[OTC Betweenness Pre] check")
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
@@ -380,6 +382,7 @@ def one_tree_with_closeness_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
+        #print("[OTC Closeness Pre] check")
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
