@@ -61,7 +61,7 @@ def shuffle_and_run(g, out, seed, rep, x):
     g.graph['root'] = nodes[count % len(nodes)]
     print("[planar_experiments] root:", g.graph['root'])
     for (algoname, algo) in algos.items():
-        if(algoname == "One Tree PE"):
+        if(algoname == "One Tree PE"): #da Algorithmen ohne GeoRouting die Eigenschaften der Planar Embeddings nicht benötigen
             converted_back_to_graph = convert_planar_embedding_to_graph(g)
             converted_back_to_graph.graph['k'] = g.graph['k']
             converted_back_to_graph.graph['fails'] = g.graph['fails']
@@ -152,6 +152,83 @@ def targeted_attacks_against_clusters(g, f_num):
 
     return links_to_fail
 
+# run experiments with zoo graphs
+def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
+    global f_num
+    min_connectivity = 2
+    original_params = [n, rep, k, samplesize, f_num, seed, name]
+    if DEBUG:
+        print('n_before, n_after, m_after, connectivity, degree')
+
+    zoo_list = list(glob.glob("./benchmark_graphs/*.graphml"))
+
+    for i in range(len(zoo_list)):
+        random.seed(seed)
+        g = read_zoo(i, min_connectivity)
+
+        if g is None:
+            continue
+
+        print("Len(g) = ", len(g.nodes))
+        kk = nx.edge_connectivity(g)
+        nn = len(g.nodes())
+        if nn < 200:
+            print("Passender Graph")
+            mm = len(g.edges())
+            ss = min(int(nn / 2), samplesize)
+            f_num = kk * fr
+            fn = min(int(mm / 4), f_num)
+            if fn == int(mm / 4):
+                print("SKIP ITERATION")
+                continue
+            print("Fehleranzahl: ", fn)
+
+            # Prüfe, ob der Graph planar ist
+            is_planar, planar_embedding = nx.check_planarity(g)
+            if not is_planar:
+                print(f"Graph {i} ist nicht planar, wird übersprungen.")
+                continue
+
+            # Wandle den planaren Graph in eine PlanarEmbedding-Struktur um
+            planar_graph = nx.Graph(planar_embedding)  # Falls nötig
+            planar_embedding = convert_to_planar_embedding(planar_graph)
+
+            # Erstelle die Fails basierend auf dem gewählten Angriffstyp
+            if attack == "RANDOM":
+                print("Ausgewähltes Fehlermuster: RANDOM")
+                fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), fn))
+            elif attack == "CLUSTER":
+                print("Ausgewähltes Fehlermuster: CLUSTER")
+                fails = targeted_attacks_against_clusters(planar_embedding, fn)
+            else:
+                raise ValueError("Unbekannter Angriffstyp: " + attack)
+
+            # Setze die Konnektivität und speichere die Fails im Graph
+            planar_embedding.graph['k'] = kk
+            planar_embedding.graph['fails'] = fails
+
+            # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
+            invalid_fails = [edge for edge in fails if edge not in planar_embedding.edges()]
+            if invalid_fails:
+                print("[run_zoo_with_planar] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
+                print("Ungültige Fails:", invalid_fails)
+                input("Checke die Fehler Liste")
+
+            set_parameters([nn, rep, kk, ss, fn, seed, name + "zoo-"])
+            print("Node Number: ", nn)
+            print("Connectivity: ", kk)
+            print("Failure Number: ", fn)
+
+            # Shuffle and run experiments
+            shuffle_and_run(planar_embedding, out, seed, rep, str(i))
+            set_parameters(original_params)
+            
+            # Ausgabe der Zwischenergebnisse
+            for (algoname, algo) in algos.items():
+                index_1 = len(algo) - rep
+                index_2 = len(algo)
+                print('intermediate result: %s \t %.5E' % (algoname, np.mean(algo[index_1:index_2])))
+
 
 # Anpassung der run_planar Funktion
 def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
@@ -227,6 +304,15 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         
         for i in range(rep):
             run_planar(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
+
+        out.close()
+    
+    if switch in ["zoo", "all"]:
+        filename = f"results/benchmark-zoo-{method.lower()}-{attack}-FR{main_loop_index}"
+        out = start_file(filename)
+
+        for i in range(rep):
+            run_zoo(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
 
         out.close()
 
