@@ -1,0 +1,892 @@
+Wed Nov 27 12:27:38 2024
+[main] i :  1
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 3
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 3
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 49.465402603149414
+start time Wed Nov 27 12:27:38 2024
+end time Wed Nov 27 12:28:28 2024
+Wed Nov 27 12:28:28 2024
+[main] i :  2
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 6
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 6
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.235069274902344
+start time Wed Nov 27 12:28:28 2024
+end time Wed Nov 27 12:29:14 2024
+Wed Nov 27 12:29:14 2024
+[main] i :  3
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 9
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 9
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.691131591796875
+start time Wed Nov 27 12:29:14 2024
+end time Wed Nov 27 12:30:01 2024
+Wed Nov 27 12:30:01 2024
+[main] i :  4
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 12
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 12
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 45.18139839172363
+start time Wed Nov 27 12:30:01 2024
+end time Wed Nov 27 12:30:46 2024
+Wed Nov 27 12:30:46 2024
+[main] i :  5
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 15
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 15
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.29211759567261
+start time Wed Nov 27 12:30:46 2024
+end time Wed Nov 27 12:31:32 2024
+Wed Nov 27 12:31:32 2024
+[main] i :  6
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 18
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 18
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 45.803788900375366
+start time Wed Nov 27 12:31:32 2024
+end time Wed Nov 27 12:32:18 2024
+Wed Nov 27 12:32:18 2024
+[main] i :  7
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 21
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 21
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.768741846084595
+start time Wed Nov 27 12:32:18 2024
+end time Wed Nov 27 12:33:05 2024
+Wed Nov 27 12:33:05 2024
+[main] i :  8
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 24
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 24
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.411031007766724
+start time Wed Nov 27 12:33:05 2024
+end time Wed Nov 27 12:33:51 2024
+Wed Nov 27 12:33:51 2024
+[main] i :  9
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 27
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 27
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 50.727925300598145
+start time Wed Nov 27 12:33:51 2024
+end time Wed Nov 27 12:34:42 2024
+Wed Nov 27 12:34:42 2024
+[main] i :  10
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 30
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 30
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 46.481001138687134
+start time Wed Nov 27 12:34:42 2024
+end time Wed Nov 27 12:35:28 2024
+Wed Nov 27 12:35:28 2024
+[main] i :  11
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 33
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing in faces started for :  16  ->  22
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  22  to  18
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 33
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing in faces started for :  16  ->  21
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  18
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 47.36058449745178
+start time Wed Nov 27 12:35:28 2024
+end time Wed Nov 27 12:36:16 2024
+Wed Nov 27 12:36:16 2024
+[main] i :  12
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 36
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing in faces started for :  16  ->  22
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  22  to  18
+Source :  22  Destination :  18
+Edp :  [22, 15, 44, 5, 12, 18]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  15
+ 
+Source :  22  Destination :  18
+Edp :  [22, 15, 44, 5, 12, 18]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  10
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  45
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 36
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing in faces started for :  41  ->  18
+Special case 0  Fail Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing in faces started for :  16  ->  21
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  21  to  18
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 2 <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
+time elapsed 48.26841473579407
+start time Wed Nov 27 12:36:16 2024
+end time Wed Nov 27 12:37:04 2024
+Wed Nov 27 12:37:04 2024
+[main] i :  13
+Ausgewähltes Fehlermuster : RANDOM
+[planar_experiments] root: 18
+experiment for  <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+Done with precomputation algo
+Start routing
+[SimulateGraph] len(fails): 39
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  13  ->  18
+Routing OTCP via EDPs started for  13  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  41  ->  18
+Routing OTCP via EDPs started for  41  to  18
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  16  ->  18
+Routing OTCP via EDPs started for  16  to  18
+Routing in faces started for :  16  ->  22
+ 
+Routing via second Faces started
+Routing success via Faces
+------------------------------------------------------
+ 
+Routing started for  22  to  18
+Source :  22  Destination :  18
+Edp :  [22, 15, 44, 5, 12, 18]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  15
+ 
+Source :  22  Destination :  18
+Edp :  [22, 15, 44, 5, 12, 18]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  10
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  45
+ 
+Source :  22  Destination :  18
+Edp :  [22, 45, 10, 35, 5, 41, 26, 18]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  22
+ 
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+After simulate
+success 3 <function one_tree_with_closeness_checkpoint_pre at 0x7505c0d86660>
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_pre at 0x7505c0d86700>
