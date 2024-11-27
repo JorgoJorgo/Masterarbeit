@@ -13,7 +13,7 @@ algos = {#'One Tree PE': [one_tree_pre, RouteOneTree],
         # 'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-         'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        # 'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
          'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],}
 
 def one_experiment(g, seed, out, algo):
@@ -364,7 +364,7 @@ if __name__ == "__main__":
             attack = str(sys.argv[6])
 
         #für komplette randomness:
-        seed = int(time.time())
+        #seed = int(time.time())
         random.seed(seed)
         set_parameters([n, rep, k, samplesize, f_num, seed, "benchmark-"])
 

@@ -240,9 +240,9 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
 #but it is the same as the routeonetree
 def RouteOneTree_CP (s,d,fails,paths):
     
-    #print("FAIL NUMBER : ", len(fails))
+    print("RouteOneTreeCP] Checkpoint 0")
     if s != d :
-        
+        print("RouteOneTreeCP] Checkpoint 1")
         currentNode = -1
         edpIndex = 0
         detour_edges = []
@@ -510,6 +510,7 @@ def RouteOneTree_CP (s,d,fails,paths):
         print('------------------------------------------------------')
         return (True, hops, switches, detour_edges)
     else: 
+        print("RouteOneTreeCP] Checkpoint 99")
         return (True, 0, 0, [])
         
         
@@ -620,6 +621,9 @@ def RouteFaces(s,d,fails,faces):
         faces[len(faces)-1].add_edge(s, d)
         
     except: #special case where there are no faces for s (special case that didnt get tested earlier and only happens in topology zoo graphs)
+        print("Special case PRE")
+        for face in faces:
+            print(face.nodes())
         faces = [nx.PlanarEmbedding()]
         faces[0].add_edge(s, d)
 
@@ -635,8 +639,41 @@ def RouteFaces(s,d,fails,faces):
                 faces[len(faces) - 1].nodes[d]['pos']
             )
     except:
-        print("Special case 0  Fail Face Routing")
-        return (True, hops, switches, detour_edges)
+        print("Special case 0 Fail Face Routing")
+        print("[RouteFaces]:", s, "->", d)
+        print("[RouteFaces] Special Case Faces:")
+        for face in faces:
+            print(face.nodes())
+        
+        # Zeichne den Graphen mit farbig markierten Knoten für source und destination
+        graph_to_draw = faces[len(faces) - 1]
+        if len(graph_to_draw.nodes) > 0:  # Prüfen, ob der Graph Knoten enthält
+            plt.figure(figsize=(8, 6))
+
+            # Node positions
+            pos = nx.get_node_attributes(graph_to_draw, 'pos')
+            if not pos:
+                # Falls keine Positionen vorhanden sind, automatische Layout-Positionen erzeugen
+                pos = nx.spring_layout(graph_to_draw)
+
+            # Farben für die Knoten festlegen
+            node_colors = []
+            for node in graph_to_draw.nodes:
+                if node == s:
+                    node_colors.append('red')  # Source ist rot
+                elif node == d:
+                    node_colors.append('blue')  # Destination ist blau
+                else:
+                    node_colors.append('lightgray')  # Andere Knoten sind hellgrau
+            
+            # Graphen zeichnen
+            nx.draw(
+                graph_to_draw, pos, with_labels=True, node_color=node_colors, edge_color="gray", node_size=500
+            )
+            plt.title(f"Special Case Graph for {s} -> {d}")
+            plt.show()
+        else:
+            print("Graph has no nodes to visualize.")
     
     
 

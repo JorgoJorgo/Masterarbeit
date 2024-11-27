@@ -1,4 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Wed Nov 27 12:36:16 2024
-Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 32, 2, 38, 1.000000, 0.001209, 26.388131
-Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 7, 2, 13, 0.666667, 0.001336, 20.565147

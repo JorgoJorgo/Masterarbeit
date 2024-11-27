@@ -470,74 +470,73 @@ def one_tree_with_closeness_checkpoint_pre(graph):
 def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
     debug = False
     paths = {}
-    
+
     for source in graph.nodes:
-        #print("[OTC Random Pre] check")
         for destination in graph.nodes:
-            
             if source != destination:
-                
                 if source not in paths:
                     paths[source] = {}
-                
-                #now compute the chosen checkpoint  
-                #first get the longest edp s->d    
+
+                # Compute all EDPs between source and destination
                 edps = all_edps(source, destination, graph)
-                
                 edps.sort(key=len)
-                
-                shortest_edp = edps[0]
-                
-                #special case if the s,d pair is connected and this is the only edp
-                if(len(shortest_edp) == 2):
-                    #print("Special case for : ", source, "-", destination)
-                    paths[source][destination] = {
-                                                'cp': destination,
-                                                'faces_cp_to_s': [], 
-                                                'edps_cp_to_s': [[source,destination]],
-                                                'tree_cp_to_d':[], 
-                                                'edps_cp_to_d': [[source,destination]],
-                                                'edps_s_to_d':[[source,destination]]
-                                            }
+
+                # Filter EDPs to ensure they are at least 3 nodes long
+                valid_edps = [edp for edp in edps if len(edp) >= 3]
+
+                # Handle special case where no valid EDP >= 3 is found
+                if not valid_edps:
+                    # Handle the case where source and destination are directly connected (len == 2)
+                    if len(edps[0]) == 2:
+                        all_faces_special = find_faces(graph)
+                        fitting_faces_special = []
+
+                        for face in all_faces_special:
+                            if source in face.nodes() and destination in face.nodes():
+                                fitting_faces_special.append(face)
+
+                        paths[source][destination] = {
+                            'cp': destination,
+                            'faces_cp_to_s': fitting_faces_special,
+                            'edps_cp_to_s': [[source, destination]],
+                            'tree_cp_to_d': [],
+                            'edps_cp_to_d': [[source, destination]],
+                            'edps_s_to_d': [[source, destination]]
+                        }
                     continue
-                
-                #then select the middle node of the longest_edp
-               #p("[OneTreeRandomCheckpoint] longestEDP: ", longest_edp)
-                cp = shortest_edp[ int(len(shortest_edp)/2)]
-               #p("[OneTreeRandomCheckpoint] Checkpoint: ",cp)
-                #then get the edps + longest_edps_cp_s and the longest_edps_cp_d
-                
+
+                # Select the shortest valid EDP (at least 3 nodes long)
+                shortest_edp = valid_edps[0]
+
+                # Select the middle node of the shortest EDP as checkpoint (cp)
+                cp = shortest_edp[len(shortest_edp) // 2]
+
+                # Compute EDPs from cp to source and cp to destination
                 edps_cp_to_s = all_edps(cp, source, graph)
-                
                 edps_cp_to_d = all_edps(cp, destination, graph)
-                
+
                 edps_cp_to_s.sort(key=len)
-                
                 edps_cp_to_d.sort(key=len)
-                
-                #print(" ")
-                
-                #print("(CP PRE, MIDDLE 2) EDPS CP -> D for : (", source ,",", cp ,"," , destination , ") : ", edps_cp_to_d)
-                            
-                
-                #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
-                
-                faces_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True).copy()
-                
-                tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False).copy()
-                
-                #bc the tree cp->s got build reverse direction the edges need to be reversed again
-                #data structure to give the needed information for the routing (edps, trees, checkpoint)
-                
+
+                # Build trees and faces
+                faces_cp_to_s = one_tree_with_checkpoint(
+                    cp, source, graph, edps_cp_to_s[-1], True
+                ).copy()
+
+                tree_cp_to_d = one_tree_with_checkpoint(
+                    cp, destination, graph, edps_cp_to_d[-1], False
+                ).copy()
+
+                # Store the result in the paths dictionary
                 paths[source][destination] = {
-                                                'cp': cp,
-                                                'faces_cp_to_s': faces_cp_to_s, 
-                                                'edps_cp_to_s': edps_cp_to_s,
-                                                'tree_cp_to_d': tree_cp_to_d, 
-                                                'edps_cp_to_d': edps_cp_to_d,
-                                                'edps_s_to_d': edps
-                                            }
-                                    
+                    'cp': cp,
+                    'faces_cp_to_s': faces_cp_to_s,
+                    'edps_cp_to_s': edps_cp_to_s,
+                    'tree_cp_to_d': tree_cp_to_d,
+                    'edps_cp_to_d': edps_cp_to_d,
+                    'edps_s_to_d': edps
+                }
+
     return paths
 
 
