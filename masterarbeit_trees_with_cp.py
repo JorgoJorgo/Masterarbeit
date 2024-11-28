@@ -31,7 +31,7 @@ def one_tree_with_middle_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
-        print("[OTC Random Pre] check")
+        #print("[OTC Random Pre] check")
         for destination in graph.nodes:
             
             if source != destination:
