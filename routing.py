@@ -1119,7 +1119,7 @@ def RouteMultipleTrees(s,d,fails,paths):
     
     print("FAIL ANZAHL : ", len(fails))
     #########################################   FOR DEBUG ONLY                #####################################################
-    skip_edps = True
+    skip_edps = False
     skip_trees = False
     if(skip_edps):
         print("Skipping the EDPs")
@@ -1638,6 +1638,7 @@ def getRank(tree, el):
 # link failure set fails
 # arborescence decomposition T
 def RouteDetCirc(s, d, fails, T):
+    print("[RouteDetCirc] routing started for", s, "->", d)
     curT = 0
     detour_edges = []
     hops = 0
@@ -1654,6 +1655,11 @@ def RouteDetCirc(s, d, fails, T):
         if len(nxt) != 1:
             print("Bug: too many or to few neighbours")
         nxt = nxt[0]
+
+        print("[RouteDetCirc] current s:", s, "and fails with s:", [fail for fail in fails if s in fail])
+
+        
+        
         if (nxt, s) in fails or (s, nxt) in fails:
             curT = (curT+1) % k
             switches += 1
@@ -1663,7 +1669,9 @@ def RouteDetCirc(s, d, fails, T):
             s = nxt
             hops += 1
         if hops > n or switches > k*n:
+            print("[RouteDetCirc] Routing Failed with RouteDetCirc")
             return (True, -1, switches, detour_edges)
+    print("[RouteDetCirc] Routing Success with RouteDetCirc")
     return (False, hops, switches, detour_edges)
 
 #select next arborescence to bounce

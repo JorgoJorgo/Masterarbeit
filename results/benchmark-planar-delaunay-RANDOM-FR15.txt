@@ -1,8 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Wed Nov 27 16:18:39 2024
-Delaunay, 70, 5, One Tree Middle Checkpoint PE, 1, 8, 4, 12, 0.333333, 0.002855, 68.699292
-Delaunay, 70, 5, One Tree Degree Checkpoint PE, 1, 8, 3, 14, 0.500000, 0.002793, 64.922095
-Delaunay, 70, 5, One Tree Shortest EDP Checkpoint PE, 1, 10, 3, 14, 0.500000, 0.002837, 66.092864
-Delaunay, 70, 5, One Tree Middle Checkpoint PE, 1, 8, 4, 12, 0.333333, 0.002840, 63.826162
-Delaunay, 70, 5, One Tree Degree Checkpoint PE, 1, 8, 3, 14, 0.500000, 0.002740, 68.841808
-Delaunay, 70, 5, One Tree Shortest EDP Checkpoint PE, 1, 10, 3, 14, 0.500000, 0.002817, 65.280206

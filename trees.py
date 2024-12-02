@@ -40,7 +40,7 @@ def multiple_trees_pre(graph):
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
-                print("Start building trees with MultipleTrees Base for ", source , " to ", destination)
+                #print("Start building trees with MultipleTrees Base for ", source , " to ", destination)
                 
                 trees = multiple_trees(source,destination,graph,edps)
                 
@@ -56,7 +56,7 @@ def multiple_trees_pre(graph):
                     all_tree_edge_number = all_tree_edge_number + len(tree.edges)
                     edges_of_this_run = edges_of_this_run + len(tree.edges)
                 count = count + 1
-                print("Die Kanten dieses Laufs (normal) : " , edges_of_this_run)
+                #print("Die Kanten dieses Laufs (normal) : " , edges_of_this_run)
                 print(" ")
                 if source in paths:
                     paths[source][destination] = { 'trees': trees, 'edps': edps}
@@ -64,8 +64,8 @@ def multiple_trees_pre(graph):
                     paths[source] = {}
                     paths[source][destination] = {'trees': trees, 'edps': edps}
 
-    print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
+    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
+    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
     return paths
 

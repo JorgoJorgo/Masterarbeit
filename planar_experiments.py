@@ -1,24 +1,27 @@
 import networkx as nx
 import random
 import time
+from arborescences import reset_arb_attribute
+from extra_links import DegreeMaxDAG, RouteDetCircSkip
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
-from routing import RouteOneTree, RouteWithOneCheckpointOneTree
+from routing import PrepareSQ1, RouteDetCirc, RouteMultipleTrees, RouteOneTree, RouteSQ1, RouteWithOneCheckpointOneTree, SimulateGraph, Statistic
 from masterarbeit_trees_with_cp import one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
 import matplotlib.pyplot as plt
 DEBUG = True
 
 algos = {
-        'MaxDAG': [DegreeMaxDAG, RouteDetCircSkip],
-        'SquareOne':[PrepareSQ1,RouteSQ1],
+        'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
+        #'SquareOne':[PrepareSQ1,RouteSQ1],
         'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
         #'One Tree PE': [one_tree_pre, RouteOneTree],
-         'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        # 'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        # 'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],}
+         'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
+        }
 
 def one_experiment(g, seed, out, algo):
     [precomputation_algo, routing_algo] = algo[:2]
@@ -37,7 +40,11 @@ def one_experiment(g, seed, out, algo):
         return score
 
     print("Start routing")
-    stat = Statistic(routing_algo, str(routing_algo))
+    if routing_algo == RouteDetCircSkip: # or routing_algo == KeepForwardingRouting:# braucht der DAG Algorithmus (entnommen aus alten Experiment Dateien)
+        g_orig = g.to_undirected()
+        stat = Statistic(routing_algo, str(routing_algo), g_orig)
+    else:
+        stat = Statistic(routing_algo, str(routing_algo))
     stat.reset(g.nodes())
     random.seed(seed)
     t = time.time()
@@ -342,13 +349,13 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    f_num = 14 * 3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
-    for i in range(1, 50):
-        f_num = 3 + f_num
-        n = 20
+    f_num = 50*5 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
+    for i in range(50, 100):
+        f_num = 5 + f_num
+        n = 80
         k = 5
-        samplesize = 1
-        rep = 1
+        samplesize = 10
+        rep = 2
         switch = 'all'
         attack = "CLUSTER" # RANDOM or CLUSTER
 

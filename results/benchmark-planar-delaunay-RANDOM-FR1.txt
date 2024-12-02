@@ -1,3 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Thu Nov 28 15:31:06 2024
-Delaunay, 70, 5, MaxDAG, 1
