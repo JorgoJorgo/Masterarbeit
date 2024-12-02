@@ -13,3 +13,6 @@ Loop over samplesize is runing
 Loop over stats is runing
 Loop over samplesize is runing
 Loop over stats is runing
+After simulate
+no success_ratio <function DegreeMaxDAG at 0x73c4d7bff920>
+experiment for  <function multiple_trees_pre at 0x73c4d7b3b740>
