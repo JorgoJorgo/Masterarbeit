@@ -72,6 +72,7 @@ def shuffle_and_run(g, out, seed, rep, x):
     count = random.randint(1, rep)
     g.graph['root'] = nodes[count % len(nodes)]
     print("[planar_experiments] root:", g.graph['root'])
+    print("[planar_experiments] len(edges):", len(g.edges()))
     for (algoname, algo) in algos.items():
         if(algoname in ["One Tree PE", "MaxDAG", "MultipleTrees","SquareOne"] ): #da Algorithmen ohne GeoRouting die Eigenschaften der Planar Embeddings nicht benötigen
             converted_back_to_graph = convert_planar_embedding_to_graph(g)

@@ -50,14 +50,14 @@ def multiple_trees_pre(graph):
                 for tree in trees:    
                     i = i + 1
                 
-                print(" ")
+                #print(" ")
                 edges_of_this_run = 0 
                 for tree in trees:
                     all_tree_edge_number = all_tree_edge_number + len(tree.edges)
                     edges_of_this_run = edges_of_this_run + len(tree.edges)
                 count = count + 1
                 #print("Die Kanten dieses Laufs (normal) : " , edges_of_this_run)
-                print(" ")
+                #print(" ")
                 if source in paths:
                     paths[source][destination] = { 'trees': trees, 'edps': edps}
                 else:
