@@ -2,7 +2,7 @@ import networkx as nx
 import random
 import time
 from arborescences import reset_arb_attribute
-from extra_links import DegreeMaxDAG, RouteDetCircSkip
+from extra_links import DegreeMaxDAG, GreedyMaximalDAG, RouteDetCircSkip
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
@@ -18,7 +18,7 @@ algos = {
         #'One Tree PE': [one_tree_pre, RouteOneTree],
         # 'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-         'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         }
@@ -350,9 +350,9 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    f_num = 50*5 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
-    for i in range(50, 100):
-        f_num = 5 + f_num
+    f_num = 30*3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
+    for i in range(30, 100):
+        f_num = 3 + f_num
         n = 80
         k = 5
         samplesize = 10
