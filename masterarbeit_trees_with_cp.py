@@ -542,7 +542,6 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
 
 
 ############################################################################################################################
-# Andere benötigte Importe und Funktionen...
 
 def find_faces(G):
     """

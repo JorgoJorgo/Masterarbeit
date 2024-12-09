@@ -1328,7 +1328,7 @@ def print_paths(paths):
             print(f"  Destination: {destination}")
             for key, value in values.items():
                 print(f"    {key}: {value}")
-        print()  # Leerzeile für bessere Lesbarkeit
+        print()
 ###########################################################################################################################################################
 
 
@@ -2114,6 +2114,8 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
                 x = dist[s]
                 dist[s] = nx.shortest_path_length(g,source=s,target=d)
                 #print(len(fails),x,dist[s]) #DEBUG
+                print("[SimulateGraph targeted] len(fails):", len(fails))
+                print("[SimulateGraph targeted] fails:", fails)
             if (s == d) or (not s in dist):
                 stat.fails += 1
                 continue

@@ -1,6 +1,8 @@
 import networkx as nx
 import random
 import time
+
+from networkx import node_connectivity
 from arborescences import reset_arb_attribute
 from extra_links import DegreeMaxDAG, GreedyMaximalDAG, RouteDetCircSkip
 from objective_function_experiments import *
@@ -14,13 +16,13 @@ DEBUG = True
 algos = {
         'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
-        'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
+        #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
         #'One Tree PE': [one_tree_pre, RouteOneTree],
         # 'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
+        #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         }
 
 def one_experiment(g, seed, out, algo):
@@ -292,7 +294,7 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
             raise ValueError("Unbekannter Angriffstyp: " + attack)
 
         # Setze die Konnektivität und speichere die Fails im Graph
-        planar_embedding.graph['k'] = 5  # Beispiel für Basis-Konnektivität
+        planar_embedding.graph['k'] = node_connectivity(planar_graph)  # Beispiel für Basis-Konnektivität
         planar_embedding.graph['fails'] = fails
 
         # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
@@ -307,8 +309,8 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
         #print("[run_planar] nodes :", planar_embedding.nodes)
         #print("[run_planar] len(edges) : ", len(planar_embedding.edges))
         #print("[run_planar] edges :", planar_embedding.edges)
-        #print("[run_planar] len(fails) : ", len(fails))
-        #print("[run_planar] fails :", fails)
+        print("[run_planar] len(fails) : ", len(fails))
+        print("[run_planar] fails :", fails)
 
         # Führe die Experimente durch
         shuffle_and_run(planar_embedding, out, seed, rep, method)
