@@ -7,6 +7,7 @@ from typing import List, Any, Union
 import random
 from matplotlib.patches import Patch
 import networkx as nx
+from networkx import PlanarEmbedding
 import numpy as np
 import itertools
 from itertools import combinations, permutations
@@ -234,7 +235,7 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
 
 
 def find_faces_multiple_trees(trees_cp_to_s):
-    
+    faces = []
     
     return faces
 
@@ -368,13 +369,13 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
     #end for
     
 
-    print("[OneTreeCheckpoint] Plotting before truncation Tree...")
-    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
+    #print("[OneTreeCheckpoint] Plotting before truncation Tree...")
+    #pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
 
-    plt.figure(figsize=(8, 8))
-    nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='orange')
-    plt.title("Tree before Truncation Tree")
-    plt.show()
+    # plt.figure(figsize=(8, 8))
+    # nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='orange')
+    # plt.title("Tree before Truncation Tree")
+    # plt.show()
 
     changed = True 
     
@@ -385,71 +386,86 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
         remove_redundant_paths(source, destination, tree, graph)
         changed = tree.order() != old_tree.order() # order returns the number of nodes in the graph.
     
-    print("[OneTreeCheckpoint] Plotting after truncation Tree...")
-    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
+    #print("[OneTreeCheckpoint] Plotting after truncation Tree...")
+    #pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
 
-    plt.figure(figsize=(8, 8))
-    nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='blue')
-    plt.title("Tree after Truncation Tree")
-    plt.show()
+    # plt.figure(figsize=(8, 8))
+    # nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='blue')
+    # plt.title("Tree after Truncation Tree")
+    # plt.show()
 
-    if reverse:
-        # the current tree has:
+    #before ranking the tree, if the the is build for cp->s the edges need to be flipped
+    if(reverse):
+
+        #print("Checkpoint 1")
+        #the current tree has:
         # source = cp (from the global graph)
         # destination = source (from the global graph)
 
-        connect_leaf_to_destination(tree, source, destination)
+        connect_leaf_to_destination(tree,source,destination)
 
-        # in order to find and traverse faces the tree need to be an undirected graph
+        #in order to find and traverse faces the tree need to be an undirected graph
         undirected_tree = tree.to_undirected()
-        tree = undirected_tree
 
-        # Kopiere Positionen vom graph in den tree
-        for node in tree.nodes:
-            if node in graph.nodes and 'pos' in graph.nodes[node]:
-                tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+        tree_planar_embedding = PlanarEmbedding()
 
-        # Plot des aktuellen Trees
-        print("[OneTreeCheckpoint] Plotting Current Tree...")
-        pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
+        # Kopiere die Knoten und ihre Attribute (einschließlich 'pos') aus dem tree
+        for node, data in tree.nodes(data=True):
+            tree_planar_embedding.add_node(node)
+            tree_planar_embedding.nodes[node]['pos'] = data.get('pos', None)
 
-        plt.figure(figsize=(8, 8))
-        nx.draw(tree, pos, with_labels=True, node_color='lightgreen', edge_color='blue')
-        plt.title("Current Tree")
-        plt.show()
+        #print("Checkpoint 2")
 
-        # Umwandeln in planar embedding und Gesichter finden
-        planar_embedding_tree = convert_to_planar_embedding(tree)
+        # Kopiere die Kanten aus dem tree
+        for u, v in tree.edges:
+            tree_planar_embedding.add_edge(u, v)
 
+        #print("Checkpoint 3")
+        # Debug-Ausgaben, um die Struktur und den Typ der neuen Variable zu überprüfen
+        #print("[OneTreeCheckpoint] Typ von tree_planar_embedding:", type(tree_planar_embedding))
+        #print("[OneTreeCheckpoint] Typ von graph:", type(graph))
+        #print("[OneTreeCheckpoint] Beispiel für tree_planar_embedding.nodes(data=True):", list(tree_planar_embedding.nodes(data=True))[:5])
+        
+        #print("Checkpoint 4")
 
-        print("[OneTreeCheckpoint] Plotting Planar Embedding Tree...")
-        pos = {node: planar_embedding_tree.nodes[node]['pos'] for node in planar_embedding_tree.nodes if 'pos' in planar_embedding_tree.nodes[node]}  # Positionen für den Tree
+        faces_graph = find_faces(graph)
+        
+        #print("Checkpoint 5")
 
-        plt.figure(figsize=(8, 8))
-        nx.draw(planar_embedding_tree, pos, with_labels=True, node_color='lightgreen', edge_color='blue')
-        plt.title("Planar Embedding Tree")
-        plt.show()
+        faces = find_faces(graph) #ich hole mir alle faces des graphen
 
+        #faces_tree = find_faces(tree_planar_embedding)
+        
+        # print("Checkpoint 6")
+        # for face in faces_graph:
+        #     print("graph_face:", face.nodes)
 
-        faces = find_faces(planar_embedding_tree)
+        #print(" ")
+        tree_nodes = set(tree.nodes)
 
-        # Plot der Faces
-        print("[OneTreeCheckpoint] Plotting Faces...")
-        face_graph = nx.Graph()
-        for face in faces:
-            nodes = list(face.nodes())  # Knoten des Faces
-            edges = [(nodes[i], nodes[(i + 1) % len(nodes)]) for i in range(len(nodes))]  # Zyklische Kanten erzeugen
-            face_graph.add_edges_from(edges)  # Kanten zum Face-Graph hinzufügen
+        # faces_graph ist eine Liste der Faces
+        last_face = faces_graph[-1]
+        filtered_faces = [
+            face for face in faces_graph[:-1]  # Alle Faces außer dem letzten
+            if set(face.nodes).issubset(tree_nodes)
+        ]
 
-        # Positionen für die Faces (von tree übernehmen, falls vorhanden)
-        pos_faces = {node: tree.nodes[node]['pos'] for node in face_graph.nodes if 'pos' in tree.nodes[node]}
+        filtered_faces.append(last_face) # dann schmeisse ich alle faces raus die nicht nur aus knoten des baums bestehen
 
-        plt.figure(figsize=(8, 8))
-        nx.draw(face_graph, pos_faces, with_labels=True, node_color='lightblue', edge_color='gray')
-        plt.title("Faces in the Graph")
-        plt.show()
+        # Ausgabe der gefilterten Faces
+        #for face in filtered_faces:
+        #    print("filtered_graph_face:", face.nodes)
 
-        input("")  # Wartet auf Nutzereingabe
+        # for face in faces_tree:
+        #     print("tree_face:", face)
+
+        # Plotten der Faces für graph
+        #plot_faces(graph, filtered_faces, title="Faces from Graph")
+
+        # Plotten der Faces für tree_planar_embedding
+        # plot_faces(tree_planar_embedding, faces_tree, title="Faces from Tree Planar Embedding")
+        # faces = faces_tree
+        #input("warte")
         return faces
 
 
@@ -842,7 +858,7 @@ def find_faces(G):
     face_nodes = ()
     half_edges_in_faces = set()
     faces = []
-
+    #print("Checkpoint 5.1")
     pos = {node: G.nodes[node]['pos'] for node in G.nodes}  # Verwende die Positionen aus dem Graphen
 
     for node in G.nodes:
@@ -852,6 +868,7 @@ def find_faces(G):
                 try:
                     face_nodes = G.traverse_face(node, dest, found_half_edges)
                 except Exception as e:
+                    #print("Checkpoint 5.1 ERROR")
                     nx.draw(G, pos, with_labels=True, node_size=700, node_color="red", font_size=8)
                     plt.show()
                     traceback.print_exc()
@@ -865,7 +882,7 @@ def find_faces(G):
                     face_graph.nodes[face_node]['pos'] = pos[face_node]
 
                 faces.append(face_graph)
-
+    #print("Checkpoint 5.2")
     # Den gesamten Graphen als letztes Face hinzufügen
     graph_last = G.copy()
     for node in graph_last:
@@ -921,3 +938,43 @@ def convert_to_planar_embedding(graph):
     for node, data in graph.nodes(data=True):
         embedding.add_node(node, **data)
     return embedding
+
+def plot_faces(G, faces, title="Faces Plot"):
+    """
+    Visualisiert die Flächen eines Graphen.
+    
+    Args:
+    - G: Der Graph (Graph oder PlanarEmbedding), aus dem die Faces stammen.
+    - faces: Liste der Faces, entweder als Knotenlisten oder Subgraphen.
+    - title: Titel für den Plot.
+    """
+    # Extrahiere die Positionen der Knoten
+    pos = nx.get_node_attributes(G, 'pos')
+    if not pos:
+        raise ValueError("Der Graph enthält keine 'pos'-Attribute für die Knoten.")
+    
+    # Zeichne den Graphen
+    plt.figure(figsize=(8, 8))
+    nx.draw(G, pos, with_labels=True, node_size=700, node_color="lightblue", edge_color="gray")
+    
+    # Zeichne die Flächen
+    colors = ['blue', 'red', 'green', 'purple', 'orange', 'pink']
+    for i, face in enumerate(faces):
+        if i == len(faces)-1:
+            continue
+        # Wenn die Flächen als Listen von Knoten gegeben sind
+        if isinstance(face, list):
+            face_edges = [(face[j], face[(j + 1) % len(face)]) for j in range(len(face))]
+        # Wenn die Flächen als Subgraphen gegeben sind
+        elif isinstance(face, nx.Graph):
+            face_edges = list(face.edges)
+        else:
+            raise ValueError("Unbekanntes Format der Face-Daten.")
+
+        # Zeichne die Face-Kanten
+        nx.draw_networkx_edges(G, pos, edgelist=face_edges, edge_color=colors[i % len(colors)], width=2)
+    
+    plt.title(title)
+    plt.show()
+
+

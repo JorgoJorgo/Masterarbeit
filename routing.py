@@ -9,6 +9,7 @@ from arborescences import *
 from extra_links import *
 import glob
 
+from faces import RouteFaces2
 from trees import get_parent_node
 
 #global variables in this file
@@ -43,16 +44,6 @@ def set_routing_params(params):
 # the face-routing from s -> cp and after that the tree-routing from cp -> d
 def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     
-    
-    ####################ONLY FOR RUNNING WITH CLUSTERED FAILURES VIA THE CUSTOM RUN COMMAND#################
-    # # simulating clustered failures by trying to route always by starting at a specific source
-    # # Assuming paths is a dictionary with keys as possible values
-    # keys = list(paths.keys())
-    # # Select a random key for s
-    # s = keys[0]
-    # # Select a different random key for d
-    # d = keys[len(keys)-1]
-    ##################################
     print()
     print("Routing with a checkpoint started for : ", s , " -> " , d) 
     #print("Fails in CP Routing : ", fails)
@@ -156,7 +147,8 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     #now the first step of the routing consists of face-routing from S to CP
     
     routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces(s,cp,fails,faces_cp_to_s)
-    
+    #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces2(s,cp,fails,faces_cp_to_s)
+
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
         print(" ")
@@ -867,12 +859,7 @@ def RouteFaces(s,d,fails,faces):
 
     #jetzt muss das Face gefunden werden, welches beide knoten enthält
     #for face in faces:
-        
-    #    print(list(face))
-        
     for i in range(len(faces)-2):
-        
-        #print("i :", i)
         
         if(faces[i].has_node(best_intersection[2]) and faces[i].has_node(best_intersection[3])):
 

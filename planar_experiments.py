@@ -353,8 +353,8 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    f_num = 30*3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
-    for i in range(30, 100):
+    f_num = 24*3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
+    for i in range(24, 100):
         f_num = 3 + f_num
         n = 80
         k = 5
