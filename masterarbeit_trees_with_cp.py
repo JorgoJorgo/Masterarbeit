@@ -309,8 +309,15 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 
                 #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
                 
-                faces_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True).copy()
+                #faces_cp_to_s, tree_planar_embedding_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
+                faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
                 
+                #print("[OneTreeCheckpoint] Typ von tree_planar_embedding:", type(tree_planar_embedding_cp_to_s))
+                #print("[OneTreeCheckpoint] Typ von graph:", type(tree_cp_to_s))
+
+                #neighbors = list(tree_cp_to_s.neighbors(source))
+                #input(f"[OTCP Pre] Untersuche die Nachbarn: {neighbors}")
+
                 tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False).copy()
                 
                 #bc the tree cp->s got build reverse direction the edges need to be reversed again
@@ -322,7 +329,9 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                                 'edps_cp_to_s': edps_cp_to_s,
                                                 'tree_cp_to_d': tree_cp_to_d, 
                                                 'edps_cp_to_d': edps_cp_to_d,
-                                                'edps_s_to_d': edps
+                                                'edps_s_to_d': edps,
+                                                #'tree_planar_embedding_cp_to_s':tree_planar_embedding_cp_to_s,
+                                                'tree_cp_to_s':tree_cp_to_s
                                             }
                                     
     return paths
@@ -397,7 +406,6 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
     #before ranking the tree, if the the is build for cp->s the edges need to be flipped
     if(reverse):
 
-        #print("Checkpoint 1")
         #the current tree has:
         # source = cp (from the global graph)
         # destination = source (from the global graph)
@@ -409,38 +417,20 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
 
         tree_planar_embedding = PlanarEmbedding()
 
-        # Kopiere die Knoten und ihre Attribute (einschließlich 'pos') aus dem tree
-        for node, data in tree.nodes(data=True):
-            tree_planar_embedding.add_node(node)
-            tree_planar_embedding.nodes[node]['pos'] = data.get('pos', None)
-
-        #print("Checkpoint 2")
+        for node in graph.nodes:
+            if node in undirected_tree.nodes:
+                undirected_tree.nodes[node]['pos']=graph.nodes[node]['pos']
+                tree_planar_embedding.add_node(node)
+                tree_planar_embedding.nodes[node]['pos']=graph.nodes[node]['pos']
 
         # Kopiere die Kanten aus dem tree
         for u, v in tree.edges:
             tree_planar_embedding.add_edge(u, v)
 
-        #print("Checkpoint 3")
-        # Debug-Ausgaben, um die Struktur und den Typ der neuen Variable zu überprüfen
-        #print("[OneTreeCheckpoint] Typ von tree_planar_embedding:", type(tree_planar_embedding))
-        #print("[OneTreeCheckpoint] Typ von graph:", type(graph))
-        #print("[OneTreeCheckpoint] Beispiel für tree_planar_embedding.nodes(data=True):", list(tree_planar_embedding.nodes(data=True))[:5])
-        
-        #print("Checkpoint 4")
-
         faces_graph = find_faces(graph)
-        
-        #print("Checkpoint 5")
 
         faces = find_faces(graph) #ich hole mir alle faces des graphen
 
-        #faces_tree = find_faces(tree_planar_embedding)
-        
-        # print("Checkpoint 6")
-        # for face in faces_graph:
-        #     print("graph_face:", face.nodes)
-
-        #print(" ")
         tree_nodes = set(tree.nodes)
 
         # faces_graph ist eine Liste der Faces
@@ -452,22 +442,12 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
 
         filtered_faces.append(last_face) # dann schmeisse ich alle faces raus die nicht nur aus knoten des baums bestehen
 
-        # Ausgabe der gefilterten Faces
-        #for face in filtered_faces:
-        #    print("filtered_graph_face:", face.nodes)
+        #neighbors = list(undirected_tree.neighbors(source))
 
-        # for face in faces_tree:
-        #     print("tree_face:", face)
+        #input(f"[OTCP] Untersuche die Nachbarn: {neighbors}")
 
-        # Plotten der Faces für graph
-        #plot_faces(graph, filtered_faces, title="Faces from Graph")
-
-        # Plotten der Faces für tree_planar_embedding
-        # plot_faces(tree_planar_embedding, faces_tree, title="Faces from Tree Planar Embedding")
-        # faces = faces_tree
-        #input("warte")
-        return faces
-
+        #return faces, tree_planar_embedding, undirected_tree
+        return faces, undirected_tree
 
 
 

@@ -1,141 +1,144 @@
-def find_direction_to_intersection(current_node, target_node, face, fails):
-    """
-    Bestimme die Richtung innerhalb eines Faces, um den Zielknoten zu erreichen,
-    und überspringe fehlerhafte Kanten.
-    """
-    neighbors = list(face.neighbors(current_node))
-    for neighbor in neighbors:
-        # Überspringe fehlerhafte Kanten
-        if (current_node, neighbor) in fails or (neighbor, current_node) in fails:
-            continue
-        # Wenn der Nachbar der Zielknoten ist, wähle ihn
-        if neighbor == target_node:
-            return neighbor
-    # Fallback: Wenn kein direkter Weg gefunden wird (z. B. alle Kanten fehlerhaft)
+import matplotlib.pyplot as plt
+import networkx as nx
+
+def get_face_containing_edge(u, v, faces):
+    """Returns the face that contains the edge (u, v)."""
+    for face in faces:
+        if (u, v) in face.edges or (v, u) in face.edges:
+            return face
     return None
 
-def FaceRouting(s, d, fails, faces):
-    # Routing-Prozess initialisieren
-    print("Routing gestartet für:", s, "->", d)
+def next_edge_on_face(face, current_edge):
+    """Finds the next edge on the given face using the right-hand rule."""
+    u, v = current_edge
+    edges = list(face.edges)
+    for i, edge in enumerate(edges):
+        if edge == (u, v) or edge == (v, u):
+            next_edge = edges[(i + 1) % len(edges)]  # Move to the next edge
+            return next_edge
+    raise Exception("Edge not found on face.")
 
-    # Initialisiere Listen und Zähler
-    detour_edges = []  # Liste für Umleitungskanten
-    hops = 0  # Anzahl der Hops
-    switches = 0  # Anzahl der Wechsel zwischen Faces
+def FaceRouting(s, d, fails, tree, faces):
+    """
+    Routes a packet from node s to node d using the right-hand rule on a planar embedding
+    of a tree while avoiding failed edges.
 
-    # Prüfe, ob überhaupt Faces vorhanden sind
-    if len(faces) == 0:
-        print("Fehler: Keine Faces vorhanden. Routing nicht möglich.")
-        return False, hops, switches, detour_edges
+    Parameters:
+        s (int): The source node.
+        d (int): The destination node.
+        fails (list): List of failed edges [(u, v), ...].
+        tree: Graph representation of the tree.
+        faces (list): List of faces, each face is a planar embedding face object.
 
-    # Extrahiere den Hauptgraphen (outer graph)
-    main_graph = faces[len(faces)-1]
-
-    # Berechne die Position der imaginären Kante (s -> d)
-    try:
-        pos_imaginary_edge = (main_graph.nodes[s]['pos'], main_graph.nodes[d]['pos'])
-    except KeyError:
-        print("Fehler: Positionsinformationen fehlen. Routing nicht möglich.")
-        return False, hops, switches, detour_edges
-
+    Returns:
+        tuple: (cycle_detected, hops, switches, detour_edges, path)
+            cycle_detected (bool): True if a cycle was detected, False otherwise.
+            hops (int): Total number of hops made.
+            switches (int): Total number of switches due to failed edges.
+            detour_edges (list): List of detour edges taken.
+            path (list): The path taken by the packet from s to d.
+    """
+    # Initialize variables
     current_node = s
-    last_node = None
+    path = [current_node]
+    visited_edges = set()
+    visited_nodes = set([current_node])
+    current_edge = None
+
+    # Statistics tracking
+    detour_edges = []
+    hops = 0
+    switches = 0
+    n = len(tree.nodes())
+    k = 3  # Example constant for cycle detection
 
     while current_node != d:
-        # Finde das aktuelle Face basierend auf dem Knoten
-        current_face = None
-        for face in faces[:-1]:  # Schließe den Hauptgraphen aus
-            if current_node in face:
-                current_face = face
-                break
+        print(f"[RouteFaces] currentNode: {current_node}")
+        neighbors = list(tree.neighbors(current_node))
+        print(f"Untersuche die Nachbarn: {neighbors}")
 
-        if current_face is None:
-            print("Kein gültiges Face gefunden. Routing fehlgeschlagen.")
-            return False, hops, switches, detour_edges
+        failed_neighbors = [v for v in neighbors if (current_node, v) in fails or (v, current_node) in fails]
+        print(f"Gefailte Kanten zu Nachbarn: {failed_neighbors}")
 
-        # Iteriere über die Kanten im aktuellen Face und prüfe Schnittpunkte mit der imaginären Kante
-        best_intersection = None
-        best_edge = None
+        neighbors = [v for v in neighbors if (current_node, v) not in fails and (v, current_node) not in fails]
+        print(f"Übrige Nachbarn: {neighbors}")
 
-        for edge in current_face.edges():
-            if edge in fails or (edge[1], edge[0]) in fails:
-                continue  # Überspringe fehlerhafte Kanten
+        if not neighbors:
+            draw_tree_with_fails(tree, fails)
+            raise Exception("No valid neighbors available due to failed edges.")
 
-            pos_edge = (main_graph.nodes[edge[0]]['pos'], main_graph.nodes[edge[1]]['pos'])
-            intersection = intersection_point(pos_edge, pos_imaginary_edge)
+        if current_edge is None:
+            next_node = neighbors[0]  # Start with any valid neighbor
+            current_edge = (current_node, next_node)
 
-            if intersection:
-                # Aktualisiere den besten Schnittpunkt basierend auf der Nähe zur Zielposition
-                if best_intersection is None or euclidean_distance(intersection, pos_imaginary_edge[1]) < euclidean_distance(best_intersection, pos_imaginary_edge[1]):
-                    best_intersection = intersection
-                    best_edge = edge
+        print(f"[RouteFaces] Aktuelle Kante: {current_edge}")
+        current_face = get_face_containing_edge(*current_edge, faces)
+        if not current_face:
+            print(f"[RouteFaces] Keine Face gefunden für Kante: {current_edge}")
+            raise Exception("No face found containing the current edge.")
 
-        if best_intersection is None:
-            print("Keine Schnittpunkte gefunden. Routing fehlgeschlagen.")
-            return False, hops, switches, detour_edges
+        print(f"[RouteFaces] Aktuelles Face: {list(current_face.edges)}")
 
-        # Wähle die nächste Richtung basierend auf der Kante des besten Schnittpunkts
-        next_node = None
-        for node in best_edge:
-            if node != current_node:
-                next_node = node
-                break
+        # Follow the face using the right-hand rule
+        while current_edge in visited_edges or (current_edge[1], current_edge[0]) in visited_edges or current_edge in fails:
+            current_edge = next_edge_on_face(current_face, current_edge)
+            print(f"[RouteFaces] Nächste Kante auf Face: {current_edge}")
 
-        if next_node is None:
-            print("Keine gültige Richtung gefunden. Routing fehlgeschlagen.")
-            return False, hops, switches, detour_edges
+        # Update visited edges and move to the next node
+        visited_edges.add(current_edge)
+        current_node = current_edge[1]
 
-        # Aktualisiere die Routing-Informationen
-        detour_edges.append((current_node, next_node))
+        # Cycle detection based on visited nodes
+        if current_node in visited_nodes:
+            print(f"[RouteFaces] Cycle detected at node: {current_node}")
+            return (True, hops, switches, detour_edges, path)
+
+        visited_nodes.add(current_node)
+        path.append(current_node)
+
+        # Update statistics
         hops += 1
-        last_node = current_node
-        current_node = next_node
-
-        # Prüfe, ob ein Wechsel des Faces stattfindet
-        if next_node not in current_face:
+        if current_edge in fails:
             switches += 1
+            detour_edges.append(current_edge)
 
-    # Ziel erreicht
-    print("Routing abgeschlossen")
-    return True, hops, switches, detour_edges
+        print(f"[RouteFaces] Pfad bisher: {path}")
+        print(f"[RouteFaces] Besuchte Kanten: {visited_edges}")
 
+        # Cycle detection based on excessive hops or switches
+        if hops > 3 * n or switches > k * n:
+            print("[RouteFaces] Cycle detected due to excessive hops or switches.")
+            return (True, hops, switches, detour_edges, path)
 
+        # If the current node is not the destination, prepare for the next iteration
+        if current_node != d:
+            neighbors = list(tree.neighbors(current_node))
+            print(f"[RouteFaces] Wechsel zu neuem currentNode: {current_node}")
+            neighbors = [v for v in neighbors if (current_node, v) not in fails and (v, current_node) not in fails]
+            if not neighbors:
+                raise Exception("No valid neighbors available due to failed edges.")
+            next_node = neighbors[0]  # Start with any valid neighbor
+            current_edge = (current_node, next_node)
 
-# Find the distance between 2 points
-# Used to find the closer point
-def euclidean_distance(point1, point2):
-    return ((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2) ** 0.5
+    print(f"[RouteFaces] Ziel erreicht: {path}")
+    return (False, hops, switches, detour_edges, path)
 
-# Helper function to get the intersection point of 2 edges using the position parameters
-def intersection_point(pos_edge1, pos_edge2):
-    x1, y1 = pos_edge1[0]
-    x2, y2 = pos_edge1[1]
-    x3, y3 = pos_edge2[0]
-    x4, y4 = pos_edge2[1]
+def draw_tree_with_fails(tree, fails):
+    """Draws the tree with edges in blue and failed edges in red, using node positions."""
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Extract positions from nodes
 
-    # Calculate the parameters for the line equations of the two edges
-    a1 = y2 - y1
-    b1 = x1 - x2
-    c1 = x2 * y1 - x1 * y2
+    plt.figure(figsize=(10, 8))
 
-    a2 = y4 - y3
-    b2 = x3 - x4
-    c2 = x4 * y3 - x3 * y4
+    # Draw all edges in blue
+    nx.draw_networkx_edges(tree, pos, edge_color='blue')
 
-    # Calculate the intersection point
-    det = a1 * b2 - a2 * b1
+    # Draw failed edges in red
+    failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
+    nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red')
 
-    if det == 0:
-        # The edges are parallel, there's no unique intersection point
-        return None
-    else:
-        x = (b1 * c2 - b2 * c1) / det
-        y = (a2 * c1 - a1 * c2) / det
+    # Draw nodes and labels
+    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
+    nx.draw_networkx_labels(tree, pos)
 
-        # Check if the intersection point lies within the bounded segment
-        if min(x1, x2) <= x <= max(x1, x2) and min(y1, y2) <= y <= max(y1, y2) and \
-           min(x3, x4) <= x <= max(x3, x4) and min(y3, y4) <= y <= max(y3, y4):
-            return x, y
-        else:
-            return None
-        
+    plt.title("Tree with Failed Edges")
+    plt.show()

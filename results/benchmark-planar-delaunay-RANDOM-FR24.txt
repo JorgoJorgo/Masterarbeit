@@ -1,3 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Thu Dec 12 15:37:47 2024
-Delaunay, 40, 3, One Tree Middle Checkpoint PE, 1

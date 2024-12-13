@@ -9,7 +9,7 @@ from arborescences import *
 from extra_links import *
 import glob
 
-from faces import RouteFaces2
+from faces import FaceRouting
 from trees import get_parent_node
 
 #global variables in this file
@@ -32,13 +32,16 @@ def set_routing_params(params):
 
 
 #paths structure  for routing with a checkpoint: 
-#paths[source][destination] = {
-#                                                'cp': cp,
-#                                                'faces_cp_to_s': faces_cp_to_s, 
-#                                                'edps_cp_to_s': edps_cp_to_s,
-#                                                'tree_cp_to_d': tree_cp_to_d, 
-#                                                'edps_cp_to_d': edps_cp_to_d,
-#                                            }
+# paths[source][destination] = {
+#                                                 'cp': cp,
+#                                                 'faces_cp_to_s': faces_cp_to_s, 
+#                                                 'edps_cp_to_s': edps_cp_to_s,
+#                                                 'tree_cp_to_d': tree_cp_to_d, 
+#                                                 'edps_cp_to_d': edps_cp_to_d,
+#                                                 'edps_s_to_d': edps,
+#                                                 'tree_planar_embedding_cp_to_s':tree_planar_embedding_cp_to_s,
+#                                                 'tree_cp_to_s':tree_cp_to_s
+#                                             }
 
 # the routing with ONE checkpoint and with ONE tree first tries to route using 
 # the face-routing from s -> cp and after that the tree-routing from cp -> d
@@ -57,6 +60,8 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     tree_cp_to_d  = paths[s][d]['tree_cp_to_d']
     edps_cp_to_d   = paths[s][d]['edps_cp_to_d']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
+    #tree_planar_embedding_cp_to_s = paths[s][d]['tree_planar_embedding_cp_to_s']
+    tree_cp_to_s = paths[s][d]['tree_cp_to_s']
     #print("EDPS s to d :", edps_s_to_d)
     #before routing through the structure, the edps are traversed
 
@@ -146,8 +151,11 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
 
     #now the first step of the routing consists of face-routing from S to CP
     
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces(s,cp,fails,faces_cp_to_s)
+    #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces(s,cp,fails,faces_cp_to_s)
     #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces2(s,cp,fails,faces_cp_to_s)
+    #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = FaceRouting(s,cp,fails,tree_planar_embedding_cp_to_s,tree_cp_to_s,faces_cp_to_s)
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = FaceRouting(s,cp,fails,tree_cp_to_s,faces_cp_to_s)
+
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
@@ -158,13 +166,16 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     #therefore the new paths structure needs to be converted to the old structure
     
     #new structure:
-    #paths[source][destination] = {
-    #                              'cp': cp,
-    #                              'faces_cp_to_s': faces_cp_to_s, 
-    #                              'edps_cp_to_s': edps_cp_to_s,
-    #                              'tree_cp_to_d': tree_cp_to_d, 
-    #                              'edps_cp_to_d': edps_cp_to_d,
-    #                             } 
+   # paths[source][destination] = {
+#                                                 'cp': cp,
+#                                                 'faces_cp_to_s': faces_cp_to_s, 
+#                                                 'edps_cp_to_s': edps_cp_to_s,
+#                                                 'tree_cp_to_d': tree_cp_to_d, 
+#                                                 'edps_cp_to_d': edps_cp_to_d,
+#                                                 'edps_s_to_d': edps,
+#                                                 'tree_planar_embedding_cp_to_s':tree_planar_embedding_cp_to_s,
+#                                                 'tree_cp_to_s':tree_cp_to_s
+#                                             }
     
     #old structure:
     #paths[source][destination] = {
