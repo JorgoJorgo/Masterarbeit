@@ -304,13 +304,14 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 
                 #print(" ")
                 
-                #print("(CP PRE, MIDDLE 2) EDPS CP -> D for : (", source ,",", cp ,"," , destination , ") : ", edps_cp_to_d)
-                            
+                #print("(CP PRE, MIDDLE 2) EDPS CP -> D for : (", source ,",", cp ,"," , destination , ") : ", edps_cp_to_d)   
                 
                 #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
                 
                 #faces_cp_to_s, tree_planar_embedding_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
                 faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
+
+                #draw_tree_with_highlighted_nodes(tree_cp_to_s,[source,cp])
                 
                 #print("[OneTreeCheckpoint] Typ von tree_planar_embedding:", type(tree_planar_embedding_cp_to_s))
                 #print("[OneTreeCheckpoint] Typ von graph:", type(tree_cp_to_s))
@@ -958,3 +959,27 @@ def plot_faces(G, faces, title="Faces Plot"):
     plt.show()
 
 
+
+def draw_tree_with_highlighted_nodes(tree, nodes):
+    """
+    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten hervor.
+
+    Parameter:
+    - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
+    - nodes: Liste von Knoten, die hervorgehoben werden sollen.
+    """
+    # Verwende bereits vorhandene Positionen der Knoten
+    pos = nx.get_node_attributes(tree, 'pos')
+
+    # Zeichne alle Knoten im Baum
+    plt.figure(figsize=(8, 6))
+    nx.draw(tree, pos, with_labels=True, node_size=500, node_color="lightblue", font_weight="bold")
+
+    # Hervorheben der speziellen Knoten
+    if nodes:
+        nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
+        print(f"Hervorgehobene Knoten: {nodes}")
+
+    # Zeichne den Baum
+    plt.title("Baum mit hervorgehobenen Knoten")
+    plt.show()

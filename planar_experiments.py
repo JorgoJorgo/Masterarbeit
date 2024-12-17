@@ -271,53 +271,64 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
     random.seed(seed)
     try:
         # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
+        print("Erstelle Unit-Disk-Graph...")
         G = create_unit_disk_graph(num_nodes)
+        print("Graph erstellt:", G)
+        print("Anzahl Knoten:", len(G.nodes()), "Anzahl Kanten:", len(G.edges()))
 
         # Wähle die Planarisierungsmethode
         if method.lower() == "delaunay":
+            print("Wende Delaunay-Triangulation an...")
             planar_graph = apply_delaunay_triangulation(G)
+            print("Delaunay-Triangulation abgeschlossen. Knoten:", len(planar_graph.nodes()), "Kanten:", len(planar_graph.edges()))
         elif method.lower() == "gabriel":
+            print("Wende Gabriel-Graph an...")
             planar_graph = apply_gabriel_graph(G)
+            print("Gabriel-Graph abgeschlossen. Knoten:", len(planar_graph.nodes()), "Kanten:", len(planar_graph.edges()))
         else:
             raise ValueError("Unbekannte Methode für Planarisierung")
 
         # Wandelt den Graphen in eine PlanarEmbedding-Struktur um
+        print("Konvertiere in PlanarEmbedding...")
         planar_embedding = convert_to_planar_embedding(planar_graph)
+        print("PlanarEmbedding abgeschlossen. Knoten:", len(planar_embedding.nodes()), "Kanten:", len(planar_embedding.edges()))
 
         # Erstelle die Fails basierend auf dem gewählten Angriffstyp
         if attack == "RANDOM":
             print("Ausgewähltes Fehlermuster : RANDOM")
             fails = random.sample(list(planar_embedding.edges()), min(len(planar_embedding.edges()), f_num))
-        elif attack  == "CLUSTER":
+        elif attack == "CLUSTER":
             print("Ausgewähltes Fehlermuster : CLUSTER")
             fails = targeted_attacks_against_clusters(planar_embedding, f_num)
         else:
             raise ValueError("Unbekannter Angriffstyp: " + attack)
 
         # Setze die Konnektivität und speichere die Fails im Graph
-        planar_embedding.graph['k'] = node_connectivity(planar_graph)  # Beispiel für Basis-Konnektivität
+        print("Berechne Konnektivität...")
+        planar_embedding.graph['k'] = node_connectivity(planar_graph)
         planar_embedding.graph['fails'] = fails
 
         # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
+        print("Überprüfe die Fehlerliste...")
         invalid_fails = [edge for edge in fails if edge not in planar_embedding.edges()]
         if invalid_fails:
             print("[run_planar] Warnung: Einige Fails sind keine gültigen Kanten im Graphen.")
             print("Ungültige Fails:", invalid_fails)
-            input("Checke die Fehler Liste")
+            input("Checke die Fehlerliste")
 
         # Debug-Informationen
-        #print("[run_planar] len(nodes) : ", len(planar_embedding.nodes))
-        #print("[run_planar] nodes :", planar_embedding.nodes)
-        #print("[run_planar] len(edges) : ", len(planar_embedding.edges))
-        #print("[run_planar] edges :", planar_embedding.edges)
-        print("[run_planar] len(fails) : ", len(fails))
-        print("[run_planar] fails :", fails)
+        print("[run_planar] Anzahl der Fails: ", len(fails))
+        print("[run_planar] Fails: ", fails)
 
         # Führe die Experimente durch
+        print("Starte Experimente...")
         shuffle_and_run(planar_embedding, out, seed, rep, method)
-        
+        print("[run_planar] Checkpoint END")
+
     except ValueError as e:
         print("Fehler bei der Erstellung eines zusammenhängenden planaren Graphen:", e)
+    except Exception as e:
+        print("Ein unerwarteter Fehler ist aufgetreten:", e)
 
 
 def draw_graph_with_positions(G, title="Graph"):
@@ -353,8 +364,10 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    f_num = 24*3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
-    for i in range(24, 100):
+    
+    f_num = 12*3 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
+    
+    for i in range(12, 100):
         f_num = 3 + f_num
         n = 80
         k = 5
@@ -373,16 +386,22 @@ if __name__ == "__main__":
         
         if len(sys.argv) > 1:
             switch = sys.argv[1]
+            print("[main] switch:", switch)
         if len(sys.argv) > 2:
             seed = int(sys.argv[2])
+            print("[main] seed:",seed)
         if len(sys.argv) > 3:
             rep = int(sys.argv[3])
+            print("[main] rep:",rep)
         if len(sys.argv) > 4:
             n = int(sys.argv[4])
+            print("[main] n:",n)
         if len(sys.argv) > 5:
             samplesize = int(sys.argv[5])
+            print("[main] samplesize:",samplesize)
         if len(sys.argv) > 6:
             attack = str(sys.argv[6])
+            print("[main] attack:",attack)
 
         #für komplette randomness:
         #seed = int(time.time())

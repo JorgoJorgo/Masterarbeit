@@ -47,9 +47,8 @@ def set_routing_params(params):
 # the face-routing from s -> cp and after that the tree-routing from cp -> d
 def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     
-    print()
-    print("Routing with a checkpoint started for : ", s , " -> " , d) 
-    #print("Fails in CP Routing : ", fails)
+    print()  
+    
     detour_edges = []
     hops = 0
     switches = 0
@@ -64,7 +63,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     tree_cp_to_s = paths[s][d]['tree_cp_to_s']
     #print("EDPS s to d :", edps_s_to_d)
     #before routing through the structure, the edps are traversed
-
+    print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d)  
     currentNode = -1
     edpIndex = 0
     detour_edges = []
@@ -2373,7 +2372,7 @@ def RouteWithOneCheckpointOneTreeCLUSTERED(s,d,fails,paths):
     d = s_old
     ##################################
     print()
-    print("Routing with a checkpoint started for : ", s , " -> " , d) 
+    print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d) 
     #print("Fails : ", len(fails))
     
     detour_edges = []
