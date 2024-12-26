@@ -1,196 +1,169 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 
-def get_face_containing_edge(u, v, faces):
-    """Returns the face that contains the edge (u, v)."""
-    for face in faces:
-        if (u, v) in face.edges or (v, u) in face.edges:
-            return face
-    return None
+import math
 
-def next_edge_on_face(face, current_edge):
-    """Finds the next edge on the given face using the right-hand rule."""
-    u, v = current_edge
-    edges = list(face.edges)
-    for i, edge in enumerate(edges):
-        if edge == (u, v) or edge == (v, u):
-            next_edge = edges[(i + 1) % len(edges)]  # Move to the next edge
-            return next_edge
-    raise Exception("Edge not found on face.")
-
-def FaceRouting(s, d, fails, tree, faces):
+def convert_to_undirected(tree):
     """
-    Routes a packet from node s to node d using the right-hand rule on a planar embedding
-    of a tree while avoiding failed edges.
+    Converts the given tree to an undirected graph.
 
     Parameters:
-        s (int): The source node.
-        d (int): The destination node.
-        fails (list): List of failed edges [(u, v), ...].
-        tree: Graph representation of the tree.
-        faces (list): List of faces, each face is a planar embedding face object.
+    - tree: NetworkX graph object (directed or undirected)
 
     Returns:
-        tuple: (cycle_detected, hops, switches, detour_edges, path)
-            cycle_detected (bool): True if a cycle was detected, False otherwise.
-            hops (int): Total number of hops made.
-            switches (int): Total number of switches due to failed edges.
-            detour_edges (list): List of detour edges taken.
-            path (list): The path taken by the packet from s to d.
+    - An undirected NetworkX graph object
     """
-    # Initialize variables
+    return tree.to_undirected()
+
+def route(s, d, tree, fails):
+    tree = convert_to_undirected(tree)
+    print("Converted tree to undirected graph.")
+    print("Type of Tree :", type(tree))
+
+    visited_edges = set()  # Set to keep track of visited edges
     current_node = s
-    path = [current_node]
-    visited_edges = set()
-    visited_nodes = set([current_node])
-    current_edge = None
+    path = [current_node]  # Path traversed
+    previous_edge = None  # Last edge used to reach the current node
 
-    # Statistics tracking
-    detour_edges = []
-    hops = 0
-    switches = 0
-    n = len(tree.nodes())
-    k = 3  # Example constant for cycle detection
+    hops = 0  # Count of hops (edges traversed)
+    switches = 0  # Count of node switches
+    detour_edges = []  # List of detour edges taken due to failures
 
-    draw_tree_with_fails(tree,fails)
-    draw_tree_with_highlighted_nodes(tree,[s,d])
     while current_node != d:
-        print(f"[RouteFaces] currentNode: {current_node}")
-        neighbors = list(tree.neighbors(current_node))
-        print(f"Untersuche die Nachbarn: {neighbors}")
+        print(f"Current node: {current_node}")
+        print(f"Path so far: {path}")
+        print(f"Visited edges: {visited_edges}")
 
-        failed_neighbors = [v for v in neighbors if (current_node, v) in fails or (v, current_node) in fails]
-        print(f"Gefailte Kanten zu Nachbarn: {failed_neighbors}")
+        edges = get_sorted_edges(current_node, tree, fails, previous_edge)  # Sort edges by clockwise order
+        print(f"Sorted edges: {edges}")
 
-        neighbors = [v for v in neighbors if (current_node, v) not in fails and (v, current_node) not in fails]
-        print(f"Übrige Nachbarn: {neighbors}")
+        if not edges:  # No available edges to proceed
+            print("No edges available. Backtracking...")
+            if len(path) > 1:
+                # Go back to the previous node
+                previous_node = path[-2]
+                path.pop()
+                current_node = previous_node
+                switches += 1
+                previous_edge = (current_node, path[-1])
+                draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=previous_edge)
+                print(f"Backtracked to {current_node}")
+            else:
+                print("Routing failed. No way to proceed.")
+                return (True, hops, switches, detour_edges)  # No way to proceed
 
-        if not neighbors:
-            draw_tree_with_fails(tree, fails)
-            raise Exception("No valid neighbors available due to failed edges.")
+        edge_taken = False
+        reverse_edge = (previous_edge[1], previous_edge[0]) if previous_edge else None
 
-        if current_edge is None:
-            next_node = neighbors[0]  # Start with any valid neighbor
-            current_edge = (current_node, next_node)
+        for edge in edges:
+            print(f"Checking edge {edge}")
+            if edge == reverse_edge:
+                print(f"Skipping reverse edge {edge} temporarily.")
+                continue
+            if edge not in visited_edges:
+                visited_edges.add(edge)
+                previous_edge = edge
+                current_node = edge[1] if edge[0] == current_node else edge[0]
+                path.append(current_node)
+                hops += 1
+                if edge in detour_edges:
+                    detour_edges.append(edge)
+                edge_taken = True
+                draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
+                print(f"Edge {edge} taken. Moving to node {current_node}")
+                break
 
-        print(f"[RouteFaces] Aktuelle Kante: {current_edge}")
-        draw_tree_with_current_edge(tree, fails, current_edge)
+        if not edge_taken and reverse_edge and reverse_edge not in visited_edges:
+            print(f"No other options. Taking reverse edge {reverse_edge}.")
+            visited_edges.add(reverse_edge)
+            previous_edge = reverse_edge
+            current_node = reverse_edge[1] if reverse_edge[0] == current_node else reverse_edge[0]
+            path.append(current_node)
+            hops += 1
+            edge_taken = True
+            draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=reverse_edge)
 
-        current_face = get_face_containing_edge(*current_edge, faces)
-        if not current_face:
-            print(f"[RouteFaces] Keine Face gefunden für Kante: {current_edge}")
-            raise Exception("No face found containing the current edge.")
+        if not edge_taken:
+            print("Cycle detected or all edges revisited. Routing failed.")
+            return (True, hops, switches, detour_edges)  # All edges revisited, cycle found
+        print("-----")
 
-        print(f"[RouteFaces] Aktuelles Face: {list(current_face.edges)}")
+    print("Routing successful.")
+    print(f"Final path: {path}")
+    print(f"Total hops: {hops}, switches: {switches}, detour edges: {detour_edges}")
+    return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
-        # Follow the face using the right-hand rule
-        while current_edge in visited_edges or (current_edge[1], current_edge[0]) in visited_edges or current_edge in fails:
-            current_edge = next_edge_on_face(current_face, current_edge)
-            print(f"[RouteFaces] Nächste Kante auf Face: {current_edge}")
-            draw_tree_with_current_edge(tree, fails, current_edge)
 
-        # Update visited edges and move to the next node
-        visited_edges.add(current_edge)
-        current_node = current_edge[1]
+# Helper function to get edges sorted in clockwise order
+def get_sorted_edges(node, tree, fails, previous_edge):
+    edges = []
+    node_pos = tree.nodes[node]['pos']
 
-        # Cycle detection based on visited nodes
-        if current_node in visited_nodes:
-            print(f"[RouteFaces] Cycle detected at node: {current_node}")
-            return (True, hops, switches, detour_edges)
+    for neighbor in tree.neighbors(node):
+        edge = (node, neighbor)  # Behalte die originale Richtung bei
+        if edge not in fails and (neighbor, node) not in fails:  # Prüfe beide Richtungen in fails
+            neighbor_pos = tree.nodes[neighbor]['pos']
+            angle = calculate_angle(node_pos, neighbor_pos)
+            edges.append((edge, angle))
 
-        visited_nodes.add(current_node)
-        path.append(current_node)
+    edges.sort(key=lambda x: x[1])  # Sort edges based on angles
+    if previous_edge is not None:
+        edges = prioritize_edges(edges, previous_edge, tree)
 
-        # Update statistics
-        hops += 1
-        if current_edge in fails:
-            switches += 1
-            detour_edges.append(current_edge)
+    return [e[0] for e in edges]
 
-        print(f"[RouteFaces] Pfad bisher: {path}")
-        print(f"[RouteFaces] Besuchte Kanten: {visited_edges}")
 
-        # Cycle detection based on excessive hops or switches
-        if hops > 3 * n or switches > k * n:
-            print("[RouteFaces] Cycle detected due to excessive hops or switches.")
-            return (True, hops, switches, detour_edges)
+# Helper function to calculate the angle between two coordinates
+def calculate_angle(pos1, pos2):
+    dx = pos2[0] - pos1[0]
+    dy = pos2[1] - pos1[1]
+    return math.atan2(dy, dx)  # Returns angle in radians
 
-        # If the current node is not the destination, prepare for the next iteration
-        if current_node != d:
-            neighbors = list(tree.neighbors(current_node))
-            print(f"[RouteFaces] Wechsel zu neuem currentNode: {current_node}")
-            neighbors = [v for v in neighbors if (current_node, v) not in fails and (v, current_node) not in fails]
-            if not neighbors:
-                raise Exception("No valid neighbors available due to failed edges.")
-            next_node = neighbors[0]  # Start with any valid neighbor
-            current_edge = (current_node, next_node)
 
-    print(f"[RouteFaces] Ziel erreicht: {path}")
-    return (False, hops, switches, detour_edges)
+# Helper function to prioritize edges based on the previous edge
+def prioritize_edges(edges, previous_edge, tree):
+    previous_angle = calculate_angle(tree.nodes[previous_edge[0]]['pos'], tree.nodes[previous_edge[1]]['pos'])
+    edges.sort(key=lambda x: (x[1] - previous_angle) % (2 * math.pi))
+    return edges
 
-def draw_tree_with_fails(tree, fails):
-    """Draws the tree with edges in blue and failed edges in red, using node positions."""
-    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Extract positions from nodes
 
-    plt.figure(figsize=(10, 8))
-
-    # Draw all edges in blue
-    nx.draw_networkx_edges(tree, pos, edge_color='blue')
-
-    # Draw failed edges in red
-    failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
-    nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red')
-
-    # Draw nodes and labels
-    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
-    nx.draw_networkx_labels(tree, pos)
-
-    plt.title("Tree with Failed Edges")
-    plt.show()
-
-def draw_tree_with_current_edge(tree, fails, current_edge):
-    """Draws the tree with all edges in gray, failed edges in red, and the current edge in blue."""
-    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Extract positions from nodes
-
-    plt.figure(figsize=(10, 8))
-
-    # Draw all edges in gray
-    nx.draw_networkx_edges(tree, pos, edge_color='gray')
-
-    # Draw failed edges in red
-    failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
-    nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red')
-
-    # Highlight current edge in blue
-    nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=2)
-
-    # Draw nodes and labels
-    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
-    nx.draw_networkx_labels(tree, pos)
-
-    plt.title(f"Tree with Current Edge: {current_edge}")
-    plt.show()
-
-def draw_tree_with_highlighted_nodes(tree, nodes):
+def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
     """
-    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten hervor.
+    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten, fehlerhafte Kanten und die aktuelle Kante hervor.
 
     Parameter:
     - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
-    - nodes: Liste von Knoten, die hervorgehoben werden sollen.
+    - nodes: Liste von Knoten, die hervorgehoben werden sollen (optional).
+    - fails: Liste von fehlerhaften Kanten, die hervorgehoben werden sollen (optional).
+    - current_edge: Aktuelle Kante, die hervorgehoben werden soll (optional).
     """
-    # Verwende bereits vorhandene Positionen der Knoten
-    pos = nx.get_node_attributes(tree, 'pos')
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positionen der Knoten
 
-    # Zeichne alle Knoten im Baum
-    plt.figure(figsize=(8, 6))
-    nx.draw(tree, pos, with_labels=True, node_size=500, node_color="lightblue", font_weight="bold")
+    plt.figure(figsize=(10, 8))
 
-    # Hervorheben der speziellen Knoten
+    # Zeichne alle Kanten in Grau
+    nx.draw_networkx_edges(tree, pos, edge_color='gray')
+
+    # Zeichne fehlerhafte Kanten in Rot, falls vorhanden
+    if fails:
+        failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
+        nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red', width=2)
+        #print(f"Hervorgehobene Kanten (Fails): {fails}")
+
+    # Highlight aktuelle Kante in Blau, falls vorhanden
+    if current_edge:
+        if tree.has_edge(*current_edge):
+            nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=2)
+            #print(f"Aktuelle Kante hervorgehoben: {current_edge}")
+
+    # Zeichne alle Knoten
+    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
+    nx.draw_networkx_labels(tree, pos)
+
+    # Hervorheben spezieller Knoten in Orange, falls vorhanden
     if nodes:
         nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
-        print(f"Hervorgehobene Knoten: {nodes}")
+        #print(f"Hervorgehobene Knoten: {nodes}")
 
-    # Zeichne den Baum
-    plt.title("Baum mit hervorgehobenen Knoten")
+    #plt.title("Baum mit hervorgehobenen Knoten, Kanten und aktueller Kante")
     plt.show()

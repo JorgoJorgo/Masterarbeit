@@ -9,7 +9,7 @@ from arborescences import *
 from extra_links import *
 import glob
 
-from faces import FaceRouting
+from faces import route
 from trees import get_parent_node
 
 #global variables in this file
@@ -153,7 +153,8 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces(s,cp,fails,faces_cp_to_s)
     #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces2(s,cp,fails,faces_cp_to_s)
     #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = FaceRouting(s,cp,fails,tree_planar_embedding_cp_to_s,tree_cp_to_s,faces_cp_to_s)
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = FaceRouting(s,cp,fails,tree_cp_to_s,faces_cp_to_s)
+    #routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = FaceRouting(s,cp,fails,tree_cp_to_s,faces_cp_to_s)
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree_cp_to_s, fails)
 
 
     if(routing_failure_faces):
