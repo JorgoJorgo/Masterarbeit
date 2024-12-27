@@ -27,6 +27,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
+    draw_tree_with_highlights(graph)
     for source in graph.nodes:
        
         for destination in graph.nodes:
@@ -39,6 +40,22 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 
                 longest_edp = edps[len(edps)-1]
 
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'faces_cp_to_s': [], 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'tree_cp_to_d':[], 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
                 cp = longest_edp[ int(len(longest_edp)/2)]
 
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -48,56 +65,73 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 edps_cp_to_s.sort(key=len)
                 
                 edps_cp_to_d.sort(key=len)
+                
+                print("Baue die Struktur:", source, "-", cp , "-", destination)
 
-                
-                            
-                
                 #first build multiple trees cp->s and unite them in a face structure
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 1")
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s).copy()
-
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 2")
+                
                 trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)#EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben,
                                                         #führen nicht zum Ziel und müssen gelöscht werden
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 3")
                 
-                input("[MultipleTreesRandomCheckpoint] Trees CP->S gebaut")
+                # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
+                # Combine all trees into one large undirected tree
+                combined_tree = nx.Graph()
+                for tree in trees_cp_to_s:
+                    tree = tree.to_undirected()  # Ensure the tree is undirected
+                    for node in tree.nodes:
+                            combined_tree.add_node(node)  # Add node without position
+                    combined_tree.add_edges_from(tree.edges())  # Add edges
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 4")
 
-                trees_cp_to_s = convert_to_undirected_multiple_trees(trees_cp_to_s)
+                for node in combined_tree.nodes:
+                    combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                faces_cp_to_s = find_faces_multiple_trees(trees_cp_to_s)
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 5")
+                #draw_tree_with_highlights(combined_tree,[source,destination])
+
+                
+                #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
+                trees_cp_to_s = combined_tree
                 
                 #then build multiple trees cp->d
                 
                 trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d).copy()
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 6")
                 
-                trees_cp_to_d = remove_single_node_trees(trees_cp_to_s)#EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben,
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                    #draw_tree_with_highlights(tree,[cp,destination])
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 6.5")
+
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)#EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben,
                                                         #führen nicht zum Ziel und müssen gelöscht werden
-                
-                # i= 0
-                # for tree in trees:    
-                #     i = i + 1
-                
-                # #print(" ")
-                # edges_of_this_run = 0 
-                # for tree in trees:
-                #     all_tree_edge_number = all_tree_edge_number + len(tree.edges)
-                #     edges_of_this_run = edges_of_this_run + len(tree.edges)
-                # count = count + 1
-                #print("Die Kanten dieses Laufs (normal) : " , edges_of_this_run)
-                #print(" ")
+
+                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 7")
+
                 if source in paths:
                     paths[source][destination] = { 
                                                     'cp': cp,
-                                                'faces_cp_to_s': faces_cp_to_s, 
+                                                #'faces_cp_to_s': faces_cp_to_s, 
                                                 'edps_cp_to_s': edps_cp_to_s,
-                                                'tree_cp_to_d': trees_cp_to_d, 
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
-                                                  }
+                                                }
                 else:
                     paths[source] = {}
                     paths[source][destination] = {
                                                 'cp': cp,
-                                                'faces_cp_to_s': faces_cp_to_s, 
+                                                #'faces_cp_to_s': faces_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s, 
                                                 'edps_cp_to_s': edps_cp_to_s,
                                                 'tree_cp_to_d': trees_cp_to_d, 
                                                 'edps_cp_to_d': edps_cp_to_d,
@@ -199,7 +233,7 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
         while changed == True: #solange versuchen zu kürzen bis nicht mehr gekürzt werden kann 
             old_tree = tree.copy()
             remove_redundant_paths(source, destination, tree, graph) 
-            changed = tree.order() != old_tree.order() # order gibt die Anzahl an Knoten zurück
+            changed = len(tree.nodes) != len(old_tree.nodes) # order gibt die Anzahl an Knoten zurück
         #endwhile
         
         new_edges = len(tree.edges)
@@ -209,7 +243,7 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
 
         #man muss prüfen ob nur die source im baum ist , da man im nächsten schritt der destination einen Rang geben muss
         #nur die source im baum (tree.order == 1) bedeutet, dass es im graphen die kante source -> destination gibt
-        if( tree.order() > 1 ):
+        if( len(tree.nodes) > 1 ):
             
 
             rank_tree(tree , source,all_edps[i])
@@ -221,7 +255,7 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
         #endif
         
         #edps direkt von s->d kommen müssen gesondert betrachtet werden
-        if(tree.order() == 1 and len(all_edps[i]) == 2):
+        if(len(tree.nodes) == 1 and len(all_edps[i]) == 2):
             tree.add_edge(source,destination)
             tree.nodes[destination]["rank"] = -1
         #endif
@@ -230,14 +264,10 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
     #endfor
 
     removed_edges_multtrees.append(removed_edges)
+    #print("[multipleTreesWithCheckpoint] type(trees[0]):", type(trees[0]))
     
+    #draw_tree_with_highlights(trees[0],[source,destination])
     return trees
-
-
-def find_faces_multiple_trees(trees_cp_to_s):
-    faces = []
-    
-    return faces
 
 def convert_to_undirected_multiple_trees(trees_cp_to_s):
     trees = []
@@ -961,6 +991,8 @@ def plot_faces(G, faces, title="Faces Plot"):
 
 
 def draw_tree_with_highlighted_nodes(tree, nodes):
+
+
     """
     Zeichnet einen Baum-Graphen und hebt bestimmte Knoten hervor.
 
@@ -982,4 +1014,46 @@ def draw_tree_with_highlighted_nodes(tree, nodes):
 
     # Zeichne den Baum
     plt.title("Baum mit hervorgehobenen Knoten")
+    plt.show()
+
+
+def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
+    """
+    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten, fehlerhafte Kanten und die aktuelle Kante hervor.
+
+    Parameter:
+    - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
+    - nodes: Liste von Knoten, die hervorgehoben werden sollen (optional).
+    - fails: Liste von fehlerhaften Kanten, die hervorgehoben werden sollen (optional).
+    - current_edge: Aktuelle Kante, die hervorgehoben werden soll (optional).
+    """
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positionen der Knoten
+
+    plt.figure(figsize=(10, 8))
+
+    # Zeichne alle Kanten in Grau
+    nx.draw_networkx_edges(tree, pos, edge_color='gray')
+
+    # Zeichne fehlerhafte Kanten in Rot, falls vorhanden
+    if fails:
+        failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
+        nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red', width=2)
+        #print(f"Hervorgehobene Kanten (Fails): {fails}")
+
+    # Highlight aktuelle Kante in Blau, falls vorhanden
+    if current_edge:
+        if tree.has_edge(*current_edge):
+            nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=2)
+            #print(f"Aktuelle Kante hervorgehoben: {current_edge}")
+
+    # Zeichne alle Knoten
+    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
+    nx.draw_networkx_labels(tree, pos)
+
+    # Hervorheben spezieller Knoten in Orange, falls vorhanden
+    if nodes:
+        nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
+        #print(f"Hervorgehobene Knoten: {nodes}")
+
+    #plt.title("Baum mit hervorgehobenen Knoten, Kanten und aktueller Kante")
     plt.show()

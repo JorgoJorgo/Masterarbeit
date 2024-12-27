@@ -46,7 +46,7 @@ def route(s, d, tree, fails):
                 current_node = previous_node
                 switches += 1
                 previous_edge = (current_node, path[-1])
-                draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=previous_edge)
+                #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=previous_edge)
                 print(f"Backtracked to {current_node}")
             else:
                 print("Routing failed. No way to proceed.")
@@ -69,7 +69,7 @@ def route(s, d, tree, fails):
                 if edge in detour_edges:
                     detour_edges.append(edge)
                 edge_taken = True
-                draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
+                #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
                 print(f"Edge {edge} taken. Moving to node {current_node}")
                 break
 
@@ -81,7 +81,7 @@ def route(s, d, tree, fails):
             path.append(current_node)
             hops += 1
             edge_taken = True
-            draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=reverse_edge)
+            #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=reverse_edge)
 
         if not edge_taken:
             print("Cycle detected or all edges revisited. Routing failed.")
