@@ -27,7 +27,8 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
-    draw_tree_with_highlights(graph)
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointPre] Start Precomputation")
     for source in graph.nodes:
        
         for destination in graph.nodes:
@@ -46,11 +47,28 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                     if source not in paths:
                         paths[source] = {}
                     #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
                     paths[source][destination] = {
                                                 'cp': destination,
-                                                'faces_cp_to_s': [], 
+                                                'trees_cp_to_s': tree_from_s, 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'tree_cp_to_d':[], 
+                                                'trees_cp_to_d':tree_from_d, 
                                                 'edps_cp_to_d': [[source,destination]],
                                                 'edps_s_to_d':[[source,destination]]
                                             }
@@ -59,25 +77,14 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 cp = longest_edp[ int(len(longest_edp)/2)]
 
                 edps_cp_to_s = all_edps(cp, source, graph)
-                
                 edps_cp_to_d = all_edps(cp, destination, graph)
-                
                 edps_cp_to_s.sort(key=len)
-                
                 edps_cp_to_d.sort(key=len)
                 
-                print("Baue die Struktur:", source, "-", cp , "-", destination)
-
-                #first build multiple trees cp->s and unite them in a face structure
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 1")
-                
-                trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s).copy()
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 2")
-                
-                trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)#EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben,
-                                                        #führen nicht zum Ziel und müssen gelöscht werden
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 3")
-                
+                trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s)
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+           
                 # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
                 # Combine all trees into one large undirected tree
                 combined_tree = nx.Graph()
@@ -86,40 +93,27 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                     for node in tree.nodes:
                             combined_tree.add_node(node)  # Add node without position
                     combined_tree.add_edges_from(tree.edges())  # Add edges
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 4")
 
                 for node in combined_tree.nodes:
                     combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
-
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 5")
-                #draw_tree_with_highlights(combined_tree,[source,destination])
-
-                
+         
                 #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
                 trees_cp_to_s = combined_tree
                 
                 #then build multiple trees cp->d
                 
-                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d).copy()
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 6")
-                
+                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
                 
                 for tree in trees_cp_to_d:
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                    #draw_tree_with_highlights(tree,[cp,destination])
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 6.5")
-
-                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)#EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben,
-                                                        #führen nicht zum Ziel und müssen gelöscht werden
-
-                #print("[MultipleTreesWithMiddleCheckpoint] Checkpoint 7")
-
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
                 if source in paths:
                     paths[source][destination] = { 
                                                     'cp': cp,
-                                                #'faces_cp_to_s': faces_cp_to_s, 
                                                 'edps_cp_to_s': edps_cp_to_s,
                                                 'trees_cp_to_s': trees_cp_to_s,
                                                 'trees_cp_to_d': trees_cp_to_d, 
@@ -130,14 +124,14 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                     paths[source] = {}
                     paths[source][destination] = {
                                                 'cp': cp,
-                                                #'faces_cp_to_s': faces_cp_to_s,
                                                 'trees_cp_to_s': trees_cp_to_s, 
                                                 'edps_cp_to_s': edps_cp_to_s,
-                                                'tree_cp_to_d': trees_cp_to_d, 
+                                                'trees_cp_to_d': trees_cp_to_d, 
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
 
+    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
@@ -307,49 +301,54 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 
                 #special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
+                    
+                    if source not in paths:
+                        paths[source] = {}
                     #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
                     paths[source][destination] = {
                                                 'cp': destination,
                                                 'faces_cp_to_s': [], 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'tree_cp_to_d':[], 
+                                                'tree_cp_to_d':tree_from_d, 
+                                                'tree_cp_to_s':tree_from_s,
                                                 'edps_cp_to_d': [[source,destination]],
                                                 'edps_s_to_d':[[source,destination]]
                                             }
                     continue
                 
                 #then select the middle node of the longest_edp
-               #p("[OneTreeRandomCheckpoint] longestEDP: ", longest_edp)
+                
                 cp = longest_edp[ int(len(longest_edp)/2)]
-               #p("[OneTreeRandomCheckpoint] Checkpoint: ",cp)
+               
                 #then get the edps + longest_edps_cp_s and the longest_edps_cp_d
-                
                 edps_cp_to_s = all_edps(cp, source, graph)
-                
                 edps_cp_to_d = all_edps(cp, destination, graph)
-                
                 edps_cp_to_s.sort(key=len)
-                
                 edps_cp_to_d.sort(key=len)
                 
-                #print(" ")
-                
-                #print("(CP PRE, MIDDLE 2) EDPS CP -> D for : (", source ,",", cp ,"," , destination , ") : ", edps_cp_to_d)   
-                
                 #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
-                
-                #faces_cp_to_s, tree_planar_embedding_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
                 faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1], True)
 
                 #draw_tree_with_highlighted_nodes(tree_cp_to_s,[source,cp])
-                
-                #print("[OneTreeCheckpoint] Typ von tree_planar_embedding:", type(tree_planar_embedding_cp_to_s))
-                #print("[OneTreeCheckpoint] Typ von graph:", type(tree_cp_to_s))
 
-                #neighbors = list(tree_cp_to_s.neighbors(source))
-                #input(f"[OTCP Pre] Untersuche die Nachbarn: {neighbors}")
-
-                tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False).copy()
+                tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1], False)
                 
                 #bc the tree cp->s got build reverse direction the edges need to be reversed again
                 #data structure to give the needed information for the routing (edps, trees, checkpoint)
@@ -361,7 +360,6 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                                 'tree_cp_to_d': tree_cp_to_d, 
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps,
-                                                #'tree_planar_embedding_cp_to_s':tree_planar_embedding_cp_to_s,
                                                 'tree_cp_to_s':tree_cp_to_s
                                             }
                                     
@@ -408,15 +406,6 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
         #end while
     #end for
     
-
-    #print("[OneTreeCheckpoint] Plotting before truncation Tree...")
-    #pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
-
-    # plt.figure(figsize=(8, 8))
-    # nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='orange')
-    # plt.title("Tree before Truncation Tree")
-    # plt.show()
-
     changed = True 
     
 
@@ -425,16 +414,8 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
         old_tree = tree.copy()
         remove_redundant_paths(source, destination, tree, graph)
         changed = tree.order() != old_tree.order() # order returns the number of nodes in the graph.
-    
-    #print("[OneTreeCheckpoint] Plotting after truncation Tree...")
-    #pos = {node: tree.nodes[node]['pos'] for node in tree.nodes if 'pos' in tree.nodes[node]}  # Positionen für den Tree
 
-    # plt.figure(figsize=(8, 8))
-    # nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='blue')
-    # plt.title("Tree after Truncation Tree")
-    # plt.show()
-
-    #before ranking the tree, if the the is build for cp->s the edges need to be flipped
+    #before ranking the tree, if the tree is build for cp->s the edges need to be flipped
     if(reverse):
 
         #the current tree has:
@@ -473,11 +454,6 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
 
         filtered_faces.append(last_face) # dann schmeisse ich alle faces raus die nicht nur aus knoten des baums bestehen
 
-        #neighbors = list(undirected_tree.neighbors(source))
-
-        #input(f"[OTCP] Untersuche die Nachbarn: {neighbors}")
-
-        #return faces, tree_planar_embedding, undirected_tree
         return faces, undirected_tree
 
 
@@ -486,11 +462,9 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
     else: #if the tree build is for cp->d nothing is changed
     
         rank_tree(tree , source,longest_edp)
-    
         connect_leaf_to_destination(tree, source, destination)
-    
         tree.add_edge(longest_edp[len(longest_edp)-2],destination)
-        
+    
         #add 'rank' property to the added destinaton, -1 for highest priority in routing
         tree.nodes[destination]["rank"] = -1
         
@@ -510,7 +484,7 @@ def one_tree_with_degree_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
-        #print("[OTC Degree Pre] check")
+
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
@@ -523,32 +497,48 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 # Get the longest EDP
                 longest_edp = edps[len(edps) - 1]
                 
-                # Special case if the source and destination are directly connected
-                if len(longest_edp) == 2:
+                # Special case if the source and destination are directly connected then all structures (edps + trees) are the edge between s-d
+                if(len(longest_edp) == 2):
+                    
+                    if source not in paths:
+                        paths[source] = {}
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+                    
                     paths[source][destination] = {
-                        'cp': destination,
-                        'faces_cp_to_s': [], 
-                        'edps_cp_to_s': [[source, destination]],
-                        'tree_cp_to_d': [], 
-                        'edps_cp_to_d': [[source, destination]],
-                        'edps_s_to_d': [[source, destination]]
-                    }
+                                                'cp': destination,
+                                                'faces_cp_to_s': [], 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'tree_cp_to_d':tree_from_d, 
+                                                'tree_cp_to_s':tree_from_s,
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
                     continue
+                
                 
                 # Calculate Degree Centrality for nodes in the graph
                 degree_centrality = nx.degree_centrality(graph)
-                #print("[OneTreeDegreeCheckpoint] longestEDP:", longest_edp)
-                ##print the Degree Centrality of all nodes in the longest EDP
-                #print(f"[OneTreeDegreeCheckpoint] Degree Centralities for longest EDP (Source: {source}, Destination: {destination}):")
-                #for node in longest_edp:
-                #   #print(f"Node {node}: Centrality {degree_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
                 
                 # Handle the case where no valid cp is available after filtering
                 if not filtered_edp:
-                   #print(f"[OneTreeDegreeCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
                     paths[source][destination] = {
                         'cp': None,
                         'faces_cp_to_s': [],
@@ -561,7 +551,7 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 
                 # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: degree_centrality[node])
-               #print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
+                #print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -571,13 +561,13 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_checkpoint(
+                faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
-                ).copy()
+                )
                 
                 tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
-                ).copy()
+                )
                 
                 # Store the result in the paths dictionary
                 paths[source][destination] = {
@@ -586,7 +576,8 @@ def one_tree_with_degree_checkpoint_pre(graph):
                     'edps_cp_to_s': edps_cp_to_s,
                     'tree_cp_to_d': tree_cp_to_d, 
                     'edps_cp_to_d': edps_cp_to_d,
-                    'edps_s_to_d': edps
+                    'edps_s_to_d': edps,
+                    'tree_cp_to_s':tree_cp_to_s
                 }
                                     
     return paths
@@ -605,7 +596,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
-        #print("[OTC Betweenness Pre] check")
+        
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
@@ -619,32 +610,47 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                 longest_edp = edps[len(edps) - 1]
                 
                 # Special case if the source and destination are directly connected
-                if len(longest_edp) == 2:
+                if(len(longest_edp) == 2):
+                    
+                    if source not in paths:
+                        paths[source] = {}
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+                    
                     paths[source][destination] = {
-                        'cp': destination,
-                        'faces_cp_to_s': [], 
-                        'edps_cp_to_s': [[source, destination]],
-                        'tree_cp_to_d': [], 
-                        'edps_cp_to_d': [[source, destination]],
-                        'edps_s_to_d': [[source, destination]]
-                    }
+                                                'cp': destination,
+                                                'faces_cp_to_s': [], 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'tree_cp_to_d':tree_from_d, 
+                                                'tree_cp_to_s':tree_from_s,
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
                     continue
+                
                 
                 # Calculate Betweenness Centrality for nodes in the graph
                 betweenness_centrality = nx.betweenness_centrality(graph, normalized=True)
-               #print("[OneTreeBetweennessCheckpoint] longestEDP:", longest_edp)
-                
-                ##print the Betweenness Centrality of all nodes in the longest EDP
-                #print(f"[OneTreeBetweennessCheckpoint] Betweenness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
-                #for node in longest_edp:
-                #   #print(f"Node {node}: Centrality {betweenness_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
                 
                 # Handle the case where no valid cp is available after filtering
                 if not filtered_edp:
-                   #print(f"[OneTreeBetweennessCheckpoint] No valid checkpoint for Source: {source}, Destination: {destination}")
                     paths[source][destination] = {
                         'cp': None,
                         'faces_cp_to_s': [],
@@ -657,23 +663,21 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                 
                 # Select the node with the highest Betweenness Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
-               #print(f"[OneTreeBetweennessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {betweenness_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
                 edps_cp_to_d = all_edps(cp, destination, graph)
-                
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_checkpoint(
+                faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
-                ).copy()
+                )
                 
                 tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
-                ).copy()
+                )
                 
                 # Store the result in the paths dictionary
                 paths[source][destination] = {
@@ -682,7 +686,8 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                     'edps_cp_to_s': edps_cp_to_s,
                     'tree_cp_to_d': tree_cp_to_d, 
                     'edps_cp_to_d': edps_cp_to_d,
-                    'edps_s_to_d': edps
+                    'edps_s_to_d': edps,
+                    'tree_cp_to_s': tree_cp_to_s
                 }
                                     
     return paths
@@ -700,7 +705,7 @@ def one_tree_with_closeness_checkpoint_pre(graph):
     paths = {}
     
     for source in graph.nodes:
-        #print("[OTC Closeness Pre] check")
+
         for destination in graph.nodes:
             if source != destination:
                 if source not in paths:
@@ -714,25 +719,41 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                 longest_edp = edps[len(edps) - 1]
                 
                 # Special case if the source and destination are directly connected
-                if len(longest_edp) == 2:
+                if(len(longest_edp) == 2):
+                    
+                    if source not in paths:
+                        paths[source] = {}
+                    
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+                    
                     paths[source][destination] = {
-                        'cp': destination,
-                        'faces_cp_to_s': [], 
-                        'edps_cp_to_s': [[source, destination]],
-                        'tree_cp_to_d': [], 
-                        'edps_cp_to_d': [[source, destination]],
-                        'edps_s_to_d': [[source, destination]]
-                    }
+                                                'cp': destination,
+                                                'faces_cp_to_s': [], 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'tree_cp_to_d':tree_from_d, 
+                                                'tree_cp_to_s':tree_from_s,
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
                     continue
+                
                 
                 # Calculate Closeness Centrality for nodes in the graph
                 closeness_centrality = nx.closeness_centrality(graph)
-               #print("[OneTreeClosenessCheckpoint] longestEDP:", longest_edp)
-                
-                ##print the Closeness Centrality of all nodes in the longest EDP
-                #print(f"[OneTreeClosenessCheckpoint] Closeness Centralities for longest EDP (Source: {source}, Destination: {destination}):")
-                #for node in longest_edp:
-                #   #print(f"Node {node}: Centrality {closeness_centrality[node]:.4f}")
                 
                 # Filter out source and destination from the longest EDP
                 filtered_edp = [node for node in longest_edp if node != source and node != destination]
@@ -746,13 +767,13 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                         'edps_cp_to_s': [],
                         'tree_cp_to_d': [],
                         'edps_cp_to_d': [],
-                        'edps_s_to_d': edps
+                        'edps_s_to_d': edps,
+                        'tree_cp_to_s':[]
                     }
                     continue
                 
                 # Select the node with the highest Closeness Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: closeness_centrality[node])
-               #print(f"[OneTreeClosenessCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {closeness_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
                 edps_cp_to_s = all_edps(cp, source, graph)
@@ -762,13 +783,13 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_checkpoint(
+                faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
-                ).copy()
+                )
                 
                 tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
-                ).copy()
+                )
                 
                 # Store the result in the paths dictionary
                 paths[source][destination] = {
@@ -777,7 +798,8 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                     'edps_cp_to_s': edps_cp_to_s,
                     'tree_cp_to_d': tree_cp_to_d, 
                     'edps_cp_to_d': edps_cp_to_d,
-                    'edps_s_to_d': edps
+                    'edps_s_to_d': edps,
+                    'tree_cp_to_s':tree_cp_to_s
                 }
                                     
     return paths
@@ -813,11 +835,27 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
                             if source in face.nodes() and destination in face.nodes():
                                 fitting_faces_special.append(face)
 
+                        tree_from_s = nx.DiGraph()
+                        tree_from_s.add_node(source)
+                        tree_from_s.add_node(destination)
+                        tree_from_d = nx.DiGraph()
+                        tree_from_d.add_node(source)
+                        tree_from_d.add_node(destination)
+
+                        
+                        tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                        tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                        tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                        tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                        tree_from_s.add_edge(source,destination)
+                        tree_from_d.add_edge(source,destination)
+
                         paths[source][destination] = {
                             'cp': destination,
                             'faces_cp_to_s': fitting_faces_special,
                             'edps_cp_to_s': [[source, destination]],
-                            'tree_cp_to_d': [],
+                            'tree_cp_to_d':tree_from_d,
+                            'tree_cp_to_s': tree_cp_to_s,
                             'edps_cp_to_d': [[source, destination]],
                             'edps_s_to_d': [[source, destination]]
                         }
@@ -837,13 +875,13 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
                 edps_cp_to_d.sort(key=len)
 
                 # Build trees and faces
-                faces_cp_to_s = one_tree_with_checkpoint(
+                faces_cp_to_s, tree_cp_to_s = one_tree_with_checkpoint(
                     cp, source, graph, edps_cp_to_s[-1], True
-                ).copy()
+                )
 
                 tree_cp_to_d = one_tree_with_checkpoint(
                     cp, destination, graph, edps_cp_to_d[-1], False
-                ).copy()
+                )
 
                 # Store the result in the paths dictionary
                 paths[source][destination] = {
@@ -852,7 +890,8 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
                     'edps_cp_to_s': edps_cp_to_s,
                     'tree_cp_to_d': tree_cp_to_d,
                     'edps_cp_to_d': edps_cp_to_d,
-                    'edps_s_to_d': edps
+                    'edps_s_to_d': edps,
+                    'tree_cp_to_s': tree_cp_to_s
                 }
 
     return paths

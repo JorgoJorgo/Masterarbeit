@@ -130,12 +130,18 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
 
     hops = hops + hops_faces
     switches = switches + switches_faces
-    detour_edges.append(detour_edges_faces)
+    
+    for edge in detour_edges_faces:
+        detour_edges.append(edge)
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
         print(" ")
-        return (True, hops_faces, switches_faces, detour_edges_faces)
+        return (True, hops, switches, detour_edges)
+    else:
+        if(len(edps_s_to_d)==1):
+            print("[RouteOneCheckpointMult] edps_s_to_d:", edps_s_to_d)
+            return (False, hops, switches, detour_edges)
     
     # face routing succesfull s->cp, next step tree routing cp->d
     # but for the old routing function of multipletrees to  function, the paths structure needs to be converted
@@ -178,21 +184,23 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
                 converted_paths[checkpoint_of_item] = {}
                 
             converted_paths[checkpoint_of_item] [item2]= {
-                'tree': paths[item1][item2]['trees_cp_to_d'],
+                'trees': paths[item1][item2]['trees_cp_to_d'],
                 'edps': paths[item1][item2]['edps_cp_to_d']
             }
 
     #after that the routing continues from CP to D using the tree-routing
     routing_failure_tree, hops_tree, switches_tree, detour_edges_tree = RouteMultipleTrees(cp,d,fails,converted_paths)
 
-    hops = hops + detour_edges_tree
+    hops = hops + hops_tree
     switches = switches + switches_tree
-    detour_edges.append(detour_edges_tree)
+
+    for edge in detour_edges_tree:
+        detour_edges.append(edge)
     
     if(routing_failure_tree):
         print("Routing failed via MultipleTrees Tree from CP to D ")
         print(" ")
-        return (True, hops_tree, switches_tree, detour_edges_tree)    
+        return (True, hops, switches, detour_edges)    
     
         
     print("Routing MultipleTrees succesful with the Checkpoint")

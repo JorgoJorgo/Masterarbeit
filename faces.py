@@ -16,9 +16,15 @@ def convert_to_undirected(tree):
     return tree.to_undirected()
 
 def route(s, d, tree, fails):
+    
+    #print("[route] Type of Tree :", type(tree))
+    #print("[route] Tree:",tree)
+    #print("[route] Tree.nodes:",tree.nodes)
+    print(tree)
+    #draw_tree_with_highlights(tree)
     tree = convert_to_undirected(tree)
     print("Converted tree to undirected graph.")
-    print("Type of Tree :", type(tree))
+    
 
     visited_edges = set()  # Set to keep track of visited edges
     current_node = s
@@ -66,7 +72,7 @@ def route(s, d, tree, fails):
                 current_node = edge[1] if edge[0] == current_node else edge[0]
                 path.append(current_node)
                 hops += 1
-                if edge in detour_edges:
+                if edge in visited_edges:
                     detour_edges.append(edge)
                 edge_taken = True
                 #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
@@ -89,8 +95,8 @@ def route(s, d, tree, fails):
         print("-----")
 
     print("Routing successful.")
-    print(f"Final path: {path}")
-    print(f"Total hops: {hops}, switches: {switches}, detour edges: {detour_edges}")
+    #print(f"Final path: {path}")
+    #print(f"Total hops: {hops}, switches: {switches}, detour edges: {detour_edges}")
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
 
