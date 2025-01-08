@@ -373,7 +373,9 @@ def one_tree_with_middle_checkpoint_pre(graph):
 #special: because the second tree that is required to build by the one_tree_with_random_checkpoint_pre is the tree cp->s
 #its directed edges need to flipped (arg: reverse)
 def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
-    
+    print("[one_tree_with_checkpoint] source:",source)
+    print("[one_tree_with_checkpoint] destination:",destination)
+    print("[one_tree_with_checkpoint] longest_edp:",longest_edp)
     tree = nx.DiGraph()
     assert source == longest_edp[0] , 'Source is not start of edp'
     tree.add_node(source) # source = longest_edp[0]
@@ -695,6 +697,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
 
 
 ######################################################################################################################################################
+
 #################################################### ONETREE WITH BETWEENNESS CHECKPOINT ######################################################
 
 ##########################################################################################################################################
@@ -896,10 +899,133 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
 
     return paths
 
-
-
 ############################################################################################################################
 
+def triple_checkpoint_pre(graph):
+
+    paths = {}
+
+    for source in graph.nodes:
+        for destination in graph.nodes:
+            if source != destination:
+
+                if source not in paths:
+                    paths[source] = {}
+
+                # Compute all EDPs between source and destination
+                edps = all_edps(source, destination, graph)
+                edps.sort(key=len)
+
+                # Filter EDPs to ensure they are at least 5 nodes long s-cp1-cp2-cp3-d
+                valid_edps = [edp for edp in edps if len(edp) >= 5]
+
+                # Handle special case where no valid EDP >= 5 is found
+                if not valid_edps:
+                    # Handle the case where source and destination are directly connected (len == 2)
+                    
+
+                    tree_from_s = nx.DiGraph()
+                    print("[triple_checkpoint] edps:", edps)
+                    for i in range(len(edps[0])):
+                        print("i:", i)
+                        tree_from_s.add_node(edps[0][i])
+                        if i > 0:
+                            # Füge eine Kante zwischen zwei aufeinanderfolgenden Knoten hinzu
+                            print(f"Edge: ({edps[0][i-1]}, {edps[0][i]})")
+                            tree_from_s.add_edge(edps[0][i-1], edps[0][i])
+
+
+
+                    paths[source][destination] = {
+                        'cps': [destination],
+                        'edps_s_to_d': [edps],
+                        'edps_s_to_cp1':[edps],
+                        'edps_cp1_to_cp2':[edps],
+                        'edps_cp2_to_cp3':[edps],
+                        'tree_cp1_to_s':[tree_from_s],
+                        'tree_cp1_to_cp2':[tree_from_s],
+                        'tree_cp3_to_cp2':[tree_from_s],
+                        'tree_cp3_to_d':[tree_from_s]
+                    }
+                    continue
+
+                # Select the shortest valid EDP (at least 5 nodes long)
+                longest_edp = valid_edps[len(valid_edps)-1]
+
+                # Divide the EDP into segments for CP selection
+                num_segments = 4  # s, cp1, cp2, cp3, d
+                segment_length = len(longest_edp) // num_segments
+
+                cp1_idx = segment_length  # First checkpoint
+                cp2_idx = 2 * segment_length  # Second checkpoint
+                cp3_idx = 3 * segment_length  # Third checkpoint
+
+                # Ensure CP indices are valid and distinct
+                cp1 = longest_edp[cp1_idx]
+                cp2 = longest_edp[cp2_idx]
+                cp3 = longest_edp[cp3_idx]
+
+                # Extract sub-paths
+                
+                edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
+                
+                #Special Case if Nodes are directly connected
+                if edps_cp1_to_s == None:
+                    edps_cp1_to_s = [[cp1,source]]
+                
+                edps_cp1_to_cp2 = all_edps(cp1,cp2,graph).sort(key=len)
+
+                if edps_cp1_to_cp2 == None:
+                    edps_cp1_to_cp2 = [[cp1,cp2]]
+
+                edps_cp3_to_cp2 = all_edps(cp3,cp2,graph).sort(key=len)
+
+                if edps_cp3_to_cp2 == None:
+                    edps_cp3_to_cp2 = [[cp3,cp2]]
+                
+                edps_cp3_to_d = all_edps(cp3,destination,graph).sort(key=len)
+
+                if edps_cp3_to_d == None:
+                    edps_cp3_to_d = [[cp3,destination]]
+
+                print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
+
+                edps_cp1_to_cp2 = all_edps(cp1, cp2, graph)
+                print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
+
+                edps_cp3_to_cp2 = all_edps(cp3, cp2, graph)
+                print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
+
+                edps_cp3_to_d = all_edps(cp3, destination, graph)
+                print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
+
+                #draw_tree_with_highlights(graph,[source,cp1,cp2,cp3,destination])
+                # Build trees for each sub-path
+                faces_cp1_to_s, tree_cp1_to_s = one_tree_with_checkpoint(cp1, source, graph, edps_cp1_to_s[-1], True)
+                
+                tree_cp1_to_cp2 = one_tree_with_checkpoint(cp1, cp2, graph, edps_cp1_to_cp2[-1], False)
+                
+                faces_cp3_to_cp2, tree_cp3_to_cp2 = one_tree_with_checkpoint(cp3, cp2, graph, edps_cp3_to_cp2[-1], True)
+                
+                tree_cp3_to_d = one_tree_with_checkpoint(cp3, destination, graph, edps_cp3_to_d[-1], False)
+
+                # Save the paths and checkpoints
+                paths[source][destination] = {
+                    'cps': [cp1, cp2, cp3],
+                    'edps_cp1_to_s': edps_cp1_to_s,
+                    'edps_cp1_to_cp2': edps_cp1_to_cp2,
+                    'edps_cp3_to_cp2': edps_cp3_to_cp2,
+                    'edps_cp3_to_d': edps_cp3_to_d,
+                    'tree_cp1_to_s': tree_cp1_to_s,
+                    'tree_cp1_to_cp2': tree_cp1_to_cp2,
+                    'tree_cp3_to_cp2': tree_cp3_to_cp2,
+                    'tree_cp3_to_d': tree_cp3_to_d
+                }
+    return paths
+
+
+
+################################ Hilfsfunktionen #####################################################################
 def find_faces(G):
     """
     Findet alle Flächen eines planaren Graphen.

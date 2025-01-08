@@ -30,7 +30,8 @@ def set_routing_params(params):
     global seed, n, rep, k, samplesize, name, f_num
     [n, rep, k, samplesize, f_num, seed, name] = params
 
-
+def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
+    return (False, hops, switches, detour_edges)
 
 def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     print()  
