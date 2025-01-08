@@ -16,9 +16,9 @@ DEBUG = True
 algos = {
         #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
-        #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
-        #'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        #'One Tree PE': [one_tree_pre, RouteOneTree],
+        'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
+        'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'One Tree PE': [one_tree_pre, RouteOneTree],
         'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
         'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
@@ -361,10 +361,10 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
+    start_FR = 8       #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
-    f_num = 3*14 #der Startpunkt der Fehler, bis jetzt haben die meisten algorithmen bis zu FR=14 100% Resilienz gehabt, ab da erst wurde es spannend
-    
-    for i in range(14, 100):
+    for i in range(start_FR, 100):
         f_num = 3 + f_num
         n = 80
         k = 5

@@ -20,10 +20,10 @@ def route(s, d, tree, fails):
     #print("[route] Type of Tree :", type(tree))
     #print("[route] Tree:",tree)
     #print("[route] Tree.nodes:",tree.nodes)
-    print(tree)
+    #print(tree)
     #draw_tree_with_highlights(tree)
     tree = convert_to_undirected(tree)
-    print("Converted tree to undirected graph.")
+    #print("Converted tree to undirected graph.")
     
 
     visited_edges = set()  # Set to keep track of visited edges
@@ -36,15 +36,15 @@ def route(s, d, tree, fails):
     detour_edges = []  # List of detour edges taken due to failures
 
     while current_node != d:
-        print(f"Current node: {current_node}")
-        print(f"Path so far: {path}")
-        print(f"Visited edges: {visited_edges}")
+        #print(f"Current node: {current_node}")
+        #print(f"Path so far: {path}")
+        #print(f"Visited edges: {visited_edges}")
 
         edges = get_sorted_edges(current_node, tree, fails, previous_edge)  # Sort edges by clockwise order
-        print(f"Sorted edges: {edges}")
+        #print(f"Sorted edges: {edges}")
 
         if not edges:  # No available edges to proceed
-            print("No edges available. Backtracking...")
+            #print("No edges available. Backtracking...")
             if len(path) > 1:
                 # Go back to the previous node
                 previous_node = path[-2]
@@ -53,7 +53,7 @@ def route(s, d, tree, fails):
                 switches += 1
                 previous_edge = (current_node, path[-1])
                 #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=previous_edge)
-                print(f"Backtracked to {current_node}")
+                #print(f"Backtracked to {current_node}")
             else:
                 print("Routing failed. No way to proceed.")
                 return (True, hops, switches, detour_edges)  # No way to proceed
@@ -62,9 +62,9 @@ def route(s, d, tree, fails):
         reverse_edge = (previous_edge[1], previous_edge[0]) if previous_edge else None
 
         for edge in edges:
-            print(f"Checking edge {edge}")
+            #print(f"Checking edge {edge}")
             if edge == reverse_edge:
-                print(f"Skipping reverse edge {edge} temporarily.")
+                #print(f"Skipping reverse edge {edge} temporarily.")
                 continue
             if edge not in visited_edges:
                 visited_edges.add(edge)
@@ -76,11 +76,11 @@ def route(s, d, tree, fails):
                     detour_edges.append(edge)
                 edge_taken = True
                 #draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
-                print(f"Edge {edge} taken. Moving to node {current_node}")
+                #print(f"Edge {edge} taken. Moving to node {current_node}")
                 break
 
         if not edge_taken and reverse_edge and reverse_edge not in visited_edges:
-            print(f"No other options. Taking reverse edge {reverse_edge}.")
+            #print(f"No other options. Taking reverse edge {reverse_edge}.")
             visited_edges.add(reverse_edge)
             previous_edge = reverse_edge
             current_node = reverse_edge[1] if reverse_edge[0] == current_node else reverse_edge[0]
