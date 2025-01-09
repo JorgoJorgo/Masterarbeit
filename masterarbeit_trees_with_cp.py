@@ -942,12 +942,13 @@ def triple_checkpoint_pre(graph):
                         'edps_s_to_cp1':[edps],
                         'edps_cp1_to_cp2':[edps],
                         'edps_cp2_to_cp3':[edps],
+                        'edps_cp3_to_d': [edps],
                         'tree_cp1_to_s':tree_from_s,
                         'tree_cp1_to_cp2':tree_from_s,
                         'tree_cp3_to_cp2':tree_from_s,
                         'tree_cp3_to_d':tree_from_s
                     }
-                    plot_paths_element(paths[source][destination],graph,source,destination)
+                    #plot_paths_element(paths[source][destination],graph,source,destination)
                     continue
 
                 # Select the longest valid EDP (assuming it's already sorted by length)
@@ -1038,7 +1039,7 @@ def triple_checkpoint_pre(graph):
                     'tree_cp3_to_cp2': tree_cp3_to_cp2,
                     'tree_cp3_to_d': tree_cp3_to_d
                 }
-                plot_paths_element(paths[source][destination],graph,source,destination)
+                #plot_paths_element(paths[source][destination],graph,source,destination)
     return paths
 
 

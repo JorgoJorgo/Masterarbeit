@@ -366,8 +366,8 @@ if __name__ == "__main__":
     f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):
-        #f_num = 3 + f_num
-        f_num = 0
+        f_num = 3 + f_num
+        #f_num = 0
         n = 80
         k = 5
         samplesize = 10

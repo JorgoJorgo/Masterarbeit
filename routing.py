@@ -31,7 +31,255 @@ def set_routing_params(params):
     [n, rep, k, samplesize, f_num, seed, name] = params
 
 def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
+    print()  
+    
+    detour_edges = []
+    hops = 0
+    switches = 0
+
+    # paths[source][destination] = {
+    #                     'cps': [destination],
+    #                     'edps_s_to_d': [edps],
+    #                     'edps_s_to_cp1':[edps],
+    #                     'edps_cp1_to_cp2':[edps],
+    #                     'edps_cp2_to_cp3':[edps],
+    #                     'tree_cp1_to_s':tree_from_s,
+    #                     'tree_cp1_to_cp2':tree_from_s,
+    #                     'tree_cp3_to_cp2':tree_from_s,
+    #                     'tree_cp3_to_d':tree_from_s
+    #                 }
+    edps_for_s_d = paths[s][d]['edps_s_to_d']
+
+    cps = paths[s][d]['cps']
+
+    edps_cp1_to_s = paths[s][d]['edps_s_to_cp1']
+    tree_cp1_to_s  = paths[s][d]['tree_cp1_to_s']
+
+    edps_cp1_to_cp2 = paths[s][d]['edps_cp1_to_cp2']
+    tree_cp1_to_cp2  = paths[s][d]['tree_cp1_to_cp2']
+
+    edps_cp2_to_cp3 = paths[s][d]['edps_cp2_to_cp3']
+    tree_cp2_to_cp3  = paths[s][d]['tree_cp2_to_cp3']
+
+    tree_cp3_to_d  = paths[s][d]['tree_cp3_to_d']
+    edps_cp3_to_d   = paths[s][d]['edps_cp3_to_d']
+
+    print("Routing with a checkpoint started for : ", s , " -> " , cps, " -> ",d)  
+    currentNode = -1
+    edpIndex = 0
+    detour_edges = []
+    hops = 0
+    switches = 0
+    
+    
+
+    print('Routing TripleCheckpointOneTree via EDPs started for ' , s , " to " , d )
+    #print('EDPs:', edps_for_s_d)
+    for edp in edps_for_s_d:
+        
+        currentNode = s
+        last_node = s 
+
+        if edp != edps_for_s_d[len(edps_for_s_d) -1]:
+
+            currentNode = edp[edpIndex]
+
+
+            #every edp is traversed until d or faulty edge
+            while (currentNode != d):
+
+
+                #since the structure of the edps consists of a line a->b->c-> ... -> n the direct neighbor is checked
+                if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
+                
+                    switches += 1
+
+                    
+                    detour_edges.append( (edp[edpIndex], edp[edpIndex +1]) )
+
+                    
+                    tmp_node = currentNode 
+                    currentNode = last_node 
+                    last_node = tmp_node
+                    hops += 1
+                    break
+
+                else :
+                    edpIndex += 1
+                    hops += 1
+                    last_node = currentNode 
+                    currentNode = edp[edpIndex]
+                #endif
+
+            #endwhile
+
+            # breaking out of the while loop potentially has 2 reasons : d reached / faulty edge detected
+
+
+            if currentNode == d : 
+                print('Routing TripleCheckpointOneTree done via EDP')
+                print('------------------------------------------------------')
+                return (False, hops, switches, detour_edges)
+            #endif
+            
+            # case : faulty edge detected --> traverse back to s
+            while currentNode != s: 
+                detour_edges.append( (last_node,currentNode) )
+
+                last_node = currentNode 
+                
+                printIndex = edpIndex-1
+                               
+                currentNode = edp[edpIndex-1] 
+                edpIndex = edpIndex-1
+                hops += 1
+
+            #endwhile
+        #endif
+
+    #endfor
+
+    # if the Structure is S -> (<= 2 CPs) -> D than the structure consists only of one EPD containing all these nodes
+    # and the edp was routed in the for loop before (so if didnt reach the destination, the routing failed)
+    if len(edps_for_s_d == 1 and len(edps_for_s_d[0]) < 5 ):
+        print("Routing failed via EDPs from S to CP because special case 1 (Structure has less than 3 CPs) ")
+        print(" ")
+        return (True, hops, switches, detour_edges)
+
+
+    cp1 = cps[0]
+    cp2 = cps[1]
+    cp3 = cps[2]
+
+    #### routing s -> cp1 via faces ####
+
+    #from here on the structures all contain at least 5 nodes and alternating routing between faces and trees is possible
+    routing_failure_faces_s_to_cp = False
+
+    #now the first step of the routing consists of face-routing from S to CP
+    routing_failure_faces_s_to_cp, hops_faces_s_to_cp, switches_faces_s_to_cp, detour_edges_faces_s_to_cp = route(s, cps[0], tree_cp1_to_s, fails)
+    
+    hops = hops_faces_s_to_cp + hops
+    switches = switches_faces_s_to_cp + switches
+    
+    # Füge die Kanten aus der zweiten Liste hinzu
+    for edge in detour_edges_faces_s_to_cp:
+        detour_edges.append(edge)
+        
+
+    if(routing_failure_faces_s_to_cp):
+        print("Routing failed via Faces from S to CP1 ")
+        print(" ")
+        return (True, hops, switches, detour_edges)
+    
+    
+    #### routing cp1 -> cp2 via tree ####
+    
+    #the first step of the overall routing (s->cp1->cp2->cp3->d) is done
+    #this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
+    #the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
+    
+    #converted_paths[cp1][cp2]{
+    #           'tree': paths[source][destination]['tree_cp1_to_cp2'],        
+    #           'edps': paths[source][destination]['edps_cp1_to_cp2']
+    #}
+
+    # Create a new variable for the converted paths
+    converted_paths_cp1_to_cp2 = {}
+    for item1 in paths:
+
+        for item2 in paths[item1]:
+            
+            checkpoint_of_item = paths[item1][item2]['cps'][0]
+            
+            if checkpoint_of_item not in converted_paths_cp1_to_cp2:
+                
+                converted_paths_cp1_to_cp2[checkpoint_of_item] = {}
+                
+            converted_paths_cp1_to_cp2[checkpoint_of_item][item2]= {
+                'tree': paths[item1][item2]['tree_cp1_to_cp2'],
+                'edps': paths[item1][item2]['edps_cp1_to_cp2']
+            }
+            
+    routing_failure_tree_cp1_to_cp2, hops_tree_cp1_to_cp2, switches_tree_cp1_to_cp2, detour_edges_tree_cp1_to_cp2 = RouteOneTree_CP(cp1,cp2,fails,converted_paths_cp1_to_cp2)
+    
+    hops = hops + hops_tree_cp1_to_cp2
+    switches = switches + switches_tree_cp1_to_cp2
+    
+
+    # Füge die Kanten aus der ersten Liste hinzu
+    for edge in detour_edges_tree_cp1_to_cp2:
+        detour_edges.append(edge)
+
+    if(routing_failure_tree_cp1_to_cp2):
+        print("Routing failed via Tree from CP1 to CP2 ")
+        print(" ")
+        return (True, hops, switches, detour_edges)    
+    
+    
+    ##### routing cp2->cp3 via faces ####
+
+    routing_failure_faces_cp2_to_cp3 = False
+
+    #now the first step of the routing consists of face-routing from S to CP
+    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree_cp2_to_cp3, fails)
+    
+    hops = hops_faces_cp2_to_cp3 + hops
+    switches = switches_faces_cp2_to_cp3 + switches
+    
+    # Füge die Kanten aus der zweiten Liste hinzu
+    for edge in detour_edges_faces_cp2_to_cp3:
+        detour_edges.append(edge)
+        
+
+    if(routing_failure_faces_cp2_to_cp3):
+        print("Routing failed via Faces from CP2 to CP3 ")
+        print(" ")
+        return (True, hops, switches, detour_edges)
+    
+    
+    ##### routing cp3->d via tree ####
+
+    converted_paths_cp2_to_cp3 = {}
+    for item1 in paths:
+
+        for item2 in paths[item1]:
+            
+            checkpoint_of_item = paths[item1][item2]['cps'][2]
+            
+            if checkpoint_of_item not in converted_paths_cp2_to_cp3:
+                
+                converted_paths_cp2_to_cp3[checkpoint_of_item] = {}
+                
+            converted_paths_cp1_to_cp2[checkpoint_of_item][item2]= {
+                'tree': paths[item1][item2]['tree_cp2_to_cp3'],
+                'edps': paths[item1][item2]['edps_cp2_to_cp3']
+            }
+            
+    routing_failure_tree_cp2_to_cp3, hops_tree_cp2_to_cp3, switches_tree_cp2_to_cp3, detour_edges_tree_cp2_to_cp3 = RouteOneTree_CP(cp1,cp2,fails,converted_paths_cp1_to_cp2)
+    
+    hops = hops + hops_tree_cp2_to_cp3
+    switches = switches + switches_tree_cp2_to_cp3
+
+
+    # Füge die Kanten aus der ersten Liste hinzu
+    for edge in detour_edges_tree_cp2_to_cp3:
+        detour_edges.append(edge)
+
+    if(routing_failure_tree_cp2_to_cp3):
+        print("Routing failed via Tree from CP2 to CP3 ")
+        print(" ")
+        return (True, hops, switches, detour_edges)    
+    
+
+
+    #if all parts were successfull we got to the destination
+    print("Routing succesful with the Checkpoint")
+    print('------------------------------------------------------')
+    print(" ")
     return (False, hops, switches, detour_edges)
+
+########################################################################################################################
 
 def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     print()  
@@ -330,6 +578,13 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     #now the first step of the routing consists of face-routing from S to CP
     routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree_cp_to_s, fails)
 
+    hops = hops_faces + hops
+    switches = switches_faces
+
+    
+    # Füge die Kanten aus der zweiten Liste hinzu
+    for edge in detour_edges_faces:
+        detour_edges.append(edge)
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
@@ -388,25 +643,22 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     #after that the routing continues from CP to D using the tree-routing
     routing_failure_tree, hops_tree, switches_tree, detour_edges_tree = RouteOneTree_CP(cp,d,fails,converted_paths)
     
-    if(routing_failure_tree):
-        print("Routing failed via Tree from CP to D ")
-        print(" ")
-        return (True, hops_tree, switches_tree, detour_edges_tree)    
-    
-    #if both parts of the routing did not fail then the results of each one need to be combined
-    
-    hops = hops_faces + hops_tree
-    switches = switches_faces + switches_tree
-    detour_edges = []
+    hops = hops + hops_tree
+    switches = switches+ switches_tree
     
 
     # Füge die Kanten aus der ersten Liste hinzu
     for edge in detour_edges_tree:
         detour_edges.append(edge)
-
-    # Füge die Kanten aus der zweiten Liste hinzu
-    for edge in detour_edges_faces:
-        detour_edges.append(edge)
+    
+    if(routing_failure_tree):
+        print("Routing failed via Tree from CP to D ")
+        print(" ")
+        return (True, hops, switches, detour_edges)    
+    
+    #if both parts of the routing did not fail then the results of each one need to be combined
+    
+    
         
     print("Routing succesful with the Checkpoint")
     print('------------------------------------------------------')
@@ -2392,545 +2644,3 @@ class Statistic:
         return [x*1.0/self.size**2 for x in np.bincount(self.load.values())]
 
 
-
-def SimulateGraphClustered(g, RANDOM, stats, f_num, samplesize, precomputation=None, dest=None, tree=None, targeted=False):
-    edg = list(g.edges())
-    fails = g.graph['fails']
-    #print("[SimulateGraphClustered] (Top) fails:", fails)
-    #print("[SimulateGraphClustered] g.edges():" , list(g.edges()))
-    #print("[SimulateGraphClustered] fails == g.edges():" , fails == list(g.edges()))
-    #input("")
-    if fails != None:
-        if len(fails) < f_num:
-            fails = fails + edg[:f_num - len(fails) + 1]
-        edg = fails
-    if f_num > len(edg):
-        print('more failures than edges')
-        print('simulate', len(g.edges()), len(fails), f_num)
-        return -1
-    d = g.graph['root']
-    g.graph['k'] = k
-    if precomputation is None:
-        precomputation = tree
-        if precomputation is None:
-            precomputation = GreedyArborescenceDecomposition(g)
-            if precomputation is None:
-               return -1
-    fails = edg[:f_num]
-    if targeted:
-        fails = []
-        
-    failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
-    failures1.update({(v, u): g[u][v]['arb'] for (u, v) in fails})
-    
-    #print("[SimulateGraphClustered] (Mid) fails:", fails)
-    #print("[SimulateGraphClustered] (Mid) failures1:", failures1)
-    
-    g = g.copy(as_view=False)
-
-
-
-    #######################################################################
-    debugGraphShow = True
-
-    if(debugGraphShow):   
-        # Extract positions (if they exist)
-        pos = {}
-        for node in g.nodes(data=True):
-            if 'pos' in node[1]:
-                x, y = map(float, node[1]['pos'].strip('()').split(','))
-                pos[node[0]] = (x, y)
-
-        # If positions are not provided, generate them
-        if not pos:
-            pos = nx.spring_layout(g)
-
-        # Assign edge colors: failed edges in red, normal edges in black
-        edge_colors = []
-        for edge in g.edges():
-            if edge in failures1 or (edge[1], edge[0]) in failures1:
-                edge_colors.append('red')  # Highlight failed edges in red
-            else:
-                edge_colors.append('black')  # Normal edges in black
-
-        # Draw the graph
-        plt.figure(figsize=(12, 8))
-        nx.draw(
-            g,
-            pos,
-            with_labels=True,
-            node_color='lightblue',
-            edge_color=edge_colors,
-            node_size=500,
-            font_size=8,
-            arrows=True,
-        )
-    
-        # Add legend for fails
-        legend_labels = ['Fail Edges', 'Normal Edges']
-        legend_colors = ['red', 'black']
-        for color, label in zip(legend_colors, legend_labels):
-            plt.plot([], [], color=color, label=label)
-
-        plt.legend(loc='upper right')
-        plt.title("Graph Visualization with Fail Edges Highlighted")
-        plt.show()
-
-    ############################################
-
-
-    g.remove_edges_from(failures1.keys())
-    nodes = list(set(connected_component_nodes_with_d_after_failures(g,[],d))-set([dest, d]))
-    dist = nx.shortest_path_length(g, target=d)
-    if len(nodes) < samplesize:
-        print('Not enough nodes in connected component of destination (%i nodes, %i sample size), adapting it' % (len(nodes), samplesize))
-        PG = nx.nx_pydot.write_dot(g , "./graphen/failedGraphs/graph")
-        samplesize = len(nodes)
-    nodes = list(set(g.nodes())-set([dest, d]))
-    random.shuffle(nodes)
-    count = 0
-    for s in nodes[:samplesize]:
-        print("Loop over samplesize is runing")
-        count += 1
-        for stat in stats:
-            print("Loop over stats is runing")
-            if targeted:
-                fails = list(nx.minimum_edge_cut(g,s=s,t=d))[1:]
-                random.shuffle(fails)
-                failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
-                #print("[SimulateGraphClustered] (End) fails:", fails)
-                #print("[SimulateGraphClustered] (End) failures1:", failures1)
-                #input(" ")
-                g.remove_edges_from(failures1.keys())
-                x = dist[s]
-                dist[s] = nx.shortest_path_length(g,source=s,target=d)
-                #print(len(fails),x,dist[s]) #DEBUG
-            if (s == d) or (not s in dist):
-                stat.fails += 1
-                continue
-            (fail, hops) = stat.update(s, d, fails, precomputation, dist[s])
-            if fail:
-                stat.hops = stat.hops[:-1]
-                stat.stretch = stat.stretch[:-1]
-            elif hops < 0:
-                stat.hops = stat.hops[:-1]
-                stat.stretch = stat.stretch[:-1]
-                stat.succ = stat.succ - 1
-            if targeted:
-                for ((u, v), i) in failures1.items():
-                    g.add_edge(u, v)
-                    g[u][v]['arb'] = i
-            if stat.succ + stat.fails != count:
-                print('problem, success and failures do not add up', stat.succ, stat.fails, count)
-                print('source', s)
-                if stat.has_graph:
-                    drawGraphWithLabels(stat.graph, "results/problem.png")
-    if not targeted:
-        for ((u, v), i) in failures1.items():
-            g.add_edge(u, v)
-            g[u][v]['arb'] = i
-    for stat in stats:
-        stat.finalize()
-        
-    sys.stdout.flush()
-    return fails
-
-
-
-def RouteWithOneCheckpointOneTreeCLUSTERED(s,d,fails,paths):
-    
-    ####################ONLY FOR RUNNING WITH CLUSTERED FAILURES VIA THE CUSTOM RUN COMMAND#################
-    #when running clustered failures the given algorithm computes clustered failures at the destination
-    #to invert this, the source and destination are flipped when the routing starts
-    s_old = s
-    s = d
-    d = s_old
-    ##################################
-    print()
-    print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d) 
-    #print("Fails : ", len(fails))
-    
-    detour_edges = []
-    hops = 0
-    switches = 0
-    
-    cp = paths[s][d]['cp']
-    faces_cp_to_s  = paths[s][d]['faces_cp_to_s']
-    edps_cp_to_s = paths[s][d]['edps_cp_to_s']
-    tree_cp_to_d  = paths[s][d]['tree_cp_to_d']
-    edps_cp_to_d   = paths[s][d]['edps_cp_to_d']
-    
-    routing_failure_faces = False
-    #now the first step of the routing consists of face-routing from S to CP
-    
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = RouteFaces(s,cp,fails,faces_cp_to_s)
-    
-    if(routing_failure_faces):
-        print("Routing failed via Faces from S to CP ")
-        print(" ")
-        return (True, hops_faces, switches_faces, detour_edges_faces)
-    
-    #since the routing for the trees was build prior to routing of the faces, the paths structure has changed
-    #therefore the new paths structure needs to be converted to the old structure
-    
-    #new structure:
-    #paths[source][destination] = {
-    #                              'cp': cp,
-    #                              'faces_cp_to_s': faces_cp_to_s, 
-    #                              'edps_cp_to_s': edps_cp_to_s,
-    #                              'tree_cp_to_d': tree_cp_to_d, 
-    #                              'edps_cp_to_d': edps_cp_to_d,
-    #                             } 
-    
-    #old structure:
-    #paths[source][destination] = {
-    #                               'tree': tree,
-    #                               'edps': edps
-    #                              }
-
-    
-    # Create a new variable for the converted paths
-    converted_paths = {}
-
-    #the first step of the overall routing (s->cp->d) is done
-    #this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
-    #the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
-    
-    #converted_paths[cp][destination]{
-    #           'tree': paths[source][destination]['tree_cp_to_d'],        
-    #           'edps': paths[source][destination]['edps_cp_to_d']
-    #}
-    for item1 in paths:
-
-        for item2 in paths[item1]:
-            
-            checkpoint_of_item = paths[item1][item2]['cp']
-            
-            if checkpoint_of_item not in converted_paths:
-                
-                converted_paths[checkpoint_of_item] = {}
-                
-            converted_paths[checkpoint_of_item] [item2]= {
-                'tree': paths[item1][item2]['tree_cp_to_d'],
-                'edps': paths[item1][item2]['edps_cp_to_d']
-            }
-            
-                 
-    #after that the routing continues from CP to D using the tree-routing
-    routing_failure_tree, hops_tree, switches_tree, detour_edges_tree = RouteOneTree_CP(cp,d,fails,converted_paths)
-    
-    if(routing_failure_tree):
-        print("Routing failed via Tree from CP to D ")
-        print(" ")
-        return (True, hops_tree, switches_tree, detour_edges_tree)    
-    
-    #if both parts of the routing did not fail then the results of each one need to be combined
-    
-    hops = hops_faces + hops_tree
-    switches = switches_faces + switches_tree
-    detour_edges = []
-    
-
-    # Füge die Kanten aus der ersten Liste hinzu
-    for edge in detour_edges_tree:
-        detour_edges.append(edge)
-
-    # Füge die Kanten aus der zweiten Liste hinzu
-    for edge in detour_edges_faces:
-        detour_edges.append(edge)
-        
-    print("Routing succesful with the Checkpoint")
-    print('------------------------------------------------------')
-    print(" ")
-    return (False, hops, switches, detour_edges)
-
-
-    
-    
-    
-    #routing methode von onetree um zwischen einem source-destination paar zu routen
-#dies geschieht indem man nach weiterleitung eines pakets an jedem knoten den nächst besten rang bestimmt
-def RouteOneTreeCLUSTERED (s,d,fails,paths):
-    
-    
-    ####################ONLY FOR RUNNING WITH CLUSTERED FAILURES VIA THE CUSTOM RUN COMMAND#################
-    #when running clustered failures the given algorithm computes clustered failures at the destination
-    #to invert this, the source and destination are flipped when the routing starts
-    s_old = s
-    s = d
-    d = s_old
-    ##################################
-    
-    
-    if s != d :
-        
-        currentNode = -1
-        edpIndex = 0
-        detour_edges = []
-        hops = 0
-        switches = 0
-        tree = paths[s][d]['tree']
-        edps_for_s_d = paths[s][d]['edps']
-
-        print('Routing OneTree Base started for ' , s , " to " , d )
-        print("Fails : ", len(fails))
-        #als erstes anhand der EDPs (außer dem längsten, also dem letzten) versuchen zu routen
-        for edp in edps_for_s_d:
-
-            currentNode = s
-            last_node = s 
-
-            if edp != edps_for_s_d[len(edps_for_s_d) -1]:
-
-                currentNode = edp[edpIndex]
-
-
-                #jeder EDP wird so weit durchlaufen bis man mit dem currentNode zum Ziel kommt oder man auf eine kaputte Kante stößt
-                while (currentNode != d):
-
-
-                    #man prüft ob die nächste Kante im EDP kaputt ist so, indem man guckt ob eine Kante vom currentNode edp[edpIndex] zum nächsten Node im EDP edp[edpIndex+1] in Fails ist
-                    #dies beruht auf lokalen Informationen, da EDPs nur eine eingehende Kante haben ( auf der das Paket ankommt ) und eine ausgehende Kante (auf der das Paket nicht ankommt)
-                    if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
-                        
-
-                        #wenn man auf eine fehlerhafte Kante stößt dann wechselt man den Pfad
-                        switches += 1
-
-                        #die kanten die wir wieder zurückgehen sind die kanten die wir schon in dem edp gelaufen sind
-                        detour_edges.append( (edp[edpIndex], edp[edpIndex +1]) )
-
-                        #wir fangen beim neuen edp ganz am anfang an
-                        tmp_node = currentNode #und gehen eine Kante hoch, also den edp zurück
-                        currentNode = last_node #das "rückwärts den edp gehen" kann so gemacht werden, da die pakete so nur über den port gehen müssen über den sie reingekommen sind
-                        last_node = tmp_node
-                        hops += 1
-                        break
-
-                    else :#wenn die kante die man gehen will inordnung ist, die kante gehen und zum nächsten knoten schalten
-                        edpIndex += 1
-                        hops += 1
-                        last_node = currentNode 
-                        currentNode = edp[edpIndex] #man kann hier currentnode direkt so setzen, da es im edp für jeden knoten jeweils 1 ausgehende
-                                                    #und genau eine eingehende Kante gibt
-                    #endif
-
-                #endwhile
-
-                #nun gibt es 2 Möglichkeiten aus denen die while-Schleife abgebrochen wurde : Ziel erreicht / EDP hat kaputte Kante 
-
-
-                if currentNode == d : #wir haben die destination mit einem der edps erreicht
-                    print('Routing done via EDP')
-                    print('------------------------------------------------------')
-                    return (False, hops, switches, detour_edges)
-                #endif
-                
-                #wenn man hier angelangt ist, dann bedeutet dies, dass die while(currentNode != d) beendet wurde weil man auf eine kaputte kante gestoßen ist 
-                #und dass man nicht an der destination angekommen ist, daher muss man jetzt an die source zurück um den nächsten edp zu starten
-                while currentNode != s: #hier findet die Rückführung statt
-                    detour_edges.append( (last_node,currentNode) )
-
-                    last_node = currentNode #man geht den edp so weit hoch bis man an der source ist
-                    
-                    printIndex = edpIndex-1
-                    
-                    
-                    print("Source : ", s , " Destination : ", d)
-                    print("Edp : ", edp)
-                    print("EdpIndex-1 : ", printIndex)
-                    print("edp[edpIndex-1] : ", edp[edpIndex-1])
-                    print(" ")
-                    
-                    
-                    currentNode = edp[edpIndex-1] #man kann auch hier direkt den edp index verwenden da man genau 1 eingehende kante hat
-                    edpIndex = edpIndex-1
-                    hops += 1
-
-                #endwhile
-            #endif
-
-        #endfor
-
-        # wenn wir es nicht geschafft haben anhand der edps allein zum ziel zu routen dann geht es am längsten edp weiter
-        print('Routing via EDPs FAILED')
-        
-        currentNode = s
-        print("Routing via Tree started")
-        last_node = currentNode
-
-
-        while(currentNode != d):#in dieser Schleife findet das Routing im Tree statt
-                                #die idee hinter dieser schleife ist ein großes switch-case
-                                #bei dem man je nach eingehenden und funktionierenden ausgehenden ports switcht
-                                #nach jedem schritt den man im baum geht folgt die prüfung ob man schon am ziel angekommen ist
-
-
-            #kommt das paket von einer eingehenden kante an dann wird der kleinste rang der kinder gewählt
-            #denn man war noch nicht an diesem node
-            if last_node == get_parent_node(tree,currentNode) or last_node == currentNode:
-
-                #suche das kind mit dem kleinsten  rang
-
-                children = []
-                #es werden alle Kinder gespeichert zu denen der jetzige Knoten einen Verbindung hat und sortiert nach ihren Rängen
-                out_edges_with_fails = tree.out_edges(currentNode)
-                out_edges = []
-                for edge in out_edges_with_fails:
-                    if edge in fails or tuple(reversed(edge)) in fails:
-                        continue
-                    else: 
-                        out_edges.append(edge)
-                    #endif
-                #endfor
-                for nodes in out_edges:
-                    children.append(nodes[1])
-                #endfor
-                children.sort(key=lambda x: (getRank(tree, x)))
-
-
-                if len(children) >  0 : #wenn es kinder gibt, zu denen die Kanten nicht kaputt sind
-                    #setze lastnode auf currentnode
-                    #setze current node auf das kind mit dem kleinesten rang
-                    #dadurch "geht man" die kante zum kind
-                    last_node = currentNode
-                    currentNode = children[0]
-                    hops += 1
-                   
-
-                else: #wenn alle Kanten zu den Kindern kaputt sind dann ist man fertig wenn man an der source ist oder man muss eine kante hoch
-                    if currentNode == s: 
-                        break; #das routing ist gescheitert
-                    #endif
-
-
-                    #man nimmt die eingehende kante des currentnode und "geht eine stufe hoch"
-                    hops += 1
-                    detour_edges.append( (currentNode, last_node) )
-                    last_node = currentNode
-                    currentNode = get_parent_node(tree,currentNode)
-
-                #endif
-            #endif
-
-
-
-            children_of_currentNode = []
-
-            for nodes in tree.out_edges(currentNode):
-                    children_of_currentNode.append(nodes[1])
-            #endfor
-
-            #wenn das Paket nicht aus einer eingehenden Kante kommt, dann muss es aus einer ausgehenden kommen
-            #dafür muss man den Rang des Kindes bestimmen von dem das Paket kommt
-            #das Kind mit dem nächsthöheren Rang suchen
-            if last_node in children_of_currentNode:
-            
-                #alle funktionierenden Kinder finden
-                children = []
-                out_edges_with_fails = tree.out_edges(currentNode)
-                out_edges = []
-                for edge in out_edges_with_fails:
-                    if edge in fails or tuple(reversed(edge)) in fails:
-                        continue
-                        
-                    else: 
-                        out_edges.append(edge)
-                    #endif
-
-                #endfor
-                for nodes in out_edges:
-                    children.append(nodes[1])
-                #endfor
-                children.sort(key=lambda x: (getRank(tree, x)))
-
-                
-
-                #wenn es Funktionierende Kinder gibt dann muss man das Kind suchen mit dem nächstgrößeren Rang
-                if len(children) > 0: 
-                    #prüfen ob es noch kinder gibt mit größerem rang , also ob es noch zu durchlaufene kinder gibt
-                    
-
-                    #welchen index hat das kind nach seinem "rank" in der sortierten liste
-                    index_of_last_node = children.index(last_node) if last_node in children else -1 
-                
-                    #alle  kinder ohne das wo das paket herkommt
-                    children_without_last = [a for a in children if a != last_node] 
-
-                    
-
-                    #es gibt keine möglichen kinder mehr und man ist an der Source
-                    #dann ist das Routing fehlgeschlagen
-                    if len(children_without_last) == 0 and currentNode == s : 
-                        break;
-
-                    #Sonderfall (noch unklar ob nötig)
-                    #wenn man aus einem Kind kommt, zu dem die Kante fehlerhaft ist
-                    #man nimmt trotzdem das nächste Kind
-                    elif index_of_last_node == -1:
-                        
-                        hops += 1
-                        last_node = currentNode
-                        currentNode = children[0]
-
-
-                    #das kind wo das paket herkommt hatte den höchsten rang der kinder, also das letztmögliche
-                    #daher muss man den Baum eine Stufe hoch
-                    elif index_of_last_node == len(children)-1: 
-                        
-                        if currentNode != s: #man muss eine stufe hoch gehen
-                            hops += 1
-                            detour_edges.append( (currentNode, last_node) )
-                            last_node = currentNode
-                            currentNode = get_parent_node(tree,currentNode)
-                        else:#sonderfall wenn man an der Source ist dann ist das Routing gescheitert
-                            break;
-
-                    #es gibt noch mindestens 1 Kind mit höherem Rang
-                    elif index_of_last_node < len(children)-1 : 
-                        
-                        #wenn ja dann nimm das Kind mit dem nächst größeren Rang aus der sortierten Children Liste
-                        hops += 1
-                        last_node = currentNode
-                        currentNode = children[index_of_last_node+1]
-
-
-                    #es gibt keine kinder mehr am currentnode
-                    else: 
-                        
-                        #wenn nein dann setze currentnode auf den parent
-                        hops += 1
-                        detour_edges.append( (currentNode, last_node) )
-                        last_node = currentNode
-                        currentNode = get_parent_node(tree,currentNode)
-                    #endif
-
-                #wenn es keine funktionierenden Kinder gibt dann geht man eine Stufe hoch
-                else: 
-                    detour_edges.append( (currentNode, last_node) )
-                    hops += 1
-                    
-                    last_node = currentNode
-                    currentNode = get_parent_node(tree,currentNode)
-                   
-                #endif
-            
-                
-        #endwhile
-
-        #hier kommt man an wenn die while schleife die den tree durchläuft "gebreakt" wurde und man mit dem tree nicht zum ziel gekommen ist
-        #oder wenn die bedingung nicht mehr gilt (currentNode != d) und man das ziel erreicht hat
-
-        if currentNode == d : #wir haben die destination mit dem tree erreicht
-            print('Routing done via Tree')
-            print('------------------------------------------------------')
-            return (False, hops, switches, detour_edges)
-        #endif
-        
-        print('Routing via Tree failed')
-        print('------------------------------------------------------')
-        return (True, hops, switches, detour_edges)
-    else: 
-        return (True, 0, 0, [])
-    
-    
