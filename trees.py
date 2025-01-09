@@ -2432,6 +2432,8 @@ def connect_leaf_to_destination(tree, source, destination):
         neighbors = list(nx.neighbors(tree, node))
         if len(neighbors) == 0 and node != source:
             nodes_to_connect.append((node, destination))
+        elif (len(tree.nodes) == 1):
+            nodes_to_connect.append((node,destination))
     #edges hinzufügen
     tree.add_edges_from(nodes_to_connect)
 

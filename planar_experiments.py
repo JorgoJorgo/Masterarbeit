@@ -276,7 +276,7 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
     G = create_unit_disk_graph(num_nodes)
     #print("Graph erstellt:", G)
     print("Anzahl Knoten:", len(G.nodes()), "Anzahl Kanten:", len(G.edges()))
-
+    #draw_graph_with_positions(G)
     # Wähle die Planarisierungsmethode
     if method.lower() == "delaunay":
         print("Wende Delaunay-Triangulation an...")
@@ -366,7 +366,8 @@ if __name__ == "__main__":
     f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):
-        f_num = 3 + f_num
+        #f_num = 3 + f_num
+        f_num = 0
         n = 80
         k = 5
         samplesize = 10

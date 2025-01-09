@@ -373,9 +373,9 @@ def one_tree_with_middle_checkpoint_pre(graph):
 #special: because the second tree that is required to build by the one_tree_with_random_checkpoint_pre is the tree cp->s
 #its directed edges need to flipped (arg: reverse)
 def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
-    print("[one_tree_with_checkpoint] source:",source)
-    print("[one_tree_with_checkpoint] destination:",destination)
-    print("[one_tree_with_checkpoint] longest_edp:",longest_edp)
+    #print("[one_tree_with_checkpoint] source:",source)
+    #print("[one_tree_with_checkpoint] destination:",destination)
+    #print("[one_tree_with_checkpoint] longest_edp:",longest_edp)
     tree = nx.DiGraph()
     assert source == longest_edp[0] , 'Source is not start of edp'
     tree.add_node(source) # source = longest_edp[0]
@@ -942,29 +942,42 @@ def triple_checkpoint_pre(graph):
                         'edps_s_to_cp1':[edps],
                         'edps_cp1_to_cp2':[edps],
                         'edps_cp2_to_cp3':[edps],
-                        'tree_cp1_to_s':[tree_from_s],
-                        'tree_cp1_to_cp2':[tree_from_s],
-                        'tree_cp3_to_cp2':[tree_from_s],
-                        'tree_cp3_to_d':[tree_from_s]
+                        'tree_cp1_to_s':tree_from_s,
+                        'tree_cp1_to_cp2':tree_from_s,
+                        'tree_cp3_to_cp2':tree_from_s,
+                        'tree_cp3_to_d':tree_from_s
                     }
+                    plot_paths_element(paths[source][destination],graph,source,destination)
                     continue
 
-                # Select the shortest valid EDP (at least 5 nodes long)
-                longest_edp = valid_edps[len(valid_edps)-1]
+                # Select the longest valid EDP (assuming it's already sorted by length)
+                longest_edp = valid_edps[-1]
+
+                # Anzahl der Knoten prüfen
+                if len(longest_edp) < 5:
+                    raise ValueError("EDP must have at least 5 nodes for meaningful CP distribution.")
 
                 # Divide the EDP into segments for CP selection
-                num_segments = 4  # s, cp1, cp2, cp3, d
+                num_segments = min(4, len(longest_edp) - 1)  # Ensure no out-of-bound segments
                 segment_length = len(longest_edp) // num_segments
 
-                cp1_idx = segment_length  # First checkpoint
-                cp2_idx = 2 * segment_length  # Second checkpoint
-                cp3_idx = 3 * segment_length  # Third checkpoint
+                # Calculate CP indices based on segment midpoints
+                cp_indices = []
+                for i in range(1, num_segments):
+                    cp_idx = i * segment_length + segment_length // 2  # Midpoint of each segment
+                    cp_idx = min(cp_idx, len(longest_edp) - 2)  # Ensure not too close to destination
+                    cp_indices.append(cp_idx)
 
-                # Ensure CP indices are valid and distinct
-                cp1 = longest_edp[cp1_idx]
-                cp2 = longest_edp[cp2_idx]
-                cp3 = longest_edp[cp3_idx]
+                # Select CPs based on calculated indices
+                cps = [longest_edp[idx] for idx in cp_indices]
 
+                # Validate CPs
+                if len(set(cps)) < len(cps):
+                    raise ValueError("Control points overlap. Adjust segmentation logic.")
+
+                cp1 = cps[0]
+                cp2 = cps[1]
+                cp3 = cps[2]
                 # Extract sub-paths
                 
                 edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
@@ -1001,13 +1014,17 @@ def triple_checkpoint_pre(graph):
 
                 #draw_tree_with_highlights(graph,[source,cp1,cp2,cp3,destination])
                 # Build trees for each sub-path
-                faces_cp1_to_s, tree_cp1_to_s = one_tree_with_checkpoint(cp1, source, graph, edps_cp1_to_s[-1], True)
-                
+                faces_cp1_to_s, tree_cp1_to_s = one_tree_with_checkpoint(cp1, source, graph, edps_cp1_to_s[-1], True)    
+                print("[triple_checkpoint_pre] tree_cp1_to_s:", tree_cp1_to_s.nodes)
+            
                 tree_cp1_to_cp2 = one_tree_with_checkpoint(cp1, cp2, graph, edps_cp1_to_cp2[-1], False)
-                
+                print("[triple_checkpoint_pre] tree_cp1_to_cp2:", tree_cp1_to_cp2.nodes)
+
                 faces_cp3_to_cp2, tree_cp3_to_cp2 = one_tree_with_checkpoint(cp3, cp2, graph, edps_cp3_to_cp2[-1], True)
-                
+                print("[triple_checkpoint_pre] tree_cp3_to_cp2:", tree_cp3_to_cp2.nodes)
+
                 tree_cp3_to_d = one_tree_with_checkpoint(cp3, destination, graph, edps_cp3_to_d[-1], False)
+                print("[triple_checkpoint_pre] tree_cp3_to_d:", tree_cp3_to_d.nodes)
 
                 # Save the paths and checkpoints
                 paths[source][destination] = {
@@ -1021,6 +1038,7 @@ def triple_checkpoint_pre(graph):
                     'tree_cp3_to_cp2': tree_cp3_to_cp2,
                     'tree_cp3_to_d': tree_cp3_to_d
                 }
+                plot_paths_element(paths[source][destination],graph,source,destination)
     return paths
 
 
@@ -1222,3 +1240,63 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
 
     #plt.title("Baum mit hervorgehobenen Knoten, Kanten und aktueller Kante")
     plt.show()
+
+def plot_paths_element(paths_element, tree, source, destination):
+    """
+    Plots a graph based on a single paths[source][destination] element, with node positions.
+
+    Parameters:
+        paths_element (dict): A single paths[source][destination] element containing cps and tree information.
+        tree (nx.Graph): A NetworkX graph containing node positions.
+    """
+    # Initialisiere den Graphen
+    G = nx.DiGraph()
+
+    # Verarbeite die Struktur
+    cps = paths_element.get('cps', [])  # Sicherstellen, dass 'cps' existiert
+
+    # Füge Kontrollpunkte und Quelle/Ziel als spezielle Knoten hinzu
+    special_nodes = {
+        source: "yellow",
+        destination: "green",
+    }
+
+    # Weisen Sie Farben dynamisch zu, wenn CPS vorhanden sind
+    cp_colors = ["orange", "purple", "pink"]
+    for idx, cp in enumerate(cps):
+        if idx < len(cp_colors):
+            special_nodes[cp] = cp_colors[idx]
+
+    # Füge Knoten hinzu
+    for cp in cps:
+        G.add_node(cp)
+
+    # Füge Kanten aus den Bäumen hinzu
+    for key, edges in paths_element.items():
+        if key.startswith('tree_'):
+            if isinstance(edges, list):
+                if all(isinstance(edge, tuple) for edge in edges):
+                    G.add_edges_from(edges)
+                else:
+                    raise ValueError(f"Invalid edges format for {key}. Expected a list of tuples, got: {edges}")
+            elif isinstance(edges, nx.Graph):
+                G.add_edges_from(edges.edges())
+            else:
+                raise ValueError(f"Invalid edges format for {key}. Expected a list or a NetworkX Graph, got: {type(edges)}")
+
+    # Bestimme Knotenfarben
+    node_colors = []
+    for node in G.nodes():
+        if node in special_nodes:
+            node_colors.append(special_nodes[node])
+        else:
+            node_colors.append("gray")  # Alle anderen Knoten in Grau
+
+    # Positionen der Knoten aus dem Baum holen
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes() if node in G.nodes()}
+
+    # Zeichne den Graphen
+    nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=700, font_size=10, font_weight="bold")
+    plt.show()
+
+
