@@ -56,6 +56,7 @@ def route(s, d, tree, fails):
                 #print(f"Backtracked to {current_node}")
             else:
                 print("Routing failed. No way to proceed.")
+                print("[route] detour_edges:",detour_edges)
                 return (True, hops, switches, detour_edges)  # No way to proceed
 
         edge_taken = False
@@ -100,7 +101,24 @@ def route(s, d, tree, fails):
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
 
-# Helper function to get edges sorted in clockwise order
+# # Helper function to get edges sorted in clockwise order
+# def get_sorted_edges(node, tree, fails, previous_edge):
+#     edges = []
+#     node_pos = tree.nodes[node]['pos']
+
+#     for neighbor in tree.neighbors(node):
+#         edge = (node, neighbor)  # Behalte die originale Richtung bei
+#         if edge not in fails and (neighbor, node) not in fails:  # Prüfe beide Richtungen in fails
+#             neighbor_pos = tree.nodes[neighbor]['pos']
+#             angle = calculate_angle(node_pos, neighbor_pos)
+#             edges.append((edge, angle))
+
+#     edges.sort(key=lambda x: x[1])  # Sort edges based on angles
+#     if previous_edge is not None:
+#         edges = prioritize_edges(edges, previous_edge, tree)
+
+#     return [e[0] for e in edges]
+
 def get_sorted_edges(node, tree, fails, previous_edge):
     edges = []
     node_pos = tree.nodes[node]['pos']
@@ -113,10 +131,14 @@ def get_sorted_edges(node, tree, fails, previous_edge):
             edges.append((edge, angle))
 
     edges.sort(key=lambda x: x[1])  # Sort edges based on angles
+
+    # Dynamische Priorisierung: Drehe die Liste basierend auf `previous_edge`
     if previous_edge is not None:
-        edges = prioritize_edges(edges, previous_edge, tree)
+        previous_angle = calculate_angle(tree.nodes[previous_edge[0]]['pos'], tree.nodes[previous_edge[1]]['pos'])
+        edges = sorted(edges, key=lambda x: abs(x[1] - previous_angle))
 
     return [e[0] for e in edges]
+
 
 
 # Helper function to calculate the angle between two coordinates

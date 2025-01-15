@@ -52,14 +52,14 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     cps = paths[s][d]['cps']
 
-    edps_cp1_to_s = paths[s][d]['edps_s_to_cp1']
+    edps_cp1_to_s = paths[s][d]['edps_cp1_to_s']
     tree_cp1_to_s  = paths[s][d]['tree_cp1_to_s']
 
     edps_cp1_to_cp2 = paths[s][d]['edps_cp1_to_cp2']
     tree_cp1_to_cp2  = paths[s][d]['tree_cp1_to_cp2']
 
-    edps_cp2_to_cp3 = paths[s][d]['edps_cp2_to_cp3']
-    tree_cp2_to_cp3  = paths[s][d]['tree_cp2_to_cp3']
+    edps_cp3_to_cp2 = paths[s][d]['edps_cp3_to_cp2']
+    tree_cp3_to_cp2  = paths[s][d]['tree_cp3_to_cp2']
 
     tree_cp3_to_d  = paths[s][d]['tree_cp3_to_d']
     edps_cp3_to_d   = paths[s][d]['edps_cp3_to_d']
@@ -74,6 +74,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     
 
     print('Routing TripleCheckpointOneTree via EDPs started for ' , s , " to " , d )
+    #input(" ")
     #print('EDPs:', edps_for_s_d)
     for edp in edps_for_s_d:
         
@@ -141,8 +142,17 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     # if the Structure is S -> (<= 2 CPs) -> D than the structure consists only of one EPD containing all these nodes
     # and the edp was routed in the for loop before (so if didnt reach the destination, the routing failed)
-    if len(edps_for_s_d == 1 and len(edps_for_s_d[0]) < 5 ):
+    check_all_edps_less_than_four = True
+    
+    for edp in edps_for_s_d:
+        print("Checking:",edp)
+        if len(edp)>4:
+            check_all_edps_less_than_four = False
+
+    if (len(edps_for_s_d) == 1 and check_all_edps_less_than_four ):
+        print("[RouteWithTripleCheckpointOneTree] (Special Case 1) edps_for_s_d:", edps_for_s_d)
         print("Routing failed via EDPs from S to CP because special case 1 (Structure has less than 3 CPs) ")
+        print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
 
@@ -152,7 +162,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     cp3 = cps[2]
 
     #### routing s -> cp1 via faces ####
-
+    print("[RouteWithTripleCheckpointOneTree] Face-Routing started S(",s,") - CP1(",cp1,")")
+    #input(" ")
     #from here on the structures all contain at least 5 nodes and alternating routing between faces and trees is possible
     routing_failure_faces_s_to_cp = False
 
@@ -169,12 +180,17 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_faces_s_to_cp):
         print("Routing failed via Faces from S to CP1 ")
+        draw_tree_with_highlights(fails=fails,tree=tree_cp1_to_s,nodes=[s,cps[0]],showplot=False)
+        print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
     
     
     #### routing cp1 -> cp2 via tree ####
     
+    print("[RouteWithTripleCheckpointOneTree] Tree-Routing started CP1(",cp1,") - CP2(",cp2,")")
+    
+
     #the first step of the overall routing (s->cp1->cp2->cp3->d) is done
     #this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
     #the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
@@ -186,43 +202,75 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     # Create a new variable for the converted paths
     converted_paths_cp1_to_cp2 = {}
-    for item1 in paths:
+    converted_paths_cp1_to_cp2[cp1] = {}
+    converted_paths_cp1_to_cp2[cp1][cp2] = {
+        'tree': paths[s][d]['tree_cp1_to_cp2'],
+        'edps': paths[s][d]['edps_cp1_to_cp2']
+    }
+    # for item1 in paths:
 
-        for item2 in paths[item1]:
+    #     for item2 in paths[item1]:
             
-            checkpoint_of_item = paths[item1][item2]['cps'][0]
+    #         #print("[RouteWithTripleCheckpointOneTree] cps:",paths[item1][item2]['cps'])
+    #         if(len(paths[item1][item2]['cps'])==1):
+
+    #             cp1_of_item = item1
+
+    #             cp2_of_item = item2
+
             
-            if checkpoint_of_item not in converted_paths_cp1_to_cp2:
+    #         else:
+    #             cp1_of_item = paths[item1][item2]['cps'][0]
+
+    #             cp2_of_item = paths[item1][item2]['cps'][1]
+            
+    #         if cp1_of_item not in converted_paths_cp1_to_cp2:
                 
-                converted_paths_cp1_to_cp2[checkpoint_of_item] = {}
+    #             converted_paths_cp1_to_cp2[cp1_of_item] = {}
                 
-            converted_paths_cp1_to_cp2[checkpoint_of_item][item2]= {
-                'tree': paths[item1][item2]['tree_cp1_to_cp2'],
-                'edps': paths[item1][item2]['edps_cp1_to_cp2']
-            }
-            
+    #         converted_paths_cp1_to_cp2[cp1_of_item][cp2_of_item]= {
+    #             'tree': paths[item1][item2]['tree_cp1_to_cp2'],
+    #             'edps': paths[item1][item2]['edps_cp1_to_cp2']
+    #         }
+
+    #print("CP1:", cp1)        
+    #print("CP2:", cp2)
+    #print("fails:", fails)     
+    print("ConvertedPathsCP1toCP2 tree",converted_paths_cp1_to_cp2[cp1][cp2]['tree'].nodes) 
+    print("ConvertedPathsCP1toCP2 edps",converted_paths_cp1_to_cp2[cp1][cp2]['edps'])        
     routing_failure_tree_cp1_to_cp2, hops_tree_cp1_to_cp2, switches_tree_cp1_to_cp2, detour_edges_tree_cp1_to_cp2 = RouteOneTree_CP(cp1,cp2,fails,converted_paths_cp1_to_cp2)
     
     hops = hops + hops_tree_cp1_to_cp2
     switches = switches + switches_tree_cp1_to_cp2
     
-
+    #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp1_to_cp2[cp1][cp2]['tree'],nodes=[cp1,cp2],showplot=True)
     # Füge die Kanten aus der ersten Liste hinzu
     for edge in detour_edges_tree_cp1_to_cp2:
         detour_edges.append(edge)
 
     if(routing_failure_tree_cp1_to_cp2):
         print("Routing failed via Tree from CP1 to CP2 ")
+        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp1_to_cp2[cp1][cp2]['tree'],nodes=[cp1,cp2],showplot=False)
+        print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
     
+
+    #input(" ")
     
     ##### routing cp2->cp3 via faces ####
+    print("[RouteWithTripleCheckpointOneTree] Face-Routing started CP2(",cp2,") - CP3(",cp3,")")
+    
 
     routing_failure_faces_cp2_to_cp3 = False
+    #print("CP2:", cp2)        
+    #print("CP3:", cp3)
+    #print("fails:", fails)     
+    print("CP2toCP3 tree",tree_cp3_to_cp2.nodes) 
+    #draw_tree_with_highlights(tree_cp3_to_cp2,[cp2,cp3],fails)
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree_cp2_to_cp3, fails)
+    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree_cp3_to_cp2, fails)
     
     hops = hops_faces_cp2_to_cp3 + hops
     switches = switches_faces_cp2_to_cp3 + switches
@@ -234,29 +282,31 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_faces_cp2_to_cp3):
         print("Routing failed via Faces from CP2 to CP3 ")
+        draw_tree_with_highlights(fails=fails,tree=tree_cp3_to_cp2,nodes=[cp2,cp3],showplot=False)
+        print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
     
-    
+    #input(" ")
     ##### routing cp3->d via tree ####
 
-    converted_paths_cp2_to_cp3 = {}
-    for item1 in paths:
+    print("[RouteWithTripleCheckpointOneTree] Tree-Routing started CP3(",cp3,") - D(",d,")")
+    
 
-        for item2 in paths[item1]:
-            
-            checkpoint_of_item = paths[item1][item2]['cps'][2]
-            
-            if checkpoint_of_item not in converted_paths_cp2_to_cp3:
-                
-                converted_paths_cp2_to_cp3[checkpoint_of_item] = {}
-                
-            converted_paths_cp1_to_cp2[checkpoint_of_item][item2]= {
-                'tree': paths[item1][item2]['tree_cp2_to_cp3'],
-                'edps': paths[item1][item2]['edps_cp2_to_cp3']
-            }
-            
-    routing_failure_tree_cp2_to_cp3, hops_tree_cp2_to_cp3, switches_tree_cp2_to_cp3, detour_edges_tree_cp2_to_cp3 = RouteOneTree_CP(cp1,cp2,fails,converted_paths_cp1_to_cp2)
+    converted_paths_cp3_to_d = {}  
+    converted_paths_cp3_to_d[cp3] = {}  
+    converted_paths_cp3_to_d[cp3][d]= {
+        'tree': paths[s][d]['tree_cp3_to_d'],
+        'edps': paths[s][d]['edps_cp3_to_d']
+        }
+    
+    #print("CP3:", cp3)        
+    #print("D:", d)
+    #print("fails:", fails)     
+    print("ConvertedPathsCP3toD tree",converted_paths_cp3_to_d[cp3][d]['tree'].nodes) 
+    print("ConvertedPathsCP3toD edps",converted_paths_cp3_to_d[cp3][d]['edps']) 
+    #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp3,d],showplot=True)
+    routing_failure_tree_cp2_to_cp3, hops_tree_cp2_to_cp3, switches_tree_cp2_to_cp3, detour_edges_tree_cp2_to_cp3 = RouteOneTree_CP(cp3,d,fails,converted_paths_cp3_to_d)
     
     hops = hops + hops_tree_cp2_to_cp3
     switches = switches + switches_tree_cp2_to_cp3
@@ -265,9 +315,13 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     # Füge die Kanten aus der ersten Liste hinzu
     for edge in detour_edges_tree_cp2_to_cp3:
         detour_edges.append(edge)
+    
+    #input(" ")
 
     if(routing_failure_tree_cp2_to_cp3):
-        print("Routing failed via Tree from CP2 to CP3 ")
+        print("Routing failed via Tree from CP3 to D ")
+        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp2,cp3],showplot=False)
+        print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
     
@@ -669,9 +723,9 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
 #but it is the same as the routeonetree
 def RouteOneTree_CP (s,d,fails,paths):
     
-    print("RouteOneTreeCP] Checkpoint 0")
+    #print("RouteOneTreeCP] Checkpoint 0")
     if s != d :
-        print("RouteOneTreeCP] Checkpoint 1")
+        #print("RouteOneTreeCP] Checkpoint 1")
         currentNode = -1
         edpIndex = 0
         detour_edges = []
@@ -681,12 +735,24 @@ def RouteOneTree_CP (s,d,fails,paths):
         edps_for_s_d = paths[s][d]['edps']
 
         print('Routing started for ' , s , " to " , d )
-
+        print("[RouteOneTreeCP] EDPs:",edps_for_s_d)
         #als erstes anhand der EDPs (außer dem längsten, also dem letzten) versuchen zu routen
         for edp in edps_for_s_d:
-
+            
             currentNode = s
             last_node = s 
+
+            if len(edp) == 2: #sonderfall wenn der edp nur 2 lang ist
+                if (edp[0], edp[1]) in fails or (edp[1], edp[0]) in fails:
+                    continue
+                else:
+                    switches += 1
+                    detour_edges.append( (edp[0], edp[1]) )
+                    hops +=1
+                    print('Routing done via EDP')
+                    print('------------------------------------------------------')
+                    return (False, hops, switches, detour_edges)
+
 
             if edp != edps_for_s_d[len(edps_for_s_d) -1]:
 
@@ -2644,3 +2710,68 @@ class Statistic:
         return [x*1.0/self.size**2 for x in np.bincount(self.load.values())]
 
 
+import os
+import matplotlib.pyplot as plt
+import networkx as nx
+from datetime import datetime
+
+def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None, showplot=True):
+    """
+    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten, fehlerhafte Kanten und die aktuelle Kante hervor.
+
+    Parameter:
+    - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
+    - nodes: Liste von Knoten, die hervorgehoben werden sollen (optional).
+    - fails: Liste von fehlerhaften Kanten, die hervorgehoben werden sollen (optional).
+    - current_edge: Aktuelle Kante, die hervorgehoben werden soll (optional).
+    - showplot: Boolescher Wert, ob der Plot angezeigt (True) oder gespeichert (False) werden soll.
+    """
+
+    # Positionen der Knoten bestimmen
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positionen der Knoten
+
+    plt.figure(figsize=(10, 8))
+
+    # Zeichne alle Kanten in Grau
+    nx.draw_networkx_edges(tree, pos, edge_color='gray')
+
+    # Zeichne fehlerhafte Kanten in Rot, falls vorhanden
+    if fails:
+        failed_edges = []
+        for u, v in fails:
+            if tree.has_edge(u, v):
+                failed_edges.append((u, v))
+            if tree.has_edge(v, u):
+                failed_edges.append((v, u))
+
+        nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red', width=2)
+
+    # Highlight aktuelle Kante in Blau, falls vorhanden
+    if current_edge:
+        if tree.has_edge(*current_edge):
+            nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=2)
+
+    # Zeichne alle Knoten
+    nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
+    nx.draw_networkx_labels(tree, pos)
+
+    # Hervorheben spezieller Knoten in Orange, falls vorhanden
+    if nodes:
+        nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
+
+    # Plot anzeigen oder speichern
+    if showplot:
+        plt.show()
+    else:
+        # Ordner "failedgraphs" erstellen, falls nicht vorhanden
+        os.makedirs("failedgraphs", exist_ok=True)
+
+        # Einzigartiger Dateiname basierend auf Zeitstempel
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
+        filename = f"failedgraphs/tree_{timestamp}.png"
+
+        # Plot speichern
+        plt.savefig(filename, format='png')
+        plt.close()
+
+        print(f"Graph gespeichert unter: {filename}")

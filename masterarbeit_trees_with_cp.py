@@ -456,6 +456,9 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
 
         filtered_faces.append(last_face) # dann schmeisse ich alle faces raus die nicht nur aus knoten des baums bestehen
 
+        for node in undirected_tree.nodes:
+            tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+            #node['pos'] = list(graph.nodes)[node]['pos']
         return faces, undirected_tree
 
 
@@ -469,7 +472,11 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
     
         #add 'rank' property to the added destinaton, -1 for highest priority in routing
         tree.nodes[destination]["rank"] = -1
-        
+
+        for node in tree.nodes:
+            tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+            #node['pos'] = list(graph.nodes)[node]['pos']
+
         return tree    
         
     #end if
@@ -901,7 +908,7 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
 
 ############################################################################################################################
 
-def triple_checkpoint_pre(graph):
+def one_tree_triple_checkpooint_pre(graph):
 
     paths = {}
 
@@ -925,24 +932,24 @@ def triple_checkpoint_pre(graph):
                     
 
                     tree_from_s = nx.DiGraph()
-                    print("[triple_checkpoint] edps:", edps)
+                    #print("[triple_checkpoint] edps:", edps)
                     for i in range(len(edps[0])):
-                        print("i:", i)
+                        #print("i:", i)
                         tree_from_s.add_node(edps[0][i])
                         if i > 0:
                             # Füge eine Kante zwischen zwei aufeinanderfolgenden Knoten hinzu
-                            print(f"Edge: ({edps[0][i-1]}, {edps[0][i]})")
+                            #print(f"Edge: ({edps[0][i-1]}, {edps[0][i]})")
                             tree_from_s.add_edge(edps[0][i-1], edps[0][i])
 
 
 
                     paths[source][destination] = {
                         'cps': [destination],
-                        'edps_s_to_d': [edps],
-                        'edps_s_to_cp1':[edps],
-                        'edps_cp1_to_cp2':[edps],
-                        'edps_cp2_to_cp3':[edps],
-                        'edps_cp3_to_d': [edps],
+                        'edps_s_to_d': edps,
+                        'edps_cp1_to_s':edps,
+                        'edps_cp1_to_cp2':edps,
+                        'edps_cp3_to_cp2':edps,
+                        'edps_cp3_to_d': edps,
                         'tree_cp1_to_s':tree_from_s,
                         'tree_cp1_to_cp2':tree_from_s,
                         'tree_cp3_to_cp2':tree_from_s,
@@ -1002,35 +1009,36 @@ def triple_checkpoint_pre(graph):
                 if edps_cp3_to_d == None:
                     edps_cp3_to_d = [[cp3,destination]]
 
-                print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
+                #print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
 
                 edps_cp1_to_cp2 = all_edps(cp1, cp2, graph)
-                print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
+                #print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
 
                 edps_cp3_to_cp2 = all_edps(cp3, cp2, graph)
-                print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
+                #print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
 
                 edps_cp3_to_d = all_edps(cp3, destination, graph)
-                print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
+                #print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
 
                 #draw_tree_with_highlights(graph,[source,cp1,cp2,cp3,destination])
                 # Build trees for each sub-path
                 faces_cp1_to_s, tree_cp1_to_s = one_tree_with_checkpoint(cp1, source, graph, edps_cp1_to_s[-1], True)    
-                print("[triple_checkpoint_pre] tree_cp1_to_s:", tree_cp1_to_s.nodes)
+                #print("[triple_checkpoint_pre] tree_cp1_to_s:", tree_cp1_to_s.nodes)
             
                 tree_cp1_to_cp2 = one_tree_with_checkpoint(cp1, cp2, graph, edps_cp1_to_cp2[-1], False)
-                print("[triple_checkpoint_pre] tree_cp1_to_cp2:", tree_cp1_to_cp2.nodes)
+                #print("[triple_checkpoint_pre] tree_cp1_to_cp2:", tree_cp1_to_cp2.nodes)
 
                 faces_cp3_to_cp2, tree_cp3_to_cp2 = one_tree_with_checkpoint(cp3, cp2, graph, edps_cp3_to_cp2[-1], True)
-                print("[triple_checkpoint_pre] tree_cp3_to_cp2:", tree_cp3_to_cp2.nodes)
+                #print("[triple_checkpoint_pre] tree_cp3_to_cp2:", tree_cp3_to_cp2.nodes)
 
                 tree_cp3_to_d = one_tree_with_checkpoint(cp3, destination, graph, edps_cp3_to_d[-1], False)
-                print("[triple_checkpoint_pre] tree_cp3_to_d:", tree_cp3_to_d.nodes)
+                #print("[triple_checkpoint_pre] tree_cp3_to_d:", tree_cp3_to_d.nodes)
 
                 # Save the paths and checkpoints
                 paths[source][destination] = {
                     'cps': [cp1, cp2, cp3],
                     'edps_cp1_to_s': edps_cp1_to_s,
+                    'edps_s_to_d': edps,
                     'edps_cp1_to_cp2': edps_cp1_to_cp2,
                     'edps_cp3_to_cp2': edps_cp3_to_cp2,
                     'edps_cp3_to_d': edps_cp3_to_d,
