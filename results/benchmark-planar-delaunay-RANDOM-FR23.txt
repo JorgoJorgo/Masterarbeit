@@ -1,3 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Wed Jan 15 16:40:59 2025
-Delaunay, 70, 3, Triple Checkpoint OneTree, 1, 28, 4, 34, 0.600000, 0.062730, 193.649866

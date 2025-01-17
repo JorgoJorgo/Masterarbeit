@@ -76,69 +76,85 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     print('Routing TripleCheckpointOneTree via EDPs started for ' , s , " to " , d )
     #input(" ")
     #print('EDPs:', edps_for_s_d)
-    for edp in edps_for_s_d:
-        
-        currentNode = s
-        last_node = s 
 
-        if edp != edps_for_s_d[len(edps_for_s_d) -1]:
+    for edp in edps_for_s_d:
+        #print("[Debug] Start processing EDP:", edp)
+
+        currentNode = s
+        last_node = s
+        #print("[Debug] Initial currentNode:", currentNode, "last_node:", last_node)
+
+        if edp != edps_for_s_d[len(edps_for_s_d) - 1]:
+            #print("[Debug] Current EDP is not the last one in edps_for_s_d")
+            #print("[RouteWithTripleCheckpointOneTree] edp:", edp)
 
             currentNode = edp[edpIndex]
+            #print("[Debug] Updated currentNode to:", currentNode)
 
+            # every edp is traversed until d or faulty edge
+            while currentNode != d:
+                #print("[Debug] Inside while loop. currentNode:", currentNode, "last_node:", last_node)
 
-            #every edp is traversed until d or faulty edge
-            while (currentNode != d):
+                # Check if the edge is faulty
+                #print("Checke ob:",(edp[edpIndex], edp[edpIndex + 1]), "oder", (edp[edpIndex + 1], edp[edpIndex]), "in fails")
+                #print("Fails:", fails)
+                if ((edp[edpIndex], edp[edpIndex + 1]) in fails) or ((edp[edpIndex + 1], edp[edpIndex]) in fails):
+                    #print("[Debug] Faulty edge detected between:", edp[edpIndex], "and", edp[edpIndex + 1])
 
-
-                #since the structure of the edps consists of a line a->b->c-> ... -> n the direct neighbor is checked
-                if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
-                
                     switches += 1
+                    #print("[Debug] Incremented switches to:", switches)
 
-                    
-                    detour_edges.append( (edp[edpIndex], edp[edpIndex +1]) )
+                    detour_edges.append((edp[edpIndex], edp[edpIndex + 1]))
+                    #print("[Debug] Added to detour_edges:", detour_edges[-1])
 
-                    
-                    tmp_node = currentNode 
-                    currentNode = last_node 
+                    tmp_node = currentNode
+                    currentNode = last_node
                     last_node = tmp_node
                     hops += 1
+                    #print("[Debug] Switched direction. New currentNode:", currentNode, "last_node:", last_node, "hops:", hops)
                     break
 
-                else :
+                else:
                     edpIndex += 1
                     hops += 1
-                    last_node = currentNode 
+                    #print("[Debug] Edge not faulty. Moving to next node. edpIndex:", edpIndex, "hops:", hops)
+
+                    last_node = currentNode
                     currentNode = edp[edpIndex]
-                #endif
+                    #print("[Debug] Updated currentNode to:", currentNode, "last_node to:", last_node)
+                # endif
+            # endwhile
 
-            #endwhile
+            # Breaking out of the while loop potentially has 2 reasons: d reached / faulty edge detected
+            print("[Debug] Exited while loop. currentNode:", currentNode, "d:", d)
 
-            # breaking out of the while loop potentially has 2 reasons : d reached / faulty edge detected
-
-
-            if currentNode == d : 
-                print('Routing TripleCheckpointOneTree done via EDP')
+            if currentNode == d:
+                print('[Debug] Routing TripleCheckpointOneTree done via EDP')
                 print('------------------------------------------------------')
+                #print("[Debug] Returning:", False, hops, switches, detour_edges)
                 return (False, hops, switches, detour_edges)
-            #endif
-            
-            # case : faulty edge detected --> traverse back to s
-            while currentNode != s: 
-                detour_edges.append( (last_node,currentNode) )
+            # endif
 
-                last_node = currentNode 
-                
-                printIndex = edpIndex-1
-                               
-                currentNode = edp[edpIndex-1] 
-                edpIndex = edpIndex-1
+            # Case: faulty edge detected --> traverse back to s
+            while currentNode != s:
+                #print("[Debug] Backtracking to source. Current node:", currentNode)
+
+                detour_edges.append((last_node, currentNode))
+                #print("[Debug] Added to detour_edges during backtracking:", detour_edges[-1])
+
+                last_node = currentNode
+
+                printIndex = edpIndex - 1
+                #print("[Debug] printIndex during backtracking:", printIndex)
+
+                currentNode = edp[edpIndex - 1]
+                edpIndex = edpIndex - 1
                 hops += 1
+                #print("[Debug] Backtracked to currentNode:", currentNode, "edpIndex:", edpIndex, "hops:", hops)
+            # endwhile
+        # endif
+    # for loop end
 
-            #endwhile
-        #endif
-
-    #endfor
 
     # if the Structure is S -> (<= 2 CPs) -> D than the structure consists only of one EPD containing all these nodes
     # and the edp was routed in the for loop before (so if didnt reach the destination, the routing failed)
@@ -149,7 +165,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
         if len(edp)>4:
             check_all_edps_less_than_four = False
 
-    if (len(edps_for_s_d) == 1 and check_all_edps_less_than_four ):
+    if ( check_all_edps_less_than_four ):
         print("[RouteWithTripleCheckpointOneTree] (Special Case 1) edps_for_s_d:", edps_for_s_d)
         print("Routing failed via EDPs from S to CP because special case 1 (Structure has less than 3 CPs) ")
         print("fails:", fails)   
@@ -320,7 +336,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_tree_cp2_to_cp3):
         print("Routing failed via Tree from CP3 to D ")
-        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp2,cp3],showplot=False)
+        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp3,d],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -2501,14 +2517,16 @@ def Route_Stretch(s, d, fails, T):
 def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=None, tree=None, targeted=False):
     edg = list(g.edges())
     fails = g.graph['fails']
-    print("[SimulateGraph] len(fails):" , len(fails))
+    f = len(fails)
+    #print("[SimulateGraph] (1) fails:",fails)
+    #print("[SimulateGraph] len(fails):" , len(fails))
     if fails != None:
         if len(fails) < f:
             fails = fails + edg[:f - len(fails) + 1]
         edg = fails
     if f > len(edg):
-        print('more failures than edges')
-        print('simulate', len(g.edges()), len(fails), f)
+        #print('more failures than edges')
+        #print('simulate', len(g.edges()), len(fails), f)
         return -1
     d = g.graph['root']
     g.graph['k'] = k
@@ -2519,7 +2537,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
             if precomputation is None:
                return -1
     fails = edg[:f]
-    
+    #print("[SimulateGraph] (2) fails:",fails)
     if targeted: #neu eingefügt für die clustered failures
         fails = []
         

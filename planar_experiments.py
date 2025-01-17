@@ -14,23 +14,24 @@ import matplotlib.pyplot as plt
 DEBUG = True
 
 algos = {
-        #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
-        #'SquareOne':[PrepareSQ1,RouteSQ1],
-        #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
+        'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
+        'SquareOne':[PrepareSQ1,RouteSQ1],
+        'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
         #'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        #'One Tree PE': [one_tree_pre, RouteOneTree],
+        'One Tree PE': [one_tree_pre, RouteOneTree],
         #'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree]
         }
 
 def one_experiment(g, seed, out, algo):
     [precomputation_algo, routing_algo] = algo[:2]
     if DEBUG: print('experiment for ', algo[0])
-
+    
+    #print("[one_experiment] fails:",g.graph['fails'])
     reset_arb_attribute(g)
     random.seed(seed)
     t = time.time()
@@ -52,6 +53,7 @@ def one_experiment(g, seed, out, algo):
     stat.reset(g.nodes())
     random.seed(seed)
     t = time.time()
+    #print("[one_experiment] fails:", g.graph['fails'])
     SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
     print("After simulate")
     rt = (time.time() - t)/samplesize
@@ -77,7 +79,9 @@ def shuffle_and_run(g, out, seed, rep, x):
     g.graph['root'] = nodes[count % len(nodes)]
     print("[planar_experiments] root:", g.graph['root'])
     print("[planar_experiments] len(edges):", len(g.edges()))
+    
     for (algoname, algo) in algos.items():
+        
         if(algoname in ["One Tree PE", "MaxDAG", "MultipleTrees","SquareOne"] ): #da Algorithmen ohne GeoRouting die Eigenschaften der Planar Embeddings nicht benötigen
             converted_back_to_graph = convert_planar_embedding_to_graph(g)
             converted_back_to_graph.graph['k'] = g.graph['k']
@@ -92,7 +96,7 @@ def shuffle_and_run(g, out, seed, rep, x):
 
             algos[algoname] += [one_experiment(converted_back_to_graph, seed + count, out, algo)]
         else:
-
+            print("[shuffle_and_run] fails:", g.graph['fails'])
             out.write('%s, %i, %i, %s, %i' % (x, len(nodes), g.graph['k'], algoname, count))
             algos[algoname] += [one_experiment(g, seed + count, out, algo)]
 
@@ -306,8 +310,17 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
 
     # Setze die Konnektivität und speichere die Fails im Graph
     #print("Berechne Konnektivität...")
+    
+    
+    #fails_to_append = ((2,9),(9,2),(0,9),(9,0))
+    fails_to_append = () #hier kann man seine eigenen fehler extra rein machen
+    for fail in fails_to_append:
+        fails.append(fail)
+        f_num = f_num +1
+
     planar_embedding.graph['k'] = node_connectivity(planar_graph)
     planar_embedding.graph['fails'] = fails
+    #print("[run_planar] planar_embedding.graph['fails']", planar_embedding.graph['fails'])
 
     # Überprüfe, ob alle Fails gültige Kanten im Graphen sind
     #print("Überprüfe die Fehlerliste...")
@@ -319,6 +332,7 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
 
     # Debug-Informationen
     print("[run_planar] Anzahl der Fails: ", len(fails))
+    print("[run_planar] Fails: ", fails)
     #print("[run_planar] Fails: ", fails)
 
     # Führe die Experimente durch
@@ -362,11 +376,11 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 14       #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
-    f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
+    start_FR = 5       #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    f_num = 5*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):
-        f_num = 3 + f_num
+        f_num = 5 + f_num
         #f_num = 0
         n = 80
         k = 5

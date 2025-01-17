@@ -1,0 +1,9 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Thu Jan 16 23:26:58 2025
+Delaunay, 70, 3, MaxDAG, 1, inf, inf, inf, 0.000000, 0.000439, 0.294764
+Delaunay, 70, 3, SquareOne, 1, inf, inf, inf, 0.000000, 0.000404, 1.246415
+Delaunay, 70, 3, MultipleTrees, 1, inf, inf, inf, 0.000000, 0.000400, 95.873029
+Delaunay, 70, 3, One Tree PE, 1, inf, inf, inf, 0.000000, 0.000404, 9.172825
+Delaunay, 70, 3, One Tree Degree Checkpoint PE, 1, inf, inf, inf, 0.000000, 0.000368, 99.190619
+Delaunay, 70, 5, One Tree Shortest EDP Checkpoint PE, 1, inf, inf, inf, 0.000000, 0.000410, 102.755726
+Delaunay, 70, 5, Triple Checkpoint OneTree, 1, inf, inf, inf, 0.000000, 0.000394, 195.128824
