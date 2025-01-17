@@ -908,6 +908,7 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
 
 ############################################################################################################################
 
+############################################## ONETREE TRIPLE CHECKPOINT ###################################################
 def one_tree_triple_checkpooint_pre(graph):
 
     paths = {}
@@ -1050,7 +1051,203 @@ def one_tree_triple_checkpooint_pre(graph):
                 #plot_paths_element(paths[source][destination],graph,source,destination)
     return paths
 
+############################################################################################################################
 
+############################################## MULTIPLETREES TRIPLE CHECKPOINT #############################################
+
+def multiple_trees_triple_checkpooint_pre(graph):
+
+    paths = {}
+
+    for source in graph.nodes:
+        for destination in graph.nodes:
+            if source != destination:
+
+                if source not in paths:
+                    paths[source] = {}
+
+                # Compute all EDPs between source and destination
+                edps = all_edps(source, destination, graph)
+                edps.sort(key=len)
+
+                # Filter EDPs to ensure they are at least 5 nodes long s-cp1-cp2-cp3-d
+                valid_edps = [edp for edp in edps if len(edp) >= 5]
+
+                # Handle special case where no valid EDP >= 5 is found
+                if not valid_edps:
+                    # Handle the case where source and destination are directly connected (len == 2)
+                    
+
+                    tree_from_s = nx.DiGraph()
+                    #print("[triple_checkpoint] edps:", edps)
+                    for i in range(len(edps[0])):
+                        #print("i:", i)
+                        tree_from_s.add_node(edps[0][i])
+                        if i > 0:
+                            # Füge eine Kante zwischen zwei aufeinanderfolgenden Knoten hinzu
+                            #print(f"Edge: ({edps[0][i-1]}, {edps[0][i]})")
+                            tree_from_s.add_edge(edps[0][i-1], edps[0][i])
+
+
+
+                    paths[source][destination] = {
+                        'cps': [destination],
+                        'edps_s_to_d': edps,
+                        'edps_cp1_to_s':edps,
+                        'edps_cp1_to_cp2':edps,
+                        'edps_cp3_to_cp2':edps,
+                        'edps_cp3_to_d': edps,
+                        'trees_cp1_to_s':[tree_from_s],
+                        'trees_cp1_to_cp2':[tree_from_s],
+                        'trees_cp3_to_cp2':[tree_from_s],
+                        'trees_cp3_to_d':[tree_from_s]
+                    }
+                    #plot_paths_element(paths[source][destination],graph,source,destination)
+                    continue
+
+                # Select the longest valid EDP (assuming it's already sorted by length)
+                longest_edp = valid_edps[-1]
+
+                # Anzahl der Knoten prüfen
+                if len(longest_edp) < 5:
+                    raise ValueError("EDP must have at least 5 nodes for meaningful CP distribution.")
+
+                # Divide the EDP into segments for CP selection
+                num_segments = min(4, len(longest_edp) - 1)  # Ensure no out-of-bound segments
+                segment_length = len(longest_edp) // num_segments
+
+                # Calculate CP indices based on segment midpoints
+                cp_indices = []
+                for i in range(1, num_segments):
+                    cp_idx = i * segment_length + segment_length // 2  # Midpoint of each segment
+                    cp_idx = min(cp_idx, len(longest_edp) - 2)  # Ensure not too close to destination
+                    cp_indices.append(cp_idx)
+
+                # Select CPs based on calculated indices
+                cps = [longest_edp[idx] for idx in cp_indices]
+
+                # Validate CPs
+                if len(set(cps)) < len(cps):
+                    raise ValueError("Control points overlap. Adjust segmentation logic.")
+
+                cp1 = cps[0]
+                cp2 = cps[1]
+                cp3 = cps[2]
+                # Extract sub-paths
+                
+                edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
+                
+                #Special Case if Nodes are directly connected
+                if edps_cp1_to_s == None:
+                    edps_cp1_to_s = [[cp1,source]]
+                
+                edps_cp1_to_cp2 = all_edps(cp1,cp2,graph).sort(key=len)
+
+                if edps_cp1_to_cp2 == None:
+                    edps_cp1_to_cp2 = [[cp1,cp2]]
+
+                edps_cp3_to_cp2 = all_edps(cp3,cp2,graph).sort(key=len)
+
+                if edps_cp3_to_cp2 == None:
+                    edps_cp3_to_cp2 = [[cp3,cp2]]
+                
+                edps_cp3_to_d = all_edps(cp3,destination,graph).sort(key=len)
+
+                if edps_cp3_to_d == None:
+                    edps_cp3_to_d = [[cp3,destination]]
+
+                #print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
+
+                edps_cp1_to_cp2 = all_edps(cp1, cp2, graph)
+                #print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
+
+                edps_cp3_to_cp2 = all_edps(cp3, cp2, graph)
+                #print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
+
+                edps_cp3_to_d = all_edps(cp3, destination, graph)
+                #print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
+
+
+
+                ####################################################################
+
+                trees_cp1_to_s = multiple_trees_with_checkpoint(cp1,source,graph,edps_cp1_to_s)
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp1_to_s = remove_single_node_trees(trees_cp1_to_s)
+           
+                # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
+                # Combine all trees into one large undirected tree
+                combined_tree = nx.Graph()
+                for tree in trees_cp1_to_s:
+                    tree = tree.to_undirected()  # Ensure the tree is undirected
+                    for node in tree.nodes:
+                            combined_tree.add_node(node)  # Add node without position
+                    combined_tree.add_edges_from(tree.edges())  # Add edges
+
+                for node in combined_tree.nodes:
+                    combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+         
+                #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
+                trees_cp1_to_s = combined_tree
+
+                ########################################################################
+
+                trees_cp1_to_cp2 = multiple_trees_with_checkpoint(cp1,cp2,graph,edps_cp1_to_cp2)
+                
+                for tree in trees_cp1_to_cp2:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp1_to_cp2 = remove_single_node_trees(trees_cp1_to_cp2)
+
+                ##########################################################################
+
+                trees_cp3_to_cp2 = multiple_trees_with_checkpoint(cp3,cp2,graph,edps_cp3_to_cp2)
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp3_to_cp2 = remove_single_node_trees(trees_cp3_to_cp2)
+           
+                # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
+                # Combine all trees into one large undirected tree
+                combined_tree = nx.Graph()
+                for tree in trees_cp3_to_cp2:
+                    tree = tree.to_undirected()  # Ensure the tree is undirected
+                    for node in tree.nodes:
+                            combined_tree.add_node(node)  # Add node without position
+                    combined_tree.add_edges_from(tree.edges())  # Add edges
+
+                for node in combined_tree.nodes:
+                    combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+         
+                #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
+                trees_cp3_to_cp2 = combined_tree
+
+                ##########################################################################
+
+                trees_cp3_to_d = multiple_trees_with_checkpoint(cp3,destination,graph,edps_cp3_to_d)
+                
+                for tree in trees_cp3_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp3_to_d = remove_single_node_trees(trees_cp3_to_d)
+
+                # Save the paths and checkpoints
+                paths[source][destination] = {
+                    'cps': [cp1, cp2, cp3],
+                    'edps_cp1_to_s': edps_cp1_to_s,
+                    'edps_s_to_d': edps,
+                    'edps_cp1_to_cp2': edps_cp1_to_cp2,
+                    'edps_cp3_to_cp2': edps_cp3_to_cp2,
+                    'edps_cp3_to_d': edps_cp3_to_d,
+                    'trees_cp1_to_s': trees_cp1_to_s,
+                    'trees_cp1_to_cp2': trees_cp1_to_cp2,
+                    'trees_cp3_to_cp2': trees_cp3_to_cp2,
+                    'trees_cp3_to_d': trees_cp3_to_d
+                }
+                #plot_paths_element(paths[source][destination],graph,source,destination)
+    return paths
 
 ################################ Hilfsfunktionen #####################################################################
 def find_faces(G):
