@@ -16,9 +16,10 @@ def convert_to_undirected(tree):
     return tree.to_undirected()
 
 def route(s, d, tree, fails):
-    #speacial_nodes = [1,37] #wenn man bestimmte nodes zeichnen will
-    #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    #speacial_nodes = [] #wenn man nix zeichnen will
     speacial_nodes = [] #wenn man nix zeichnen will
+    speacial_nodes = [54,14] #wenn man bestimmte nodes zeichnen will
+    #speacial_nodes = [s,d] #wenn man alles zeichnen will
     tree = convert_to_undirected(tree)
 
     visited_edges = set()  # Set to keep track of visited edges
@@ -89,59 +90,50 @@ def route(s, d, tree, fails):
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
 
-# Helper function to get edges sorted in clockwise order
-def get_sorted_edges(node, tree, fails, previous_edge):
-    edges = []
-    node_pos = tree.nodes[node]['pos']
-
-    for neighbor in tree.neighbors(node):
-        edge = (node, neighbor)  # Behalte die originale Richtung bei
-        if edge not in fails and (neighbor, node) not in fails:  # Prüfe beide Richtungen in fails
-            neighbor_pos = tree.nodes[neighbor]['pos']
-            angle = calculate_angle(node_pos, neighbor_pos)
-            edges.append((edge, angle))
-
-    edges.sort(key=lambda x: x[1])  # Sort edges based on angles
-    if previous_edge is not None:
-        edges = prioritize_edges(edges, previous_edge, tree)
-
-    return [e[0] for e in edges]
-
-# def get_sorted_edges(node, tree, fails, previous_edge):
-#     edges = []
-#     node_pos = tree.nodes[node]['pos']
-
-#     for neighbor in tree.neighbors(node):
-#         edge = (node, neighbor)  # Behalte die originale Richtung bei
-#         if edge not in fails and (neighbor, node) not in fails:  # Prüfe beide Richtungen in fails
-#             neighbor_pos = tree.nodes[neighbor]['pos']
-#             angle = calculate_angle(node_pos, neighbor_pos)
-#             edges.append((edge, angle))
-
-#     edges.sort(key=lambda x: x[1])  # Sort edges based on angles
-
-#     # Dynamische Priorisierung: Drehe die Liste basierend auf `previous_edge`
-#     if previous_edge is not None:
-#         previous_angle = calculate_angle(tree.nodes[previous_edge[0]]['pos'], tree.nodes[previous_edge[1]]['pos'])
-#         edges = sorted(edges, key=lambda x: abs(x[1] - previous_angle))
-
-#     return [e[0] for e in edges]
-
-
-
 # Helper function to calculate the angle between two coordinates
 def calculate_angle(pos1, pos2):
     dx = pos2[0] - pos1[0]
     dy = pos2[1] - pos1[1]
     return math.atan2(dy, dx)  # Returns angle in radians
 
-
 # Helper function to prioritize edges based on the previous edge
 def prioritize_edges(edges, previous_edge, tree):
     previous_angle = calculate_angle(tree.nodes[previous_edge[0]]['pos'], tree.nodes[previous_edge[1]]['pos'])
-    edges.sort(key=lambda x: (x[1] - previous_angle) % (2 * math.pi))
-    return edges
 
+    def angle_difference(angle):
+        diff = angle - previous_angle
+        return (diff + math.pi) % (2 * math.pi) - math.pi  # Normalize to [-pi, pi]
+
+    # Sort edges based on the smallest angular difference
+    sorted_edges = [edge for edge in edges if not (
+        edge[0][0] == previous_edge[1] and edge[0][1] == previous_edge[0]
+    )]  # Exclude reverse previous edge from sorting
+    sorted_edges.sort(key=lambda x: angle_difference(x[1]))
+
+    # Add the reverse of the previous edge with the lowest priority
+    reverse_edge = (previous_edge[1], previous_edge[0])
+    if reverse_edge in tree.edges:
+        reverse_angle = calculate_angle(tree.nodes[reverse_edge[0]]['pos'], tree.nodes[reverse_edge[1]]['pos'])
+        sorted_edges.append(((reverse_edge[0], reverse_edge[1]), reverse_angle))
+
+    return sorted_edges
+
+# Helper function to get edges sorted in clockwise order
+def get_sorted_edges(node, tree, fails, previous_edge):
+    edges = []
+    node_pos = tree.nodes[node]['pos']
+
+    for neighbor in tree.neighbors(node):
+        edge = (node, neighbor) if node < neighbor else (neighbor, node)  # Ensure undirected edge representation
+        if edge not in fails and (edge[1],edge[0]) not in fails:  # Exclude edges in fails
+            neighbor_pos = tree.nodes[neighbor]['pos']
+            angle = calculate_angle(node_pos, neighbor_pos)
+            edges.append((edge, angle))
+
+    if previous_edge is not None:
+        edges = prioritize_edges(edges, previous_edge, tree)
+
+    return [e[0] for e in edges]
 
 def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
     """

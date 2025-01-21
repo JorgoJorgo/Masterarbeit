@@ -1,3 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Mon Jan 20 13:18:28 2025
-Delaunay, 40, 3, Triple Checkpoint MultipleTrees, 1, 30, 4, 34, 0.500000, 0.000576, 38.232058
