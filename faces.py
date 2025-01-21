@@ -18,7 +18,7 @@ def convert_to_undirected(tree):
 def route(s, d, tree, fails):
     #speacial_nodes = [] #wenn man nix zeichnen will
     speacial_nodes = [] #wenn man nix zeichnen will
-    speacial_nodes = [54,14] #wenn man bestimmte nodes zeichnen will
+    #speacial_nodes = [54,14] #wenn man bestimmte nodes zeichnen will
     #speacial_nodes = [s,d] #wenn man alles zeichnen will
     tree = convert_to_undirected(tree)
 
