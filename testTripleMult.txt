@@ -1,0 +1,2482 @@
+Fri Jan 24 13:02:09 2025
+[main] i :  16
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  85
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  85
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_130646715391.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  85
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_130647057724.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  85
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 60 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 60 ) - D( 49 )
+FAIL ANZAHL :  85
+ 
+Routing started for  60  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [60, 35, 45, 0, 50, 23, 18, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  85
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_130647377054.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  85
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  85
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  85
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_130647731574.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (67, 38), (44, 17), (67, 44), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (64, 11), (15, 62), (18, 19), (24, 13), (64, 13), (12, 45), (50, 55), (52, 53), (0, 35), (16, 57), (18, 50), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (46, 50), (60, 34), (29, 7), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (42, 53), (53, 14), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (50, 60), (2, 39), (48, 54), (31, 20), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6)]
+ 
+After simulate
+success 6 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 278.177494764328
+start time Fri Jan 24 13:02:09 2025
+end time Fri Jan 24 13:06:48 2025
+Fri Jan 24 13:06:48 2025
+[main] i :  17
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  90
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  90
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131128535847.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  90
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  90
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  90
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 60 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 60 ) - D( 49 )
+FAIL ANZAHL :  90
+ 
+Routing started for  60  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [60, 34, 25, 0, 35, 11, 64, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  90
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131128849393.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  90
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  90
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  90
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131129198642.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17)]
+ 
+After simulate
+success 7 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 281.46868538856506
+start time Fri Jan 24 13:06:48 2025
+end time Fri Jan 24 13:11:29 2025
+Fri Jan 24 13:11:29 2025
+[main] i :  18
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  95
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  95
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131610954168.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  95
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  95
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  95
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 60 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 60 ) - D( 49 )
+FAIL ANZAHL :  95
+ 
+Routing started for  60  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [60, 34, 25, 0, 35, 11, 64, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  95
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131611264661.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  95
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  95
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  95
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_131611616568.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60)]
+ 
+After simulate
+success 7 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 282.41965794563293
+start time Fri Jan 24 13:11:29 2025
+end time Fri Jan 24 13:16:11 2025
+Fri Jan 24 13:16:11 2025
+[main] i :  19
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  100
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  100
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132054308377.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  100
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  100
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  100
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 60 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 60 ) - D( 49 )
+FAIL ANZAHL :  100
+ 
+Routing started for  60  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [60, 34, 25, 0, 35, 11, 64, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  100
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132054625395.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  100
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  100
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 25, 35, 27, 34, 22, 60, 32, 50, 11, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  100
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132054979723.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2)]
+ 
+After simulate
+success 7 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 283.3662633895874
+start time Fri Jan 24 13:16:11 2025
+end time Fri Jan 24 13:20:55 2025
+Fri Jan 24 13:20:55 2025
+[main] i :  20
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  105
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  105
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132537369852.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  105
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  105
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  105
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132537698868.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  105
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132538019657.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  105
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  105
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  105
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_132539855796.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21)]
+ 
+After simulate
+success 6 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 284.88211584091187
+start time Fri Jan 24 13:20:55 2025
+end time Fri Jan 24 13:25:40 2025
+Fri Jan 24 13:25:40 2025
+[main] i :  21
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  110
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  110
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133021926646.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  110
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  110
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  110
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133022258635.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  110
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133022581825.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  110
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  110
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  110
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133022943445.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30)]
+ 
+After simulate
+success 6 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 283.0855836868286
+start time Fri Jan 24 13:25:40 2025
+end time Fri Jan 24 13:30:23 2025
+Fri Jan 24 13:30:23 2025
+[main] i :  22
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  115
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]
+Done with precomputation algo
+Start routing
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  54  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  54  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 54 ) - CP1( 57 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  115
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133504029564.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  68  ->  [13, 11, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  68  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 68 ) - CP1( 13 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 13 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [13, 21, 66, 55, 49, 28, 0, 64, 27, 23, 22, 53, 32, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [13, 26, 31, 59, 64, 24, 14, 65, 21, 53, 22, 32, 62, 37, 23, 18, 27, 50, 55, 9, 60, 0, 34, 35, 49, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [13, 24, 57, 20, 31, 40, 2, 15, 39, 46, 43, 50, 5, 55, 27, 9, 23, 10, 0, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [13, 28, 55, 66, 18, 19, 50, 45, 34, 25, 0, 11]
+ConvertedPathsCP1toCP2 edps [[13, 64, 11], [13, 21, 66, 55, 49, 11], [13, 26, 31, 59, 11], [13, 24, 57, 20, 31, 11], [13, 28, 55, 11]]
+FAIL ANZAHL :  115
+ 
+Routing started for  13  to  11
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 64, 31, 55, 30, 60, 59, 35, 49, 32, 0, 23, 11]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 11 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  115
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  28  ->  [18, 60, 35]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  28  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  69  ->  [67, 61, 27]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  69  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  40  ->  [21, 55, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  40  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 40 ) - CP1( 21 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 21 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [21, 13, 64, 28, 11, 66, 49, 18, 60, 50, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [21, 40, 15, 46, 50, 24, 62, 3, 60, 13, 66, 18, 35, 26, 0, 49, 64, 11, 28, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [21, 24, 26, 31, 11, 7, 64, 23, 29, 0, 46, 25, 49, 19, 34, 18, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [21, 62, 18, 15, 36, 29, 16, 54, 57, 39, 20, 43, 31, 5, 59, 33, 11, 4, 45, 50, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [21, 66, 55]
+ConvertedPathsCP1toCP2 tree ( 5 ) [21, 28, 55]
+ConvertedPathsCP1toCP2 edps [[21, 13, 64, 55], [21, 40, 15, 46, 50, 55], [21, 24, 26, 31, 11, 55], [21, 62, 18, 55], [21, 66, 55], [21, 28, 55]]
+FAIL ANZAHL :  115
+ 
+Routing started for  21  to  55
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133504366599.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  56  ->  [57, 64, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  56  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 56 ) - CP1( 57 )
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 57 ) - CP2( 64 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [57, 6, 24, 21, 28, 26, 13, 55, 11, 59, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 1 ) [57, 16, 29, 46, 50, 55, 2, 49, 66, 47, 11, 28, 41, 13, 30, 26, 31, 64]
+ConvertedPathsCP1toCP2 tree ( 2 ) [57, 20, 31, 48, 30, 16, 59, 7, 32, 40, 11, 62, 18, 55, 64]
+ConvertedPathsCP1toCP2 tree ( 3 ) [57, 24, 13, 40, 16, 21, 54, 66, 39, 18, 43, 50, 5, 60, 27, 55, 0, 11, 64]
+ConvertedPathsCP1toCP2 tree ( 4 ) [57, 26, 64]
+ConvertedPathsCP1toCP2 tree ( 5 ) [57, 47, 20, 26, 31, 11, 64]
+ConvertedPathsCP1toCP2 edps [[57, 6, 24, 21, 28, 64], [57, 16, 29, 46, 50, 55, 64], [57, 20, 31, 64], [57, 24, 13, 64], [57, 26, 64], [57, 47, 20, 26, 31, 11, 64]]
+FAIL ANZAHL :  115
+ 
+Routing started for  57  to  64
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133504695535.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  27  ->  [5, 33, 4]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  27  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  44  ->  [30, 11, 60]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  44  to  49
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  36  ->  [3, 55, 0]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  36  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 36 ) - CP1( 3 )
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 3 ) - CP2( 55 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [3, 15, 62, 66, 18, 28, 50, 64, 45, 11, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 1 ) [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 2 ) [3, 46, 50, 15, 19, 29, 40, 18, 54, 24, 39, 26, 43, 31, 64, 5, 59, 27, 11, 0, 25, 35, 34, 49, 60, 55]
+ConvertedPathsCP1toCP2 tree ( 3 ) [3, 19, 50, 60, 49, 55]
+ConvertedPathsCP1toCP2 tree ( 4 ) [3, 62, 21, 28, 24, 57, 20, 30, 59, 32, 11, 55]
+ConvertedPathsCP1toCP2 edps [[3, 15, 62, 66, 55], [3, 18, 55], [3, 46, 50, 55], [3, 19, 50, 60, 55], [3, 62, 21, 28, 55]]
+FAIL ANZAHL :  115
+ 
+Routing started for  3  to  55
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 18, 66, 21, 13, 64, 28, 31, 11, 0, 35, 49, 60, 55]
+ 
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 55 ) - CP3( 0 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3( 0 ) - D( 49 )
+FAIL ANZAHL :  115
+ 
+Routing started for  0  to  49
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 9, 33, 27, 4, 23, 12, 32, 45, 59, 50, 11, 18, 55, 49]
+ 
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is runing
+Loop over stats is runing
+
+Routing with a checkpoint started for :  39  ->  [20, 11, 55]  ->  49
+Routing TripleCheckpointMultipleTrees via EDPs started for  39  to  49
+[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S( 39 ) - CP1( 20 )
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP1( 20 ) - CP2( 11 )
+ConvertedPathsCP1toCP2 tree ( 0 ) [20, 47, 17, 43, 5, 9, 0, 41, 23, 49, 30, 32, 55, 31, 59, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 1 ) [20, 41, 14, 59, 32, 17, 22, 8, 23, 27, 47, 0, 57, 35, 26, 49, 60, 31, 13, 55, 28, 64, 11]
+ConvertedPathsCP1toCP2 tree ( 2 ) [20, 26, 64, 55, 24, 50, 16, 60, 45, 54, 34, 49, 4, 39, 25, 10, 43, 0, 9, 44, 27, 52, 23, 53, 59, 65, 32, 11]
+ConvertedPathsCP1toCP2 tree ( 3 ) [20, 57, 24, 13, 64, 2, 21, 51, 66, 56, 55, 43, 17, 1, 44, 5, 14, 33, 53, 10, 22, 0, 65, 59, 11]
+ConvertedPathsCP1toCP2 tree ( 4 ) [20, 31, 11]
+ConvertedPathsCP1toCP2 tree ( 5 ) [20, 30, 59, 11]
+ConvertedPathsCP1toCP2 edps [[20, 47, 17, 43, 5, 9, 0, 11], [20, 41, 14, 59, 32, 11], [20, 26, 64, 55, 11], [20, 57, 24, 13, 64, 11], [20, 31, 11], [20, 30, 59, 11]]
+FAIL ANZAHL :  115
+ 
+Routing started for  20  to  11
+ 
+Routing via Tree started
+Routing failed via Trees 
+ 
+Routing failed via Tree from CP1 to CP2 
+Graph gespeichert unter: failedgraphs/combined_graph_20250124_133505074592.png
+fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43)]
+ 
+After simulate
+success 6 <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+time elapsed 282.13573122024536
+start time Fri Jan 24 13:30:23 2025
+end time Fri Jan 24 13:35:05 2025
+Fri Jan 24 13:35:05 2025
+[main] i :  23
+[main] switch: planar
+[main] seed: 3
+[main] rep: 1
+[main] n: 70
+[main] samplesize: 10
+[main] attack: RANDOM
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 70 Anzahl Kanten: 282
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 70 Kanten: 197
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  120
+[run_planar] Fails:  [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43), (69, 1), (5, 43), (42, 61), (36, 68), (1, 67)]
+[planar_experiments] root: 49
+[planar_experiments] len(edges): 394
+[shuffle_and_run] fails: [(53, 52), (41, 44), (37, 42), (46, 15), (39, 51), (19, 46), (9, 27), (56, 8), (31, 59), (0, 9), (54, 39), (66, 18), (32, 22), (40, 7), (4, 63), (58, 17), (57, 6), (41, 58), (47, 20), (59, 32), (54, 2), (22, 32), (55, 11), (44, 69), (48, 16), (47, 41), (44, 17), (17, 44), (26, 20), (8, 17), (62, 18), (6, 16), (44, 14), (40, 24), (35, 34), (15, 62), (18, 19), (24, 13), (12, 45), (50, 55), (52, 53), (62, 40), (0, 35), (16, 57), (18, 50), (68, 15), (21, 66), (41, 30), (60, 55), (51, 47), (11, 55), (26, 64), (33, 5), (59, 31), (64, 31), (46, 50), (68, 36), (61, 42), (29, 7), (67, 1), (27, 9), (44, 58), (54, 29), (3, 19), (57, 2), (28, 64), (26, 24), (61, 67), (61, 27), (42, 53), (53, 14), (60, 49), (44, 67), (27, 37), (46, 29), (43, 56), (30, 59), (22, 23), (5, 61), (62, 21), (50, 60), (2, 39), (67, 38), (48, 54), (63, 12), (31, 20), (67, 52), (57, 47), (3, 15), (43, 17), (14, 44), (29, 36), (9, 33), (16, 6), (55, 60), (52, 44), (21, 28), (56, 43), (46, 36), (48, 2), (5, 1), (0, 23), (49, 35), (21, 13), (66, 21), (13, 26), (25, 63), (50, 46), (22, 65), (31, 30), (50, 45), (34, 60), (14, 59), (60, 50), (39, 43), (69, 1), (5, 43), (42, 61), (36, 68), (1, 67)]
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x71456d554180>
+[multipletrees triple pre] graph edges: [(0, 35), (0, 25), (0, 10), (0, 9), (0, 27), (0, 23), (0, 11), (0, 49), (1, 5), (1, 43), (1, 69), (1, 67), (1, 38), (2, 54), (2, 47), (2, 48), (2, 57), (2, 51), (2, 39), (3, 15), (3, 18), (3, 46), (3, 19), (3, 62), (4, 12), (4, 10), (4, 45), (4, 33), (4, 63), (5, 43), (5, 38), (5, 1), (5, 61), (5, 27), (5, 9), (5, 33), (6, 57), (6, 16), (6, 24), (7, 40), (7, 29), (7, 24), (7, 16), (8, 47), (8, 17), (8, 56), (8, 51), (9, 5), (9, 33), (9, 10), (9, 0), (9, 27), (10, 0), (10, 4), (10, 25), (10, 33), (10, 9), (10, 63), (11, 59), (11, 0), (11, 55), (11, 64), (11, 31), (11, 23), (11, 32), (11, 49), (12, 34), (12, 4), (12, 45), (12, 63), (13, 64), (13, 21), (13, 26), (13, 24), (13, 28), (14, 41), (14, 59), (14, 30), (14, 53), (14, 52), (14, 44), (15, 36), (15, 3), (15, 46), (15, 62), (15, 40), (15, 68), (16, 6), (16, 7), (16, 29), (16, 54), (16, 57), (16, 48), (16, 24), (17, 8), (17, 41), (17, 47), (17, 58), (17, 44), (17, 43), (17, 56), (18, 3), (18, 50), (18, 19), (18, 55), (18, 66), (18, 62), (19, 3), (19, 18), (19, 50), (19, 46), (20, 47), (20, 41), (20, 26), (20, 57), (20, 31), (20, 30), (21, 13), (21, 40), (21, 24), (21, 62), (21, 66), (21, 28), (22, 23), (22, 27), (22, 37), (22, 53), (22, 65), (22, 32), (23, 27), (23, 0), (23, 11), (23, 32), (23, 22), (24, 13), (24, 21), (24, 40), (24, 7), (24, 16), (24, 6), (24, 57), (24, 26), (25, 0), (25, 10), (25, 35), (25, 34), (25, 63), (26, 31), (26, 64), (26, 13), (26, 24), (26, 57), (26, 20), (27, 5), (27, 9), (27, 0), (27, 22), (27, 61), (27, 23), (27, 37), (28, 66), (28, 21), (28, 13), (28, 64), (28, 55), (29, 46), (29, 7), (29, 36), (29, 16), (29, 54), (29, 68), (29, 40), (30, 20), (30, 41), (30, 14), (30, 59), (30, 31), (31, 20), (31, 30), (31, 59), (31, 11), (31, 64), (31, 26), (32, 11), (32, 59), (32, 65), (32, 22), (32, 23), (33, 5), (33, 4), (33, 10), (33, 9), (34, 60), (34, 35), (34, 25), (34, 63), (34, 12), (34, 45), (35, 25), (35, 0), (35, 49), (35, 60), (35, 34), (36, 29), (36, 15), (36, 46), (36, 68), (37, 42), (37, 61), (37, 27), (37, 22), (37, 53), (38, 61), (38, 1), (38, 5), (38, 67), (39, 56), (39, 2), (39, 54), (39, 43), (39, 51), (40, 21), (40, 15), (40, 68), (40, 29), (40, 7), (40, 24), (40, 62), (41, 17), (41, 14), (41, 47), (41, 20), (41, 30), (41, 44), (41, 58), (42, 53), (42, 67), (42, 61), (42, 37), (42, 52), (43, 39), (43, 1), (43, 17), (43, 56), (43, 5), (43, 44), (43, 69), (44, 52), (44, 14), (44, 41), (44, 58), (44, 17), (44, 43), (44, 69), (44, 67), (45, 34), (45, 12), (45, 4), (45, 50), (45, 60), (46, 36), (46, 15), (46, 3), (46, 19), (46, 50), (46, 29), (47, 17), (47, 41), (47, 2), (47, 8), (47, 57), (47, 20), (47, 51), (48, 16), (48, 54), (48, 2), (48, 57), (49, 11), (49, 0), (49, 35), (49, 60), (49, 55), (50, 18), (50, 60), (50, 45), (50, 19), (50, 46), (50, 55), (51, 8), (51, 47), (51, 2), (51, 39), (51, 56), (52, 67), (52, 42), (52, 53), (52, 14), (52, 44), (53, 59), (53, 14), (53, 37), (53, 22), (53, 65), (53, 42), (53, 52), (54, 16), (54, 29), (54, 39), (54, 2), (54, 48), (55, 49), (55, 60), (55, 50), (55, 18), (55, 28), (55, 64), (55, 11), (55, 66), (56, 43), (56, 17), (56, 8), (56, 51), (56, 39), (57, 16), (57, 48), (57, 2), (57, 47), (57, 20), (57, 6), (57, 24), (57, 26), (58, 41), (58, 17), (58, 44), (59, 14), (59, 11), (59, 30), (59, 31), (59, 32), (59, 65), (59, 53), (60, 45), (60, 35), (60, 34), (60, 49), (60, 55), (60, 50), (61, 5), (61, 27), (61, 38), (61, 67), (61, 42), (61, 37), (62, 18), (62, 3), (62, 15), (62, 40), (62, 21), (62, 66), (63, 25), (63, 10), (63, 4), (63, 12), (63, 34), (64, 11), (64, 13), (64, 31), (64, 26), (64, 28), (64, 55), (65, 59), (65, 53), (65, 22), (65, 32), (66, 55), (66, 18), (66, 62), (66, 21), (66, 28), (67, 44), (67, 1), (67, 38), (67, 61), (67, 42), (67, 52), (67, 69), (68, 15), (68, 36), (68, 29), (68, 40), (69, 43), (69, 1), (69, 67), (69, 44)]

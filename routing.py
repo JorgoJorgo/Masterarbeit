@@ -517,7 +517,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     if(routing_failure_trees_cp1_to_cp2):
         print("Routing failed via Tree from CP1 to CP2 ")
         #for tree in paths[s][d]['trees_cp1_to_cp2']:
-        #    draw_tree_with_highlights(fails=fails,tree=tree,nodes=[cp1,cp2],showplot=False)
+        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp1_to_cp2'],nodes=[cp1,cp2],showplot=False,einzeln=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -578,8 +578,9 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     if(routing_failure_trees_cp2_to_cp3):
         print("Routing failed via Tree from CP3 to D ")
         #for tree in converted_paths_cp3_to_d[cp3][d]['trees']:
-        #    draw_tree_with_highlights(fails=fails,tree=tree,nodes=[cp3,d],showplot=False)
-        print("fails:", fails)   
+        #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False)
+        draw_multipletree_with_highlights(fails=fails,trees=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False, einzeln=False)
+        print("fails:", fails)   #    
         print(" ")
         return (True, hops, switches, detour_edges)    
     
@@ -2988,8 +2989,8 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None, s
     - showplot: Boolescher Wert, ob der Plot angezeigt (True) oder gespeichert (False) werden soll.
     """
 
-    print("[draw_tree] tree:",tree)
-    print("[draw_tree] tree.nodes:", tree.nodes)
+    #print("[draw_tree] tree:",tree)
+    #print("[draw_tree] tree.nodes:", tree.nodes)
     # Positionen der Knoten bestimmen
     pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positionen der Knoten
 
@@ -3038,3 +3039,163 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None, s
         plt.close()
 
         print(f"Graph gespeichert unter: {filename}")
+
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
+import itertools
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
+import itertools
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
+import itertools
+
+def draw_multipletree_with_highlights(trees, nodes=None, fails=None, current_edge=None, showplot=True, einzeln=True):
+    """
+    Zeichnet mehrere Bäume in einem gerichteten Graphen und hebt bestimmte Knoten, fehlerhafte Kanten und die aktuelle Kante hervor.
+
+    Parameter:
+    - trees: Liste von NetworkX-Graph-Objekten, die die Bäume darstellen.
+    - nodes: Liste von Knoten, die hervorgehoben werden sollen (optional).
+    - fails: Liste von fehlerhaften Kanten, die hervorgehoben werden sollen (optional).
+    - current_edge: Aktuelle Kante, die hervorgehoben werden soll (optional).
+    - showplot: Boolescher Wert, ob der Plot angezeigt (True) oder gespeichert (False) werden soll.
+    - einzeln: Boolescher Wert, ob für jeden Baum eine eigene Abbildung erstellt werden soll (True) oder nicht (False).
+    """
+
+    # Zusammengefasster gerichteter Graph
+    combined_graph = nx.DiGraph()
+    pos = {}
+
+    # Farbpalette für Bäume
+    colors = itertools.cycle(plt.cm.tab10.colors)  # Wiederholbare Farben
+    tree_colors = []
+
+    # Iteriere über alle Bäume und füge Knoten und Kanten hinzu
+    for tree in trees:
+        tree_color = next(colors)  # Einzigartige Farbe für diesen Baum
+        tree_colors.append((tree, tree_color))
+
+        for node in tree.nodes:
+            if node not in combined_graph:
+                combined_graph.add_node(node, **tree.nodes[node])
+                if 'pos' in tree.nodes[node]:
+                    pos[node] = tree.nodes[node]['pos']
+
+        for edge in tree.edges:
+            if not combined_graph.has_edge(*edge):
+                combined_graph.add_edge(*edge, color=tree_color)
+
+    # Falls keine Positionen vorhanden sind, generiere sie automatisch
+    if not pos:
+        pos = nx.spring_layout(combined_graph)  # Automatische Positionierung
+
+    if einzeln:
+        for tree, tree_color in tree_colors:
+            plt.figure(figsize=(12, 10))
+
+            # Zeichne die Kanten des aktuellen Baums
+            tree_edges = [edge for edge in tree.edges if combined_graph.has_edge(*edge)]
+            nx.draw_networkx_edges(combined_graph, pos, edgelist=tree_edges, edge_color=[tree_color] * len(tree_edges), arrows=True)
+
+            # Zeichne fehlerhafte Kanten in Rot (beide Richtungen), falls vorhanden
+            if fails:
+                failed_edges = []
+                for u, v in fails:
+                    if combined_graph.has_edge(u, v):
+                        failed_edges.append((u, v))
+                    if combined_graph.has_edge(v, u):
+                        failed_edges.append((v, u))
+
+                nx.draw_networkx_edges(combined_graph, pos, edgelist=failed_edges, edge_color='red', width=2, arrows=True)
+
+            # Zeichne alle Knoten mit kleineren Punkten
+            nx.draw_networkx_nodes(combined_graph, pos, node_color='lightgray', node_size=300)
+            nx.draw_networkx_labels(combined_graph, pos)
+
+            # Hervorheben spezieller Knoten in Orange, falls vorhanden
+            if nodes:
+                nx.draw_networkx_nodes(combined_graph, pos, nodelist=nodes, node_color="orange", node_size=400)
+
+            # Plot anzeigen oder speichern
+            if showplot:
+                plt.show()
+            else:
+                # Ordner "failedgraphs" erstellen, falls nicht vorhanden
+                os.makedirs("failedgraphs", exist_ok=True)
+
+                # Einzigartiger Dateiname basierend auf Zeitstempel
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
+                filename = f"failedgraphs/tree_{timestamp}.png"
+
+                # Plot speichern
+                plt.savefig(filename, format='png')
+                plt.close()
+
+                print(f"Graph gespeichert unter: {filename}")
+    else:
+        plt.figure(figsize=(12, 10))
+
+        # Zeichne alle Kanten für jeden Baum in seiner eigenen Farbe
+        for tree, tree_color in tree_colors:
+            tree_edges = [edge for edge in tree.edges if combined_graph.has_edge(*edge)]
+            nx.draw_networkx_edges(combined_graph, pos, edgelist=tree_edges, edge_color=[tree_color] * len(tree_edges), arrows=True)
+
+        # Zeichne fehlerhafte Kanten in Rot (beide Richtungen), falls vorhanden
+        if fails:
+            failed_edges = []
+            for u, v in fails:
+                if combined_graph.has_edge(u, v):
+                    failed_edges.append((u, v))
+                if combined_graph.has_edge(v, u):
+                    failed_edges.append((v, u))
+
+            nx.draw_networkx_edges(combined_graph, pos, edgelist=failed_edges, edge_color='red', width=2, arrows=True)
+
+        # Highlight aktuelle Kante in Blau, falls vorhanden
+        if current_edge:
+            if combined_graph.has_edge(*current_edge):
+                nx.draw_networkx_edges(combined_graph, pos, edgelist=[current_edge], edge_color='blue', width=2, arrows=True)
+
+        # Zeichne alle Knoten mit kleineren Punkten
+        nx.draw_networkx_nodes(combined_graph, pos, node_color='lightgray', node_size=300)
+        nx.draw_networkx_labels(combined_graph, pos)
+
+        # Hervorheben spezieller Knoten in Orange, falls vorhanden
+        if nodes:
+            nx.draw_networkx_nodes(combined_graph, pos, nodelist=nodes, node_color="orange", node_size=400)
+
+        # Plot anzeigen oder speichern
+        if showplot:
+            plt.show()
+        else:
+            # Ordner "failedgraphs" erstellen, falls nicht vorhanden
+            os.makedirs("failedgraphs", exist_ok=True)
+
+            # Einzigartiger Dateiname basierend auf Zeitstempel
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
+            filename = f"failedgraphs/combined_graph_{timestamp}.png"
+
+            # Plot speichern
+            plt.savefig(filename, format='png')
+            plt.close()
+
+            print(f"Graph gespeichert unter: {filename}")

@@ -1058,7 +1058,7 @@ def one_tree_triple_checkpooint_pre(graph):
 def multiple_trees_triple_checkpooint_pre(graph):
 
     paths = {}
-
+    print("[multipletrees triple pre] graph edges:", graph.edges)
     for source in graph.nodes:
         for destination in graph.nodes:
             if source != destination:
