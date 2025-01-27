@@ -699,6 +699,7 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
+        draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
         print(" ")
         return (True, hops, switches, detour_edges)
     else:
@@ -762,6 +763,7 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     
     if(routing_failure_tree):
         print("Routing failed via MultipleTrees Tree from CP to D ")
+        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
         print(" ")
         return (True, hops, switches, detour_edges)    
     

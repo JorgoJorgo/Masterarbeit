@@ -33,7 +33,7 @@ def route(s, d, tree, fails):
 
     while current_node != d:
 
-        edges = get_sorted_edges(current_node, tree, fails, previous_edge)  # Sort edges by clockwise order
+        edges = get_sorted_edges(current_node, tree, fails, previous_edge,s=s,d=d)  # Sort edges by clockwise order
 
         if not edges:  # No available edges to proceed
 
@@ -137,9 +137,7 @@ def prioritize_edges(edges, previous_edge, tree):
 
 import math
 
-def get_sorted_edges(node, tree, fails, previous_edge):
-    # Helper to calculate angle between two vectors
-    def calculate_angle(vec1, vec2):
+def calculate_angle(vec1, vec2):
         dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
         magnitude1 = math.sqrt(vec1[0]**2 + vec1[1]**2)
         magnitude2 = math.sqrt(vec2[0]**2 + vec2[1]**2)
@@ -152,6 +150,8 @@ def get_sorted_edges(node, tree, fails, previous_edge):
         cross_product = vec1[0] * vec2[1] - vec1[1] * vec2[0]
         return angle if cross_product >= 0 else -angle
 
+def get_sorted_edges(node, tree, fails, previous_edge,s,d):
+    sonderfall = False
     # Get position of the current node
     node_pos = tree.nodes[node]['pos']
 
@@ -167,6 +167,18 @@ def get_sorted_edges(node, tree, fails, previous_edge):
         previous_neighbor = previous_source if previous_target == node else previous_target
         previous_pos = tree.nodes[previous_neighbor]['pos']
         previous_vector = (node_pos[0] - previous_pos[0], node_pos[1] - previous_pos[1])
+    
+    else: #if there is no previous edge, then the previous edge is the imaginary edge between s and d
+        sonderfall = True
+        # Extract the previous edge's source and target
+        previous_source = s
+        previous_target = d
+
+        # Calculate the vector of the previous edge
+        previous_neighbor = previous_source if previous_target == node else previous_target
+        previous_pos = tree.nodes[previous_neighbor]['pos']
+        previous_vector = (node_pos[0] - previous_pos[0], node_pos[1] - previous_pos[1])
+
 
     # List to store edges and their angles
     edges_and_angles = []
@@ -192,7 +204,7 @@ def get_sorted_edges(node, tree, fails, previous_edge):
     edges_and_angles.sort(key=lambda x: x[1])
 
     # Ensure the previous edge's reverse direction is at the end, if it exists
-    if previous_neighbor is not None:
+    if previous_neighbor is not None and sonderfall == False:
         edges_and_angles.append(((previous_neighbor, node), float('inf')))
 
     return [edge for edge, _ in edges_and_angles]
