@@ -16,9 +16,8 @@ def convert_to_undirected(tree):
     return tree.to_undirected()
 
 def route(s, d, tree, fails):
-    #speacial_nodes = [] #wenn man nix zeichnen will
     speacial_nodes = [] #wenn man nix zeichnen will
-    #speacial_nodes = [0,55] #wenn man bestimmte nodes zeichnen will
+    #speacial_nodes = [9,47] #wenn man bestimmte nodes zeichnen will
     #speacial_nodes = [s,d] #wenn man alles zeichnen will
     tree = convert_to_undirected(tree)
 
@@ -148,7 +147,7 @@ def calculate_angle(vec1, vec2):
         angle = math.acos(cos_theta)
         # Determine the orientation (clockwise or counterclockwise)
         cross_product = vec1[0] * vec2[1] - vec1[1] * vec2[0]
-        return angle if cross_product >= 0 else -angle
+        return angle if cross_product >= 0 else angle
 
 def get_sorted_edges(node, tree, fails, previous_edge,s,d):
     sonderfall = False
