@@ -20,6 +20,246 @@ import traceback
 #################################################### MULTIPLETREES WITH MIDDLE CHECKPOINT ################################################
 
 ##########################################################################################################################################
+
+def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
+    paths = {}
+    count = 1
+    all_graph_edge_number = len(graph.edges)
+    all_tree_edge_number = 0
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointParallelPre] Start Precomputation")
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            if source != destination:
+                
+                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                
+                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                
+                longest_edp = edps[len(edps)-1]
+
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                cp = longest_edp[ int(len(longest_edp)/2)]
+
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                trees_cp_to_s = multiple_trees_parallel_cp(cp,source,graph,edps_cp_to_s)
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+           
+                # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
+                # Combine all trees into one large undirected tree
+                combined_tree = nx.Graph()
+                for tree in trees_cp_to_s:
+                    tree = tree.to_undirected()  # Ensure the tree is undirected
+                    for node in tree.nodes:
+                            combined_tree.add_node(node)  # Add node without position
+                    combined_tree.add_edges_from(tree.edges())  # Add edges
+
+                for node in combined_tree.nodes:
+                    combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+         
+                #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
+                trees_cp_to_s = combined_tree
+                
+                #then build multiple trees cp->d
+                
+                trees_cp_to_d = multiple_trees_parallel_cp(cp,destination,graph,edps_cp_to_d)
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
+                if source in paths:
+                    paths[source][destination] = { 
+                                                    'cp': cp,
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'cp': cp,
+                                                'trees_cp_to_s': trees_cp_to_s, 
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                    }
+
+    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
+    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
+    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
+    #input("...")           
+    return paths
+
+
+def multiple_trees_parallel_cp(source, destination, graph, all_edps):
+    removed_edges = 0
+    trees = []
+    nodes_in_tree = []
+    #für jeden tree muss hier sein edp eingefügt werden in den jeweiligen graph des trees 
+    for i in range(0,len(all_edps)):
+
+        current_edp = all_edps[i]
+        tree = nx.DiGraph()
+        tree.add_node(source)
+        for j in range(1,len(current_edp)-1):
+            tree.add_node(current_edp[j])
+            tree.add_edge(current_edp[j-1], current_edp[j])
+
+        trees.append(tree)
+
+    for i in range(0, len(all_edps)):
+        nodes_in_tree.append( all_edps[i][:len(all_edps[i]) -1] ) #in nodes stehen dann alle knoten drin die wir besuchen wollen um deren nachbarn auch reinzupacken
+                                                    # am anfang ganzer edp drin und -1 damit die destination nicht mit drin steht
+                                                    
+    assert len(trees) == len(all_edps) == len(nodes_in_tree), 'Not every edp got a tree!'
+
+    changed = True
+    j = 0
+    while (changed) :
+        changed = False
+
+        for i in range(0,len(trees)): #jeden tree einmal durchgehen
+                                        #um zu versuchen aus jedem edp einen Baum zu bauen
+                                        
+            tree = trees[i] # Baum aus vorheriger interation
+
+            
+            if j < len(nodes_in_tree[i]):
+                changed = True # node_in_tree[i] array got elements left to work with
+
+                        
+                it = 0
+                while it < len(nodes_in_tree[i]):
+                    skip_while = False #die skip_while und break sind dafür da dass man genau 1 kante pro iteration einfügt
+                    
+                    neighbors = list(nx.neighbors(graph, nodes_in_tree[i][it])) #für jeden knoten aus nodes die nachbarn finden und gucken ob sie in den tree eingefügt werden dürfen
+                    
+                    for k in range(0,len(neighbors)): #jeden der nachbarn durchgehen
+                        if(neighbors[k] != nodes_in_tree[i][it] and neighbors[k] != destination): #kanten zu sich selbst dürfen nicht rein da dann baum zu kreis wird und kanten zur destination auch nicht    
+                            
+
+                            #prüfen ob kante von nodes[j] nach neighbors[k] schon in anderen trees verbaut ist
+                            is_in_other_tree = False
+                            if(len(trees)>0):#wenn es schon andere trees gibt muss man alle anderen durchsuchen
+                                for tree_to_check in trees: 
+                                    if (tree_to_check.has_edge(nodes_in_tree[i][it],neighbors[k]) or tree_to_check.has_edge(neighbors[k],nodes_in_tree[i][it])): #wenn ein tree die edge schon drin hat dann darf man die edge nicht mehr benutzen
+                                        is_in_other_tree = True
+                                        break
+                                    #endif
+                                #endfor
+                            
+                                if not ( is_in_other_tree or (tree.has_node(neighbors[k])) ):
+                                    nodes_in_tree[i].append(neighbors[k]) 
+                                    tree.add_node(neighbors[k])
+                                    tree.add_edge(nodes_in_tree[i][it],neighbors[k])
+                                    skip_while = True
+                                    break
+                                #endif
+                            #endif
+                            else: #das ist der fall wenn es noch keine anderen trees zum checken gibt, ob die kante schon verbaut ist
+                                if not((neighbors[k] == destination) or (tree.has_node(neighbors[k]))): #dann darf die kante nicht zur destination sein
+                                                                                                        #der knoten darf nicht im jetzigen tree drin sein
+                                    print("Füge die Kante : " , nodes_in_tree[i][it] , " - " , neighbors[k] , " ein bei len(trees) = 0")
+                                    tree.add_node(neighbors[k])
+                                    tree.add_edge(nodes_in_tree[i][it],neighbors[k])
+                                #endif
+                                #wenn der node der grad in den tree eingefügt wurde schon in nodes war dann soll er nicht nochmal eingefügt werden
+                                if not (neighbors[k]in nodes_in_tree[i]): #damit knoten nicht doppelt in nodes eingefügt werden
+                                    nodes_in_tree[i].append(neighbors[k]) 
+                                #endif
+                                skip_while = True
+                                break
+                            #endelse
+                        #endif
+                    #endfor
+                    if skip_while:
+                        break
+                    it = it + 1                
+                #endwhile
+            #endif
+        #endfor
+        j = j+1 # next node in nodes array for new itteration
+    #endwhile
+    edpIndex = 0 
+    i = 0
+    for tree in trees:
+        changed = True 
+        old_edges = len(tree.edges)
+        while changed == True: #solange versuchen zu kürzen bis nicht mehr gekürzt werden kann 
+            old_tree = tree.copy()
+            remove_redundant_paths(source, destination, tree, graph) 
+            changed = tree.order() != old_tree.order() # order returns the number of nodes in the graph.
+        #endwhile
+        new_edges = len(tree.edges)
+        removed_edges = removed_edges + (old_edges - new_edges)
+        #man muss prüfen ob nur die source im baum ist , da man im nächsten schritt der destination einen Rang geben muss
+        if( tree.order() > 1 ):
+            rank_tree(tree , source,all_edps[edpIndex])
+            connect_leaf_to_destination(tree, source,destination)
+            tree.add_edge(all_edps[i][len(all_edps[i])-2],destination)
+            tree.nodes[destination]["rank"] = -1
+            edpIndex = edpIndex+1
+        #endif
+
+        #edps direkt von s->d kommen müssen gesondert betrachtet werden
+        if(tree.order() == 1 and len(all_edps[i]) == 2):
+            tree.add_edge(source,destination)
+            tree.nodes[destination]["rank"] = -1
+        #endif
+
+    #endfor
+    return trees
+
+
+#################################################### MULTIPLETREES WITH MIDDLE CHECKPOINT ################################################
+
+##########################################################################################################################################
 removed_edges_multtrees = []
 
 def multiple_trees_with_middle_checkpoint_pre(graph):
