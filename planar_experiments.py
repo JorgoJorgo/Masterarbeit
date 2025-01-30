@@ -16,8 +16,8 @@ DEBUG = True
 algos = {
         #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
-        #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
-        #'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
+        'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
         #'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
