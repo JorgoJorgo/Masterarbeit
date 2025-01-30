@@ -10,7 +10,7 @@ def convert_to_undirected(tree):
     Parameters:
     - tree: NetworkX graph object (directed or undirected)
 
-    Returns:
+    Returns:Update directory name in print_results.py
     - An undirected NetworkX graph object
     """
     return tree.to_undirected()
@@ -147,7 +147,7 @@ def calculate_angle(vec1, vec2):
         angle = math.acos(cos_theta)
         # Determine the orientation (clockwise or counterclockwise)
         cross_product = vec1[0] * vec2[1] - vec1[1] * vec2[0]
-        return angle if cross_product >= 0 else angle
+        return angle if cross_product >= 0 else -angle
 
 def get_sorted_edges(node, tree, fails, previous_edge,s,d):
     sonderfall = False
