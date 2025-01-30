@@ -106,5 +106,5 @@ def plot_results(title_prefix, algo_success, algo_hops):
     plt.show()
 
 # Beispiel: Verzeichnis 'results' durchsuchen
-directory = 'results'
+directory = 'resultsMTCPParallel'
 calculate_averages(directory)
