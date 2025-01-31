@@ -3,6 +3,8 @@ import networkx as nx
 
 import math
 
+from cut_algorithms import print_cut_structure
+
 def convert_to_undirected(tree):
     """
     Converts the given tree to an undirected graph.
@@ -15,12 +17,19 @@ def convert_to_undirected(tree):
     """
     return tree.to_undirected()
 
-def route(s, d, tree, fails):
+def route(s, d, fails, tree):
     speacial_nodes = [] #wenn man nix zeichnen will
     #speacial_nodes = [9,47] #wenn man bestimmte nodes zeichnen will
     #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    
+    print("Routing from", s, "to", d)
+    print("Fails:", fails)
+    print("Tree:", tree)
+
+    print("Tree nodes:", tree.nodes)
     tree = convert_to_undirected(tree)
 
+    
     visited_edges = set()  # Set to keep track of visited edges
     current_node = s
     path = [current_node]  # Path traversed
@@ -135,6 +144,7 @@ def prioritize_edges(edges, previous_edge, tree):
 #     return [e[0] for e in edges]
 
 import math
+import uuid
 
 def calculate_angle(vec1, vec2):
         dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
@@ -249,3 +259,88 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
 
     #plt.title("Baum mit hervorgehobenen Knoten, Kanten und aktueller Kante")
     plt.show()
+
+
+def route_faces_with_paths(s, d, fails, paths):
+    
+    speacial_nodes = [] #wenn man nix zeichnen will
+    #speacial_nodes = [49,47] #wenn man bestimmte nodes zeichnen will
+    #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    
+    tree = paths[s][d]['structure']
+    cut_edges = paths[s][d]['cut_edges']
+    cut_nodes = paths[s][d]['cut_nodes']
+    tree = convert_to_undirected(tree)
+
+    
+    visited_edges = set()  # Set to keep track of visited edges
+    current_node = s
+    path = [current_node]  # Path traversed
+    previous_edge = None  # Last edge used to reach the current node
+
+    hops = 0  # Count of hops (edges traversed)
+    switches = 0  # Count of node switches
+    detour_edges = []  # List of detour edges taken due to failures
+
+    while current_node != d:
+
+        edges = get_sorted_edges(current_node, tree, fails, previous_edge,s=s,d=d)  # Sort edges by clockwise order
+
+        if not edges:  # No available edges to proceed
+
+            if len(path) > 1:
+                # Go back to the previous node
+                previous_node = path[-2]
+                path.pop()
+                current_node = previous_node
+                switches += 1
+                previous_edge = (current_node, path[-1])
+                if s in speacial_nodes and d in speacial_nodes:
+                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
+            else:
+                print("Routing failed. No way to proceed.")
+                print("[route] detour_edges:",detour_edges)
+                unique_filename = f"failedgraphs/graph_{uuid.uuid4().hex}.png"
+                print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+                return (True, hops, switches, detour_edges)  # No way to proceed
+
+        edge_taken = False
+        reverse_edge = (previous_edge[1], previous_edge[0]) if previous_edge else None
+
+        for edge in edges:
+            #print(f"Checking edge {edge}")
+            if edge == reverse_edge:
+                continue
+            if edge not in visited_edges:
+                visited_edges.add(edge)
+                previous_edge = edge
+                current_node = edge[1] if edge[0] == current_node else edge[0]
+                path.append(current_node)
+                hops += 1
+                if edge in visited_edges:
+                    detour_edges.append(edge)
+                edge_taken = True
+                if s in speacial_nodes and d in speacial_nodes:
+                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
+                break
+
+        if not edge_taken and reverse_edge and reverse_edge not in visited_edges:
+            visited_edges.add(reverse_edge)
+            previous_edge = reverse_edge
+            current_node = reverse_edge[1] if reverse_edge[0] == current_node else reverse_edge[0]
+            path.append(current_node)
+            hops += 1
+            edge_taken = True
+            if s in speacial_nodes and d in speacial_nodes:
+                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
+
+        if not edge_taken:
+            print("Cycle detected or all edges revisited. Routing failed.")
+            unique_filename = f"failedgraphs/graph_{uuid.uuid4().hex}.png"
+            print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+            return (True, hops, switches, detour_edges)  # All edges revisited, cycle found
+        print("-----")
+
+    print("Routing successful.")
+    return (False, hops, switches, detour_edges)  # Path successfully found to destination
+

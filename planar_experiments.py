@@ -4,13 +4,14 @@ import time
 
 from networkx import node_connectivity
 from arborescences import reset_arb_attribute
-from cut_algorithms import squareOne_with_cuts_pre
+from cut_algorithms import multipleTrees_with_cuts_pre, squareOne_with_cuts_pre
 from extra_links import DegreeMaxDAG, GreedyMaximalDAG, RouteDetCircSkip
+from faces import route, route_faces_with_paths
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
 from routing import PrepareSQ1, RouteDetCirc, RouteMultipleTrees, RouteOneTree, RouteSQ1, RouteWithOneCheckpointMultipleTrees, RouteWithOneCheckpointOneTree, RouteWithTripleCheckpointMultipleTrees, RouteWithTripleCheckpointOneTree, SimulateGraph, Statistic
-from masterarbeit_trees_with_cp import multiple_trees_triple_checkpooint_pre, multiple_trees_with_betweenness_checkpoint_pre, multiple_trees_with_closeness_checkpoint_pre, multiple_trees_with_degree_checkpoint_pre, multiple_trees_with_middle_checkpoint_parallel_pre, multiple_trees_with_middle_checkpoint_pre, one_tree_triple_checkpooint_pre, one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
+from masterarbeit_trees_with_cp import multiple_trees_for_faces_pre, multiple_trees_triple_checkpooint_pre, multiple_trees_with_betweenness_checkpoint_pre, multiple_trees_with_closeness_checkpoint_pre, multiple_trees_with_degree_checkpoint_pre, multiple_trees_with_middle_checkpoint_parallel_pre, multiple_trees_with_middle_checkpoint_pre, one_tree_triple_checkpooint_pre, one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
 import matplotlib.pyplot as plt
 DEBUG = True
 
@@ -31,7 +32,9 @@ algos = {
         #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
         #'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
-        'SquareOne Cuts': [squareOne_with_cuts_pre, RouteOneTree_CP]
+        'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
         }
 
 def one_experiment(g, seed, out, algo):
@@ -54,7 +57,7 @@ def one_experiment(g, seed, out, algo):
     print("Start routing")
     if routing_algo == RouteDetCircSkip: # or routing_algo == KeepForwardingRouting:# braucht der DAG Algorithmus (entnommen aus alten Experiment Dateien)
         g_orig = g.to_undirected()
-        stat = Statistic(routing_algo, str(routing_algo), g_orig)
+        stat = Statistic(routing_algo, str(routing_algo), g_orig)   
     else:
         stat = Statistic(routing_algo, str(routing_algo))
     stat.reset(g.nodes())
