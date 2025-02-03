@@ -1,3 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Fri Jan 31 15:15:23 2025
-Delaunay, 50, 3, MultipleTrees Cuts, 1
