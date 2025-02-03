@@ -1,5 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Tue Jan 28 17:07:47 2025
-Delaunay, 70, 3, MultipleTrees, 1, 14, 3, 18, 0.960000, 0.000228, 141.026553
-Delaunay, 70, 3, MultipleTrees Random Checkpoint, 1, 41, 3, 45, 1.000000, 0.000557, 262.160507
-Delaunay, 70, 5, MultipleTrees Random Checkpoint Parallel, 1, 25, 3, 31, 1.000000, 0.000546, 382.718643

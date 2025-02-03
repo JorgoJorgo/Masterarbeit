@@ -6,7 +6,7 @@ from networkx import node_connectivity
 from arborescences import reset_arb_attribute
 from cut_algorithms import multipleTrees_with_cuts_pre, squareOne_with_cuts_pre
 from extra_links import DegreeMaxDAG, GreedyMaximalDAG, RouteDetCircSkip
-from faces import route, route_faces_with_paths
+from faces import route, route_faces_with_paths, route_greedy_perimeter
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
@@ -31,10 +31,10 @@ algos = {
         #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
-        'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
-        'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
-        'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
+        #'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
+        #'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        #'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
         }
 
 def one_experiment(g, seed, out, algo):
@@ -49,6 +49,7 @@ def one_experiment(g, seed, out, algo):
     print('Done with precomputation algo')
     pt = time.time() - t
     if precomputation == -1:  # error...
+        print("[ERROR] Precomputation failed, aborting experiment!")
         out.write(', %f, %f, %f, %f, %f, %f\n' %
                   (float('inf'), float('inf'), float('inf'), 0, 0, pt))
         score = 1000*1000*1000
@@ -386,7 +387,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 10       #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    start_FR = 15      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
     f_num = 3*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):

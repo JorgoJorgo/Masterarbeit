@@ -133,7 +133,7 @@ def multipleTrees_with_cuts_pre(graph):
             
             if source != destination:
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
-
+                #print("[MT with Cuts] building structure for", source, destination)
             
                 cut_nodes = set()
                 for edge in cut_edges:

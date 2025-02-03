@@ -2771,8 +2771,8 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
             fails = fails + edg[:f - len(fails) + 1]
         edg = fails
     if f > len(edg):
-        #print('more failures than edges')
-        #print('simulate', len(g.edges()), len(fails), f)
+        print('more failures than edges')
+        print('[SimulateGraph]', len(g.edges()), len(fails), f)
         return -1
     d = g.graph['root']
     g.graph['k'] = k
@@ -2872,6 +2872,9 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
                 print("[SimulateGraph targeted] fails:", fails)
             if (s == d) or (not s in dist):
                 stat.fails += 1
+                skipped_nodes = [s for s in nodes[:samplesize] if (s == d) or (not s in dist)]
+                print(f"[DEBUG] Nodes skipped because not in dist: {len(skipped_nodes)}")
+
                 continue
             (fail, hops) = stat.update(s, d, fails, precomputation, dist[s])
             if fail:
