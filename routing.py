@@ -2760,145 +2760,244 @@ def Route_Stretch(s, d, fails, T):
 # samplesize: number of nodes from which we route towards the root
 # dest: nodes to exclude from using in sample
 # tree: arborescence decomposition to use
+# def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=None, tree=None, targeted=False):
+#     edg = list(g.edges())
+#     fails = g.graph['fails']
+#     f = len(fails)
+#     #print("[SimulateGraph] (1) fails:",fails)
+#     #print("[SimulateGraph] len(fails):" , len(fails))
+#     if fails != None:
+#         if len(fails) < f:
+#             fails = fails + edg[:f - len(fails) + 1]
+#         edg = fails
+#     if f > len(edg):
+#         print('more failures than edges')
+#         print('[SimulateGraph]', len(g.edges()), len(fails), f)
+#         return -1
+#     d = g.graph['root']
+#     g.graph['k'] = k
+#     if precomputation is None:
+#         precomputation = tree
+#         if precomputation is None:
+#             precomputation = GreedyArborescenceDecomposition(g)
+#             if precomputation is None:
+#                return -1
+#     fails = edg[:f]
+#     #print("[SimulateGraph] (2) fails:",fails)
+#     if targeted: #neu eingefügt für die clustered failures
+#         fails = []
+        
+#     failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
+#     failures1.update({(v, u): g[u][v]['arb'] for (u, v) in fails})
+
+#     g = g.copy(as_view=False)
+
+#     #######################################################################
+#     debugGraphShow = False
+
+#     if(debugGraphShow):   
+#         print("[SimulateGraph] DEBUG ON")
+#         print("[SimulateGraph] Failed Experiment with fails : ", failures1)
+#         # Extract positions (if they exist)
+#         # Extract positions (if they exist)
+#         pos = {}
+#         for node in g.nodes(data=True):
+#             if 'pos' in node[1]:
+#                 x, y = node[1]['pos']  # Directly unpack the tuple (x, y)
+#                 pos[node[0]] = (x, y)
+
+#         # If positions are not provided, generate them
+#         if not pos:
+#             pos = nx.spring_layout(g)
+
+#         # Assign edge colors: failed edges in red, normal edges in black
+#         edge_colors = []
+#         for edge in g.edges():
+#             if edge in failures1 or (edge[1], edge[0]) in failures1:
+#                 edge_colors.append('red')  # Highlight failed edges in red
+#             else:
+#                 edge_colors.append('black')  # Normal edges in black
+
+#         # Draw the graph
+#         plt.figure(figsize=(12, 8))
+#         nx.draw(
+#             g,
+#             pos,
+#             with_labels=True,
+#             node_color='lightblue',
+#             edge_color=edge_colors,
+#             node_size=500,
+#             font_size=8,
+#             arrows=True,
+#         )
+    
+#         # Add legend for fails
+#         legend_labels = ['Fail Edges', 'Normal Edges']
+#         legend_colors = ['red', 'black']
+#         for color, label in zip(legend_colors, legend_labels):
+#             plt.plot([], [], color=color, label=label)
+
+#         plt.legend(loc='upper right')
+#         plt.title("Graph Visualization with Fail Edges Highlighted")
+#         plt.show()
+
+#     ####################################################
+#     g.remove_edges_from(failures1.keys())
+
+#     nodes = list(set(connected_component_nodes_with_d_after_failures(g,[],d))-set([dest, d]))
+#     print("[SimulateGraph] nodes:", nodes)
+#     dist = nx.shortest_path_length(g, target=d)#hier sind alle erreichbaren Knoten von d aus
+#     print("[SimulateGraph] dist:", dist)
+#     #if len(nodes) < samplesize:
+#     #    print('Not enough nodes in connected component of destination (%i nodes, %i sample size), adapting it' % (len(nodes), samplesize))
+#     #    PG = nx.nx_pydot.write_dot(g , "./graphen/failedGraphs/graph")
+#     #    samplesize = len(nodes)
+    
+#     nodes = list(set(g.nodes())-set([dest, d]))
+#     random.shuffle(nodes)
+#     count = 0
+#     for s in nodes[:samplesize]:
+#         print("Loop over samplesize is runing")
+#         count += 1
+#         for stat in stats:
+#             print("Loop over stats is runing")
+#             if targeted:
+#                 fails = list(nx.minimum_edge_cut(g,s=s,t=d))[1:]
+#                 random.shuffle(fails)
+#                 failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
+#                 g.remove_edges_from(failures1.keys())
+#                 x = dist[s]
+#                 dist[s] = nx.shortest_path_length(g,source=s,target=d)
+#                 #print(len(fails),x,dist[s]) #DEBUG
+#                 print("[SimulateGraph targeted] len(fails):", len(fails))
+#                 print("[SimulateGraph targeted] fails:", fails)
+#             if (s == d) or (not s in dist):
+#                 stat.fails += 1
+#                 skipped_nodes = [s for s in nodes[:samplesize] if (s == d) or (not s in dist)]
+#                 print(f"[DEBUG] Node skipped because not in dist: {s}")
+#                 continue
+#             (fail, hops) = stat.update(s, d, fails, precomputation, dist[s])
+#             if fail:
+#                 stat.hops = stat.hops[:-1]
+#                 stat.stretch = stat.stretch[:-1]
+#             elif hops < 0:
+#                 stat.hops = stat.hops[:-1]
+#                 stat.stretch = stat.stretch[:-1]
+#                 stat.succ = stat.succ - 1
+#             if targeted:
+#                 for ((u, v), i) in failures1.items():
+#                     g.add_edge(u, v)
+#                     g[u][v]['arb'] = i
+#             if stat.succ + stat.fails != count:
+#                 print('problem, success and failures do not add up', stat.succ, stat.fails, count)
+#                 print('source', s)
+#                 if stat.has_graph:
+#                     drawGraphWithLabels(stat.graph, "results/problem.png")
+#     if not targeted:
+#         for ((u, v), i) in failures1.items():
+#             g.add_edge(u, v)
+#             g[u][v]['arb'] = i
+#     for stat in stats:
+#         stat.finalize()
+#     sys.stdout.flush()
+#     return fails
 def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=None, tree=None, targeted=False):
     edg = list(g.edges())
     fails = g.graph['fails']
     f = len(fails)
-    #print("[SimulateGraph] (1) fails:",fails)
-    #print("[SimulateGraph] len(fails):" , len(fails))
-    if fails != None:
+
+    if fails is not None:
         if len(fails) < f:
             fails = fails + edg[:f - len(fails) + 1]
         edg = fails
+
     if f > len(edg):
         print('more failures than edges')
-        print('[SimulateGraph]', len(g.edges()), len(fails), f)
         return -1
+
     d = g.graph['root']
     g.graph['k'] = k
+
     if precomputation is None:
-        precomputation = tree
+        precomputation = tree or GreedyArborescenceDecomposition(g)
         if precomputation is None:
-            precomputation = GreedyArborescenceDecomposition(g)
-            if precomputation is None:
-               return -1
+            return -1
+
     fails = edg[:f]
-    #print("[SimulateGraph] (2) fails:",fails)
-    if targeted: #neu eingefügt für die clustered failures
+    
+    if targeted:
         fails = []
-        
+
     failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
     failures1.update({(v, u): g[u][v]['arb'] for (u, v) in fails})
 
     g = g.copy(as_view=False)
 
-    #######################################################################
-    debugGraphShow = False
-
-    if(debugGraphShow):   
-        print("[SimulateGraph] DEBUG ON")
-        print("[SimulateGraph] Failed Experiment with fails : ", failures1)
-        # Extract positions (if they exist)
-        # Extract positions (if they exist)
-        pos = {}
-        for node in g.nodes(data=True):
-            if 'pos' in node[1]:
-                x, y = node[1]['pos']  # Directly unpack the tuple (x, y)
-                pos[node[0]] = (x, y)
-
-        # If positions are not provided, generate them
-        if not pos:
-            pos = nx.spring_layout(g)
-
-        # Assign edge colors: failed edges in red, normal edges in black
-        edge_colors = []
-        for edge in g.edges():
-            if edge in failures1 or (edge[1], edge[0]) in failures1:
-                edge_colors.append('red')  # Highlight failed edges in red
-            else:
-                edge_colors.append('black')  # Normal edges in black
-
-        # Draw the graph
-        plt.figure(figsize=(12, 8))
-        nx.draw(
-            g,
-            pos,
-            with_labels=True,
-            node_color='lightblue',
-            edge_color=edge_colors,
-            node_size=500,
-            font_size=8,
-            arrows=True,
-        )
-    
-        # Add legend for fails
-        legend_labels = ['Fail Edges', 'Normal Edges']
-        legend_colors = ['red', 'black']
-        for color, label in zip(legend_colors, legend_labels):
-            plt.plot([], [], color=color, label=label)
-
-        plt.legend(loc='upper right')
-        plt.title("Graph Visualization with Fail Edges Highlighted")
-        plt.show()
-
-    ####################################################
     g.remove_edges_from(failures1.keys())
 
-    nodes = list(set(connected_component_nodes_with_d_after_failures(g,[],d))-set([dest, d]))
+    nodes = list(set(connected_component_nodes_with_d_after_failures(g, [], d)) - {dest, d})
     print("[SimulateGraph] nodes:", nodes)
-    dist = nx.shortest_path_length(g, target=d)#hier sind alle erreichbaren Knoten von d aus
+
+    # Falls ein Knoten nicht erreichbar ist, setzen wir ihn in dist mit 'inf'
+    try:
+        dist = nx.shortest_path_length(g, target=d)
+    except nx.NetworkXNoPath:
+        dist = {}
+
+    # Setze alle nicht erreichbaren Knoten auf unendlich große Distanz
+    for node in g.nodes():
+        if node not in dist:
+            dist[node] = float('inf')
+
     print("[SimulateGraph] dist:", dist)
-    #if len(nodes) < samplesize:
-    #    print('Not enough nodes in connected component of destination (%i nodes, %i sample size), adapting it' % (len(nodes), samplesize))
-    #    PG = nx.nx_pydot.write_dot(g , "./graphen/failedGraphs/graph")
-    #    samplesize = len(nodes)
-    
-    nodes = list(set(g.nodes())-set([dest, d]))
+
+    nodes = list(set(g.nodes()) - {dest, d})
     random.shuffle(nodes)
     count = 0
+
     for s in nodes[:samplesize]:
-        print("Loop over samplesize is runing")
+        print("Loop over samplesize is running")
         count += 1
+
         for stat in stats:
-            print("Loop over stats is runing")
+            print("Loop over stats is running")
+
             if targeted:
-                fails = list(nx.minimum_edge_cut(g,s=s,t=d))[1:]
+                fails = list(nx.minimum_edge_cut(g, s=s, t=d))[1:]
                 random.shuffle(fails)
                 failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
                 g.remove_edges_from(failures1.keys())
-                x = dist[s]
-                dist[s] = nx.shortest_path_length(g,source=s,target=d)
-                #print(len(fails),x,dist[s]) #DEBUG
-                print("[SimulateGraph targeted] len(fails):", len(fails))
-                print("[SimulateGraph targeted] fails:", fails)
-            if (s == d) or (not s in dist):
-                stat.fails += 1
-                skipped_nodes = [s for s in nodes[:samplesize] if (s == d) or (not s in dist)]
-                print(f"[DEBUG] Node skipped because not in dist: {s}")
-                continue
-            (fail, hops) = stat.update(s, d, fails, precomputation, dist[s])
+
+                # Falls s nicht erreichbar ist, setze dist auf 'inf'
+                dist[s] = nx.shortest_path_length(g, source=s, target=d) if s in dist else float('inf')
+
+            # Jetzt gibt es KEIN continue mehr, sondern der Algorithmus wird immer ausgeführt
+            fail, hops = stat.update(s, d, fails, precomputation, dist[s])
+
             if fail:
                 stat.hops = stat.hops[:-1]
                 stat.stretch = stat.stretch[:-1]
             elif hops < 0:
                 stat.hops = stat.hops[:-1]
                 stat.stretch = stat.stretch[:-1]
-                stat.succ = stat.succ - 1
+                stat.succ -= 1
+
             if targeted:
                 for ((u, v), i) in failures1.items():
                     g.add_edge(u, v)
                     g[u][v]['arb'] = i
+
             if stat.succ + stat.fails != count:
-                print('problem, success and failures do not add up', stat.succ, stat.fails, count)
-                print('source', s)
-                if stat.has_graph:
-                    drawGraphWithLabels(stat.graph, "results/problem.png")
+                print('Problem: Success and failures do not add up', stat.succ, stat.fails, count)
+
     if not targeted:
         for ((u, v), i) in failures1.items():
             g.add_edge(u, v)
             g[u][v]['arb'] = i
+
     for stat in stats:
         stat.finalize()
+
     sys.stdout.flush()
     return fails
 

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import networkx as nx
-
 import math
+import uuid
 
 from cut_algorithms import print_cut_structure
 
@@ -142,9 +142,6 @@ def prioritize_edges(edges, previous_edge, tree):
 #         edges = prioritize_edges(edges, previous_edge, tree)
 
 #     return [e[0] for e in edges]
-
-import math
-import uuid
 
 def calculate_angle(vec1, vec2):
         dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
@@ -353,7 +350,7 @@ def euclidean_distance(a, b):
 
 def route_greedy_perimeter(s, d, fails, paths):
     speacial_nodes = []  # wenn man nix zeichnen will
-    speacial_nodes = [s,d] #wenn man alles zeichnen will
+    #speacial_nodes = [s,d] #wenn man alles zeichnen will
     print("[route_greedy_perimeter] Routing from", s, "to", d)  
     tree = paths[s][d]['structure']
     cut_edges = paths[s][d]['cut_edges']

@@ -1,126 +1,242 @@
-Tue Feb  4 17:07:18 2025
+Tue Feb  4 17:41:00 2025
 [main] i :  40
 [main] switch: planar
 [main] seed: 2233
 [main] rep: 1
-[main] n: 30
-[main] samplesize: 8
+[main] n: 50
+[main] samplesize: 7
 [main] attack: RANDOM
 Erstelle Unit-Disk-Graph...
-Anzahl Knoten: 30 Anzahl Kanten: 77
+Anzahl Knoten: 50 Anzahl Kanten: 153
 Wende Delaunay-Triangulation an...
-Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Delaunay-Triangulation abgeschlossen. Knoten: 50 Kanten: 134
 Ausgewähltes Fehlermuster : RANDOM
 [run_planar] Anzahl der Fails:  82
-[run_planar] Fails:  [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1)]
-[planar_experiments] root: 11
-[planar_experiments] len(edges): 154
-[shuffle_and_run] fails: [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1)]
-experiment for  <function multipleTrees_with_cuts_pre at 0x70702a28ea20>
+[run_planar] Fails:  [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18)]
+[planar_experiments] root: 33
+[planar_experiments] len(edges): 268
+[shuffle_and_run] fails: [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18)]
+experiment for  <function multipleTrees_with_cuts_pre at 0x7455d6022a20>
 [MT with Cuts] Start Precomputation
 Done with precomputation algo
 Start routing
-[SimulateGraph] nodes: []
-[SimulateGraph] dist: {11: 0}
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 19
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 29
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 27
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 8
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 15
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 5
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 22
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 0
+[SimulateGraph] nodes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 49]
+[SimulateGraph] dist: {33: 0, 35: 1, 34: 2, 6: 2, 7: 2, 16: 2, 2: 3, 36: 3, 5: 3, 40: 3, 41: 3, 45: 3, 27: 3, 38: 4, 39: 4, 12: 4, 13: 4, 46: 4, 49: 4, 26: 4, 30: 4, 9: 5, 10: 5, 11: 5, 18: 5, 22: 5, 28: 5, 31: 5, 32: 5, 37: 5, 1: 6, 3: 6, 4: 6, 8: 6, 43: 6, 47: 6, 17: 6, 21: 6, 0: 7, 44: 7, 15: 7, 24: 7, 25: 7, 29: 7, 19: 8, 23: 9, 14: inf, 20: inf, 42: inf, 48: inf}
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 31 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 18 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 14 to 33
+-----
+Routing failed. No way to proceed.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 15 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 28 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 10 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 21 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
 After simulate
-no success_ratio <function multipleTrees_with_cuts_pre at 0x70702a28ea20>
-time elapsed 38.62737059593201
-start time Tue Feb  4 17:07:18 2025
-end time Tue Feb  4 17:07:57 2025
-Tue Feb  4 17:07:57 2025
+success 6 <function multipleTrees_with_cuts_pre at 0x7455d6022a20>
+time elapsed 626.9375674724579
+start time Tue Feb  4 17:41:00 2025
+end time Tue Feb  4 17:51:26 2025
+Tue Feb  4 17:51:26 2025
 [main] i :  41
 [main] switch: planar
 [main] seed: 2233
 [main] rep: 1
-[main] n: 30
-[main] samplesize: 8
+[main] n: 50
+[main] samplesize: 7
 [main] attack: RANDOM
 Erstelle Unit-Disk-Graph...
-Anzahl Knoten: 30 Anzahl Kanten: 77
+Anzahl Knoten: 50 Anzahl Kanten: 153
 Wende Delaunay-Triangulation an...
-Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Delaunay-Triangulation abgeschlossen. Knoten: 50 Kanten: 134
 Ausgewähltes Fehlermuster : RANDOM
 [run_planar] Anzahl der Fails:  84
-[run_planar] Fails:  [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1), (27, 19), (12, 15)]
-[planar_experiments] root: 11
-[planar_experiments] len(edges): 154
-[shuffle_and_run] fails: [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1), (27, 19), (12, 15)]
-experiment for  <function multipleTrees_with_cuts_pre at 0x70702a28ea20>
+[run_planar] Fails:  [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18), (16, 18), (36, 7)]
+[planar_experiments] root: 33
+[planar_experiments] len(edges): 268
+[shuffle_and_run] fails: [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18), (16, 18), (36, 7)]
+experiment for  <function multipleTrees_with_cuts_pre at 0x7455d6022a20>
 [MT with Cuts] Start Precomputation
 Done with precomputation algo
 Start routing
-[SimulateGraph] nodes: []
-[SimulateGraph] dist: {11: 0}
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 19
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 29
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 27
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 8
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 15
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 5
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 22
-Loop over samplesize is runing
-Loop over stats is runing
-[DEBUG] Node skipped because not in dist: 0
+[SimulateGraph] nodes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 49]
+[SimulateGraph] dist: {33: 0, 35: 1, 34: 2, 6: 2, 7: 2, 16: 2, 2: 3, 5: 3, 36: 3, 40: 3, 41: 3, 45: 3, 27: 3, 38: 4, 39: 4, 12: 4, 13: 4, 46: 4, 49: 4, 26: 4, 30: 4, 9: 5, 10: 5, 11: 5, 18: 5, 22: 5, 28: 5, 31: 5, 32: 5, 37: 5, 1: 6, 3: 6, 4: 6, 8: 6, 43: 6, 47: 6, 17: 6, 21: 6, 0: 7, 44: 7, 15: 7, 24: 7, 25: 7, 29: 7, 19: 8, 23: 9, 14: inf, 20: inf, 42: inf, 48: inf}
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 31 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 18 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 14 to 33
+-----
+Routing failed. No way to proceed.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 15 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 28 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 10 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
+Loop over samplesize is running
+Loop over stats is running
+[route_greedy_perimeter] Routing from 21 to 33
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+-----
+Routing successful.
 After simulate
-no success_ratio <function multipleTrees_with_cuts_pre at 0x70702a28ea20>
-time elapsed 38.09556484222412
-start time Tue Feb  4 17:07:57 2025
-end time Tue Feb  4 17:08:35 2025
-Tue Feb  4 17:08:35 2025
+success 6 <function multipleTrees_with_cuts_pre at 0x7455d6022a20>
+time elapsed 313.867555141449
+start time Tue Feb  4 17:51:26 2025
+end time Tue Feb  4 17:56:40 2025
+Tue Feb  4 17:56:40 2025
 [main] i :  42
 [main] switch: planar
 [main] seed: 2233
 [main] rep: 1
-[main] n: 30
-[main] samplesize: 8
+[main] n: 50
+[main] samplesize: 7
 [main] attack: RANDOM
 Erstelle Unit-Disk-Graph...
-Anzahl Knoten: 30 Anzahl Kanten: 77
+Anzahl Knoten: 50 Anzahl Kanten: 153
 Wende Delaunay-Triangulation an...
-Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Delaunay-Triangulation abgeschlossen. Knoten: 50 Kanten: 134
 Ausgewähltes Fehlermuster : RANDOM
 [run_planar] Anzahl der Fails:  86
-[run_planar] Fails:  [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1), (27, 19), (12, 15), (1, 6), (24, 9)]
-[planar_experiments] root: 11
-[planar_experiments] len(edges): 154
-[shuffle_and_run] fails: [(20, 10), (14, 0), (25, 10), (21, 23), (22, 8), (24, 10), (14, 25), (3, 6), (24, 12), (10, 29), (26, 29), (29, 10), (23, 27), (25, 14), (28, 20), (26, 21), (6, 19), (1, 2), (27, 26), (26, 11), (27, 23), (6, 2), (9, 14), (22, 17), (0, 2), (21, 26), (21, 29), (5, 27), (22, 28), (5, 11), (11, 27), (1, 7), (19, 27), (24, 7), (6, 27), (16, 11), (3, 18), (24, 21), (27, 15), (29, 16), (6, 4), (1, 0), (8, 28), (29, 26), (8, 25), (10, 24), (13, 17), (15, 23), (4, 3), (0, 1), (25, 9), (23, 12), (14, 2), (28, 22), (23, 26), (15, 27), (10, 13), (20, 28), (19, 6), (7, 24), (16, 18), (7, 14), (16, 29), (12, 1), (5, 3), (14, 7), (9, 7), (14, 8), (12, 7), (14, 9), (29, 21), (26, 23), (23, 21), (28, 8), (16, 13), (10, 21), (7, 12), (11, 18), (25, 24), (17, 16), (18, 11), (2, 1), (27, 19), (12, 15), (1, 6), (24, 9)]
-experiment for  <function multipleTrees_with_cuts_pre at 0x70702a28ea20>
+[run_planar] Fails:  [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18), (16, 18), (36, 7), (36, 40), (38, 27)]
+[planar_experiments] root: 33
+[planar_experiments] len(edges): 268
+[shuffle_and_run] fails: [(38, 43), (42, 0), (44, 29), (23, 32), (11, 24), (33, 5), (21, 13), (4, 11), (1, 42), (9, 4), (43, 2), (18, 48), (24, 8), (30, 33), (3, 19), (49, 23), (40, 14), (1, 32), (13, 6), (32, 1), (11, 30), (28, 12), (13, 43), (25, 45), (5, 35), (18, 16), (20, 31), (5, 33), (13, 30), (46, 33), (42, 47), (7, 6), (8, 29), (26, 18), (40, 12), (31, 42), (13, 21), (43, 21), (15, 44), (4, 15), (35, 5), (48, 10), (9, 44), (28, 10), (49, 0), (30, 6), (24, 17), (17, 24), (14, 36), (6, 38), (44, 9), (11, 22), (47, 42), (16, 14), (0, 32), (1, 20), (19, 32), (28, 48), (33, 6), (42, 31), (49, 3), (14, 12), (19, 17), (7, 38), (39, 25), (20, 1), (36, 35), (16, 26), (14, 40), (17, 19), (0, 41), (41, 25), (47, 39), (14, 28), (45, 34), (47, 0), (38, 7), (48, 16), (23, 3), (0, 47), (44, 37), (48, 18), (16, 18), (36, 7), (36, 40), (38, 27)]
+experiment for  <function multipleTrees_with_cuts_pre at 0x7455d6022a20>
 [MT with Cuts] Start Precomputation
