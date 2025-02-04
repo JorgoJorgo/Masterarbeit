@@ -32,8 +32,8 @@ algos = {
         #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
         #'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
-        #'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        #'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
         }
 
