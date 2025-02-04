@@ -2845,12 +2845,13 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
     g.remove_edges_from(failures1.keys())
 
     nodes = list(set(connected_component_nodes_with_d_after_failures(g,[],d))-set([dest, d]))
-    dist = nx.shortest_path_length(g, target=d)
-    if len(nodes) < samplesize:
-
-        print('Not enough nodes in connected component of destination (%i nodes, %i sample size), adapting it' % (len(nodes), samplesize))
-        PG = nx.nx_pydot.write_dot(g , "./graphen/failedGraphs/graph")
-        samplesize = len(nodes)
+    print("[SimulateGraph] nodes:", nodes)
+    dist = nx.shortest_path_length(g, target=d)#hier sind alle erreichbaren Knoten von d aus
+    print("[SimulateGraph] dist:", dist)
+    #if len(nodes) < samplesize:
+    #    print('Not enough nodes in connected component of destination (%i nodes, %i sample size), adapting it' % (len(nodes), samplesize))
+    #    PG = nx.nx_pydot.write_dot(g , "./graphen/failedGraphs/graph")
+    #    samplesize = len(nodes)
     
     nodes = list(set(g.nodes())-set([dest, d]))
     random.shuffle(nodes)
@@ -2873,8 +2874,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
             if (s == d) or (not s in dist):
                 stat.fails += 1
                 skipped_nodes = [s for s in nodes[:samplesize] if (s == d) or (not s in dist)]
-                print(f"[DEBUG] Nodes skipped because not in dist: {len(skipped_nodes)}")
-
+                print(f"[DEBUG] Node skipped because not in dist: {s}")
                 continue
             (fail, hops) = stat.update(s, d, fails, precomputation, dist[s])
             if fail:

@@ -353,7 +353,7 @@ def euclidean_distance(a, b):
 
 def route_greedy_perimeter(s, d, fails, paths):
     speacial_nodes = []  # wenn man nix zeichnen will
-    #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    speacial_nodes = [s,d] #wenn man alles zeichnen will
     print("[route_greedy_perimeter] Routing from", s, "to", d)  
     tree = paths[s][d]['structure']
     cut_edges = paths[s][d]['cut_edges']
