@@ -186,7 +186,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     routing_failure_faces_s_to_cp = False
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces_s_to_cp, hops_faces_s_to_cp, switches_faces_s_to_cp, detour_edges_faces_s_to_cp = route(s, cps[0], tree=tree_cp1_to_s, fails=fails)
+    routing_failure_faces_s_to_cp, hops_faces_s_to_cp, switches_faces_s_to_cp, detour_edges_faces_s_to_cp = route(s, cps[0], tree=tree_cp1_to_s, fails=fails,len_nodes=len(paths))
     
     hops = hops_faces_s_to_cp + hops
     switches = switches_faces_s_to_cp + switches
@@ -288,7 +288,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     #draw_tree_with_highlights(tree_cp3_to_cp2,[cp2,cp3],fails)
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree=tree_cp3_to_cp2, fails=fails)
+    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree=tree_cp3_to_cp2, fails=fails,len_nodes=len(paths))
     
     hops = hops_faces_cp2_to_cp3 + hops
     switches = switches_faces_cp2_to_cp3 + switches
@@ -467,7 +467,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     #from here on the structures all contain at least 5 nodes and alternating routing between faces and trees is possible
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces_s_to_cp1, hops_faces_s_to_cp1, switches_faces_s_to_cp1, detour_edges_faces_s_to_cp1 = route(s, cps[0], tree=trees_cp1_to_s, fails=fails)
+    routing_failure_faces_s_to_cp1, hops_faces_s_to_cp1, switches_faces_s_to_cp1, detour_edges_faces_s_to_cp1 = route(s, cps[0], tree=trees_cp1_to_s, fails=fails,len_nodes=len(paths))
     
     hops = hops_faces_s_to_cp1 + hops
     switches = switches_faces_s_to_cp1 + switches
@@ -532,7 +532,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     routing_failure_faces_cp2_to_cp3 = False
        
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree=trees_cp3_to_cp2,fails=fails)
+    routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route(cp2, cp3, tree=trees_cp3_to_cp2,fails=fails,len_nodes=len(paths))
     
     hops = hops_faces_cp2_to_cp3 + hops
     switches = switches_faces_cp2_to_cp3 + switches
@@ -689,7 +689,7 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     routing_failure_faces = False
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree=trees_cp_to_s, fails=fails)
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree=trees_cp_to_s, fails=fails,len_nodes=len(paths))
 
     hops = hops + hops_faces
     switches = switches + switches_faces
@@ -892,7 +892,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     routing_failure_faces = False
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree=tree_cp_to_s,fails= fails)
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree=tree_cp_to_s,fails= fails,len_nodes=len(paths))
 
     hops = hops_faces + hops
     switches = switches_faces

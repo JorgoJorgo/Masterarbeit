@@ -31,9 +31,9 @@ algos = {
         #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
-        #'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
-        'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
+        #'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        #'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
         }
 
@@ -387,7 +387,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 40      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    start_FR = 18      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
     f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):

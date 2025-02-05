@@ -17,7 +17,7 @@ def convert_to_undirected(tree):
     """
     return tree.to_undirected()
 
-def route(s, d, fails, tree):
+def routeOLD(s, d, fails, tree):
     speacial_nodes = [] #wenn man nix zeichnen will
     #speacial_nodes = [9,47] #wenn man bestimmte nodes zeichnen will
     #speacial_nodes = [s,d] #wenn man alles zeichnen will
@@ -96,6 +96,92 @@ def route(s, d, fails, tree):
 
     print("Routing successful.")
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
+
+
+def route(s, d, fails, tree, len_nodes):
+    speacial_nodes = []  # wenn man nix zeichnen will
+    #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    count_all_nodes= len_nodes
+
+    print("[route_greedy_perimeter] Routing from", s, "to", d)  
+    tree = convert_to_undirected(tree)
+
+    visited_edges = set()
+    visited_nodes = set()
+    current_node = s
+    path = [current_node]
+    previous_edge = None
+    
+    hops = 0
+    switches = 0
+    detour_edges = []
+    greedy_mode = True  # Start in Greedy Mode
+    
+    while current_node != d:
+        visited_nodes.add(current_node)
+
+        if greedy_mode:
+            # Greedy Forwarding: Wähle den Nachbarn mit der kleinsten Distanz zu D, der nicht in fails ist
+            neighbors = [n for n in tree[current_node] if (current_node, n) not in fails and (n, current_node) not in fails]
+            neighbors = [n for n in neighbors if n not in visited_nodes]  # Vermeidung von Zyklen
+            if not neighbors:
+                greedy_mode = False  # Wechsel zu Perimeter Routing
+                continue
+
+            best_neighbor = min(neighbors, key=lambda n: euclidean_distance(tree.nodes[n]['pos'], tree.nodes[d]['pos']))
+            next_edge = (current_node, best_neighbor)
+        else:
+            # Perimeter Routing: Fallback für Sackgassen
+            edges = get_sorted_edges(current_node, tree, fails, previous_edge, s=s, d=d)
+            edges = [e for e in edges if e not in fails and (e[1], e[0]) not in fails]
+            edges = [e for e in edges if e[1] not in visited_nodes]  # Vermeidung von unendlichen Loops
+            if not edges:
+                if len(path) > 1:
+                    previous_node = path[-2]
+                    path.pop()
+                    current_node = previous_node
+                    switches += 1
+                    previous_edge = (current_node, path[-1])
+                    continue  # Rücksprung zur Schleife, um neuen Versuch zu starten
+                else:
+                    print("Routing failed. No way to proceed.")
+                    unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
+                    print_cut_structure([], [], tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+                    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+                    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+                    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
+                    return (True, hops, switches, detour_edges)
+            
+            next_edge = edges[0] if edges else None
+            if next_edge is None:
+                print("Perimeter Routing failed: No available edges.")
+                unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
+                print_cut_structure([], [], tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+                print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+                print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+                print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
+                return (True, hops, switches, detour_edges)
+        
+        if next_edge in visited_edges:
+            detour_edges.append(next_edge)
+
+        visited_edges.add(next_edge)
+        previous_edge = next_edge
+        current_node = next_edge[1] if next_edge[0] == current_node else next_edge[0]
+        path.append(current_node)
+        hops += 1
+
+        if s in speacial_nodes and d in speacial_nodes:
+            print_cut_structure([], [], tree, s, d, current_edge=previous_edge, fails=fails)
+
+        print("-----")
+    
+    print("Routing successful.")
+    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
+    return (False, hops, switches, detour_edges)
+
 
 
 # Helper function to calculate the angle between two coordinates
@@ -351,6 +437,8 @@ def euclidean_distance(a, b):
 def route_greedy_perimeter(s, d, fails, paths):
     speacial_nodes = []  # wenn man nix zeichnen will
     #speacial_nodes = [s,d] #wenn man alles zeichnen will
+    count_all_nodes= len(paths)
+
     print("[route_greedy_perimeter] Routing from", s, "to", d)  
     tree = paths[s][d]['structure']
     cut_edges = paths[s][d]['cut_edges']
@@ -398,6 +486,9 @@ def route_greedy_perimeter(s, d, fails, paths):
                     print("Routing failed. No way to proceed.")
                     unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
                     print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+                    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+                    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+                    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
                     return (True, hops, switches, detour_edges)
             
             next_edge = edges[0] if edges else None
@@ -405,6 +496,9 @@ def route_greedy_perimeter(s, d, fails, paths):
                 print("Perimeter Routing failed: No available edges.")
                 unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
                 print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
+                print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+                print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+                print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
                 return (True, hops, switches, detour_edges)
         
         if next_edge in visited_edges:
@@ -422,4 +516,7 @@ def route_greedy_perimeter(s, d, fails, paths):
         print("-----")
     
     print("Routing successful.")
+    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
+    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
+    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
     return (False, hops, switches, detour_edges)
