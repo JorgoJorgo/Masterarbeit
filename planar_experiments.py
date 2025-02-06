@@ -16,24 +16,24 @@ import matplotlib.pyplot as plt
 DEBUG = True
 
 algos = {
-        #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
+        'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
         #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
-        #'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        #'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
-        #'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        #'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        #'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #'One Tree PE': [one_tree_pre, RouteOneTree],
-        #'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
-        #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
+        'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
+        'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
         'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
-        #'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        #'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
         }
 
@@ -387,11 +387,11 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 18      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
-    f_num = 4*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
+    start_FR = 10      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    f_num = 2*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):
-        f_num = 2 + f_num
+        f_num = 3 + f_num
         #f_num = 0
         n = 80
         k = 5

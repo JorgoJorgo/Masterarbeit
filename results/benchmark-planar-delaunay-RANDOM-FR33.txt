@@ -1,0 +1,18 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Thu Feb  6 08:30:46 2025
+Delaunay, 50, 3, MaxDAG, 1, 1, 24, 5, 0.400000, 0.000623, 0.397604
+Delaunay, 50, 3, MultipleTrees Random Checkpoint, 1, 13, 3, 18, 0.500000, 0.222966, 77.442261
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, 12, 3, 18, 0.600000, 0.132950, 98.478868
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, 13, 3, 18, 0.600000, 0.195802, 81.325119
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, 13, 3, 17, 0.600000, 0.186937, 90.725267
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, 13, 3, 17, 0.600000, 0.181566, 79.382598
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 7, 1, 11, 0.500000, 0.093834, 49.652310
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 7, 1, 11, 0.500000, 0.087422, 49.352865
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 7, 1, 11, 0.500000, 0.084452, 61.587867
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 7, 1, 11, 0.500000, 0.088706, 51.854772
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 7, 1, 11, 0.500000, 0.082268, 47.767324
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 7, 3, 11, 0.500000, 0.148848, 97.941200
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 7, 3, 11, 0.500000, 0.241897, 125.494485
+Delaunay, 50, 5, SquareOne Cuts, 1, 35, 6, 38, 0.800000, 0.045664, 50.173425
+Delaunay, 50, 5, MultipleTrees Faces, 1, 41, 5, 46, 0.500000, 0.115661, 45.316817
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 29, 0, 32, 0.900000, 0.026173, 436.108726
