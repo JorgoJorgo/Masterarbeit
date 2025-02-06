@@ -27,84 +27,94 @@ def process_results_file(filename):
         print(f"Fehler beim Einlesen der Datei {filename}: {e}")
         return None
 
-def calculate_averages(directory):
-    algo_success_cluster = {}
-    algo_hops_cluster = {}
-    algo_success_random = {}
-    algo_hops_random = {}
+def calculate_averages(directory, selected_algorithms=None):
+    algo_success = {}
+    algo_hops = {}
 
-    # Unterstützt sowohl RANDOM- als auch CLUSTER-Dateien
-    files_cluster = sorted(
-        [f for f in os.listdir(directory) if f.startswith("benchmark-planar-delaunay-CLUSTER-FR") and f.endswith(".txt")],
-        key=lambda x: int(''.join(filter(str.isdigit, x)))
-    )
-    files_random = sorted(
+    files = sorted(
         [f for f in os.listdir(directory) if f.startswith("benchmark-planar-delaunay-RANDOM-FR") and f.endswith(".txt")],
         key=lambda x: int(''.join(filter(str.isdigit, x)))
     )
 
-    # Verarbeite CLUSTER-Dateien
-    for filename in files_cluster:
+    found_algorithms = set()
+
+    for filename in files:
         filepath = os.path.join(directory, filename)
         df = process_results_file(filepath)
         if df is not None:
             for algo in df['algorithm'].unique():
-                algo_data = df[df['algorithm'] == algo]
-                avg_hops = algo_data['hops'].mean()
-                avg_success = algo_data['success'].mean()
+                found_algorithms.add(algo)
+                if selected_algorithms is None or algo in selected_algorithms:
+                    algo_data = df[df['algorithm'] == algo]
+                    avg_hops = algo_data['hops'].mean()
+                    avg_success = algo_data['success'].mean()
 
-                if algo not in algo_success_cluster:
-                    algo_success_cluster[algo] = []
-                    algo_hops_cluster[algo] = []
+                    if algo not in algo_success:
+                        algo_success[algo] = []
+                        algo_hops[algo] = []
 
-                algo_success_cluster[algo].append(avg_success)
-                algo_hops_cluster[algo].append(avg_hops)
+                    algo_success[algo].append(avg_success)
+                    algo_hops[algo].append(avg_hops)
+    
+    print("Gefundene Algorithmen in den Dateien:", found_algorithms)
 
-    # Verarbeite RANDOM-Dateien
-    for filename in files_random:
-        filepath = os.path.join(directory, filename)
-        df = process_results_file(filepath)
-        if df is not None:
-            for algo in df['algorithm'].unique():
-                algo_data = df[df['algorithm'] == algo]
-                avg_hops = algo_data['hops'].mean()
-                avg_success = algo_data['success'].mean()
+    if selected_algorithms:
+        missing_algorithms = set(selected_algorithms) - found_algorithms
+        if missing_algorithms:
+            print(f"Warnung: Die folgenden ausgewählten Algorithmen wurden in den Daten nicht gefunden: {missing_algorithms}")
 
-                if algo not in algo_success_random:
-                    algo_success_random[algo] = []
-                    algo_hops_random[algo] = []
+    plot_success(title_prefix="RANDOM", algo_success=algo_success)
+    plot_hops(title_prefix="RANDOM", algo_hops=algo_hops)
 
-                algo_success_random[algo].append(avg_success)
-                algo_hops_random[algo].append(avg_hops)
+def plot_success(title_prefix, algo_success):
+    plt.figure(figsize=(14, 6))
+    if algo_success:
+        for algo, values in algo_success.items():
+            plt.plot(values, label=f"{algo} Success")
+        plt.title(f"{title_prefix} - Durchschnittlicher Success pro FR-Datei")
+        plt.xlabel("FR-Datei Index")
+        plt.ylabel("Durchschnittlicher Success")
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+    else:
+        print("Keine Daten für Success-Werte vorhanden.")
 
-    # Plots erstellen
-    plot_results("CLUSTER", algo_success_cluster, algo_hops_cluster)
-    plot_results("RANDOM", algo_success_random, algo_hops_random)
+def plot_hops(title_prefix, algo_hops):
+    plt.figure(figsize=(14, 6))
+    if algo_hops:
+        for algo, values in algo_hops.items():
+            plt.plot(values, label=f"{algo} Hops")
+        plt.title(f"{title_prefix} - Durchschnittliche Hops pro FR-Datei")
+        plt.xlabel("FR-Datei Index")
+        plt.ylabel("Durchschnittliche Hops")
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+    else:
+        print("Keine Daten für Hops-Werte vorhanden.")
 
-def plot_results(title_prefix, algo_success, algo_hops):
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-
-    # Plot für Success-Werte
-    for algo, values in algo_success.items():
-        ax1.plot(values, label=f"{algo} Success")
-    ax1.set_title(f"{title_prefix} - Durchschnittlicher Success pro FR-Datei")
-    ax1.set_xlabel("FR-Datei Index")
-    ax1.set_ylabel("Durchschnittlicher Success")
-    ax1.legend()
-    ax1.grid(True)
-
-    # Plot für Hops-Werte
-    for algo, values in algo_hops.items():
-        ax2.plot(values, label=f"{algo} Hops")
-    ax2.set_title(f"{title_prefix} - Durchschnittliche Hops pro FR-Datei")
-    ax2.set_xlabel("FR-Datei Index")
-    ax2.set_ylabel("Durchschnittliche Hops")
-    ax2.legend()
-    ax2.grid(True)
-
-    plt.tight_layout()
-    plt.show()
-
-# Beispiel: Verzeichnis 'results' durchsuchen
+# Beispielaufruf:
 directory = 'results'
+selected_algorithms = [
+    " MaxDAG", 
+    #" MultipleTrees Random Checkpoint", 
+    #" MultipleTrees Random Checkpoint Parallel", 
+    " MultipleTrees Closeness Checkpoint", 
+    #" MultipleTrees Betweenness Checkpoint", 
+    #" MultipleTrees Degree Checkpoint", 
+    #" One Tree Middle Checkpoint PE", 
+    #" One Tree Closeness Checkpoint PE",
+    #" One Tree Degree Checkpoint PE", 
+    #" One Tree Betweenness Checkpoint PE", 
+    #" One Tree Shortest EDP Checkpoint PE", 
+    " Triple Checkpoint OneTree", 
+    " Triple Checkpoint MultipleTrees", 
+    #" SquareOne Cuts", 
+    #" MultipleTrees Cuts",
+    " MultipleTrees Faces",
+]
+calculate_averages(directory, selected_algorithms)
+
+# Falls alle Algorithmen verwendet werden sollen:
 calculate_averages(directory)
