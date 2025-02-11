@@ -2454,4 +2454,8 @@ def all_edps(source, destination, graph):
     #return list(nx.edge_disjoint_paths(graph, source , destination))
     return list(nx.node_disjoint_paths(graph, source , destination))
 
+def all_edps_greedy(source, destination, graph):
+    return list(nx.edge_disjoint_paths(graph, source , destination))
+    #return list(nx.node_disjoint_paths(graph, source , destination))
+
 

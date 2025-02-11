@@ -19,7 +19,7 @@ algos = {
         #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
         #'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
-        'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
         #'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
@@ -33,8 +33,8 @@ algos = {
         #'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
         #'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
         #'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        #'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
-        #'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
+        'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
         }
 
 def one_experiment(g, seed, out, algo):

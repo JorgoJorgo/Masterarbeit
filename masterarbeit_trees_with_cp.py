@@ -133,23 +133,111 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
+                
+                # Überprüfen, ob der Graph planar ist
+                # print("Nodes of combined tree:", combined_tree.nodes)
+                # print("Edges of combined tree:", combined_tree.edges)
+                # is_planar, embedding = nx.check_planarity(combined_tree)
 
-    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
-    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")           
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    cp = paths[biggest_source][biggest_destination]['cp']
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-                     
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f'graphen/MultipleTreesParallelCP_{biggest_source}_{cp}.png')
+                # if is_planar:
+                #     planar_embedding = create_planar_embedding_new(combined_tree, graph)
+                    
+                    
+                    
+                # else:
+                #     print("Der Graph ist nicht planar!")
+
+                # #jetzt müssen die Bäume cp->s als planare einbettung hinzugefügt werden
+                # #damit die Faces gefunden werden können
+
+
+               
+                    
+                # faces = find_faces(planar_embedding)
+
+                # one_correct_face = False
+
+                # for face in faces:
+                #     if source in face and destination in face:
+                #         one_correct_face = True
+                #         break
+
+                # assert one_correct_face, f"Source {source} and Destination {destination} are not in the same face."
+
+                if( len(trees_cp_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesParallel_{source}_{cp}.png")
+            
+    
     return paths
+
+def create_planar_embedding_new(combined_tree, graph):
+    # Überprüfen, ob der Graph planar ist
+    is_planar, _ = nx.check_planarity(combined_tree)
+    
+    if not is_planar:
+        print("❌ Der Graph ist nicht planar!")
+        return None
+    
+    planar_embedding = nx.PlanarEmbedding()
+    
+    # **Schritt 1: Alle Knoten explizit hinzufügen**
+    for node in combined_tree.nodes:
+        planar_embedding.add_node(node)
+    
+    # **Schritt 2: Erst alle Halb-Kanten sicher hinzufügen**
+    for u, v in combined_tree.edges:
+        if u in planar_embedding and v in planar_embedding:
+            planar_embedding.add_half_edge_cw(u, v, u)  # Erste Verbindung
+            planar_embedding.add_half_edge_cw(v, u, v)
+        else:
+            print(f"⚠ WARNUNG: Kante ({u}, {v}) kann nicht hinzugefügt werden, da ein Knoten fehlt.")
+    
+    # **Schritt 3: CW- und CCW-Beziehungen setzen**
+    for node in combined_tree.nodes:
+        neighbors = list(combined_tree.neighbors(node))
+
+        if not neighbors:
+            print(f"⚠ WARNUNG: Knoten {node} hat keine Nachbarn.")
+            continue
+
+        # **Sortiere Nachbarn nach Winkel**
+        node_pos = np.array(graph.nodes[node]['pos'])
+
+        def angle(n):
+            neighbor_pos = np.array(graph.nodes[n]['pos'])
+            delta = neighbor_pos - node_pos
+            return np.arctan2(delta[1], delta[0])  # Winkel berechnen
+
+        sorted_neighbors = sorted(neighbors, key=angle)
+
+        # Debugging: Zeige sortierte Nachbarn
+        print(f"✅ Knoten {node} Nachbarn (sortiert): {sorted_neighbors}")
+
+        # **CCW-Verknüpfung setzen**
+        for i in range(len(sorted_neighbors)):
+            curr_n = sorted_neighbors[i]
+            next_n = sorted_neighbors[(i + 1) % len(sorted_neighbors)]  # Zyklisch
+            
+            try:
+                if node in planar_embedding and curr_n in planar_embedding[node]:
+                    planar_embedding.add_half_edge_ccw(node, curr_n, next_n)
+                else:
+                    print(f"⚠ WARNUNG: CCW-Verknüpfung für {node} mit {curr_n} -> {next_n} übersprungen.")
+            except KeyError as e:
+                print(f"❌ KeyError: {e} – Problem bei Knoten {node} mit {curr_n}, {next_n}")
+                continue
+
+    # **Validierung der Planareinbettung**
+    if planar_embedding.check_structure():
+        print("✅ Erfolgreiche Planar-Einbettung!")
+        return planar_embedding
+    else:
+        print("❌ Fehler in der Planar-Einbettung!")
+        return None
+
+
+
+
 
 
 def multiple_trees_parallel_cp(source, destination, graph, all_edps):
@@ -199,24 +287,25 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                         if(neighbors[k] != nodes_in_tree[i][it] and neighbors[k] != destination): #kanten zu sich selbst dürfen nicht rein da dann baum zu kreis wird und kanten zur destination auch nicht    
                             
 
-                            #prüfen ob kante von nodes[j] nach neighbors[k] schon in anderen trees verbaut ist
-                            is_in_other_tree = False
-                            if(len(trees)>0):#wenn es schon andere trees gibt muss man alle anderen durchsuchen
-                                for tree_to_check in trees: 
-                                    if (tree_to_check.has_edge(nodes_in_tree[i][it],neighbors[k]) or tree_to_check.has_edge(neighbors[k],nodes_in_tree[i][it])): #wenn ein tree die edge schon drin hat dann darf man die edge nicht mehr benutzen
-                                        is_in_other_tree = True
-                                        break
-                                    #endif
-                                #endfor
-                            
-                                if not ( is_in_other_tree or (tree.has_node(neighbors[k])) ):
-                                    nodes_in_tree[i].append(neighbors[k]) 
-                                    tree.add_node(neighbors[k])
-                                    tree.add_edge(nodes_in_tree[i][it],neighbors[k])
-                                    skip_while = True
+                            edge_is_in_other_tree = False
+                            node_is_in_other_tree = False
+                            node_is_in_my_tree = False
+                            for tree_to_check in trees:
+                                if tree_to_check.has_edge(nodes_in_tree[i][it], neighbors[k]) or tree_to_check.has_edge(neighbors[k], nodes_in_tree[i][it]):
+                                    edge_is_in_other_tree = True
                                     break
-                                #endif
-                            #endif
+                                if tree_to_check.has_node(neighbors[k]):
+                                    node_is_in_other_tree = True
+                                    break
+                                if tree.has_node(neighbors[k]):
+                                    node_is_in_my_tree = True
+                                    break
+                            
+                            if not node_is_in_other_tree and not edge_is_in_other_tree and not node_is_in_my_tree:
+                                nodes_in_tree[i].append(neighbors[k])
+                                tree.add_node(neighbors[k])
+                                tree.add_edge(nodes_in_tree[i][it], neighbors[k])
+
                             else: #das ist der fall wenn es noch keine anderen trees zum checken gibt, ob die kante schon verbaut ist
                                 if not((neighbors[k] == destination) or (tree.has_node(neighbors[k]))): #dann darf die kante nicht zur destination sein
                                                                                                         #der knoten darf nicht im jetzigen tree drin sein
@@ -389,21 +478,8 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-
-    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
-    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")           
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{biggest_source}_{cp}.png")
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths
 
 #gibt für ein source-destination paar alle trees zurück
@@ -662,21 +738,8 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-
-    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
-    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")
-    biggest_structure.add_node(biggest_source)
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithDegree_{biggest_source}_{cp}.png")
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithDegree_{source}_{cp}.png")
     return paths
 
 
@@ -830,20 +893,8 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
-    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")           
-    biggest_structure.add_node(biggest_source)
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithBetween_{biggest_source}_{cp}.png")
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithBetween_{source}_{cp}.png")
     return paths
 
 
@@ -997,22 +1048,8 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
                                                 'edps_s_to_d': edps
                     }
 
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                
-            
-    #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
-    #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
-    #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")           
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']          
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithCloseness_{biggest_source}_{cp}.png")
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithCloseness_{source}_{cp}.png")
     return paths
 
 
@@ -1030,7 +1067,6 @@ def one_tree_with_middle_checkpoint_pre(graph):
     paths = {}
     biggest_source = 0 
     biggest_destination = 0
-    biggest_structure
     for source in graph.nodes:
         #print("[OTC Random Pre] check")
         for destination in graph.nodes:
@@ -1111,17 +1147,8 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                                 'edps_s_to_d': edps,
                                                 'tree_cp_to_s':tree_cp_to_s
                                             }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                                    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']  
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeMiddle_{biggest_source}_{cp}.png")
+                #if( len(tree_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeMiddle_{source}_{cp}.png")
     return paths
 
 
@@ -1365,17 +1392,8 @@ def one_tree_with_degree_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s':tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                                    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']       
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeDegree_{biggest_source}_{cp}.png")
+                if( len(tree_cp_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeDegree_{source}_{cp}.png")
     return paths
 
 
@@ -1504,17 +1522,8 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                     'tree_cp_to_s': tree_cp_to_s
                 }
 
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                                    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeBetween_{biggest_source}_{cp}.png")
+                if( len(tree_cp_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeBetween_{source}_{cp}.png")
     return paths
 
 
@@ -1643,17 +1652,9 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s':tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                                    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeCloseness_{biggest_source}_{cp}.png")
+
+                if( len(tree_cp_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeCloseness_{source}_{cp}.png")
     return paths
 
 
@@ -1747,17 +1748,9 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s': tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeShortest_{biggest_source}_{cp}.png")
+                if( len(tree_cp_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeShortest_{source}_{cp}.png")
+    
     return paths
 
 ############################################################################################################################
@@ -1905,27 +1898,12 @@ def one_tree_triple_checkpooint_pre(graph):
                     'tree_cp3_to_d': tree_cp3_to_d
                 }
                 #plot_paths_element(paths[source][destination],graph,source,destination)
-                if paths[source][destination]['tree_cp1_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp1_to_s']
-                    biggest_cp1 = cp1
-                    biggest_structure2 = paths[source][destination]['tree_cp3_to_cp2']
-                    biggest_cp3 = cp3
-                    biggest_cp2 = cp2
-                    biggest_source = source
-                    biggest_destination = destination   
+                if( len(tree_cp1_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[cp1,source],structure=tree_cp1_to_s,source=source,destination=cp1,save_plot=True,filename=f"graphen/OneTreeTriple_{cp1}_{source}.png")
+                if( len(tree_cp3_to_cp2.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[cp3,cp2],structure=tree_cp3_to_cp2,source=cp3,destination=cp2,save_plot=True,filename=f"graphen/OneTreeTriple_{cp3}_{cp2}.png")
     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    biggest_structure.add_node(biggest_cp1)
-    biggest_structure.add_node(biggest_cp2)
-    biggest_structure.add_node(biggest_cp3)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    for node in biggest_structure2.nodes:
-        biggest_structure2.nodes[node]['pos'] = graph.nodes[node]['pos']
         
-    print_cut_structure(highlighted_nodes=[biggest_cp1,biggest_source],structure=biggest_structure,source=biggest_source,destination=biggest_cp1,save_plot=True,filename=f"graphen/OneTreeTriple_{biggest_cp1}_{biggest_source}.png")
-    print_cut_structure(highlighted_nodes=[biggest_cp3,biggest_cp2],structure=biggest_structure2,source=biggest_cp3,destination=biggest_cp2,save_plot=True,filename=f"graphen/OneTreeTriple_{biggest_cp3}_{biggest_cp2}.png")
     return paths
 
 ############################################################################################################################
@@ -2127,31 +2105,14 @@ def multiple_trees_triple_checkpooint_pre(graph):
                     'trees_cp3_to_d': trees_cp3_to_d
                 }
                 #plot_paths_element(paths[source][destination],graph,source,destination)
-                if paths[source][destination]['trees_cp1_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp1_to_s']
-                    biggest_cp1 = cp1
-                    biggest_structure2 = paths[source][destination]['trees_cp3_to_cp2']
-                    biggest_cp3 = cp3
-                    biggest_cp2 = cp2
-                    biggest_source = source
-                    biggest_destination = destination   
+                if( len(trees_cp1_to_s.nodes)>14): 
+                    print_cut_structure(highlighted_nodes=[cp1,source],structure=trees_cp1_to_s,source=source,destination=cp1,save_plot=True,filename=f"graphen/MultipleTreesTriple_{cp1}_{source}.png")
+                if( len(trees_cp3_to_cp2.nodes)>14):
+                    print_cut_structure(highlighted_nodes=[cp3,cp2],structure=trees_cp3_to_cp2,source=cp3,destination=cp2,save_plot=True,filename=f"graphen/MultipleTreesTriple_{cp3}_{cp2}.png")
     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    biggest_structure.add_node(biggest_cp1)
-    biggest_structure.add_node(biggest_cp2)
-    biggest_structure.add_node(biggest_cp3)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    for node in biggest_structure2.nodes:
-        biggest_structure2.nodes[node]['pos'] = graph.nodes[node]['pos']
-    # biggest_source['pos'] = graph.nodes[biggest_source]['pos']
-    # biggest_destination['pos'] = graph.nodes[biggest_destination]['pos']
-    # cp1['pos'] = graph.nodes[biggest_cp1]['pos']
-    # cp2['pos'] = graph.nodes[biggest_cp2]['pos']
-    # cp3['pos'] = graph.nodes[biggest_cp3]['pos']        
-    print_cut_structure(highlighted_nodes=[biggest_cp1,biggest_source],structure=biggest_structure,source=biggest_source,destination=biggest_cp1,save_plot=True,filename=f"graphen/MultipleTreesTriple_{biggest_cp1}_{biggest_source}.png")
-    print_cut_structure(highlighted_nodes=[biggest_cp3,biggest_cp2],structure=biggest_structure2,source=biggest_cp3,destination=biggest_cp2,save_plot=True,filename=f"graphen/MultipleTreesTriple_{biggest_cp3}_{biggest_cp2}.png")
+    
+    
+          
     return paths
 
 #################################################### MULTIPLETREES FOR FACE ROUTING ################################################
@@ -2238,18 +2199,10 @@ def multiple_trees_for_faces_pre(graph):
                                                 'cut_nodes': []
                     }
 
-                if paths[source][destination]['structure'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['structure']
-                    biggest_source = source
-                    biggest_destination = destination   
+                #if( len(combined_tree.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[biggest_source,biggest_destination],structure=combined_tree,source=source,destination=destination,save_plot=True,filename=f"graphen/MultipleTreesForFaces_{source}_{destination}.png")
     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-          
         
-    print_cut_structure(highlighted_nodes=[biggest_source,biggest_destination],structure=biggest_structure,source=biggest_source,destination=biggest_destination,save_plot=True,filename=f"graphen/MultipleTreesForFaces_{biggest_source}_{destination}.png")
        
     return paths
 
@@ -2558,5 +2511,6 @@ def print_cut_structure(highlighted_nodes, structure, source, destination,cut_ed
             counter += 1
         
         plt.savefig(new_filename)
+        plt.close()
     else:
         plt.show()

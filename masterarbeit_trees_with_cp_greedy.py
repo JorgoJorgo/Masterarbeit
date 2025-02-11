@@ -34,7 +34,7 @@ def multiple_trees_with_middle_checkpoint_parallel_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -75,8 +75,8 @@ def multiple_trees_with_middle_checkpoint_parallel_pre_greedy(graph):
                 
                 cp = longest_edp[ int(len(longest_edp)/2)]
 
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -275,7 +275,7 @@ def multiple_trees_with_middle_checkpoint_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -316,8 +316,8 @@ def multiple_trees_with_middle_checkpoint_pre_greedy(graph):
                 
                 cp = longest_edp[ int(len(longest_edp)/2)]
 
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -527,7 +527,7 @@ def multiple_trees_with_degree_checkpoint_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -602,8 +602,8 @@ def multiple_trees_with_degree_checkpoint_pre_greedy(graph):
                 # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: degree_centrality[node])
 
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -682,7 +682,7 @@ def multiple_trees_with_betweenness_checkpoint_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -757,8 +757,8 @@ def multiple_trees_with_betweenness_checkpoint_pre_greedy(graph):
                 # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
 
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -836,7 +836,7 @@ def multiple_trees_with_closeness_checkpoint_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -911,8 +911,8 @@ def multiple_trees_with_closeness_checkpoint_pre_greedy(graph):
                 # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
                 cp = max(filtered_edp, key=lambda node: closeness_centrality[node])
 
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -979,7 +979,7 @@ def multiple_trees_with_closeness_checkpoint_pre_greedy(graph):
 
 #function to generate the 2 trees for each s->d pair (s->cp & cp->d)
 #each tree gets generated by expanding the longest edp of each pair
-from trees import all_edps, connect_leaf_to_destination, multiple_trees, rank_tree, remove_redundant_paths, remove_single_node_trees
+from trees import all_edps, all_edps_greedy, connect_leaf_to_destination, multiple_trees, rank_tree, remove_redundant_paths, remove_single_node_trees
 
 
 def one_tree_with_middle_checkpoint_pre_greedy(graph):
@@ -997,7 +997,7 @@ def one_tree_with_middle_checkpoint_pre_greedy(graph):
                 
                 #now compute the chosen checkpoint  
                 #first get the longest edp s->d    
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 
                 edps.sort(key=len)
                 
@@ -1042,8 +1042,8 @@ def one_tree_with_middle_checkpoint_pre_greedy(graph):
                 cp = longest_edp[ int(len(longest_edp)/2)]
                
                 #then get the edps + longest_edps_cp_s and the longest_edps_cp_d
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -1204,7 +1204,7 @@ def one_tree_with_degree_checkpoint_pre_greedy(graph):
                     paths[source] = {}
                 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
                 
                 # Get the longest EDP
@@ -1283,8 +1283,8 @@ def one_tree_with_degree_checkpoint_pre_greedy(graph):
                 #print(f"[OneTreeDegreeCheckpoint] Selected Checkpoint (cp): Node {cp} with Centrality {degree_centrality[cp]:.4f}\n")
                 
                 # Get EDPs from the checkpoint to the source and destination
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
@@ -1332,7 +1332,7 @@ def one_tree_with_betweenness_checkpoint_pre_greedy(graph):
                     paths[source] = {}
                 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
                 
                 # Get the longest EDP
@@ -1410,8 +1410,8 @@ def one_tree_with_betweenness_checkpoint_pre_greedy(graph):
                 cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
                 
                 # Get EDPs from the checkpoint to the source and destination
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
@@ -1458,7 +1458,7 @@ def one_tree_with_closeness_checkpoint_pre_greedy(graph):
                     paths[source] = {}
                 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
                 
                 # Get the longest EDP
@@ -1536,8 +1536,8 @@ def one_tree_with_closeness_checkpoint_pre_greedy(graph):
                 cp = max(filtered_edp, key=lambda node: closeness_centrality[node])
                 
                 # Get EDPs from the checkpoint to the source and destination
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
                 
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
@@ -1578,7 +1578,7 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre_greedy(graph):
                     paths[source] = {}
 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
 
                 # Filter EDPs to ensure they are at least 3 nodes long
@@ -1628,8 +1628,8 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre_greedy(graph):
                 cp = shortest_edp[len(shortest_edp) // 2]
 
                 # Compute EDPs from cp to source and cp to destination
-                edps_cp_to_s = all_edps(cp, source, graph)
-                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s = all_edps_greedy(cp, source, graph)
+                edps_cp_to_d = all_edps_greedy(cp, destination, graph)
 
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
@@ -1671,7 +1671,7 @@ def one_tree_triple_checkpooint_pre_greedy(graph):
                     paths[source] = {}
 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
 
                 # Filter EDPs to ensure they are at least 5 nodes long s-cp1-cp2-cp3-d
@@ -1739,36 +1739,36 @@ def one_tree_triple_checkpooint_pre_greedy(graph):
                 cp3 = cps[2]
                 # Extract sub-paths
                 
-                edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
+                edps_cp1_to_s = all_edps_greedy(cp1,source,graph).sort(key=len)
                 
                 #Special Case if Nodes are directly connected
                 if edps_cp1_to_s == None:
                     edps_cp1_to_s = [[cp1,source]]
                 
-                edps_cp1_to_cp2 = all_edps(cp1,cp2,graph).sort(key=len)
+                edps_cp1_to_cp2 = all_edps_greedy(cp1,cp2,graph).sort(key=len)
 
                 if edps_cp1_to_cp2 == None:
                     edps_cp1_to_cp2 = [[cp1,cp2]]
 
-                edps_cp3_to_cp2 = all_edps(cp3,cp2,graph).sort(key=len)
+                edps_cp3_to_cp2 = all_edps_greedy(cp3,cp2,graph).sort(key=len)
 
                 if edps_cp3_to_cp2 == None:
                     edps_cp3_to_cp2 = [[cp3,cp2]]
                 
-                edps_cp3_to_d = all_edps(cp3,destination,graph).sort(key=len)
+                edps_cp3_to_d = all_edps_greedy(cp3,destination,graph).sort(key=len)
 
                 if edps_cp3_to_d == None:
                     edps_cp3_to_d = [[cp3,destination]]
 
                 #print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
 
-                edps_cp1_to_cp2 = all_edps(cp1, cp2, graph)
+                edps_cp1_to_cp2 = all_edps_greedy(cp1, cp2, graph)
                 #print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
 
-                edps_cp3_to_cp2 = all_edps(cp3, cp2, graph)
+                edps_cp3_to_cp2 = all_edps_greedy(cp3, cp2, graph)
                 #print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
 
-                edps_cp3_to_d = all_edps(cp3, destination, graph)
+                edps_cp3_to_d = all_edps_greedy(cp3, destination, graph)
                 #print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
 
                 #draw_tree_with_highlights(graph,[source,cp1,cp2,cp3,destination])
@@ -1817,7 +1817,7 @@ def multiple_trees_triple_checkpooint_pre_greedy(graph):
                     paths[source] = {}
 
                 # Compute all EDPs between source and destination
-                edps = all_edps(source, destination, graph)
+                edps = all_edps_greedy(source, destination, graph)
                 edps.sort(key=len)
 
                 # Filter EDPs to ensure they are at least 5 nodes long s-cp1-cp2-cp3-d
@@ -1885,36 +1885,36 @@ def multiple_trees_triple_checkpooint_pre_greedy(graph):
                 cp3 = cps[2]
                 # Extract sub-paths
                 
-                edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
+                edps_cp1_to_s = all_edps_greedy(cp1,source,graph).sort(key=len)
                 
                 #Special Case if Nodes are directly connected
                 if edps_cp1_to_s == None:
                     edps_cp1_to_s = [[cp1,source]]
                 
-                edps_cp1_to_cp2 = all_edps(cp1,cp2,graph).sort(key=len)
+                edps_cp1_to_cp2 = all_edps_greedy(cp1,cp2,graph).sort(key=len)
 
                 if edps_cp1_to_cp2 == None:
                     edps_cp1_to_cp2 = [[cp1,cp2]]
 
-                edps_cp3_to_cp2 = all_edps(cp3,cp2,graph).sort(key=len)
+                edps_cp3_to_cp2 = all_edps_greedy(cp3,cp2,graph).sort(key=len)
 
                 if edps_cp3_to_cp2 == None:
                     edps_cp3_to_cp2 = [[cp3,cp2]]
                 
-                edps_cp3_to_d = all_edps(cp3,destination,graph).sort(key=len)
+                edps_cp3_to_d = all_edps_greedy(cp3,destination,graph).sort(key=len)
 
                 if edps_cp3_to_d == None:
                     edps_cp3_to_d = [[cp3,destination]]
 
                 #print(f"EDPs from CP1 ({cp1}) to Source ({source}): {edps_cp1_to_s}")
 
-                edps_cp1_to_cp2 = all_edps(cp1, cp2, graph)
+                edps_cp1_to_cp2 = all_edps_greedy(cp1, cp2, graph)
                 #print(f"EDPs from CP1 ({cp1}) to CP2 ({cp2}): {edps_cp1_to_cp2}")
 
-                edps_cp3_to_cp2 = all_edps(cp3, cp2, graph)
+                edps_cp3_to_cp2 = all_edps_greedy(cp3, cp2, graph)
                 #print(f"EDPs from CP3 ({cp3}) to CP2 ({cp2}): {edps_cp3_to_cp2}")
 
-                edps_cp3_to_d = all_edps(cp3, destination, graph)
+                edps_cp3_to_d = all_edps_greedy(cp3, destination, graph)
                 #print(f"EDPs from CP3 ({cp3}) to Destination ({destination}): {edps_cp3_to_d}")
 
 
@@ -2015,7 +2015,7 @@ def multiple_trees_for_faces_pre_greedy(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps_greedy(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
                 
@@ -2044,7 +2044,7 @@ def multiple_trees_for_faces_pre_greedy(graph):
                                             }
                     continue
                 
-                edps_s_to_d = all_edps(source, destination, graph)
+                edps_s_to_d = all_edps_greedy(source, destination, graph)
                 edps_s_to_d.sort(key=len)
                 
                 trees_s_to_d = multiple_trees(source,destination,graph,edps_s_to_d)
