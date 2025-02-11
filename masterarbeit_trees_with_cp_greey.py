@@ -21,14 +21,11 @@ import traceback
 
 ##########################################################################################################################################
 
-def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
+def multiple_trees_with_middle_checkpoint_parallel_pre_greedy(graph):
     paths = {}
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointParallelPre] Start Precomputation")
     for source in graph.nodes:
@@ -98,7 +95,6 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
 
                 for node in combined_tree.nodes:
                     combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
-                    
          
                 #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
                 trees_cp_to_s = combined_tree
@@ -133,22 +129,11 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
 
     #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    cp = paths[biggest_source][biggest_destination]['cp']
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-                     
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f'graphen/MultipleTreesParallelCP_{biggest_source}_{cp}.png')
     return paths
 
 
@@ -277,14 +262,11 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
 ##########################################################################################################################################
 removed_edges_multtrees = []
 
-def multiple_trees_with_middle_checkpoint_pre(graph):
+def multiple_trees_with_middle_checkpoint_pre_greedy(graph):
     paths = {}
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
-    biggest_destination = None
-    biggest_source = None
-    biggest_structure = nx.DiGraph()
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
     for source in graph.nodes:
@@ -340,7 +322,6 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s)
-
                 #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
                 trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
            
@@ -389,122 +370,138 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
 
     #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{biggest_source}_{cp}.png")
     return paths
 
 #gibt für ein source-destination paar alle trees zurück
-import networkx as nx
-import matplotlib.pyplot as plt
-
-def draw_graph(tree, source, destination, graph):
-    plt.figure(figsize=(8, 6))
-    
-    # Holen der gespeicherten Positionen aus dem ursprünglichen Graphen
-    pos = {node: graph.nodes[node]['pos'] for node in graph.nodes if 'pos' in graph.nodes[node]}
-    if not pos:
-        pos = nx.spring_layout(tree)
-    
-    # Zeichne alle Kanten in Schwarz
-    nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='black', font_weight='bold')
-    nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='yellow', node_size=500)
-    nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='yellow', node_size=500)
-    
-    plt.show()
-
-def should_debug(source, destination):
-    return False
-    return source == 49 and destination == 34
-
 def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
-    print(f"[MultipleTreesWithCheckpoint] Start for {source} -> {destination}")
-    for edp in all_edps:
-        print(edp)
     removed_edges = 0
     trees = [] 
-    debug = should_debug(source, destination)
 
-    for i in range(len(all_edps)):
+    #für jeden tree muss hier sein edp eingefügt werden in den jeweiligen graph des trees 
+
+    for i in range(0,len(all_edps)):
+
         current_edp = all_edps[i]
+
         tree = nx.DiGraph()
         tree.add_node(source)
-        for j in range(1, len(current_edp) - 1):
+        for j in range(1,len(current_edp)-1):
             tree.add_node(current_edp[j])
-            tree.add_edge(current_edp[j - 1], current_edp[j])
+            tree.add_edge(current_edp[j-1], current_edp[j])
+        #endfor
         trees.append(tree)
-    
-    assert len(trees) == len(all_edps), 'Not every EDP got a tree!'
+    #endfor
 
-    for i in range(len(all_edps)):
-        tree = trees[i]
+    assert len(trees) == len(all_edps), 'Not every edp got a tree!'
+
+    for i in range(0,len(all_edps)): #jeden edp einmal durchgehen
+                                      #um zu versuchen aus jedem edp einen Baum zu bauen
+        
+        tree = trees[i] # Baum der zuvor mit dem edp gefüllt wurde
         pathToExtend = all_edps[i]
-        nodes = pathToExtend[:-1]
 
-        for j in range(len(pathToExtend) - 1):
+        nodes = pathToExtend[:len(pathToExtend) -1]#in nodes stehen dann alle knoten drin die wir besuchen wollen um deren nachbarn auch reinzupacken
+                                                   # am anfang ganzer edp drin und -2 damit die destination nicht mit drin steht
+        
+        for j in range(0,len(pathToExtend)-1): #alle knoten aus nodes[] durchgehen und deren nachbarn suchen, angefangen mit den knoten aus dem edp
+            
+                       
             it = 0
             while it < len(nodes):
-                neighbors = list(nx.neighbors(graph, nodes[it]))
-                for k in range(len(neighbors)):
-                    if neighbors[k] != nodes[it] and neighbors[k] != destination:
-                        edge_is_in_other_tree = False
-                        node_is_in_other_tree = False
-                        node_is_in_my_tree = False
-                        for tree_to_check in trees:
-                            if tree_to_check.has_edge(nodes[it], neighbors[k]) or tree_to_check.has_edge(neighbors[k], nodes[it]):
-                                edge_is_in_other_tree = True
-                                break
-                            if tree_to_check.has_node(neighbors[k]):
-                                node_is_in_other_tree = True
-                                break
-                            if tree.has_node(neighbors[k]):
-                                node_is_in_my_tree = True
-                                break
+                
+                neighbors = list(nx.neighbors(graph, nodes[it])) #für jeden knoten aus nodes die nachbarn finden und gucken ob sie in den tree eingefügt werden dürfen
+
+                for k in range(0,len(neighbors)): #jeden der nachbarn durchgehen
+
+                    if(neighbors[k] != nodes[it] and neighbors[k] != destination): #kanten zu sich selbst dürfen nicht rein da dann baum zu kreis wird und kanten zur destination auch nicht    
+ 
+
+                        #prüfen ob kante von nodes[it] nach neighbors[k] schon in anderen trees verbaut ist
+                        is_in_other_tree = False
+                        if(len(trees)>0):#wenn es schon andere trees gibt muss man alle anderen durchsuchen
+                            for tree_to_check in trees: 
+                               
+                                if (tree_to_check.has_edge(nodes[it],neighbors[k]) or tree_to_check.has_edge(neighbors[k],nodes[it])): #wenn ein tree die edge schon drin hat dann darf man die edge nicht mehr benutzen
+                                    is_in_other_tree = True
+                                    break
+                                #endif
+                            #endfor
                         
-                        if not node_is_in_other_tree and not edge_is_in_other_tree and not node_is_in_my_tree:
-                            nodes.append(neighbors[k])
-                            tree.add_node(neighbors[k])
-                            tree.add_edge(nodes[it], neighbors[k])
-                it += 1
+                            if not ( is_in_other_tree or (tree.has_node(neighbors[k])) ):#wenn die kante weder in einem anderen baum noch in diesen baum drin ist, dann füge sie ein
+                                
+                                nodes.append(neighbors[k]) 
+                                tree.add_node(neighbors[k])
+                                tree.add_edge(nodes[it],neighbors[k])
+                            #endif
+                        #endif
 
-        changed = True
+                        else: #das ist der fall wenn es noch keine anderen trees zum checken gibt, ob die kante schon verbaut ist
+                              #dann darf die kante nicht zur destination sein & der knoten darf nicht im jetzigen tree drin sein
+                                                                                                    
+                            if not((neighbors[k] == destination) or (tree.has_node(neighbors[k]))): 
+                                tree.add_node(neighbors[k])
+                                tree.add_edge(nodes[it],neighbors[k])
+                            #endif
+
+                            #wenn der node der grad in den tree eingefügt wurde schon in nodes war dann soll er nicht nochmal eingefügt werden
+                            if not (neighbors[k]in nodes): #damit knoten nicht doppelt in nodes eingefügt werden
+                                nodes.append(neighbors[k]) 
+                            #endif
+                        #endelse
+                    #endif
+                #endfor
+                it = it + 1                
+            #endwhile
+        #endfor
+
+        changed = True 
+
+        
         old_edges = len(tree.edges)
-        while changed:
+        
+        while changed == True: #solange versuchen zu kürzen bis nicht mehr gekürzt werden kann 
             old_tree = tree.copy()
-            remove_redundant_paths(source, destination, tree, graph)
-            changed = len(tree.nodes) != len(old_tree.nodes)
+            remove_redundant_paths(source, destination, tree, graph) 
+            changed = len(tree.nodes) != len(old_tree.nodes) # order gibt die Anzahl an Knoten zurück
+        #endwhile
+        
         new_edges = len(tree.edges)
-        removed_edges += (old_edges - new_edges)
         
-        if len(tree.nodes) > 1:
-            rank_tree(tree, source, all_edps[i])
-            connect_leaf_to_destination(tree, source, destination)
-            tree.add_edge(all_edps[i][-2], destination)
-            tree.nodes[destination]["rank"] = -1
+        removed_edges =  removed_edges + (old_edges - new_edges)
         
-        if len(tree.nodes) == 1 and len(all_edps[i]) == 2:
-            tree.add_edge(source, destination)
-            tree.nodes[destination]["rank"] = -1
-        
-        if debug:
-            print(f"[Tree {i} Final] Completed Tree with {len(tree.nodes)} nodes and {len(tree.edges)} edges.")
-            draw_graph(tree, source, destination, graph)
-    
-    removed_edges_multtrees.append(removed_edges)
-    return trees
 
+        #man muss prüfen ob nur die source im baum ist , da man im nächsten schritt der destination einen Rang geben muss
+        #nur die source im baum (tree.order == 1) bedeutet, dass es im graphen die kante source -> destination gibt
+        if( len(tree.nodes) > 1 ):
+            
+
+            rank_tree(tree , source,all_edps[i])
+            connect_leaf_to_destination(tree, source,destination)
+
+            tree.add_edge(all_edps[i][len(all_edps[i])-2],destination)
+            
+            tree.nodes[destination]["rank"] = -1
+        #endif
+        
+        #edps direkt von s->d kommen müssen gesondert betrachtet werden
+        if(len(tree.nodes) == 1 and len(all_edps[i]) == 2):
+            tree.add_edge(source,destination)
+            tree.nodes[destination]["rank"] = -1
+        #endif
+        
+           
+    #endfor
+
+    removed_edges_multtrees.append(removed_edges)
+    #print("[multipleTreesWithCheckpoint] type(trees[0]):", type(trees[0]))
+    
+    #draw_tree_with_highlights(trees[0],[source,destination])
+    return trees
 
 def convert_to_undirected_multiple_trees(trees_cp_to_s):
     trees = []
@@ -517,14 +514,11 @@ def convert_to_undirected_multiple_trees(trees_cp_to_s):
 
 ##########################################################################################################################################
 
-def multiple_trees_with_degree_checkpoint_pre(graph):
+def multiple_trees_with_degree_checkpoint_pre_greedy(graph):
     paths = {}
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
-    biggest_destination = None
-    biggest_source = None
-    biggest_structure = nx.DiGraph()
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
     for source in graph.nodes:
@@ -662,21 +656,11 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
 
     #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
-    #input("...")
-    biggest_structure.add_node(biggest_source)
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithDegree_{biggest_source}_{cp}.png")
+    #input("...")           
     return paths
 
 
@@ -685,14 +669,11 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
 
 ##########################################################################################################################################
 
-def multiple_trees_with_betweenness_checkpoint_pre(graph):
+def multiple_trees_with_betweenness_checkpoint_pre_greedy(graph):
     paths = {}
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
-    biggest_destination = None
-    biggest_source = None
-    biggest_structure = nx.DiGraph()
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
     for source in graph.nodes:
@@ -830,20 +811,11 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
+
     #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
-    biggest_structure.add_node(biggest_source)
-    
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithBetween_{biggest_source}_{cp}.png")
     return paths
 
 
@@ -851,16 +823,13 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
 
 ##########################################################################################################################################
 
-def multiple_trees_with_closeness_checkpoint_pre(graph):
+def multiple_trees_with_closeness_checkpoint_pre_greedy(graph):
     paths = {}
     count = 1
     all_graph_edge_number = len(graph.edges)
     all_tree_edge_number = 0
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    biggest_source = 0
-    biggest_destination = 0
-    biggest_structure = nx.DiGraph()
     for source in graph.nodes:
        
         for destination in graph.nodes:
@@ -997,22 +966,10 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
                                                 'edps_s_to_d': edps
                     }
 
-                if paths[source][destination]['trees_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
-                
-            
     #print("[multipleTreesWithCheckpointPRE] type(trees[0]):", type(paths[4][18]['trees_cp_to_d']))
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']          
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithCloseness_{biggest_source}_{cp}.png")
     return paths
 
 
@@ -1025,12 +982,10 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
 from trees import all_edps, connect_leaf_to_destination, multiple_trees, rank_tree, remove_redundant_paths, remove_single_node_trees
 
 
-def one_tree_with_middle_checkpoint_pre(graph):
+def one_tree_with_middle_checkpoint_pre_greedy(graph):
     debug = False
     paths = {}
-    biggest_source = 0 
-    biggest_destination = 0
-    biggest_structure
+    
     for source in graph.nodes:
         #print("[OTC Random Pre] check")
         for destination in graph.nodes:
@@ -1111,17 +1066,7 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                                 'edps_s_to_d': edps,
                                                 'tree_cp_to_s':tree_cp_to_s
                                             }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
                                     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']  
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeMiddle_{biggest_source}_{cp}.png")
     return paths
 
 
@@ -1247,12 +1192,10 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp, reverse):
 ##########################################################################################################################################
 
 
-def one_tree_with_degree_checkpoint_pre(graph):
+def one_tree_with_degree_checkpoint_pre_greedy(graph):
     debug = False
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
+    
     for source in graph.nodes:
 
         for destination in graph.nodes:
@@ -1365,17 +1308,7 @@ def one_tree_with_degree_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s':tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
                                     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']       
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeDegree_{biggest_source}_{cp}.png")
     return paths
 
 
@@ -1387,12 +1320,10 @@ def one_tree_with_degree_checkpoint_pre(graph):
 ##########################################################################################################################################
 
 
-def one_tree_with_betweenness_checkpoint_pre(graph):
+def one_tree_with_betweenness_checkpoint_pre_greedy(graph):
     debug = False
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
+    
     for source in graph.nodes:
         
         for destination in graph.nodes:
@@ -1503,18 +1434,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s': tree_cp_to_s
                 }
-
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
                                     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeBetween_{biggest_source}_{cp}.png")
     return paths
 
 
@@ -1526,12 +1446,10 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
 ##########################################################################################################################################
 
 
-def one_tree_with_closeness_checkpoint_pre(graph):
+def one_tree_with_closeness_checkpoint_pre_greedy(graph):
     debug = False
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
+    
     for source in graph.nodes:
 
         for destination in graph.nodes:
@@ -1643,28 +1561,16 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s':tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
                                     
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeCloseness_{biggest_source}_{cp}.png")
     return paths
 
 
 ############################################### ONETREECHECKPOINT WITH SHORTEST EDP ##############################################
 
-def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
+def one_tree_with_middle_checkpoint_shortest_edp_pre_greedy(graph):
     debug = False
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
+
     for source in graph.nodes:
         for destination in graph.nodes:
             if source != destination:
@@ -1747,28 +1653,16 @@ def one_tree_with_middle_checkpoint_shortest_edp_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s': tree_cp_to_s
                 }
-                if paths[source][destination]['tree_cp_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp_to_s']
-                    biggest_source = source
-                    biggest_destination = destination   
 
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    cp = paths[biggest_source][biggest_destination]['cp']                 
-    print_cut_structure(highlighted_nodes=[biggest_source,cp],structure=biggest_structure,source=biggest_source,destination=cp,save_plot=True,filename=f"graphen/OneTreeShortest_{biggest_source}_{cp}.png")
     return paths
 
 ############################################################################################################################
 
 ############################################## ONETREE TRIPLE CHECKPOINT ###################################################
-def one_tree_triple_checkpooint_pre(graph):
+def one_tree_triple_checkpooint_pre_greedy(graph):
 
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
+
     for source in graph.nodes:
         for destination in graph.nodes:
             if source != destination:
@@ -1905,39 +1799,15 @@ def one_tree_triple_checkpooint_pre(graph):
                     'tree_cp3_to_d': tree_cp3_to_d
                 }
                 #plot_paths_element(paths[source][destination],graph,source,destination)
-                if paths[source][destination]['tree_cp1_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['tree_cp1_to_s']
-                    biggest_cp1 = cp1
-                    biggest_structure2 = paths[source][destination]['tree_cp3_to_cp2']
-                    biggest_cp3 = cp3
-                    biggest_cp2 = cp2
-                    biggest_source = source
-                    biggest_destination = destination   
-    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    biggest_structure.add_node(biggest_cp1)
-    biggest_structure.add_node(biggest_cp2)
-    biggest_structure.add_node(biggest_cp3)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    for node in biggest_structure2.nodes:
-        biggest_structure2.nodes[node]['pos'] = graph.nodes[node]['pos']
-        
-    print_cut_structure(highlighted_nodes=[biggest_cp1,biggest_source],structure=biggest_structure,source=biggest_source,destination=biggest_cp1,save_plot=True,filename=f"graphen/OneTreeTriple_{biggest_cp1}_{biggest_source}.png")
-    print_cut_structure(highlighted_nodes=[biggest_cp3,biggest_cp2],structure=biggest_structure2,source=biggest_cp3,destination=biggest_cp2,save_plot=True,filename=f"graphen/OneTreeTriple_{biggest_cp3}_{biggest_cp2}.png")
     return paths
 
 ############################################################################################################################
 
 ############################################## MULTIPLETREES TRIPLE CHECKPOINT #############################################
 
-def multiple_trees_triple_checkpooint_pre(graph):
+def multiple_trees_triple_checkpooint_pre_greedy(graph):
 
     paths = {}
-    biggest_structure = nx.DiGraph()
-    biggest_destination = None
-    biggest_source = None
     print("[multipletrees triple pre] graph edges:", graph.edges)
     for source in graph.nodes:
         for destination in graph.nodes:
@@ -2127,43 +1997,16 @@ def multiple_trees_triple_checkpooint_pre(graph):
                     'trees_cp3_to_d': trees_cp3_to_d
                 }
                 #plot_paths_element(paths[source][destination],graph,source,destination)
-                if paths[source][destination]['trees_cp1_to_s'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['trees_cp1_to_s']
-                    biggest_cp1 = cp1
-                    biggest_structure2 = paths[source][destination]['trees_cp3_to_cp2']
-                    biggest_cp3 = cp3
-                    biggest_cp2 = cp2
-                    biggest_source = source
-                    biggest_destination = destination   
-    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    biggest_structure.add_node(biggest_cp1)
-    biggest_structure.add_node(biggest_cp2)
-    biggest_structure.add_node(biggest_cp3)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-    for node in biggest_structure2.nodes:
-        biggest_structure2.nodes[node]['pos'] = graph.nodes[node]['pos']
-    # biggest_source['pos'] = graph.nodes[biggest_source]['pos']
-    # biggest_destination['pos'] = graph.nodes[biggest_destination]['pos']
-    # cp1['pos'] = graph.nodes[biggest_cp1]['pos']
-    # cp2['pos'] = graph.nodes[biggest_cp2]['pos']
-    # cp3['pos'] = graph.nodes[biggest_cp3]['pos']        
-    print_cut_structure(highlighted_nodes=[biggest_cp1,biggest_source],structure=biggest_structure,source=biggest_source,destination=biggest_cp1,save_plot=True,filename=f"graphen/MultipleTreesTriple_{biggest_cp1}_{biggest_source}.png")
-    print_cut_structure(highlighted_nodes=[biggest_cp3,biggest_cp2],structure=biggest_structure2,source=biggest_cp3,destination=biggest_cp2,save_plot=True,filename=f"graphen/MultipleTreesTriple_{biggest_cp3}_{biggest_cp2}.png")
     return paths
 
 #################################################### MULTIPLETREES FOR FACE ROUTING ################################################
 
 ##########################################################################################################################################
 
-def multiple_trees_for_faces_pre(graph):
+def multiple_trees_for_faces_pre_greedy(graph):
     paths = {}
     count = 1
-    biggest_destination = None
-    biggest_source = None
-    biggest_structure = nx.DiGraph()
+    
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointParallelPre] Start Precomputation")
     for source in graph.nodes:
@@ -2219,10 +2062,6 @@ def multiple_trees_for_faces_pre(graph):
 
                 for node in combined_tree.nodes:
                     combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
-                    #connect leaves with the destination
-                    if graph.has_edge(node,destination) or graph.has_edge(destination,node):
-                        combined_tree.add_edge(node,destination)
-                        
                                                         
                 if source in paths:
                     paths[source][destination] = { 
@@ -2237,25 +2076,11 @@ def multiple_trees_for_faces_pre(graph):
                                                 'cut_edges': [] ,
                                                 'cut_nodes': []
                     }
-
-                if paths[source][destination]['structure'].number_of_edges() > len(biggest_structure.nodes):
-                    biggest_structure = paths[source][destination]['structure']
-                    biggest_source = source
-                    biggest_destination = destination   
-    
-    biggest_structure.add_node(biggest_source)
-    biggest_structure.add_node(biggest_destination)
-    for node in biggest_structure.nodes:
-        biggest_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-          
-        
-    print_cut_structure(highlighted_nodes=[biggest_source,biggest_destination],structure=biggest_structure,source=biggest_source,destination=biggest_destination,save_plot=True,filename=f"graphen/MultipleTreesForFaces_{biggest_source}_{destination}.png")
        
     return paths
 
 
 ################################ Hilfsfunktionen #####################################################################
-
 def find_faces(G):
     """
     Findet alle Flächen eines planaren Graphen.
@@ -2512,51 +2337,3 @@ def plot_paths_element(paths_element, tree, source, destination):
     plt.show()
 
 
-import networkx as nx
-import matplotlib.pyplot as plt
-
-import matplotlib.pyplot as plt
-import networkx as nx
-import os
-
-def print_cut_structure(highlighted_nodes, structure, source, destination,cut_edges=[], fails=[], current_edge=None, save_plot=False, filename="failedgraphs/graph.png"):
-    pos = nx.get_node_attributes(structure, 'pos')
-    
-    plt.figure(figsize=(10, 10))
-    
-    # Draw the entire structure
-    nx.draw(structure, pos, with_labels=True, node_color='lightblue', edge_color='gray', node_size=500, font_size=10)
-    
-    # Highlight the specified nodes
-    nx.draw_networkx_nodes(structure, pos, nodelist=highlighted_nodes, node_color='red')
-    
-    # Highlight the cut edges
-    nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='blue', width=2)
-    
-    # Highlight the source and destination nodes
-    nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
-    nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='purple')
-    
-    # Highlight the current edge if provided
-    if current_edge:
-        nx.draw_networkx_edges(structure, pos, edgelist=[current_edge], edge_color='green', width=2, style='dashed')
-    
-    # Highlight the failed edges if provided
-    valid_fails = [edge for edge in fails if edge[0] in pos and edge[1] in pos]
-    if valid_fails:
-        nx.draw_networkx_edges(structure, pos, edgelist=valid_fails, edge_color='black', width=2, style='dotted')
-    
-    if save_plot:
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
-        
-        # Check if the filename already exists and append a number if it does
-        base, ext = os.path.splitext(filename)
-        counter = 1
-        new_filename = filename
-        while os.path.exists(new_filename):
-            new_filename = f"{base}_{counter}{ext}"
-            counter += 1
-        
-        plt.savefig(new_filename)
-    else:
-        plt.show()

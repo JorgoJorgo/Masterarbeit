@@ -230,7 +230,7 @@ def multipleTrees_with_cuts(source, destination, graph, cut_edges, cut_nodes):
 
 
 
-def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destination, fails=[], current_edge=None, save_plot=False, filename="failedgraphs/graph.png"):
+def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destination, fails=[], current_edge=None, save_plot=False, filename="graphen/graph.png"):
     pos = nx.get_node_attributes(structure, 'pos')
     
     plt.figure(figsize=(10, 10))

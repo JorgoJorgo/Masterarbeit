@@ -30,5 +30,15 @@ def clean_directories():
     else:
         print(f"Verzeichnis {failedgraphs_dir} existiert nicht.")
 
+    # Verzeichnis "graphen" und alle Dateien entfernen
+    failedgraphs_dir = os.path.join(current_dir, "graphen")
+    if os.path.exists(failedgraphs_dir):
+        all_files = glob.glob(os.path.join(failedgraphs_dir, "*.png"))
+        for file in all_files:
+            os.remove(file)
+        print(f"Entfernte Dateien im Verzeichnis {failedgraphs_dir}: {all_files}")
+    else:
+        print(f"Verzeichnis {failedgraphs_dir} existiert nicht.")
+
 if __name__ == "__main__":
     clean_directories()
