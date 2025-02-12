@@ -428,7 +428,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
-                trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s)
+                trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
                 #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
                 trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
@@ -535,24 +535,22 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
                 neighbors = list(nx.neighbors(graph, nodes[it]))
                 for k in range(len(neighbors)):
                     if neighbors[k] != nodes[it] and neighbors[k] != destination:
-                        edge_is_in_other_tree = False
-                        node_is_in_other_tree = False
-                        node_is_in_my_tree = False
-                        for tree_to_check in trees:
-                            if tree_to_check.has_edge(nodes[it], neighbors[k]) or tree_to_check.has_edge(neighbors[k], nodes[it]):
-                                edge_is_in_other_tree = True
-                                break
-                            if tree_to_check.has_node(neighbors[k]):
-                                node_is_in_other_tree = True
-                                break
-                            if tree.has_node(neighbors[k]):
-                                node_is_in_my_tree = True
-                                break
+                            is_in_other_tree = False
+                            for tree_to_check in trees: 
+                                    if (tree_to_check.has_edge(nodes[it],neighbors[k]) or tree_to_check.has_edge(neighbors[k], nodes[it])):
+                                        
+                                        is_in_other_tree = True
+                                        break
+                                    
+                                    #endif
+                            #endfor
+                            
+                            if not ( is_in_other_tree or (tree.has_node(neighbors[k])) ):
+                                nodes.append(neighbors[k]) 
+                                tree.add_node(neighbors[k])
+                                tree.add_edge(nodes[it],neighbors[k])
+                            #endif
                         
-                        if not node_is_in_other_tree and not edge_is_in_other_tree and not node_is_in_my_tree:
-                            nodes.append(neighbors[k])
-                            tree.add_node(neighbors[k])
-                            tree.add_edge(nodes[it], neighbors[k])
                 it += 1
 
         changed = True
@@ -582,14 +580,305 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
     return trees
 
 
-def convert_to_undirected_multiple_trees(trees_cp_to_s):
-    trees = []
-    for tree in trees_cp_to_s:
-        trees.append(tree.copy().to_undirected())
+import networkx as nx
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. Funktion zur Extraktion von Faces aus PlanarEmbedding
+def extract_faces_from_embedding(embedding):
+    """Extrahiert Faces (Zyklen) aus einem PlanarEmbedding-Objekt"""
+    faces = []
+    
+    for node in embedding:
+        if node not in embedding or not embedding[node]:  # Verhindert KeyError
+            continue
+        
+        # Wähle eine Kante von node als Startpunkt für traverse_face()
+        first_edge = next(iter(embedding[node]))  # Sichere Auswahl einer existierenden Kante
+        
+        try:
+            face = list(embedding.traverse_face(node, first_edge))
+            if set(face) not in [set(f) for f in faces]:  # Doppelte Faces vermeiden
+                faces.append(face)
+        except Exception as e:
+            print(f"Fehler beim Extrahieren eines Faces von Knoten {node}: {e}")
+    
+    return faces
+
+
+def find_faces_pre(graph):
+    """Findet alle Faces in einem planaren Graphen, einschließlich des äußeren Faces, und ergänzt fehlende Faces."""
+    is_planar, embedding = nx.check_planarity(graph)
+    if not is_planar:
+        raise ValueError("Graph ist nicht planar!")
+
+    faces = []
+    visited_edges = set()
+
+    print("\n===== Debugging: Erweiterte Face-Erkennung Start =====")
+    print(f"Gesamtanzahl Knoten: {len(graph.nodes)}")
+    print(f"Gesamtanzahl Kanten: {len(graph.edges)}")
+
+    # Erster Durchlauf: traverse_face() nutzen
+    for node in embedding:
+        for neighbor in embedding[node]:  
+            edge = tuple(sorted((node, neighbor)))
+            if edge in visited_edges:
+                continue  
+            
+            face_nodes = list(embedding.traverse_face(node, neighbor))
+
+            if len(face_nodes) >= 3 and set(face_nodes) not in [set(f) for f in faces]:
+                faces.append(face_nodes)
+                print(f"Erkanntes Face: {face_nodes}")
+
+            for i in range(len(face_nodes)):
+                e = tuple(sorted((face_nodes[i], face_nodes[(i + 1) % len(face_nodes)])))
+                visited_edges.add(e)
+
+    # Erkenne das äußere Face als das größte erkannte Face
+    outer_face = max(faces, key=len)
+    print(f"\nErkanntes äußeres Face: {outer_face}")
+
+    # Zweiter Durchlauf: Zusätzliche Faces finden
+    additional_faces = detect_missing_faces(graph, faces)
+    faces.extend(additional_faces)
+
+    print(f"\nGefundene Faces insgesamt: {len(faces)} (einschließlich äußeres Face)")
+    print("===== Debugging: Erweiterte Face-Erkennung Ende =====\n")
+
+    return faces, outer_face
+
+def detect_missing_faces(graph, existing_faces):
+    """Findet zusätzliche Faces, die durch traverse_face() möglicherweise nicht erkannt wurden."""
+    additional_faces = []
+    all_faces_sets = [set(face) for face in existing_faces]  # Vermeidung von doppelten Faces
+
+    # Prüfe alle Dreiecke im Graphen
+    for u in graph.nodes:
+        neighbors = list(graph.neighbors(u))
+        for i in range(len(neighbors)):
+            for j in range(i + 1, len(neighbors)):
+                v, w = neighbors[i], neighbors[j]
+                if graph.has_edge(v, w):  # Ist (u, v, w) ein Dreieck?
+                    face = sorted([u, v, w])
+                    if set(face) not in all_faces_sets:
+                        additional_faces.append(face)
+                        all_faces_sets.append(set(face))
+                        print(f"Zusätzlich erfasstes Face (Dreieck): {face}")
+
+    # Prüfe alle Vierecke im Graphen
+    for u in graph.nodes:
+        neighbors = list(graph.neighbors(u))
+        for i in range(len(neighbors)):
+            for j in range(i + 1, len(neighbors)):
+                for k in range(j + 1, len(neighbors)):
+                    v, w, x = neighbors[i], neighbors[j], neighbors[k]
+                    if graph.has_edge(v, w) and graph.has_edge(w, x) and graph.has_edge(x, v):
+                        face = sorted([u, v, w, x])
+                        if set(face) not in all_faces_sets:
+                            additional_faces.append(face)
+                            all_faces_sets.append(set(face))
+                            print(f"Zusätzlich erfasstes Face (Viereck): {face}")
+
+    return additional_faces
+
+
+
+
+
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.patches import Polygon
+from matplotlib.collections import PatchCollection
+
+import networkx as nx
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.patches import Polygon
+from matplotlib.collections import PatchCollection
+
+def build_face_graph(faces):
+    """Erstellt einen Graphen, in dem jedes Face ein Knoten ist und Kanten existieren, wenn Faces gemeinsame Kanten haben."""
+    face_graph = nx.Graph()
+    
+    face_edges = []  # Speichert alle Kanten eines Faces
+    
+    for i, face in enumerate(faces):
+        face_graph.add_node(i)  # Face als Knoten hinzufügen
+        edges = {tuple(sorted((face[j], face[(j + 1) % len(face)]))) for j in range(len(face))}
+        face_edges.append(edges)
+
+    # Verbinde Faces, die gemeinsame Kanten haben
+    for i in range(len(faces)):
+        for j in range(i + 1, len(faces)):
+            if face_edges[i] & face_edges[j]:  # Falls gemeinsame Kanten existieren
+                face_graph.add_edge(i, j)
+    
+    return face_graph
+
+def greedy_coloring(graph):
+    """Weist den Knoten (Faces) im Graphen Farben zu, sodass keine benachbarten Faces dieselbe Farbe haben."""
+    colors = {}
+    sorted_nodes = sorted(graph.nodes(), key=lambda x: graph.degree(x), reverse=True)  # Welsh-Powell Heuristik
+    
+    available_colors = ["red", "blue", "green", "purple", "orange", "cyan", "pink", "yellow", "brown"]
+    
+    for node in sorted_nodes:
+        neighbor_colors = {colors[neighbor] for neighbor in graph.neighbors(node) if neighbor in colors}
+        for color in available_colors:
+            if color not in neighbor_colors:
+                colors[node] = color
+                break
+    
+    return colors
+
+def print_faces(G, faces):
+    """Gibt die Faces mit ihren Knoten im Terminal aus."""
+    
+    print("\n===== Gefundene Faces =====")
+    
+    for i, face in enumerate(faces):
+        if len(face) < 3:
+            continue  # Überspringe ungültige Faces
+        
+        # Sortiere die Knoten zur besseren Übersicht
+        sorted_face = sorted(face)
+        
+        # Falls Knotenkoordinaten mit ausgegeben werden sollen:
+        coords = [G.nodes[node]['pos'] for node in sorted_face if 'pos' in G.nodes[node]]
+        
+        print(f"Face {i+1}: {sorted_face}")
+        # Falls du auch die Koordinaten möchtest, entkommentiere die nächste Zeile:
+        # print(f"   -> Koordinaten: {coords}")
+
+    print("==========================\n")
+
+
+def draw_graph_with_colored_faces(G, faces, source, destination):
+    """Zeichnet den Graphen und füllt die Faces mit unterschiedlichen Farben (keine zwei benachbarten Faces haben dieselbe Farbe)."""
+    
+    # Holen der Knotenpositionen aus den Attributen von G
+    pos = {node: G.nodes[node]['pos'] for node in G.nodes if 'pos' in G.nodes[node]}
+
+    plt.figure(figsize=(12, 6))
+
+    # Zeichne alle Knoten und Kanten
+    nx.draw(G, pos, with_labels=True, node_color="lightgray", edge_color="gray")
+
+    # Erstelle den Face-Graphen und weise Farben zu
+    face_graph = build_face_graph(faces)
+    face_colors = greedy_coloring(face_graph)
+
+    patches = []
+    
+    # Zeichne jedes Face als gefülltes Polygon mit der zugewiesenen Farbe
+    for i, face in enumerate(faces):
+        if len(face) < 3:
+            continue  # Kein gültiges Polygon
+        
+        # Prüfe, ob alle Knoten eine Position haben
+        if not all(node in pos for node in face):
+            continue  # Falls eine Position fehlt, wird dieses Face übersprungen
+        
+        polygon_coords = np.array([pos[node] for node in face])
+        polygon = Polygon(polygon_coords, closed=True, edgecolor="black", facecolor=face_colors[i], alpha=0.6)
+        patches.append(polygon)
+
+    # Zeichne die Faces
+    p = PatchCollection(patches, match_original=True)
+    plt.gca().add_collection(p)
+
+    # Zeichne Source und Destination extra hervor
+    nx.draw_networkx_nodes(G, pos, nodelist=[source], node_color="yellow", node_size=500, label="Source")
+    nx.draw_networkx_nodes(G, pos, nodelist=[destination], node_color="red", node_size=500, label="Destination")
+
+    plt.title("Graph mit gefärbten Faces (keine zwei benachbarten Faces haben dieselbe Farbe)")
+    plt.show()
+
+
+def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edps):
+    """Erstellt mehrere Bäume mit einem Checkpoint unter Berücksichtigung der Faces."""
+    print(f"[MultipleTreesWithCheckpoint] Start for {source} -> {destination}")
+    for edp in all_edps:
+        print(edp)
+
+    removed_edges = 0
+    trees = [] 
+    debug = should_debug(source, destination)
+
+    for i in range(len(all_edps)):
+        current_edp = all_edps[i]
+        tree = nx.DiGraph()
+        tree.add_node(source)
+        for j in range(1, len(current_edp) - 1):
+            tree.add_node(current_edp[j])
+            tree.add_edge(current_edp[j - 1], current_edp[j])
+        trees.append(tree)
+
+    assert len(trees) == len(all_edps), 'Not every EDP got a tree!'
+
+    for i in range(len(all_edps)):
+        tree = trees[i]
+        pathToExtend = all_edps[i]
+        nodes = pathToExtend[:-1]
+
+        for j in range(len(pathToExtend) - 1):
+            it = 0
+            while it < len(nodes):
+                neighbors = list(nx.neighbors(graph, nodes[it]))
+                for k in range(len(neighbors)):
+                    if neighbors[k] != nodes[it] and neighbors[k] != destination:
+                        
+                        # Berechne Faces nach Hinzufügen der Kante
+                        faces,outer_face = find_faces_pre(graph)
+                        print(f"\nÄußeres Face: {outer_face}")
+                        print_faces(graph, faces)
+                        draw_graph_with_colored_faces(graph, faces, source, destination)  # Zeichnet den Graphen mit Faces
+
+                        face_found = any(source in face and destination in face for face in faces)
+                        
+                        if face_found:
+                            is_in_other_tree = any(
+                                tree_to_check.has_edge(nodes[it], neighbors[k]) or 
+                                tree_to_check.has_edge(neighbors[k], nodes[it]) for tree_to_check in trees
+                            )
+
+                            if not (is_in_other_tree or tree.has_node(neighbors[k])):
+                                nodes.append(neighbors[k]) 
+                                tree.add_node(neighbors[k])
+                                tree.add_edge(nodes[it], neighbors[k])
+
+                it += 1
+
+        changed = True
+        old_edges = len(tree.edges)
+        while changed:
+            old_tree = tree.copy()
+            remove_redundant_paths(source, destination, tree, graph)
+            changed = len(tree.nodes) != len(old_tree.nodes)
+        new_edges = len(tree.edges)
+        removed_edges += (old_edges - new_edges)
+        
+        if len(tree.nodes) > 1:
+            rank_tree(tree, source, all_edps[i])
+            connect_leaf_to_destination(tree, source, destination)
+            tree.add_edge(all_edps[i][-2], destination)
+            tree.nodes[destination]["rank"] = -1
+        
+        if len(tree.nodes) == 1 and len(all_edps[i]) == 2:
+            tree.add_edge(source, destination)
+            tree.nodes[destination]["rank"] = -1
+        
+        if debug:
+            print(f"[Tree {i} Final] Completed Tree with {len(tree.nodes)} nodes and {len(tree.edges)} edges.")
+            draw_graph(tree, source, destination, graph)
+
+    removed_edges_multtrees.append(removed_edges)
     return trees
-
-
-#################################################### MULTIPLETREES WITH DEGREE CHECKPOINT ################################################
+################################################## MULTIPLETREES WITH DEGREE CHECKPOINT ################################################
 
 ##########################################################################################################################################
 
