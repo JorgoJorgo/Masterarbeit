@@ -4,6 +4,7 @@ import math
 import uuid
 
 from cut_algorithms import print_cut_structure
+from masterarbeit_trees_with_cp import angle_between, find_faces_pre
 
 def convert_to_undirected(tree):
     """
@@ -97,6 +98,56 @@ def routeOLD(s, d, fails, tree):
     print("Routing successful.")
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
+def route_faces_firstFace(s, d, tree, fails, len_nodes):
+    """Führt das Routing durch basierend auf den kleinsten Faces, die Quelle und Ziel enthalten, und berücksichtigt Fail-Kanten."""
+    routing_failure_faces = []
+    hops_faces = 0
+    switches_faces = 0
+    detour_edges_faces = []
+    visited_nodes = set()
+    
+    for t in tree:
+        faces = find_faces_pre(t, s, d)
+        if not faces:
+            routing_failure_faces.append(t)
+            continue
+        
+        smallest_face = min(faces, key=len)
+        path = [s]
+        current = s
+        visited_nodes.add(s)
+        
+        while current != d:
+            neighbors = sorted_neighbors_for_face_routing(t, current, None, fails)
+            next_node = None
+            
+            for node in smallest_face:
+                if node in neighbors and node not in visited_nodes:
+                    next_node = node
+                    break
+            
+            if next_node is None:
+                for node in neighbors:
+                    if node not in visited_nodes:
+                        next_node = node
+                        break
+            
+            if next_node is None:
+                print("Routing failed. No way to proceed.")
+                unique_filename = f"failedgraphs/routeFacesFirstFace_graph_{uuid.uuid4().hex}.png"
+                routing_failure_faces.append(t)
+                return True, hops_faces, switches_faces, detour_edges_faces
+            
+            path.append(next_node)
+            visited_nodes.add(next_node)
+            current = next_node
+            hops_faces += 1
+            switches_faces = len(set(path))
+        
+        detour_edges_faces.append(path)
+    
+    return False, hops_faces, switches_faces, detour_edges_faces
+
 
 def route(s, d, fails, tree, len_nodes):
     speacial_nodes = []  # wenn man nix zeichnen will
@@ -183,6 +234,17 @@ def route(s, d, fails, tree, len_nodes):
     return (False, hops, switches, detour_edges)
 
 
+def sorted_neighbors_for_face_routing(graph, node, coming_from, fails):
+    """Sortiere die Nachbarn eines Knotens basierend auf ihrem Winkel relativ zur vorherigen Kante und vermeide Fail-Kanten."""
+    pos = nx.get_node_attributes(graph, 'pos')
+    neighbors = [n for n in graph.neighbors(node) if (node, n) not in fails and (n, node) not in fails]
+    if coming_from is not None:
+        base_angle = angle_between(pos[node], pos[coming_from])
+    else:
+        base_angle = 0  # Falls kein vorheriger Knoten vorhanden ist
+    
+    neighbors.sort(key=lambda n: (angle_between(pos[node], pos[n]) - base_angle) % (2 * math.pi))
+    return neighbors
 
 # Helper function to calculate the angle between two coordinates
 def calculate_angle(pos1, pos2):
@@ -520,3 +582,5 @@ def route_greedy_perimeter(s, d, fails, paths):
     print("[route_greedy_perimeter] nodes: ", count_all_nodes)
     print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
     return (False, hops, switches, detour_edges)
+
+

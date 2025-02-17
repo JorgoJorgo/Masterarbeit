@@ -9,7 +9,7 @@ from arborescences import *
 from extra_links import *
 import glob
 
-from faces import route
+from faces import route, route_faces_firstFace
 from trees import get_parent_node
 
 #global variables in this file
@@ -689,7 +689,7 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     routing_failure_faces = False
 
     #now the first step of the routing consists of face-routing from S to CP
-    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route(s, cp, tree=trees_cp_to_s, fails=fails,len_nodes=len(paths))
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route_faces_firstFace(s, cp, tree=trees_cp_to_s, fails=fails,len_nodes=len(paths))
 
     hops = hops + hops_faces
     switches = switches + switches_faces
@@ -699,7 +699,9 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
-        draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
+        #draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
+        for tree in trees_cp_to_s:
+            draw_tree_with_highlights_for_faces(fails=fails,tree=tree,nodes=[cp,s],showplot=False)
         print(" ")
         return (True, hops, switches, detour_edges)
     else:
@@ -3303,3 +3305,36 @@ def draw_multipletree_with_highlights(trees, nodes=None, fails=None, current_edg
             plt.close()
 
             print(f"Graph gespeichert unter: {filename}")
+
+def draw_tree_with_highlights_for_faces(tree, nodes, showplot=False, fails=None):
+    """Zeichnet den Baum mit hervorgehobenen Knoten und fehlgeschlagenen Kanten in Rot und speichert ihn mit Knotennamen."""
+    if fails is None:
+        fails = []
+    
+    pos = {node: (tree.nodes[node]['pos'][0], tree.nodes[node]['pos'][1]) for node in tree.nodes}
+    plt.figure(figsize=(8, 6))
+    
+    # Zeichne den gesamten Graphen
+    nx.draw(tree, pos, with_labels=True, edge_color='black', node_color='lightgray', node_size=500, font_size=10)
+    
+    # Hebe spezielle Knoten hervor
+    nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color='blue', node_size=700)
+    
+    # Hebe fehlgeschlagene Kanten hervor
+    nx.draw_networkx_edges(tree, pos, edgelist=fails, edge_color='red', width=2.5)
+    
+    if showplot:
+        plt.show()
+    else:
+        
+        # Ordner "failedgraphs" erstellen, falls nicht vorhanden
+        os.makedirs("failedgraphs", exist_ok=True)
+
+        node_names = "_".join(map(str, nodes))
+        filename = f"failedgraphs/highlighted_tree_{node_names}_{random.randint(1000, 9999)}.png"
+
+        # Plot speichern
+        plt.savefig(filename, format='png')
+        plt.close()
+
+        print(f"Graph gespeichert unter: {filename}")
