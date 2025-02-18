@@ -4,7 +4,6 @@ import math
 import uuid
 
 from cut_algorithms import print_cut_structure
-from masterarbeit_trees_with_cp import angle_between, find_faces_pre
 
 def convert_to_undirected(tree):
     """
@@ -99,54 +98,23 @@ def routeOLD(s, d, fails, tree):
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
 def route_faces_firstFace(s, d, tree, fails, len_nodes):
-    """Führt das Routing durch basierend auf den kleinsten Faces, die Quelle und Ziel enthalten, und berücksichtigt Fail-Kanten."""
-    routing_failure_faces = []
+
     hops_faces = 0
     switches_faces = 0
     detour_edges_faces = []
-    visited_nodes = set()
     
-    for t in tree:
-        faces = find_faces_pre(t, s, d)
-        if not faces:
-            routing_failure_faces.append(t)
-            continue
-        
-        smallest_face = min(faces, key=len)
-        path = [s]
-        current = s
-        visited_nodes.add(s)
-        
-        while current != d:
-            neighbors = sorted_neighbors_for_face_routing(t, current, None, fails)
-            next_node = None
-            
-            for node in smallest_face:
-                if node in neighbors and node not in visited_nodes:
-                    next_node = node
-                    break
-            
-            if next_node is None:
-                for node in neighbors:
-                    if node not in visited_nodes:
-                        next_node = node
-                        break
-            
-            if next_node is None:
-                print("Routing failed. No way to proceed.")
-                unique_filename = f"failedgraphs/routeFacesFirstFace_graph_{uuid.uuid4().hex}.png"
-                routing_failure_faces.append(t)
-                return True, hops_faces, switches_faces, detour_edges_faces
-            
-            path.append(next_node)
-            visited_nodes.add(next_node)
-            current = next_node
-            hops_faces += 1
-            switches_faces = len(set(path))
-        
-        detour_edges_faces.append(path)
+    #als erstes soll das kleinste Face ermittelt werden, welches s und d enthält
+    faces_with_s_and_d = find_faces_pre(tree,source=s,destination=d)
+    print(f"[route Faces] faces vor sort: {faces_with_s_and_d} ")
+    faces_with_s_and_d.sort(key=len)
+    print(f"[route Faces] faces nach sort: {faces_with_s_and_d} ")
+    #dann routet man auf diesem face so weit wie man kommt (am besten bis zur D) ansonsten bis zu einem Fail
+
+    #wenn bei D angekommen, dann Routing success
+
+    #wenn bei nem Fail angekommen, dann Routing weitermachen im Uhrzeigersinn, bis man Kante an Source Doppelt benutzt
     
-    return False, hops_faces, switches_faces, detour_edges_faces
+    return (False, hops_faces, switches_faces, detour_edges_faces)
 
 
 def route(s, d, fails, tree, len_nodes):
@@ -274,22 +242,6 @@ def prioritize_edges(edges, previous_edge, tree):
 
     return sorted_edges
 
-# # Helper function to get edges sorted in clockwise order
-# def get_sorted_edges(node, tree, fails, previous_edge):
-#     edges = []
-#     node_pos = tree.nodes[node]['pos']
-
-#     for neighbor in tree.neighbors(node):
-#         edge = (node, neighbor) if node < neighbor else (neighbor, node)  # Ensure undirected edge representation
-#         if edge not in fails and (edge[1],edge[0]) not in fails:  # Exclude edges in fails
-#             neighbor_pos = tree.nodes[neighbor]['pos']
-#             angle = calculate_angle(node_pos, neighbor_pos)
-#             edges.append((edge, angle))
-
-#     if previous_edge is not None:
-#         edges = prioritize_edges(edges, previous_edge, tree)
-
-#     return [e[0] for e in edges]
 
 def calculate_angle(vec1, vec2):
         dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
@@ -489,10 +441,6 @@ def route_faces_with_paths(s, d, fails, paths):
     print("Routing successful.")
     return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
-
-import uuid
-import math
-
 def euclidean_distance(a, b):
     return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
 
@@ -583,4 +531,90 @@ def route_greedy_perimeter(s, d, fails, paths):
     print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
     return (False, hops, switches, detour_edges)
 
+def angle_between(p1, p2):
+    """Berechnet den Winkel zwischen zwei Punkten relativ zur x-Achse."""
+    return math.atan2(p2[1] - p1[1], p2[0] - p1[0])
+
+def sorted_neighbors(graph, node, coming_from):
+    """Sortiere die Nachbarn eines Knotens basierend auf ihrem Winkel relativ zur vorherigen Kante."""
+    pos = nx.get_node_attributes(graph, 'pos')
+    neighbors = list(nx.neighbors(graph, node))
+    if coming_from is not None:
+        base_angle = angle_between(pos[node], pos[coming_from])
+    else:
+        base_angle = 0  # Falls kein vorheriger Knoten vorhanden ist
+    
+    neighbors.sort(key=lambda n: (angle_between(pos[node], pos[n]) - base_angle) % (2 * math.pi))
+    return neighbors
+
+def trace_face(graph, start, first_neighbor, clockwise=True):
+    """Verfolge ein Face vom Startknoten aus, basierend auf der Sortierung der Kanten."""
+    pos = nx.get_node_attributes(graph, 'pos')
+    face = [start]
+    current = first_neighbor
+    previous = start
+    visited_edges = set()
+    
+    while True:
+        face.append(current)
+        visited_edges.add((previous, current))
+        
+        neighbors = sorted_neighbors(graph, current, previous)
+        if not clockwise:
+            neighbors.reverse()
+        
+        found_next = False
+        for next_node in neighbors:
+            if (current, next_node) not in visited_edges or next_node == start:  # Erlaubt Zurückkehren zum Start
+                previous = current
+                current = next_node
+                found_next = True
+                break
+        
+        if current == start:
+            return face  # Wenn wir zurück am Start sind, ist das Face vollständig
+        
+        if not found_next:
+            break  # Falls keine gültige Fortsetzung gefunden wird, brechen wir ab
+    
+    return face if len(face) > 2 else []  # Stelle sicher, dass das Face mehr als nur Start und ein Nachbar enthält
+
+def find_faces_pre(graph, source, destination):
+
+    """Findet alle Faces um den Quellknoten, die die Destination beinhalten."""
+    faces = []
+    neighbors = list(nx.neighbors(graph, source))
+    #print("Neighbors: ", neighbors)
+    for neighbor in neighbors:
+        #print("Current Neighbor: ", neighbor)
+        face_cw = trace_face(graph, source, neighbor, clockwise=True)
+        if face_cw and face_cw not in faces and destination in face_cw:
+            faces.append(face_cw)
+        
+        face_ccw = trace_face(graph, source, neighbor, clockwise=False)
+        if face_ccw and face_ccw not in faces and destination in face_ccw:
+            faces.append(face_ccw)
+
+    #draw_graph_with_colored_faces(graph, faces, source, destination)
+
+    return faces
+
+
+def draw_graph_with_highlighted_edge(graph, source, destination, edge):
+    """Zeichnet den Graphen mit einer hervorgehobenen Kante in Blau und hebt Source und Destination hervor."""
+    pos = nx.get_node_attributes(graph, 'pos')
+    plt.figure(figsize=(8, 6))
+    
+    # Zeichne den Graphen
+    nx.draw(graph, pos, with_labels=True, edge_color='black', node_color='lightgray', node_size=500, font_size=10)
+    
+    # Hebe die Kante hervor
+    if edge in graph.edges:
+        nx.draw_networkx_edges(graph, pos, edgelist=[edge], edge_color='blue', width=2.5)
+    
+    # Hebe Source und Destination hervor
+    nx.draw_networkx_nodes(graph, pos, nodelist=[source], node_color='red', node_size=700)
+    nx.draw_networkx_nodes(graph, pos, nodelist=[destination], node_color='green', node_size=700)
+    
+    plt.show()
 

@@ -8,7 +8,9 @@ import time
 from arborescences import *
 from extra_links import *
 import glob
-
+import matplotlib.pyplot as plt
+import os
+from datetime import datetime
 from faces import route, route_faces_firstFace
 from trees import get_parent_node
 
@@ -776,17 +778,6 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     return (False, hops, switches, detour_edges)
 
 ########################################################################################################################
-#paths structure  for routing with a checkpoint: 
-# paths[source][destination] = {
-#                                                 'cp': cp,
-#                                                 'faces_cp_to_s': faces_cp_to_s, 
-#                                                 'edps_cp_to_s': edps_cp_to_s,
-#                                                 'tree_cp_to_d': tree_cp_to_d, 
-#                                                 'edps_cp_to_d': edps_cp_to_d,
-#                                                 'edps_s_to_d': edps,
-#                                                 'tree_planar_embedding_cp_to_s':tree_planar_embedding_cp_to_s,
-#                                                 'tree_cp_to_s':tree_cp_to_s
-#                                             }
 
 # the routing with ONE checkpoint and with ONE tree first tries to route using 
 # the face-routing from s -> cp and after that the tree-routing from cp -> d
@@ -3146,33 +3137,6 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None, s
 
         print(f"Graph gespeichert unter: {filename}")
 
-
-import networkx as nx
-import matplotlib.pyplot as plt
-import os
-from datetime import datetime
-
-import networkx as nx
-import matplotlib.pyplot as plt
-import os
-from datetime import datetime
-
-import networkx as nx
-import matplotlib.pyplot as plt
-import os
-from datetime import datetime
-import itertools
-import networkx as nx
-import matplotlib.pyplot as plt
-import os
-from datetime import datetime
-import itertools
-
-import networkx as nx
-import matplotlib.pyplot as plt
-import os
-from datetime import datetime
-import itertools
 
 def draw_multipletree_with_highlights(trees, nodes=None, fails=None, current_edge=None, showplot=True, einzeln=True):
     """
