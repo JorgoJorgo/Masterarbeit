@@ -17,202 +17,163 @@ def convert_to_undirected(tree):
     """
     return tree.to_undirected()
 
-def routeOLD(s, d, fails, tree):
-    speacial_nodes = [] #wenn man nix zeichnen will
-    #speacial_nodes = [9,47] #wenn man bestimmte nodes zeichnen will
-    #speacial_nodes = [s,d] #wenn man alles zeichnen will
-    
-    print("Routing from", s, "to", d)
-    print("Fails:", fails)
-    print("Tree:", tree)
+def route_faces_firstFace(s, d, tree, fails):
 
-    print("Tree nodes:", tree.nodes)
-    tree = convert_to_undirected(tree)
+    debug = False
+    #if(s == 15 and d == 5):
+    #    debug = True
 
-    
-    visited_edges = set()  # Set to keep track of visited edges
-    current_node = s
-    path = [current_node]  # Path traversed
-    previous_edge = None  # Last edge used to reach the current node
-
-    hops = 0  # Count of hops (edges traversed)
-    switches = 0  # Count of node switches
-    detour_edges = []  # List of detour edges taken due to failures
-
-    while current_node != d:
-
-        edges = get_sorted_edges(current_node, tree, fails, previous_edge,s=s,d=d)  # Sort edges by clockwise order
-
-        if not edges:  # No available edges to proceed
-
-            if len(path) > 1:
-                # Go back to the previous node
-                previous_node = path[-2]
-                path.pop()
-                current_node = previous_node
-                switches += 1
-                previous_edge = (current_node, path[-1])
-                if s in speacial_nodes and d in speacial_nodes:
-                    draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=previous_edge)
-            else:
-                print("Routing failed. No way to proceed.")
-                print("[route] detour_edges:",detour_edges)
-                return (True, hops, switches, detour_edges)  # No way to proceed
-
-        edge_taken = False
-        reverse_edge = (previous_edge[1], previous_edge[0]) if previous_edge else None
-
-        for edge in edges:
-            #print(f"Checking edge {edge}")
-            if edge == reverse_edge:
-                continue
-            if edge not in visited_edges:
-                visited_edges.add(edge)
-                previous_edge = edge
-                current_node = edge[1] if edge[0] == current_node else edge[0]
-                path.append(current_node)
-                hops += 1
-                if edge in visited_edges:
-                    detour_edges.append(edge)
-                edge_taken = True
-                if s in speacial_nodes and d in speacial_nodes:
-                    draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=edge)
-                break
-
-        if not edge_taken and reverse_edge and reverse_edge not in visited_edges:
-            visited_edges.add(reverse_edge)
-            previous_edge = reverse_edge
-            current_node = reverse_edge[1] if reverse_edge[0] == current_node else reverse_edge[0]
-            path.append(current_node)
-            hops += 1
-            edge_taken = True
-            if s in speacial_nodes and d in speacial_nodes:
-                draw_tree_with_highlights(tree, nodes=[s, d], fails=fails, current_edge=reverse_edge)
-
-        if not edge_taken:
-            print("Cycle detected or all edges revisited. Routing failed.")
-            return (True, hops, switches, detour_edges)  # All edges revisited, cycle found
-        print("-----")
-
-    print("Routing successful.")
-    return (False, hops, switches, detour_edges)  # Path successfully found to destination
-
-def route_faces_firstFace(s, d, tree, fails, len_nodes):
-
+    #print_cut_structure([], [], tree, s, d, fails=fails, filename=" ", save_plot=False)
     hops_faces = 0
-    switches_faces = 0
-    detour_edges_faces = []
-    
-    #als erstes soll das kleinste Face ermittelt werden, welches s und d enthält
-    faces_with_s_and_d = find_faces_pre(tree,source=s,destination=d)
-    print(f"[route Faces] faces vor sort: {faces_with_s_and_d} ")
-    faces_with_s_and_d.sort(key=len)
-    print(f"[route Faces] faces nach sort: {faces_with_s_and_d} ")
-    #dann routet man auf diesem face so weit wie man kommt (am besten bis zur D) ansonsten bis zu einem Fail
-
-    #wenn bei D angekommen, dann Routing success
-
-    #wenn bei nem Fail angekommen, dann Routing weitermachen im Uhrzeigersinn, bis man Kante an Source Doppelt benutzt
-    
-    return (False, hops_faces, switches_faces, detour_edges_faces)
-
-
-def route(s, d, fails, tree, len_nodes):
-    speacial_nodes = []  # wenn man nix zeichnen will
-    #speacial_nodes = [s,d] #wenn man alles zeichnen will
-    count_all_nodes= len_nodes
-
-    print("[route_greedy_perimeter] Routing from", s, "to", d)  
-    tree = convert_to_undirected(tree)
-
-    visited_edges = set()
-    visited_nodes = set()
-    current_node = s
-    path = [current_node]
-    previous_edge = None
-    
-    hops = 0
     switches = 0
     detour_edges = []
-    greedy_mode = True  # Start in Greedy Mode
-    
-    while current_node != d:
-        visited_nodes.add(current_node)
 
-        if greedy_mode:
-            # Greedy Forwarding: Wähle den Nachbarn mit der kleinsten Distanz zu D, der nicht in fails ist
-            neighbors = [n for n in tree[current_node] if (current_node, n) not in fails and (n, current_node) not in fails]
-            neighbors = [n for n in neighbors if n not in visited_nodes]  # Vermeidung von Zyklen
-            if not neighbors:
-                greedy_mode = False  # Wechsel zu Perimeter Routing
+    #print(f"[route Faces] Routing from {s} to {d}")
+    #print(f"Edges: {tree.edges}")
+    #print(f"Expected Edges: {[(s, d)]} or {[(d, s)]}")
+    
+    edges_list = list(tree.edges)
+    #print(f"Edges List: {edges_list}")
+    #print(f"Comparison 1: {edges_list == [(s, d)]}")
+    #print(f"Comparison 2: {edges_list == [(d, s)]}")
+
+    if edges_list == [(s, d)] or edges_list == [(d, s)]:
+        if (s, d) in fails or (d, s) in fails:
+            print("[route Faces] Routing failed with Start Face")
+            return (True, hops_faces, switches, detour_edges)
+        else:
+            print("[route Faces] Routing success with Start Face")
+            return (False, hops_faces, switches, detour_edges)
+
+    faces_with_s_and_d = find_faces_pre(tree, source=s, destination=d)
+    #print(f"[route Faces] Faces before sorting: {faces_with_s_and_d}")
+    faces_with_s_and_d.sort(key=len)
+    #print(f"[route Faces] Faces after sorting: {faces_with_s_and_d}")
+
+    if not faces_with_s_and_d:
+        #print("[route Faces] No faces found containing both s and d")
+        return (True, hops_faces, switches, detour_edges)
+
+    smallest_face = faces_with_s_and_d[0]
+    #print(f"[route Faces] Smallest face: {smallest_face}")
+
+    current_node = s
+    currentIndex = 0
+    previous_node = s
+
+    while current_node != d:
+        if currentIndex + 1 >= len(smallest_face):
+            #print("[route Faces] Index out of bounds for smallest face")
+            break
+
+        next_node = smallest_face[currentIndex + 1]
+        #print(f"[route Faces] Trying edge ({current_node}, {next_node})")
+
+        if (current_node, next_node) in fails or (next_node, current_node) in fails:
+            #print(f"[route Faces] Edge ({current_node}, {next_node}) is a failure")
+            break
+
+        previous_node = current_node
+        current_node = next_node
+        currentIndex += 1
+        hops_faces += 1
+        detour_edges.append((previous_node, current_node))
+        if(debug):
+            print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+        #print(f"[route Faces] Moved to {current_node}")
+
+    if current_node == d:
+        print("[route Faces] Routing success via Start Face")
+        return (False, hops_faces, switches, detour_edges)
+
+    switches += 1
+    source_edges = [(s, smallest_face[1])]
+    print(f"[route Faces] Source edges initialized: {source_edges}")
+
+    if current_node == s:
+        #print("[route Faces] Still at source, trying clockwise routing")
+        neighbors = sorted_neighbors_for_face_routing(tree, s, None, fails)
+        #print(f"[route Faces] Neighbors of {s}: {neighbors}")
+        
+        for neighbor in neighbors:
+            if (s, neighbor) in fails or (neighbor, s) in fails:
+                #print(f"[route Faces] Neighbor {neighbor} is a failure")
+                continue
+            
+            source_edges.append((s, neighbor))
+            previous_node = s
+            current_node = neighbor
+            hops_faces += 1
+            detour_edges.append((previous_node, current_node))
+            #print(f"[route Faces] Taking edge ({previous_node}, {current_node})")
+            break
+    
+    if(debug):
+        print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+
+    while current_node != d:
+        print("Source Edges: ", source_edges)
+        neighbors = sorted_neighbors_for_face_routing(tree, current_node, previous_node, fails)
+        print(f"[route Faces] Current Node: {current_node}")
+        print(f"[route Faces] Previous Node: {previous_node}")
+        print(f"[route Faces] D: {d}")
+        edge_taken = False
+        
+        for neighbor in neighbors:
+            if (current_node, neighbor) in fails or (neighbor, current_node) in fails:
                 continue
 
-            best_neighbor = min(neighbors, key=lambda n: euclidean_distance(tree.nodes[n]['pos'], tree.nodes[d]['pos']))
-            next_edge = (current_node, best_neighbor)
-        else:
-            # Perimeter Routing: Fallback für Sackgassen
-            edges = get_sorted_edges(current_node, tree, fails, previous_edge, s=s, d=d)
-            edges = [e for e in edges if e not in fails and (e[1], e[0]) not in fails]
-            edges = [e for e in edges if e[1] not in visited_nodes]  # Vermeidung von unendlichen Loops
-            if not edges:
-                if len(path) > 1:
-                    previous_node = path[-2]
-                    path.pop()
-                    current_node = previous_node
-                    switches += 1
-                    previous_edge = (current_node, path[-1])
-                    continue  # Rücksprung zur Schleife, um neuen Versuch zu starten
-                else:
-                    print("Routing failed. No way to proceed.")
-                    unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
-                    print_cut_structure([], [], tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
-                    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
-                    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
-                    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
-                    return (True, hops, switches, detour_edges)
+            # Verhindern, dass wir eine Kante doppelt in source_edges speichern
+            if (current_node, neighbor) in source_edges:
+                break
+
+            previous_node = current_node
+            current_node = neighbor
+            hops_faces += 1
+            detour_edges.append((previous_node, current_node))
+            edge_taken = True
             
-            next_edge = edges[0] if edges else None
-            if next_edge is None:
-                print("Perimeter Routing failed: No available edges.")
-                unique_filename = f"failedgraphs/routeGreedyPerimeter_graph_{uuid.uuid4().hex}.png"
-                print_cut_structure([], [], tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
-                print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
-                print("[route_greedy_perimeter] nodes: ", count_all_nodes)
-                print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
-                return (True, hops, switches, detour_edges)
-        
-        if next_edge in visited_edges:
-            detour_edges.append(next_edge)
+            # Falls die Kante von der Quelle s ausgeht, füge sie in source_edges hinzu
+            if previous_node == s:
+                source_edges.append((previous_node, current_node))
 
-        visited_edges.add(next_edge)
-        previous_edge = next_edge
-        current_node = next_edge[1] if next_edge[0] == current_node else next_edge[0]
-        path.append(current_node)
-        hops += 1
+            break
 
-        if s in speacial_nodes and d in speacial_nodes:
-            print_cut_structure([], [], tree, s, d, current_edge=previous_edge, fails=fails)
+        if not edge_taken:
+            print("[route Faces] No valid edge found, routing failed with Clockwise Face Routing")
+            return (True, hops_faces, switches, detour_edges)
 
-        print("-----")
-    
-    print("Routing successful.")
-    print("[route_greedy_perimeter] count_visited_nodes:",len(visited_nodes))
-    print("[route_greedy_perimeter] nodes: ", count_all_nodes)
-    print("[route_greedy_perimeter] len(visited_nodes) < log(nodes):", len(visited_nodes) < math.log(count_all_nodes))
-    return (False, hops, switches, detour_edges)
+        if(debug):
+            print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+
+
+    #print("[route Faces] Routing success with Clockwise Face Routing")
+    return (False, hops_faces, switches, detour_edges)
 
 
 def sorted_neighbors_for_face_routing(graph, node, coming_from, fails):
-    """Sortiere die Nachbarn eines Knotens basierend auf ihrem Winkel relativ zur vorherigen Kante und vermeide Fail-Kanten."""
-    pos = nx.get_node_attributes(graph, 'pos')
-    neighbors = [n for n in graph.neighbors(node) if (node, n) not in fails and (n, node) not in fails]
-    if coming_from is not None:
-        base_angle = angle_between(pos[node], pos[coming_from])
-    else:
-        base_angle = 0  # Falls kein vorheriger Knoten vorhanden ist
+    """Sortiere die Nachbarn eines Knotens im Uhrzeigersinn, wobei der 'coming_from'-Knoten immer als letzter steht."""
     
-    neighbors.sort(key=lambda n: (angle_between(pos[node], pos[n]) - base_angle) % (2 * math.pi))
-    return neighbors
+    # Hole alle Nachbarn des Knotens
+    all_neighbors = list(graph.neighbors(node))
+    print(f"[sorted_neighbors_for_face_routing] All neighbors: {all_neighbors}")
+    
+    # Filtere die Nachbarn, um Fail-Kanten auszuschließen
+    valid_neighbors = []
+    for neighbor in all_neighbors:
+        if (node, neighbor) not in fails and (neighbor, node) not in fails:
+            valid_neighbors.append(neighbor)
+    print(f"[sorted_neighbors_for_face_routing] Valid neighbors: {valid_neighbors}")
+    
+    # Falls ein 'coming_from'-Knoten existiert, verschiebe ihn ans Ende der Liste
+    if coming_from in valid_neighbors:
+        valid_neighbors.remove(coming_from)
+        valid_neighbors.append(coming_from)
+    print(f"[sorted_neighbors_for_face_routing] Final neighbors: {valid_neighbors}")
+    
+    return valid_neighbors
+
+
 
 # Helper function to calculate the angle between two coordinates
 def calculate_angle(pos1, pos2):
@@ -359,87 +320,11 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
 
 
 def route_faces_with_paths(s, d, fails, paths):
-    
-    speacial_nodes = [] #wenn man nix zeichnen will
-    #speacial_nodes = [49,47] #wenn man bestimmte nodes zeichnen will
-    #speacial_nodes = [s,d] #wenn man alles zeichnen will
-    
-    tree = paths[s][d]['structure']
-    cut_edges = paths[s][d]['cut_edges']
-    cut_nodes = paths[s][d]['cut_nodes']
-    tree = convert_to_undirected(tree)
+    print("----------------------------------------------------------------")
+    print("[route_faces_with_paths] Routing from", s, "to", d)
+    #print_cut_structure([], [], paths[s][d]['structure'], s, d, fails=fails, filename=" ", save_plot=False)
+    return route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
 
-    
-    visited_edges = set()  # Set to keep track of visited edges
-    current_node = s
-    path = [current_node]  # Path traversed
-    previous_edge = None  # Last edge used to reach the current node
-
-    hops = 0  # Count of hops (edges traversed)
-    switches = 0  # Count of node switches
-    detour_edges = []  # List of detour edges taken due to failures
-
-    while current_node != d:
-
-        edges = get_sorted_edges(current_node, tree, fails, previous_edge,s=s,d=d)  # Sort edges by clockwise order
-
-        if not edges:  # No available edges to proceed
-
-            if len(path) > 1:
-                # Go back to the previous node
-                previous_node = path[-2]
-                path.pop()
-                current_node = previous_node
-                switches += 1
-                previous_edge = (current_node, path[-1])
-                if s in speacial_nodes and d in speacial_nodes:
-                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
-            else:
-                print("Routing failed. No way to proceed.")
-                print("[route] detour_edges:",detour_edges)
-                unique_filename = f"failedgraphs/graph_{uuid.uuid4().hex}.png"
-                print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
-                return (True, hops, switches, detour_edges)  # No way to proceed
-
-        edge_taken = False
-        reverse_edge = (previous_edge[1], previous_edge[0]) if previous_edge else None
-
-        for edge in edges:
-            #print(f"Checking edge {edge}")
-            if edge == reverse_edge:
-                continue
-            if edge not in visited_edges:
-                visited_edges.add(edge)
-                previous_edge = edge
-                current_node = edge[1] if edge[0] == current_node else edge[0]
-                path.append(current_node)
-                hops += 1
-                if edge in visited_edges:
-                    detour_edges.append(edge)
-                edge_taken = True
-                if s in speacial_nodes and d in speacial_nodes:
-                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
-                break
-
-        if not edge_taken and reverse_edge and reverse_edge not in visited_edges:
-            visited_edges.add(reverse_edge)
-            previous_edge = reverse_edge
-            current_node = reverse_edge[1] if reverse_edge[0] == current_node else reverse_edge[0]
-            path.append(current_node)
-            hops += 1
-            edge_taken = True
-            if s in speacial_nodes and d in speacial_nodes:
-                    print_cut_structure(cut_nodes, cut_edges, tree, s, d,current_edge=previous_edge, fails=fails)
-
-        if not edge_taken:
-            print("Cycle detected or all edges revisited. Routing failed.")
-            unique_filename = f"failedgraphs/graph_{uuid.uuid4().hex}.png"
-            print_cut_structure(cut_nodes, cut_edges, tree, s, d, fails=fails, filename=unique_filename,save_plot=True)
-            return (True, hops, switches, detour_edges)  # All edges revisited, cycle found
-        print("-----")
-
-    print("Routing successful.")
-    return (False, hops, switches, detour_edges)  # Path successfully found to destination
 
 def euclidean_distance(a, b):
     return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)

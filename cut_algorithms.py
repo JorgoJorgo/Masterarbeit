@@ -245,7 +245,7 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
     nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='green', width=2)
     
     # Highlight the source and destination nodes in yellow
-    nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='yellow')
+    nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
     nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='yellow')
     
     # Highlight the current edge if provided
