@@ -230,30 +230,36 @@ def multipleTrees_with_cuts(source, destination, graph, cut_edges, cut_nodes):
 
 
 
+import os
+import networkx as nx
+import matplotlib.pyplot as plt
+from datetime import datetime
+
 def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destination, fails=[], current_edge=None, save_plot=False, filename="graphen/graph.png"):
     pos = nx.get_node_attributes(structure, 'pos')
     
     plt.figure(figsize=(10, 10))
     
-    # Draw the entire structure with normal edges in black
+    # Zeichne den gesamten Graphen mit normalen Kanten in Schwarz
     nx.draw(structure, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=500, font_size=10)
     
-    # Highlight the specified nodes
+    # Markiere hervorgehobene Knoten
     nx.draw_networkx_nodes(structure, pos, nodelist=highlighted_nodes, node_color='red')
     
-    # Highlight the cut edges in green
+    # Markiere Cut-Kanten in Grün
     nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='green', width=2)
     
-    # Highlight the source and destination nodes in yellow
+    # Markiere Source- und Destination-Knoten
     nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
     nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='yellow')
     
-    # Highlight the current edge if provided
+    # Markiere die aktuelle Kante, falls vorhanden
     if current_edge:
         nx.draw_networkx_edges(structure, pos, edgelist=[current_edge], edge_color='blue', width=2)
     
-    # Highlight the failed edges in red
-    valid_fails = [edge for edge in fails if edge[0] in pos and edge[1] in pos]
+    # **Fix: Fail-Kanten in beide Richtungen prüfen**
+    valid_fails = [(u, v) for (u, v) in structure.edges if (u, v) in fails or (v, u) in fails]
+    
     if valid_fails:
         nx.draw_networkx_edges(structure, pos, edgelist=valid_fails, edge_color='red', width=2)
     
@@ -265,5 +271,4 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
     else:
         plt.show()
 
-
-    matplotlib.pyplot.close()
+    plt.close()

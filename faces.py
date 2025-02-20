@@ -18,10 +18,9 @@ def convert_to_undirected(tree):
     return tree.to_undirected()
 
 def route_faces_firstFace(s, d, tree, fails):
-
+    limit = len(tree.nodes)*len(tree.nodes)
     debug = False
-    #if(s == 15 and d == 5):
-    #    debug = True
+    #if(d == 12): debug = True
 
     #print_cut_structure([], [], tree, s, d, fails=fails, filename=" ", save_plot=False)
     hops_faces = 0
@@ -78,8 +77,8 @@ def route_faces_firstFace(s, d, tree, fails):
         currentIndex += 1
         hops_faces += 1
         detour_edges.append((previous_node, current_node))
-        if(debug):
-            print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+        #if(debug):
+        #    print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
         #print(f"[route Faces] Moved to {current_node}")
 
     if current_node == d:
@@ -109,7 +108,7 @@ def route_faces_firstFace(s, d, tree, fails):
             break
     
     if(debug):
-        print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+        print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
 
     while current_node != d:
         print("Source Edges: ", source_edges)
@@ -118,6 +117,19 @@ def route_faces_firstFace(s, d, tree, fails):
         print(f"[route Faces] Previous Node: {previous_node}")
         print(f"[route Faces] D: {d}")
         edge_taken = False
+
+        if d in neighbors:
+
+            if (current_node, d) in fails or (d, current_node) in fails:
+                print("[route Faces] Edge ({current_node}, {d}) is a failure")
+            else:
+                previous_node = current_node
+                current_node = d
+                hops_faces += 1
+                detour_edges.append((previous_node, current_node))
+                edge_taken = True
+                #print(f"[route Faces] Taking edge ({previous_node}, {current_node})")
+                break
         
         for neighbor in neighbors:
             if (current_node, neighbor) in fails or (neighbor, current_node) in fails:
@@ -144,35 +156,66 @@ def route_faces_firstFace(s, d, tree, fails):
             return (True, hops_faces, switches, detour_edges)
 
         if(debug):
-            print_cut_structure([], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+            print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
 
 
     #print("[route Faces] Routing success with Clockwise Face Routing")
     return (False, hops_faces, switches, detour_edges)
 
 
-def sorted_neighbors_for_face_routing(graph, node, coming_from, fails):
-    """Sortiere die Nachbarn eines Knotens im Uhrzeigersinn, wobei der 'coming_from'-Knoten immer als letzter steht."""
-    
-    # Hole alle Nachbarn des Knotens
-    all_neighbors = list(graph.neighbors(node))
-    print(f"[sorted_neighbors_for_face_routing] All neighbors: {all_neighbors}")
-    
-    # Filtere die Nachbarn, um Fail-Kanten auszuschließen
-    valid_neighbors = []
-    for neighbor in all_neighbors:
-        if (node, neighbor) not in fails and (neighbor, node) not in fails:
-            valid_neighbors.append(neighbor)
-    print(f"[sorted_neighbors_for_face_routing] Valid neighbors: {valid_neighbors}")
-    
-    # Falls ein 'coming_from'-Knoten existiert, verschiebe ihn ans Ende der Liste
-    if coming_from in valid_neighbors:
-        valid_neighbors.remove(coming_from)
-        valid_neighbors.append(coming_from)
-    print(f"[sorted_neighbors_for_face_routing] Final neighbors: {valid_neighbors}")
-    
-    return valid_neighbors
+import math
 
+
+def sorted_neighbors_for_face_routing(graph, node, coming_from=None, fails=[]):
+    """Sortiert die Nachbarn eines Knotens im Uhrzeigersinn für Face Routing."""
+    
+    # Hole die Koordinaten des aktuellen Knotens
+    node_x, node_y = graph.nodes[node]['pos']
+    
+    all_neighbors = list(graph.neighbors(node))
+    print(f"\n[DEBUG] Current Node: {node}, Coming From: {coming_from}")
+    print(f"[DEBUG] All Neighbors before filtering: {all_neighbors}")
+
+    # Fail-Kanten sauber filtern
+    valid_neighbors = [neighbor for neighbor in all_neighbors if (node, neighbor) not in fails and (neighbor, node) not in fails]
+    print(f"[DEBUG] Valid Neighbors after filtering fails: {valid_neighbors}")
+    
+    if not valid_neighbors:
+        return []
+    
+    # Falls coming_from existiert, Winkel relativ zu diesem berechnen
+    if coming_from and coming_from in graph.nodes:
+        from_x, from_y = graph.nodes[coming_from]['pos']
+        reference_angle = math.atan2(from_y - node_y, from_x - node_x)
+    else:
+        reference_angle = math.atan2(0, 1)  # Standardmäßig positive X-Achse (0°)
+    
+    # Funktion zur Berechnung des Winkels
+    def angle(neighbor):
+        nx, ny = graph.nodes[neighbor]['pos']
+        return math.atan2(ny - node_y, nx - node_x)
+    
+    # Winkel relativ zur Referenz normalisieren
+    def normalized_angle(neighbor):
+        diff = angle(neighbor) - reference_angle
+        return (diff + 2 * math.pi) % (2 * math.pi)  # Wert in [0, 2π] halten
+    
+    # Winkel berechnen und ausgeben
+    neighbor_angles = {neighbor: round(normalized_angle(neighbor), 5) for neighbor in valid_neighbors}
+    print(f"[DEBUG] Normalized Angles (before sorting): {neighbor_angles}")
+    
+    # Nachbarn im Uhrzeigersinn sortieren
+    valid_neighbors.sort(key=lambda neighbor: neighbor_angles[neighbor], reverse=True)
+    print(f"[DEBUG] Sorted Neighbors (Clockwise Order): {valid_neighbors}")
+    
+    # Falls coming_from existiert, sortiere es korrekt ein
+    if coming_from is not None and coming_from in graph.nodes:
+        if coming_from in valid_neighbors:
+            index = valid_neighbors.index(coming_from)
+            valid_neighbors = valid_neighbors[index+1:] + valid_neighbors[:index+1]
+    
+    print(f"[DEBUG] Final Sorted Neighbors (coming_from at end if exists): {valid_neighbors}\n")
+    return valid_neighbors
 
 
 # Helper function to calculate the angle between two coordinates
