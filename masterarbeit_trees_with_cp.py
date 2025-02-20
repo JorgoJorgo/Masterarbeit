@@ -126,6 +126,14 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
             tree.add_edge(source, destination)
             tree.nodes[destination]['pos'] = graph.nodes[destination]['pos']
 
+    faces  = find_faces_pre(tree,source,destination)
+    smallest_face = None
+    smallest_face_size = 1000000
+    for face in faces:
+        if len(face) < smallest_face_size:
+            smallest_face = face
+            smallest_face_size = len(face)
+
 
     #draw_graph_with_highlighted_edge(tree, source, destination, ())
     #jeden edp durchgehen und ihn erweitern
@@ -192,7 +200,7 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                         draw_graph_with_highlighted_edge(fake_tree, source, destination, (nodes[it], neighbors[k]))
                     if len(faces) > 0:
                         for face in faces:
-                            if source in face and destination in face:
+                            if source in face and destination in face and smallest_face in faces:
                                 neighbor_accepted = True
                                 break
                             #endif
