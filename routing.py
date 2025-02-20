@@ -605,9 +605,6 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     switches = 0
     
     cp = paths[s][d]['cp']
-    edps_cp_to_s = paths[s][d]['edps_cp_to_s']
-    trees_cp_to_d  = paths[s][d]['trees_cp_to_d']
-    edps_cp_to_d   = paths[s][d]['edps_cp_to_d']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
     trees_cp_to_s = paths[s][d]['trees_cp_to_s']
 

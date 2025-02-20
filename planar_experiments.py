@@ -19,14 +19,16 @@ algos = {
         #'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
         #'SquareOne':[PrepareSQ1,RouteSQ1],
         
+        # 'One Tree': [one_tree_pre, RouteOneTree],
         # 'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
-        # 'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+
+         'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         # 'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
-        # 'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        # 'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        # 'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+         'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+         'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+         'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         
-        # 'One Tree PE': [one_tree_pre, RouteOneTree],
+
         # 'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
         # 'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
