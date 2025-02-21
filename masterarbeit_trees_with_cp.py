@@ -13,7 +13,7 @@ from matplotlib.patches import Patch, Polygon
 from matplotlib.collections import PatchCollection
 from networkx import PlanarEmbedding
 from arborescences import *
-from faces import draw_graph_with_highlighted_edge, find_faces_pre
+from faces import find_faces_pre, draw_graph_with_highlighted_edge
 from trees import all_edps, connect_leaf_to_destination, multiple_trees, multiple_trees_parallel, rank_tree, remove_redundant_paths, remove_single_node_trees
 
 
@@ -278,27 +278,204 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
     #draw_graph_with_highlighted_edge(tree, source, destination, ())
     return tree
 
-#ein großer baum für alle edps, jeder EDP kriegt immer eine neue Kante dazu, NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
-def multiple_trees_parallel_cp(source, destination, graph, all_edps):
-    removed_edges = 0
+
+
+import matplotlib.pyplot as plt
+import networkx as nx
+
+def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, current_edge):
+    """Zeichnet den Graph mit speziellen Farben für Source, Destination, Paths und die aktuell eingefügte Kante."""
     
-    nodes_in_tree = []
+    pos = nx.get_node_attributes(tree, 'pos')
+    #adding the reverse edges to the tree
+    for edge in tree.edges:
+        if (edge[1], edge[0]) not in tree.edges:
+            tree.add_edge(edge[1], edge[0])
+
+    if not pos:
+        print("WARNING: No position attributes found! Graph might not be displayed correctly.")
+    
+    plt.figure(figsize=(10, 8))
+    
+    # Zeichne alle Kanten standardmäßig in Grau
+    nx.draw(tree, pos, with_labels=True, edge_color='gray', node_color='lightgray', node_size=500, font_size=10)
+    
+    # Zeichne Source und Destination in speziellen Farben
+    nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='red', node_size=700, label='Source')
+    nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='green', node_size=700, label='Destination')
+    
+
+    #print("Edge List: ", edge_list)
+    
+
+    colors = ['black', 'red', 'blue', 'green', 'purple', 'orange', 'pink', 'yellow', 'brown', 'cyan']
+    color_index = 0
+    for edges in edge_list:
+        for edge in edges:
+            edge = tuple(edge)
+            if edge  in tree.edges or (edge[1], edge[0]) in tree.edges:
+                
+                edge_new = tuple(edge)
+                try:
+                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[edge_new], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
+                except: 
+                    flipped_edge = (edge_new[1], edge_new[0])
+                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[flipped_edge], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
+        
+        color_index += 1
+    
+    # Zeichne die aktuelle Kante in Blau
+    if current_edge:
+        nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=3, alpha=1.0)
+    
+    plt.legend()
+    plt.show()
+
+def multiple_trees_parallel_cp(source, destination, graph, all_edps):
+    """Erstellt mehrere Bäume mit einem Checkpoint unter Berücksichtigung der Faces parallel."""
+    
     tree = nx.Graph()
     tree.add_node(source)
-    #für jeden tree muss hier sein edp eingefügt werden in den jeweiligen graph des trees 
-    for i in range(0,len(all_edps)):
 
-        current_edp = all_edps[i]
+    tree.nodes[source]['pos'] = graph.nodes[source]['pos']
 
-        for j in range(1,len(current_edp)-1):
-            tree.add_node(current_edp[j])
-            tree.add_edge(current_edp[j-1], current_edp[j])
+    
+    edge_lists = []
+    edgelist_counter = 0
+    for edp in all_edps:
+        edge_lists.append([])
+        for j in range(len(edp)):
+            tree.add_node(edp[j])
+            
+            tree.nodes[edp[j]]['pos'] = graph.nodes[edp[j]]['pos']
+            if j > 0:
+                tree.add_edge(edp[j - 1], edp[j])
+                edge_lists[edgelist_counter].append((edp[j - 1], edp[j]))
 
+        edgelist_counter += 1
+    paths_to_extend = all_edps.copy()
+    it_list = [0] * len(paths_to_extend)
+    changed = True
 
-    #jetzt sind alle EDPs im tree, jetzt müssen die Bäume erweitert werden
+    while changed:
+        changed = False
+        print("Starting a new iteration of expansion")
+        
+        for i in range(len(paths_to_extend)):
+            checked_all = False
+            checked_number = 0
+            print(f"Expanding path {i}")
+            
+            while not checked_all:
+                if it_list[i] >= len(paths_to_extend[i]):
+                    checked_all = True
+                    continue
+                
+                node = paths_to_extend[i][it_list[i]]
+                checked_number += 1
+                neighbors = list(nx.neighbors(graph, node))
 
-    #die erweiterung geschieht für jeden EDP parallel
-    #der eine EDP bekommt eine Kante, dann wird  zum nächsten geschaltet, bis keine neuen Kanten mehr eingefügt werden
+                added_edge = False
+                
+                for neighbor in neighbors:
+                    #print(f"Checking neighbor {neighbor}")
+                    
+                    if tree.has_edge(node, neighbor) or neighbor in tree.nodes:
+                        continue
+                    
+                    fake_tree = tree.copy()
+                    fake_tree.add_node(neighbor)
+                    fake_tree.add_edge(node, neighbor)
+                    
+                    fake_tree.nodes[neighbor]['pos'] = graph.nodes[neighbor]['pos']
+
+                    
+                    print(f"Calling find_faces_pre for node {node} and neighbor {neighbor}")
+                    faces = find_faces_pre(fake_tree, source, destination)
+                    smallest_face = min(faces, key=len, default=None)
+                                        
+                    if smallest_face and source in smallest_face and destination in smallest_face:
+                        tree.add_node(neighbor)
+                        tree.add_edge(node, neighbor)
+                        edge_lists[i].append((node, neighbor))
+
+                        #check if every edge in the edge list is in the tree
+                        for edge in edge_lists[i]:
+                            assert edge in tree.edges, f"Edge list {edge_lists[i]} not in tree edges!"  
+                            assert edge in fake_tree.edges, f"Edge list {edge_lists[i]} not in fake_tree edges!"  
+
+                        # Position des neuen Knotens hinzufügen
+                        tree.nodes[neighbor]['pos'] = graph.nodes[neighbor]['pos']
+                        
+                        
+                        paths_to_extend[i].append(neighbor)
+                        changed = True
+                        added_edge = True
+                        print(f"Added edge ({node}, {neighbor})")
+                        
+                    if added_edge:
+                        break
+                
+                #if no edge was added then we need to increase the iterator an check the next node of the current path
+                if not added_edge:
+                    it_list[i] += 1
+                
+                #if an edge was added we can switch to the next path and look for the next node to add
+                else:
+                    break
+                
+                #if we checked all nodes of the current path we can switch to the next path
+                if checked_number >= len(paths_to_extend[i]):
+                    print(f"Checked all nodes of {paths_to_extend[i]}")
+                    checked_all = True
+
+                #reset the iterator if we checked to the end of the path, in order to start at the beginning of the path again
+                if it_list[i] >= len(paths_to_extend[i]):
+                    it_list[i] = 0
+    
+
+    #now the tree needs to bre pruned
+    changed = True
+    while changed:
+        changed = False
+        old_edges = len(tree.edges)
+        nodes_to_check = list(tree.nodes)
+        
+        for node in nodes_to_check:
+            if node != source and node != destination and tree.degree(node) == 1:
+                accept_removal = False
+                fake_tree = tree.copy()
+                neighbor = list(nx.neighbors(fake_tree, node))[0]
+                
+                if (node, neighbor) in fake_tree.edges:
+                    fake_tree.remove_edge(node, neighbor)
+                else:
+                    fake_tree.remove_edge(neighbor, node)
+                
+                fake_tree.remove_node(node)
+                
+                for node2 in fake_tree.nodes:
+                    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
+                
+                faces = find_faces_pre(fake_tree, source, destination)
+                
+                for face in faces:
+                    if source in face and destination in face:
+                        accept_removal = True
+                        break
+                
+                if accept_removal:
+                    if (node, neighbor) in tree.edges:
+                        tree.remove_edge(node, neighbor)
+                    else:
+                        tree.remove_edge(neighbor, node)
+                    tree.remove_node(node)
+                    changed = True
+
+    #draw_graph_with_highlighted_edge2(tree, source, destination, edge_lists, ())
+
+    return tree
+
 
 #ein großer baum, durch die erweiterung des mitgegebenen edps "longest_edp", für normale baumstrukturen mit tree routing
 def one_tree_with_checkpoint(source, destination, graph, longest_edp):
@@ -2509,5 +2686,6 @@ def draw_graph(tree, source, destination, graph):
     plt.show()
 
 def should_debug(source, destination):
+
     return False
     return source == 49 and destination == 34
