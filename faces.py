@@ -17,6 +17,11 @@ def convert_to_undirected(tree):
     """
     return tree.to_undirected()
 
+
+
+#route from s to d using face routing with the smallest face
+#if routing fails via the smallest face, then route using clockwise face routing
+#routing fails if cycle is detected at the source
 def route_faces_firstFace(s, d, tree, fails):
     limit = len(tree.nodes)*len(tree.nodes)
     debug = False
@@ -27,14 +32,7 @@ def route_faces_firstFace(s, d, tree, fails):
     switches = 0
     detour_edges = []
 
-    #print(f"[route Faces] Routing from {s} to {d}")
-    #print(f"Edges: {tree.edges}")
-    #print(f"Expected Edges: {[(s, d)]} or {[(d, s)]}")
-    
     edges_list = list(tree.edges)
-    #print(f"Edges List: {edges_list}")
-    #print(f"Comparison 1: {edges_list == [(s, d)]}")
-    #print(f"Comparison 2: {edges_list == [(d, s)]}")
 
     if edges_list == [(s, d)] or edges_list == [(d, s)]:
         if (s, d) in fails or (d, s) in fails:
@@ -45,16 +43,12 @@ def route_faces_firstFace(s, d, tree, fails):
             return (False, hops_faces, switches, detour_edges)
 
     faces_with_s_and_d = find_faces_pre(tree, source=s, destination=d)
-    #print(f"[route Faces] Faces before sorting: {faces_with_s_and_d}")
     faces_with_s_and_d.sort(key=len)
-    #print(f"[route Faces] Faces after sorting: {faces_with_s_and_d}")
 
     if not faces_with_s_and_d:
-        #print("[route Faces] No faces found containing both s and d")
         return (True, hops_faces, switches, detour_edges)
 
     smallest_face = faces_with_s_and_d[0]
-    #print(f"[route Faces] Smallest face: {smallest_face}")
 
     current_node = s
     currentIndex = 0
@@ -62,14 +56,11 @@ def route_faces_firstFace(s, d, tree, fails):
 
     while current_node != d:
         if currentIndex + 1 >= len(smallest_face):
-            #print("[route Faces] Index out of bounds for smallest face")
             break
 
         next_node = smallest_face[currentIndex + 1]
-        #print(f"[route Faces] Trying edge ({current_node}, {next_node})")
 
         if (current_node, next_node) in fails or (next_node, current_node) in fails:
-            #print(f"[route Faces] Edge ({current_node}, {next_node}) is a failure")
             break
 
         previous_node = current_node
@@ -90,7 +81,6 @@ def route_faces_firstFace(s, d, tree, fails):
     print(f"[route Faces] Source edges initialized: {source_edges}")
 
     if current_node == s:
-        #print("[route Faces] Still at source, trying clockwise routing")
         neighbors = sorted_neighbors_for_face_routing(tree, s, None, fails)
         #print(f"[route Faces] Neighbors of {s}: {neighbors}")
         

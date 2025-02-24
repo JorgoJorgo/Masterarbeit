@@ -15,7 +15,7 @@ from networkx import PlanarEmbedding
 from arborescences import *
 from faces import find_faces_pre, draw_graph_with_highlighted_edge
 from trees import all_edps, connect_leaf_to_destination, multiple_trees, multiple_trees_parallel, rank_tree, remove_redundant_paths, remove_single_node_trees
-
+import os
 
 
 #################################################### BASE ALGORITHMS FOR TREE-BUILDING ################################################
@@ -92,7 +92,6 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
     
     removed_edges_multtrees.append(removed_edges)
     return trees
-
 
 #ein großer baum für alle edps, längster EDP wird als erstes erweitert, NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
 def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edps):
@@ -278,59 +277,6 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
     #draw_graph_with_highlighted_edge(tree, source, destination, ())
     return tree
 
-
-
-import matplotlib.pyplot as plt
-import networkx as nx
-
-def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, current_edge):
-    """Zeichnet den Graph mit speziellen Farben für Source, Destination, Paths und die aktuell eingefügte Kante."""
-    
-    pos = nx.get_node_attributes(tree, 'pos')
-    #adding the reverse edges to the tree
-    for edge in tree.edges:
-        if (edge[1], edge[0]) not in tree.edges:
-            tree.add_edge(edge[1], edge[0])
-
-    if not pos:
-        print("WARNING: No position attributes found! Graph might not be displayed correctly.")
-    
-    plt.figure(figsize=(10, 8))
-    
-    # Zeichne alle Kanten standardmäßig in Grau
-    nx.draw(tree, pos, with_labels=True, edge_color='gray', node_color='lightgray', node_size=500, font_size=10)
-    
-    # Zeichne Source und Destination in speziellen Farben
-    nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='red', node_size=700, label='Source')
-    nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='green', node_size=700, label='Destination')
-    
-
-    #print("Edge List: ", edge_list)
-    
-
-    colors = ['black', 'red', 'blue', 'green', 'purple', 'orange', 'pink', 'yellow', 'brown', 'cyan']
-    color_index = 0
-    for edges in edge_list:
-        for edge in edges:
-            edge = tuple(edge)
-            if edge  in tree.edges or (edge[1], edge[0]) in tree.edges:
-                
-                edge_new = tuple(edge)
-                try:
-                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[edge_new], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
-                except: 
-                    flipped_edge = (edge_new[1], edge_new[0])
-                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[flipped_edge], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
-        
-        color_index += 1
-    
-    # Zeichne die aktuelle Kante in Blau
-    if current_edge:
-        nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=3, alpha=1.0)
-    
-    plt.legend()
-    plt.show()
-
 def multiple_trees_parallel_cp(source, destination, graph, all_edps):
     """Erstellt mehrere Bäume mit einem Checkpoint unter Berücksichtigung der Faces parallel."""
     
@@ -476,7 +422,6 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
 
     return tree
 
-
 #ein großer baum, durch die erweiterung des mitgegebenen edps "longest_edp", für normale baumstrukturen mit tree routing
 def one_tree_with_checkpoint(source, destination, graph, longest_edp):
     #print("[one_tree_with_checkpoint] source:",source)
@@ -539,7 +484,6 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
         return tree    
         
     #end if
-
 
 #ein großer baum, durch die erweiterung des mitgegebenen edps "longest_edp", NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
 def one_tree_with_checkpoint_for_faces(source, destination, graph, longest_edp):
@@ -815,6 +759,111 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 edps = all_edps(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                
+                longest_edp = edps[len(edps)-1]
+
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                cp = longest_edp[ int(len(longest_edp)/2)]
+
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+                
+                #then build multiple trees cp->d
+                
+                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
+                if source in paths:
+                    paths[source][destination] = { 
+                                                'cp': cp,
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'cp': cp,
+                                                'trees_cp_to_s': trees_cp_to_s, 
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                    }
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
+    return paths
+
+
+#################################################### MULTIPLETREES INVERS WITH MIDDLE CHECKPOINT ################################################
+
+##########################################################################################################################################
+removed_edges_multtrees = []
+
+def multiple_trees_invers_with_middle_checkpoint_pre(graph):
+    paths = {}
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointPre] Start Precomputation")
+    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    combinations = 0
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            
+            if source != destination:
+                combinations += 1
+                print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                
+                edps.sort(key=len, reverse=False) #Sortierung der EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1409,7 +1458,6 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 #if( len(tree_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeMiddle_{source}_{cp}.png")
     return paths
-
 
 
 ########################################################################################################
@@ -2392,8 +2440,6 @@ def plot_faces(G, faces, title="Faces Plot"):
     plt.title(title)
     plt.show()
 
-
-
 def draw_tree_with_highlighted_nodes(tree, nodes):
 
 
@@ -2419,7 +2465,6 @@ def draw_tree_with_highlighted_nodes(tree, nodes):
     # Zeichne den Baum
     plt.title("Baum mit hervorgehobenen Knoten")
     plt.show()
-
 
 def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
     """
@@ -2519,14 +2564,6 @@ def plot_paths_element(paths_element, tree, source, destination):
     # Zeichne den Graphen
     nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=700, font_size=10, font_weight="bold")
     plt.show()
-
-
-import networkx as nx
-import matplotlib.pyplot as plt
-
-import matplotlib.pyplot as plt
-import networkx as nx
-import os
 
 def print_cut_structure(highlighted_nodes, structure, source, destination,cut_edges=[], fails=[], current_edge=None, save_plot=False, filename="failedgraphs/graph.png"):
     pos = nx.get_node_attributes(structure, 'pos')
@@ -2689,3 +2726,51 @@ def should_debug(source, destination):
 
     return False
     return source == 49 and destination == 34
+
+def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, current_edge):
+    """Zeichnet den Graph mit speziellen Farben für Source, Destination, Paths und die aktuell eingefügte Kante."""
+    
+    pos = nx.get_node_attributes(tree, 'pos')
+    #adding the reverse edges to the tree
+    for edge in tree.edges:
+        if (edge[1], edge[0]) not in tree.edges:
+            tree.add_edge(edge[1], edge[0])
+
+    if not pos:
+        print("WARNING: No position attributes found! Graph might not be displayed correctly.")
+    
+    plt.figure(figsize=(10, 8))
+    
+    # Zeichne alle Kanten standardmäßig in Grau
+    nx.draw(tree, pos, with_labels=True, edge_color='gray', node_color='lightgray', node_size=500, font_size=10)
+    
+    # Zeichne Source und Destination in speziellen Farben
+    nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='red', node_size=700, label='Source')
+    nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='green', node_size=700, label='Destination')
+    
+
+    #print("Edge List: ", edge_list)
+    
+
+    colors = ['black', 'red', 'blue', 'green', 'purple', 'orange', 'pink', 'yellow', 'brown', 'cyan']
+    color_index = 0
+    for edges in edge_list:
+        for edge in edges:
+            edge = tuple(edge)
+            if edge  in tree.edges or (edge[1], edge[0]) in tree.edges:
+                
+                edge_new = tuple(edge)
+                try:
+                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[edge_new], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
+                except: 
+                    flipped_edge = (edge_new[1], edge_new[0])
+                    nx.draw_networkx_edges(tree, pos=pos, edgelist=[flipped_edge], edge_color=colors[color_index % len(colors)], width=2, alpha=0.5)
+        
+        color_index += 1
+    
+    # Zeichne die aktuelle Kante in Blau
+    if current_edge:
+        nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=3, alpha=1.0)
+    
+    plt.legend()
+    plt.show()
