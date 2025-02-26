@@ -11,7 +11,7 @@ import glob
 import matplotlib.pyplot as plt
 import os
 from datetime import datetime
-from faces import route_faces_firstFace
+from faces import route_faces_firstFace, route_greedy_perimeter
 from trees import get_parent_node
 
 #global variables in this file
@@ -689,6 +689,183 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
 
     #now the first step of the routing consists of face-routing from S to CP
     routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route_faces_firstFace(s, cp, tree=trees_cp_to_s, fails=fails)
+
+    hops = hops + hops_faces
+    switches = switches + switches_faces
+    
+    for edge in detour_edges_faces:
+        detour_edges.append(edge)
+
+    if(routing_failure_faces):
+        print("Routing failed via Faces from S to CP ")
+        draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
+        return (True, hops, switches, detour_edges)
+    else:
+        if(len(edps_s_to_d)==1):
+            print("[RouteOneCheckpointMult] edps_s_to_d:", edps_s_to_d)
+            return (False, hops, switches, detour_edges)
+    
+    # face routing succesfull s->cp, next step tree routing cp->d
+    # but for the old routing function of multipletrees to  function, the paths structure needs to be converted
+    #new structure:
+   # paths[source][destination] = {
+   #                                'cp': cp, 
+   #                                'edps_cp_to_s': edps_cp_to_s,
+   #                                'trees_cp_to_d': tree_cp_to_d, 
+   #                                'edps_cp_to_d': edps_cp_to_d,
+   #                                'edps_s_to_d': edps,
+   #                                'trees_cp_to_s':tree_cp_to_s
+   #                               }
+    
+    #old structure:
+    #paths[source][destination] = {
+    #                             'trees': all trees from s->d,
+    #                             'edps': all edps from s->
+    #                              }
+
+    
+    # Create a new variable for the converted paths
+    converted_paths = {}
+
+    #the first step of the overall routing (s->cp->d) is done
+    #this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
+    #the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
+    
+    #converted_paths[cp][destination]{
+    #           'tree': paths[source][destination]['tree_cp_to_d'],        
+    #           'edps': paths[source][destination]['edps_cp_to_d']
+    #}
+    for item1 in paths:
+
+        for item2 in paths[item1]:
+            
+            checkpoint_of_item = paths[item1][item2]['cp']
+            
+            if checkpoint_of_item not in converted_paths:
+                
+                converted_paths[checkpoint_of_item] = {}
+                
+            converted_paths[checkpoint_of_item] [item2]= {
+                'trees': paths[item1][item2]['trees_cp_to_d'],
+                'edps': paths[item1][item2]['edps_cp_to_d']
+            }
+
+    #after that the routing continues from CP to D using the tree-routing
+    routing_failure_tree, hops_tree, switches_tree, detour_edges_tree = RouteMultipleTrees(cp,d,fails,converted_paths)
+
+    hops = hops + hops_tree
+    switches = switches + switches_tree
+
+    for edge in detour_edges_tree:
+        detour_edges.append(edge)
+    
+    if(routing_failure_tree):
+        print("Routing failed via MultipleTrees Tree from CP to D ")
+        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
+        print(" ")
+        return (True, hops, switches, detour_edges)    
+    
+        
+    print("Routing MultipleTrees succesful with the Checkpoint")
+    print('------------------------------------------------------')
+    print(" ")
+    return (False, hops, switches, detour_edges)
+
+########################################################################################################################
+
+
+def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
+    print()  
+    
+    detour_edges = []
+    hops = 0
+    switches = 0
+    
+    cp = paths[s][d]['cp']
+    edps_s_to_d = paths[s][d]['edps_s_to_d']
+    trees_cp_to_s = paths[s][d]['trees_cp_to_s']
+
+    #before routing through the structure, the edps are traversed
+    print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d)  
+    currentNode = -1
+    edpIndex = 0
+    detour_edges = []
+    hops = 0
+    switches = 0
+    
+    edps_for_s_d = edps_s_to_d
+
+    print('Routing MTCP via EDPs started for ' , s , "-", cp , "-" , d )
+    
+    for edp in edps_for_s_d:
+        
+        currentNode = s
+        last_node = s 
+
+        if edp != edps_for_s_d[len(edps_for_s_d) -1]:
+
+            currentNode = edp[edpIndex]
+
+
+            #every edp is traversed until d or faulty edge
+            while (currentNode != d):
+
+
+                #since the structure of the edps consists of a line a->b->c-> ... -> n the direct neighbor is checked
+                if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
+                
+                    switches += 1
+
+                    
+                    detour_edges.append( (edp[edpIndex], edp[edpIndex +1]) )
+
+                    
+                    tmp_node = currentNode 
+                    currentNode = last_node 
+                    last_node = tmp_node
+                    hops += 1
+                    break
+
+                else :
+                    edpIndex += 1
+                    hops += 1
+                    last_node = currentNode 
+                    currentNode = edp[edpIndex]
+                #endif
+
+            #endwhile
+
+            # breaking out of the while loop potentially has 2 reasons : d reached / faulty edge detected
+
+
+            if currentNode == d : 
+                print('Routing MultipleTreesCP done via EDP')
+                print('------------------------------------------------------')
+                return (False, hops, switches, detour_edges)
+            #endif
+            
+            # case : faulty edge detected --> traverse back to s
+            while currentNode != s: 
+                detour_edges.append( (last_node,currentNode) )
+
+                last_node = currentNode 
+                currentNode = edp[edpIndex-1] 
+                edpIndex = edpIndex-1
+                hops += 1
+
+            #endwhile
+        #endif
+
+    #endfor
+
+    #if the routing s->d via edps failed, the routing is partitioned by facerouting s->cp and treerouting cp->d
+    
+    #starting with the facerouting s->cp
+
+    routing_failure_faces = False
+
+    #now the first step of the routing consists of face-routing from S to CP
+    routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route_greedy_perimeter(s, cp, tree=trees_cp_to_s, fails=fails)
 
     hops = hops + hops_faces
     switches = switches + switches_faces

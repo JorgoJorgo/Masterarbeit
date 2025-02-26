@@ -10,7 +10,7 @@ from faces import route_faces_with_paths, route_greedy_perimeter
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
-from routing import PrepareSQ1, RouteDetCirc, RouteMultipleTrees, RouteOneTree, RouteSQ1, RouteWithOneCheckpointMultipleTrees, RouteWithOneCheckpointOneTree, RouteWithTripleCheckpointMultipleTrees, RouteWithTripleCheckpointOneTree, SimulateGraph, Statistic
+from routing import PrepareSQ1, RouteDetCirc, RouteMultipleTrees, RouteOneTree, RouteSQ1, RouteWithOneCheckpointGREEDYMultipleTrees, RouteWithOneCheckpointMultipleTrees, RouteWithOneCheckpointOneTree, RouteWithTripleCheckpointMultipleTrees, RouteWithTripleCheckpointOneTree, SimulateGraph, Statistic
 from masterarbeit_trees_with_cp import multiple_trees_for_faces_pre, multiple_trees_invers_with_middle_checkpoint_pre, multiple_trees_triple_checkpooint_pre, multiple_trees_with_betweenness_checkpoint_pre, multiple_trees_with_closeness_checkpoint_pre, multiple_trees_with_degree_checkpoint_pre, multiple_trees_with_middle_checkpoint_parallel_pre, multiple_trees_with_middle_checkpoint_pre, one_tree_triple_checkpooint_pre, one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
 import matplotlib.pyplot as plt
 DEBUG = True
@@ -27,7 +27,8 @@ algos = {
         #  'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #  'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #  'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Degree Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #  'MultipleTrees Inverse Degree Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #  'MultipleTrees Inverse Degree Greedy Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointGREEDYMultipleTrees],
 
         #  'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #  'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
@@ -38,7 +39,7 @@ algos = {
         #  'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
         #  'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
         
-        #  'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+          'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
         #  'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
 
         #  'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
@@ -286,9 +287,6 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
                 index_2 = len(algo)
                 print('intermediate result: %s \t %.5E' % (algoname, np.mean(algo[index_1:index_2])))
 
-
-
-
 # Anpassung der run_planar Funktion
 def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
     random.seed(seed)
@@ -357,9 +355,6 @@ def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0
     #print("Starte Experimente...")
     shuffle_and_run(planar_embedding, out, seed, rep, method)
     #print("[run_planar] Checkpoint END")
-
-    
-
 
 def draw_graph_with_positions(G, title="Graph"):
     """

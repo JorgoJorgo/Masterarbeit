@@ -1,3 +1,3 @@
 #graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Mon Feb 24 15:36:55 2025
-Delaunay, 30, 2, MultipleTrees Degree Checkpoint, 1, 10, 1, 14, 1.000000, 0.000562, 46.786754
+#Wed Feb 26 14:36:16 2025
+Delaunay, 50, 3, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 11, 2, 16, 1.000000, 3.697864, 348.665433

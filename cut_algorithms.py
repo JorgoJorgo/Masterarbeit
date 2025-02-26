@@ -60,15 +60,6 @@ def squareOne_with_cuts_pre(graph):
                                                 'cut_nodes': cut_nodes
                     }
 
-                #print_cut_structure(
-                #    highlighted_nodes=list(cut_nodes),
-                #    cut_edges=cut_edges,
-                #    structure=structure,
-                #    source=source,
-                #    destination=destination,
-                #    save_plot=False,
-                #    filename=f"failedgraphs/graph_{source}_{destination}.png"
-                #)
     return paths
 
 
