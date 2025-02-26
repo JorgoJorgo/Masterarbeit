@@ -20,6 +20,7 @@ import networkx as nx
 import traceback
 import os
 
+from faces import find_faces_pre
 from trees import all_edps, multiple_trees
 
 def squareOne_with_cuts_pre(graph):
@@ -32,8 +33,8 @@ def squareOne_with_cuts_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
-                print("[SQ1 with Cuts] S", source)
-                print("[SQ1 with Cuts] D", destination)
+                print(f"[SQ1 with Cuts] Precomputation: {source} -> {destination}")
+                
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
 
             
@@ -60,6 +61,7 @@ def squareOne_with_cuts_pre(graph):
                                                 'cut_nodes': cut_nodes
                     }
 
+    input("Press Enter to continue...")
     return paths
 
 
@@ -95,21 +97,63 @@ def squareOne_with_cuts(source, destination, graph, cut_edges, cut_nodes):
                 for i in range(len(edp) - 1):
                     structure_from_d.add_edge(edp[i], edp[i + 1])
 
-    # Add nodes and edges from structure_from_s to combined_structure
-    for node in structure_from_s.nodes:
-        combined_structure.add_node(node)
-        combined_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
 
+    for node in structure_from_s.nodes:
+        structure_from_s.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+    for node in structure_from_d.nodes:
+        structure_from_d.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+    all_edps_from_s_to_d = all_edps(source, destination, graph)
+
+    for edp in all_edps_from_s_to_d:
+        for i in range(len(edp) - 1):
+            combined_structure.add_edge(edp[i], edp[i + 1])
+            combined_structure.nodes[edp[i]]['pos'] = graph.nodes[edp[i]]['pos']   
+            combined_structure.nodes[edp[i + 1]]['pos'] = graph.nodes[edp[i + 1]]['pos']
+
+
+    #print("[SQ1 with Cuts] Structure from S", structure_from_s.nodes)
+    #print("[SQ1 with Cuts] Structure from D", structure_from_d.nodes)
+
+    #print("[SQ1 with Cuts] Adding Edges from S to Combined")
     for edge in structure_from_s.edges:
-        combined_structure.add_edge(*edge)
+        fake_combined_structure = combined_structure.copy()
+        fake_combined_structure.add_edge(*edge)
+        edge_accepted = False
+        faces = find_faces_pre(combined_structure,source,destination)
+        for face in faces:
+            if source in face and destination in face:
+                edge_accepted = True
+                break
+
+        if edge_accepted:
+            combined_structure.add_edge(*edge)
+            combined_structure.nodes[edge[0]]['pos'] = graph.nodes[edge[0]]['pos']
+            combined_structure.nodes[edge[1]]['pos'] = graph.nodes[edge[1]]['pos']
+
+
+    #print("[SQ1 with Cuts] Adding Edges from D to Combined")
+
+    for edge in structure_from_d.edges:
+        fake_combined_structure = combined_structure.copy()
+        fake_combined_structure.add_edge(*edge)
+        edge_accepted = False
+        faces = find_faces_pre(combined_structure,source,destination)
+        for face in faces:
+            if source in face and destination in face:
+                edge_accepted = True
+                break
+
+        if edge_accepted:
+            combined_structure.add_edge(*edge)
+            combined_structure.nodes[edge[0]]['pos'] = graph.nodes[edge[0]]['pos']
+            combined_structure.nodes[edge[1]]['pos'] = graph.nodes[edge[1]]['pos']
 
     # Add nodes and edges from structure_from_d to combined_structure
     for node in structure_from_d.nodes:
         combined_structure.add_node(node)
         combined_structure.nodes[node]['pos'] = graph.nodes[node]['pos']
-
-    for edge in structure_from_d.edges:
-        combined_structure.add_edge(*edge)
 
     return combined_structure
 

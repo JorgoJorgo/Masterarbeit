@@ -7,7 +7,6 @@ import math
 from scipy.spatial.distance import euclidean
 
 from scipy.spatial.distance import euclidean
-from cut_algorithms import print_cut_structure
 
 def convert_to_undirected(tree):
     """
@@ -81,7 +80,7 @@ def route_faces_firstFace(s, d, tree, fails):
 
     switches += 1
     source_edges = [(s, smallest_face[1])]
-    print(f"[route Faces] Source edges initialized: {source_edges}")
+    #print(f"[route Faces] Source edges initialized: {source_edges}")
 
     if current_node == s:
         neighbors = sorted_neighbors_for_face_routing(tree, s, None, fails)
@@ -104,11 +103,11 @@ def route_faces_firstFace(s, d, tree, fails):
         print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
 
     while current_node != d:
-        print("Source Edges: ", source_edges)
+        #print("Source Edges: ", source_edges)
         neighbors = sorted_neighbors_for_face_routing(tree, current_node, previous_node, fails)
-        print(f"[route Faces] Current Node: {current_node}")
-        print(f"[route Faces] Previous Node: {previous_node}")
-        print(f"[route Faces] D: {d}")
+        #print(f"[route Faces] Current Node: {current_node}")
+        #print(f"[route Faces] Previous Node: {previous_node}")
+        #print(f"[route Faces] D: {d}")
         edge_taken = False
 
         if d in neighbors:
@@ -163,12 +162,12 @@ def sorted_neighbors_for_face_routing(graph, node, coming_from=None, fails=[]):
     node_x, node_y = graph.nodes[node]['pos']
     
     all_neighbors = list(graph.neighbors(node))
-    print(f"\n[DEBUG] Current Node: {node}, Coming From: {coming_from}")
-    print(f"[DEBUG] All Neighbors before filtering: {all_neighbors}")
+    #print(f"\n[DEBUG] Current Node: {node}, Coming From: {coming_from}")
+    #print(f"[DEBUG] All Neighbors before filtering: {all_neighbors}")
 
     # Fail-Kanten sauber filtern
     valid_neighbors = [neighbor for neighbor in all_neighbors if (node, neighbor) not in fails and (neighbor, node) not in fails]
-    print(f"[DEBUG] Valid Neighbors after filtering fails: {valid_neighbors}")
+    #print(f"[DEBUG] Valid Neighbors after filtering fails: {valid_neighbors}")
     
     if not valid_neighbors:
         return []
@@ -192,11 +191,11 @@ def sorted_neighbors_for_face_routing(graph, node, coming_from=None, fails=[]):
     
     # Winkel berechnen und ausgeben
     neighbor_angles = {neighbor: round(normalized_angle(neighbor), 5) for neighbor in valid_neighbors}
-    print(f"[DEBUG] Normalized Angles (before sorting): {neighbor_angles}")
+    #print(f"[DEBUG] Normalized Angles (before sorting): {neighbor_angles}")
     
     # Nachbarn im Uhrzeigersinn sortieren
     valid_neighbors.sort(key=lambda neighbor: neighbor_angles[neighbor], reverse=True)
-    print(f"[DEBUG] Sorted Neighbors (Clockwise Order): {valid_neighbors}")
+    #print(f"[DEBUG] Sorted Neighbors (Clockwise Order): {valid_neighbors}")
     
     # Falls coming_from existiert, sortiere es korrekt ein
     if coming_from is not None and coming_from in graph.nodes:
@@ -204,7 +203,7 @@ def sorted_neighbors_for_face_routing(graph, node, coming_from=None, fails=[]):
             index = valid_neighbors.index(coming_from)
             valid_neighbors = valid_neighbors[index+1:] + valid_neighbors[:index+1]
     
-    print(f"[DEBUG] Final Sorted Neighbors (coming_from at end if exists): {valid_neighbors}\n")
+    #print(f"[DEBUG] Final Sorted Neighbors (coming_from at end if exists): {valid_neighbors}\n")
     return valid_neighbors
 
 
@@ -355,8 +354,19 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
 def route_faces_with_paths(s, d, fails, paths):
     print("----------------------------------------------------------------")
     print("[route_faces_with_paths] Routing from", s, "to", d)
-    #print_cut_structure([], [], paths[s][d]['structure'], s, d, fails=fails, filename=" ", save_plot=False)
-    return route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
+    
+
+    routing_failure, hops, switches, detour_edges = route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
+
+
+
+    if routing_failure == False:
+        print("[route_faces_with_paths] Routing success")
+
+    else:
+        print("[route_faces_with_paths] Routing failed")
+
+    return (routing_failure, hops, switches, detour_edges)
 
 
 def euclidean_distance(a, b):
@@ -524,4 +534,41 @@ def sort_neighbors_for_greedy_routing(graph, current_node, previous_node, destin
     return sorted_neighbors
 
 
+def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destination, fails=[], current_edge=None, save_plot=False, filename="graphen/graph.png"):
+    pos = nx.get_node_attributes(structure, 'pos')
+    
+    plt.figure(figsize=(10, 10))
+    
+    # Zeichne den gesamten Graphen mit normalen Kanten in Schwarz
+    nx.draw(structure, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=500, font_size=10)
+    
+    # Markiere hervorgehobene Knoten
+    nx.draw_networkx_nodes(structure, pos, nodelist=highlighted_nodes, node_color='red')
+    
+    # Markiere Cut-Kanten in Grün
+    nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='green', width=2)
+    
+    # Markiere Source- und Destination-Knoten
+    nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
+    nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='yellow')
+    
+    # Markiere die aktuelle Kante, falls vorhanden
+    if current_edge:
+        nx.draw_networkx_edges(structure, pos, edgelist=[current_edge], edge_color='blue', width=2)
+    
+    # **Fix: Fail-Kanten in beide Richtungen prüfen**
+    valid_fails = [(u, v) for (u, v) in structure.edges if (u, v) in fails or (v, u) in fails]
+    
+    if valid_fails:
+        nx.draw_networkx_edges(structure, pos, edgelist=valid_fails, edge_color='red', width=2)
+    
+    if save_plot:
+        os.makedirs("failedgraphs", exist_ok=True)
+        current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"failedgraphs/graph_{source}_{destination}_{current_time}.png"
+        plt.savefig(filename)
+    else:
+        plt.show()
+
+    plt.close()
 
