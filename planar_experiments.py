@@ -40,7 +40,7 @@ algos = {
         #  'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
         
           'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        #  'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
+          'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_greedy_perimeter],
 
         #  'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         }
