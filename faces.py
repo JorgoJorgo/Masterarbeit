@@ -369,6 +369,23 @@ def route_faces_with_paths(s, d, fails, paths):
     return (routing_failure, hops, switches, detour_edges)
 
 
+def route_greedy_faces_with_paths(s,d,fails,paths):
+    print("----------------------------------------------------------------")
+    print("[route_greedy_faces_with_paths] Routing from", s, "to", d)
+    
+
+    routing_failure, hops, switches, detour_edges = route_greedy_perimeter(s, d, paths[s][d]['structure'], fails)
+
+
+
+    if routing_failure == False:
+        print("[route_greedy_faces_with_paths] Routing success")
+
+    else:
+        print("[route_greedy_faces_with_paths] Routing failed")
+
+    return (routing_failure, hops, switches, detour_edges)
+
 def euclidean_distance(a, b):
     return math.sqrt((a[0] - b[0])**2 + (a[1] - b[1])**2)
 
@@ -380,10 +397,15 @@ def route_greedy_perimeter(s, d, tree, fails):
     source_edges = []
     debug = False
     previous_node = s
-
+    max_hops = len(tree.nodes)*len(tree.nodes)
 
 
     while current_node != d:
+
+        if hops > max_hops:
+            print(f"[route Greedy] Routing failed, max_hops ({max_hops}) reached")
+            return (True, hops, switches, detour_edges)
+
         #sort current neighbors based on the distance to d
         neighbors = sort_neighbors_for_greedy_routing(tree, current_node,previous_node, d, fails)
 
@@ -529,7 +551,7 @@ def sort_neighbors_for_greedy_routing(graph, current_node, previous_node, destin
         sorted_neighbors.remove(previous_node)
         sorted_neighbors.append(previous_node)
 
-    print(f"Sorted neighbors by greedy routing: {sorted_neighbors}")
+    #print(f"Sorted neighbors by greedy routing: {sorted_neighbors}")
     
     return sorted_neighbors
 

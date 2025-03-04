@@ -23,7 +23,6 @@ import os
 import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
-
 from faces import find_faces_pre
 from trees import all_edps, multiple_trees
 
@@ -47,7 +46,7 @@ def squareOne_with_cuts_pre(graph):
                     cut_nodes.add(edge[0])
                     cut_nodes.add(edge[1])
 
-                print("[SQ1 with Cuts] Cut Nodes", cut_nodes)
+                #print("[SQ1 with Cuts] Cut Nodes", cut_nodes)
                 
                 structure = squareOne_with_cuts(source,destination,graph,cut_edges,cut_nodes)
 
@@ -65,7 +64,7 @@ def squareOne_with_cuts_pre(graph):
                                                 'cut_nodes': cut_nodes
                     }
 
-    input("Press Enter to continue...")
+    #input("Press Enter to continue...")
     return paths
 
 
@@ -116,7 +115,11 @@ def squareOne_with_cuts(source, destination, graph, cut_edges, cut_nodes):
             combined_structure.nodes[edp[i]]['pos'] = graph.nodes[edp[i]]['pos']   
             combined_structure.nodes[edp[i + 1]]['pos'] = graph.nodes[edp[i + 1]]['pos']
 
+    #for node in combined_structure.nodes:
+    #    print(f"[sq1 with cuts] node pos : {node}, {combined_structure.nodes[node]['pos']}")
 
+    #print("-----------------------------")
+    #print("")
     #print("[SQ1 with Cuts] Structure from S", structure_from_s.nodes)
     #print("[SQ1 with Cuts] Structure from D", structure_from_d.nodes)
 
@@ -124,7 +127,10 @@ def squareOne_with_cuts(source, destination, graph, cut_edges, cut_nodes):
     for edge in structure_from_s.edges:
         fake_combined_structure = combined_structure.copy()
         fake_combined_structure.add_edge(*edge)
+        fake_combined_structure.nodes[edge[0]]['pos'] = graph.nodes[edge[0]]['pos']
+        fake_combined_structure.nodes[edge[1]]['pos'] = graph.nodes[edge[1]]['pos']
         edge_accepted = False
+
         faces = find_faces_pre(fake_combined_structure,source,destination)
         for face in faces:
             if source in face and destination in face:
@@ -142,6 +148,8 @@ def squareOne_with_cuts(source, destination, graph, cut_edges, cut_nodes):
     for edge in structure_from_d.edges:
         fake_combined_structure = combined_structure.copy()
         fake_combined_structure.add_edge(*edge)
+        fake_combined_structure.nodes[edge[0]]['pos'] = graph.nodes[edge[0]]['pos']
+        fake_combined_structure.nodes[edge[1]]['pos'] = graph.nodes[edge[1]]['pos']
         edge_accepted = False
         faces = find_faces_pre(fake_combined_structure,source,destination)
         for face in faces:
@@ -165,7 +173,7 @@ def squareOne_with_cuts(source, destination, graph, cut_edges, cut_nodes):
         for node in combined_structure.nodes:
             if node != source and node != destination:
                 neighbors = list(nx.neighbors(combined_structure, node))
-                print(f"neighbors of {node} are {neighbors}")
+                #print(f"neighbors of {node} are {neighbors}")
                 if len(neighbors) == 1:
                     combined_structure.remove_node(node)
 
@@ -189,6 +197,7 @@ def multipleTrees_with_cuts_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
+                print(f"[MT with cuts] Precomputation for: {source}->{destination}")
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
                 #print("[MT with Cuts] building structure for", source, destination)
             
@@ -350,7 +359,7 @@ def multipleTrees_with_cuts(source, destination, graph, cut_edges, cut_nodes):
         for node in combined_structure.nodes:
             if node != source and node != destination:
                 neighbors = list(nx.neighbors(combined_structure, node))
-                print(f"neighbors of {node} are {neighbors}")
+                #print(f"neighbors of {node} are {neighbors}")
                 if len(neighbors) == 1:
                     combined_structure.remove_node(node)
 
