@@ -336,7 +336,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                     fake_tree.nodes[neighbor]['pos'] = graph.nodes[neighbor]['pos']
 
                     
-                    print(f"Calling find_faces_pre for node {node} and neighbor {neighbor}")
+                    #print(f"Calling find_faces_pre for node {node} and neighbor {neighbor}")
                     faces = find_faces_pre(fake_tree, source, destination)
                     smallest_face = min(faces, key=len, default=None)
                                         
@@ -357,7 +357,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                         paths_to_extend[i].append(neighbor)
                         changed = True
                         added_edge = True
-                        print(f"Added edge ({node}, {neighbor})")
+                        #print(f"Added edge ({node}, {neighbor})")
                         
                     if added_edge:
                         break
@@ -755,7 +755,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
             
             if source != destination:
                 combinations += 1
-                print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
                 edps = all_edps(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=True) #Sortierung der EDPs
@@ -860,7 +860,7 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
             
             if source != destination:
                 combinations += 1
-                print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
                 edps = all_edps(source, destination, graph) #Bildung der EDPs
                 
                 edps.sort(key=len, reverse=False) #Sortierung der EDPs
@@ -1381,7 +1381,7 @@ def one_tree_with_middle_checkpoint_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
-                print(f"Combination {current_combination} of {all_combinations}")
+                #print(f"Combination {current_combination} of {all_combinations}")
                 current_combination = current_combination + 1
                 if source not in paths:
                     paths[source] = {}
