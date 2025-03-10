@@ -1,0 +1,23 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Fri Mar  7 23:48:46 2025
+Delaunay, 50, 3, MaxDAG, 1, 6, 14, 10, 0.600000, 0.000897, 0.562650
+Delaunay, 50, 3, One Tree, 1, 5, 3, 11, 0.200000, 0.000334, 5.781981
+Delaunay, 50, 5, MultipleTrees, 1, 4, 3, 5, 0.100000, 0.000367, 40.681686
+Delaunay, 50, 5, MultipleTrees Random Checkpoint, 1, 45, 6, 49, 0.400000, 0.168944, 421.929361
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, 22, 4, 26, 0.300000, 0.143702, 260.414691
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, -1, 3, 0, 0.100000, 0.232640, 80.132416
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, 23, 5, 28, 0.500000, 0.154628, 375.410440
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, 23, 5, 28, 0.500000, 0.142265, 330.099275
+Delaunay, 50, 5, MultipleTrees Inverse Degree Checkpoint, 1, 32, 3, 37, 0.300000, 0.254164, 552.530829
+Delaunay, 50, 5, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 26, 616, 31, 0.300000, 0.277089, 552.529531
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 5, 2, 11, 0.200000, 0.001000, 329.924637
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 5, 3, 11, 0.200000, 0.000847, 306.361219
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 5, 3, 11, 0.200000, 0.000865, 362.230221
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 5, 3, 11, 0.200000, 0.000954, 321.800623
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 15, 4, 20, 0.300000, 0.001455, 314.325879
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 26, 5, 33, 0.300000, 0.186829, 97.384204
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 5, 3, 11, 0.200000, 0.390444, 572.749867
+Delaunay, 50, 5, SquareOne Cuts, 1, 6, 3, 11, 0.400000, 0.001130, 187.555438
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 11, 3, 16, 0.400000, 0.001391, 803.202669
+Delaunay, 50, 5, MultipleTrees Cuts Greedy, 1, 0, 927, 5, 0.400000, 0.017727, 803.106502
+Delaunay, 50, 5, MultipleTrees Faces, 1, 4, 2, 8, 0.200000, 0.001060, 533.207098

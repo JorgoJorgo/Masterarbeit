@@ -1,0 +1,23 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Sun Mar  9 10:08:46 2025
+Delaunay, 50, 3, MaxDAG, 1, 2, 26, 3, 0.500000, 0.002012, 0.589750
+Delaunay, 50, 3, One Tree, 1, 0, 2, 1, 0.100000, 0.000337, 5.794546
+Delaunay, 50, 5, MultipleTrees, 1, 2, 1, 3, 0.100000, 0.000331, 40.825578
+Delaunay, 50, 5, MultipleTrees Random Checkpoint, 1, -1, 4, 0, 0.100000, 0.247970, 424.833048
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, -1, 3, 0, 0.100000, 0.178797, 260.791893
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, -1, 2, 0, 0.100000, 0.261800, 80.099212
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, -1, 4, 0, 0.100000, 0.299423, 371.990500
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, -1, 4, 0, 0.100000, 0.332767, 325.680931
+Delaunay, 50, 5, MultipleTrees Inverse Degree Checkpoint, 1, 0, 3, 1, 0.100000, 0.343277, 547.122615
+Delaunay, 50, 5, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 0, 3, 1, 0.100000, 0.366546, 549.257109
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 0, 2, 1, 0.100000, 0.001039, 329.482387
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 0, 2, 1, 0.100000, 0.000885, 307.076833
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 0, 2, 1, 0.100000, 0.000834, 360.325899
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 0, 3, 1, 0.100000, 0.000917, 320.127072
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 0, 3, 1, 0.100000, 0.001086, 312.953301
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 0, 4, 1, 0.100000, 0.294397, 97.384099
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 0, 4, 1, 0.100000, 0.455908, 574.563544
+Delaunay, 50, 5, SquareOne Cuts, 1, 0, 2, 4, 0.200000, 0.001054, 187.611255
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 0, 2, 4, 0.200000, 0.001304, 803.130001
+Delaunay, 50, 5, MultipleTrees Cuts Greedy, 1, 0, 2, 4, 0.200000, 0.000443, 803.126206
+Delaunay, 50, 5, MultipleTrees Faces, 1, 0, 2, 4, 0.200000, 0.000938, 533.071621

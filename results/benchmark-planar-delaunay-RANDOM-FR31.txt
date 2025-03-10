@@ -1,0 +1,23 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Fri Mar  7 11:43:24 2025
+Delaunay, 50, 3, MaxDAG, 1, 1, 14, 5, 0.400000, 0.000811, 0.373465
+Delaunay, 50, 3, One Tree, 1, 10, 3, 15, 0.600000, 0.000309, 5.979928
+Delaunay, 50, 5, MultipleTrees, 1, 8, 3, 12, 0.500000, 0.000378, 40.683017
+Delaunay, 50, 5, MultipleTrees Random Checkpoint, 1, 22, 3, 26, 0.600000, 0.116515, 424.939435
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, 28, 4, 32, 0.600000, 0.093887, 262.636954
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, 12, 3, 16, 0.400000, 0.170357, 80.407677
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, 25, 3, 29, 0.600000, 0.115933, 374.883471
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, 25, 3, 29, 0.600000, 0.121514, 329.237641
+Delaunay, 50, 5, MultipleTrees Inverse Degree Checkpoint, 1, 38, 3, 42, 0.700000, 0.103687, 550.286067
+Delaunay, 50, 5, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 36, 3, 40, 0.800000, 0.081560, 543.466901
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 10, 3, 15, 0.600000, 0.000707, 328.872872
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 14, 4, 20, 0.700000, 0.000691, 308.558941
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 10, 3, 15, 0.600000, 0.000409, 361.839700
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 10, 3, 15, 0.600000, 0.000447, 320.993492
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 21, 4, 27, 0.900000, 0.001009, 313.462363
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 35, 4, 39, 0.800000, 0.030963, 97.079131
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 30, 3, 34, 0.700000, 0.139225, 568.449113
+Delaunay, 50, 5, SquareOne Cuts, 1, 8, 6, 13, 0.700000, 0.001070, 187.269592
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 16, 5, 20, 0.700000, 0.001340, 803.444595
+Delaunay, 50, 5, MultipleTrees Cuts Greedy, 1, 2, 5, 8, 0.900000, 0.000522, 803.280211
+Delaunay, 50, 5, MultipleTrees Faces, 1, 5, 3, 9, 0.600000, 0.000926, 533.601567

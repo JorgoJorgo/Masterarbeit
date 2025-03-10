@@ -1,0 +1,23 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Sat Mar  8 01:49:59 2025
+Delaunay, 50, 3, MaxDAG, 1, 6, 14, 10, 0.600000, 0.000926, 0.578215
+Delaunay, 50, 3, One Tree, 1, 0, 3, 1, 0.100000, 0.000362, 5.738539
+Delaunay, 50, 5, MultipleTrees, 1, 4, 3, 5, 0.100000, 0.000367, 40.707337
+Delaunay, 50, 5, MultipleTrees Random Checkpoint, 1, 43, 6, 47, 0.400000, 0.170469, 423.385064
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, 20, 4, 24, 0.300000, 0.134180, 262.907442
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, -1, 3, 0, 0.100000, 0.203361, 79.889649
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, 25, 5, 31, 0.500000, 0.181401, 373.880945
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, 25, 5, 31, 0.500000, 0.180699, 327.844766
+Delaunay, 50, 5, MultipleTrees Inverse Degree Checkpoint, 1, 31, 3, 37, 0.200000, 0.313030, 551.668032
+Delaunay, 50, 5, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 25, 589, 31, 0.200000, 0.388712, 550.497610
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 11, 2, 18, 0.200000, 0.001064, 333.396863
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 0, 3, 1, 0.100000, 0.000903, 312.072020
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 0, 3, 1, 0.100000, 0.000946, 363.331188
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 0, 3, 1, 0.100000, 0.000944, 322.152263
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 0, 4, 1, 0.100000, 0.001302, 314.815882
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 15, 6, 23, 0.200000, 0.249512, 97.520181
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 0, 4, 1, 0.100000, 0.531607, 570.798970
+Delaunay, 50, 5, SquareOne Cuts, 1, 2, 3, 6, 0.300000, 0.001133, 187.015645
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 10, 3, 16, 0.400000, 0.001398, 802.765806
+Delaunay, 50, 5, MultipleTrees Cuts Greedy, 1, 0, 927, 6, 0.400000, 0.019612, 801.712778
+Delaunay, 50, 5, MultipleTrees Faces, 1, 4, 2, 8, 0.200000, 0.001082, 532.009584

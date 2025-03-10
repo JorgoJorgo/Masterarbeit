@@ -1,0 +1,23 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Fri Mar  7 05:41:01 2025
+Delaunay, 50, 3, MaxDAG, 1, 1, 13, 5, 0.400000, 0.000766, 0.381519
+Delaunay, 50, 3, One Tree, 1, 10, 4, 15, 0.600000, 0.000297, 5.926090
+Delaunay, 50, 5, MultipleTrees, 1, 10, 2, 13, 0.500000, 0.000385, 40.642254
+Delaunay, 50, 5, MultipleTrees Random Checkpoint, 1, 23, 3, 27, 0.700000, 0.059077, 423.268054
+Delaunay, 50, 5, MultipleTrees Random Checkpoint Parallel, 1, 28, 4, 32, 0.600000, 0.064054, 263.067034
+Delaunay, 50, 5, MultipleTrees Closeness Checkpoint, 1, 14, 3, 20, 0.500000, 0.083015, 80.511080
+Delaunay, 50, 5, MultipleTrees Betweenness Checkpoint, 1, 24, 3, 28, 0.700000, 0.057774, 370.613118
+Delaunay, 50, 5, MultipleTrees Degree Checkpoint, 1, 24, 3, 28, 0.700000, 0.060065, 324.460263
+Delaunay, 50, 5, MultipleTrees Inverse Degree Checkpoint, 1, 40, 4, 44, 0.800000, 0.048107, 545.506233
+Delaunay, 50, 5, MultipleTrees Inverse Degree Greedy Checkpoint, 1, 39, 4, 43, 0.900000, 0.023641, 545.783026
+Delaunay, 50, 5, One Tree Middle Checkpoint PE, 1, 33, 4, 37, 0.700000, 0.000707, 329.146934
+Delaunay, 50, 5, One Tree Degree Checkpoint PE, 1, 14, 4, 20, 0.700000, 0.000700, 310.932865
+Delaunay, 50, 5, One Tree Betweenness Checkpoint PE, 1, 10, 3, 15, 0.600000, 0.000427, 363.494409
+Delaunay, 50, 5, One Tree Closeness Checkpoint PE, 1, 10, 3, 15, 0.600000, 0.000426, 322.551789
+Delaunay, 50, 5, One Tree Shortest EDP Checkpoint PE, 1, 21, 5, 27, 0.900000, 0.001013, 314.820207
+Delaunay, 50, 5, Triple Checkpoint OneTree, 1, 37, 5, 41, 0.800000, 0.033726, 97.471164
+Delaunay, 50, 5, Triple Checkpoint MultipleTrees, 1, 32, 4, 36, 0.800000, 0.076217, 573.022056
+Delaunay, 50, 5, SquareOne Cuts, 1, 10, 6, 15, 0.700000, 0.001057, 187.839978
+Delaunay, 50, 5, MultipleTrees Cuts, 1, 20, 5, 24, 0.700000, 0.001341, 803.865466
+Delaunay, 50, 5, MultipleTrees Cuts Greedy, 1, 3, 5, 8, 0.900000, 0.000516, 803.830059
+Delaunay, 50, 5, MultipleTrees Faces, 1, 5, 3, 9, 0.600000, 0.000923, 534.455267
