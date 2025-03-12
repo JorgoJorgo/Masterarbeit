@@ -132,17 +132,21 @@ selected_algorithms = [
     #' MultipleTrees Inverse Degree Checkpoint',
     #' MultipleTrees Inverse Degree Greedy Checkpoint',
     
+    ' MultipleTrees Inverse Degree Checkpoint',
+    ' MultipleTrees Inverse Betweenness Checkpoint',
+    ' MultipleTrees Inverse Closeness Checkpoint',
+
     #" One Tree Middle Checkpoint PE", 
     #" One Tree Closeness Checkpoint PE",
     #" One Tree Degree Checkpoint PE", 
     #" One Tree Betweenness Checkpoint PE", 
-    " One Tree Shortest EDP Checkpoint PE", 
+    #" One Tree Shortest EDP Checkpoint PE", 
     
-    " Triple Checkpoint OneTree", 
+    #" Triple Checkpoint OneTree", 
     #" Triple Checkpoint MultipleTrees", 
     
-    " SquareOne Cuts", 
-    " MultipleTrees Cuts",
+    #" SquareOne Cuts", 
+    #" MultipleTrees Cuts",
     #" MultipleTrees Faces",
 ]
 calculate_averages(directory, selected_algorithms)

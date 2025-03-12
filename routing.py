@@ -22,7 +22,7 @@ k = 8
 f_num = 40
 samplesize=20
 name = "experiment-routing"
-
+print_fails = False
 
 #set global variables
 def set_params(params):
@@ -200,7 +200,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_faces_s_to_cp):
         print("Routing failed via Faces from S to CP1 ")
-        draw_tree_with_highlights(fails=fails,tree=tree_cp1_to_s,nodes=[s,cps[0]],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=tree_cp1_to_s,nodes=[s,cps[0]],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
@@ -270,7 +271,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_tree_cp1_to_cp2):
         print("Routing failed via Tree from CP1 to CP2 ")
-        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp1_to_cp2[cp1][cp2]['tree'],nodes=[cp1,cp2],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=converted_paths_cp1_to_cp2[cp1][cp2]['tree'],nodes=[cp1,cp2],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -302,7 +304,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_faces_cp2_to_cp3):
         print("Routing failed via Faces from CP2 to CP3 ")
-        draw_tree_with_highlights(fails=fails,tree=tree_cp3_to_cp2,nodes=[cp2,cp3],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=tree_cp3_to_cp2,nodes=[cp2,cp3],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
@@ -340,7 +343,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
 
     if(routing_failure_tree_cp2_to_cp3):
         print("Routing failed via Tree from CP3 to D ")
-        draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp3,d],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['tree'],nodes=[cp3,d],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -481,7 +485,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces_s_to_cp1):
         print("Routing failed via Faces from S to CP1 ")  
-        draw_tree_with_highlights(fails=fails,tree=trees_cp1_to_s,nodes=[s,cps[0]],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=trees_cp1_to_s,nodes=[s,cps[0]],showplot=False)
         
         print("fails:", fails)   
         print(" ")
@@ -519,7 +524,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     if(routing_failure_trees_cp1_to_cp2):
         print("Routing failed via Tree from CP1 to CP2 ")
         #for tree in paths[s][d]['trees_cp1_to_cp2']:
-        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp1_to_cp2'],nodes=[cp1,cp2],showplot=False,einzeln=False)
+        if(print_fails):
+            draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp1_to_cp2'],nodes=[cp1,cp2],showplot=False,einzeln=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -546,8 +552,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces_cp2_to_cp3):
         print("Routing failed via Faces from CP2 to CP3 ")
-        
-        draw_tree_with_highlights(fails=fails,tree=trees_cp3_to_cp2,nodes=[cp2,cp3],showplot=False)
+        if(print_fails):
+            draw_tree_with_highlights(fails=fails,tree=trees_cp3_to_cp2,nodes=[cp2,cp3],showplot=False)
         print("fails:", fails)   
         print(" ")
         return (True, hops, switches, detour_edges)
@@ -581,7 +587,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
         print("Routing failed via Tree from CP3 to D ")
         #for tree in converted_paths_cp3_to_d[cp3][d]['trees']:
         #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False)
-        draw_multipletree_with_highlights(fails=fails,trees=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False, einzeln=False)
+        if(print_fails):
+            draw_multipletree_with_highlights(fails=fails,trees=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False, einzeln=False)
         print("fails:", fails)   #    
         print(" ")
         return (True, hops, switches, detour_edges)    
@@ -698,7 +705,8 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
-        draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
+        if(print_fails):
+            draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
         return (True, hops, switches, detour_edges)
     else:
         if(len(edps_s_to_d)==1):
@@ -761,7 +769,8 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     
     if(routing_failure_tree):
         print("Routing failed via MultipleTrees Tree from CP to D ")
-        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
+        if(print_fails):
+            draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
         print(" ")
         return (True, hops, switches, detour_edges)    
     
@@ -875,7 +884,8 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
 
     if(routing_failure_faces):
         print("Routing failed via Faces from S to CP ")
-        draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
+        if(print_fails):
+            draw_tree_with_highlights(tree=trees_cp_to_s,nodes=[cp,s],showplot=False, fails=fails)
         return (True, hops, switches, detour_edges)
     else:
         if(len(edps_s_to_d)==1):
@@ -938,7 +948,8 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
     
     if(routing_failure_tree):
         print("Routing failed via MultipleTrees Tree from CP to D ")
-        draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
+        if(print_fails):
+            draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp_to_d'],nodes=[cp,d],showplot=False,einzeln=False)
         print(" ")
         return (True, hops, switches, detour_edges)    
     

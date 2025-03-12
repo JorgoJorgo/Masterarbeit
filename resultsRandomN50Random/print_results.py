@@ -121,27 +121,27 @@ def plot_hops(title_prefix, algo_hops):
         print("Keine Daten für Hops-Werte vorhanden.")
 
 # Beispielaufruf:
-directory = 'results'
+directory = 'resultsRandomN50Random'
 selected_algorithms = [
-    #" MaxDAG", 
+    " MaxDAG", 
     #" MultipleTrees Random Checkpoint", 
     #" MultipleTrees Random Checkpoint Parallel", 
     #" MultipleTrees Closeness Checkpoint", 
-    #" MultipleTrees Betweenness Checkpoint", 
+    " MultipleTrees Betweenness Checkpoint", 
     #" MultipleTrees Degree Checkpoint", 
-    #' MultipleTrees Inverse Degree Checkpoint',
-    #' MultipleTrees Inverse Degree Greedy Checkpoint',
+    ' MultipleTrees Inverse Middle Checkpoint',
+    ' MultipleTrees Inverse Middle Greedy Checkpoint',
     
     #" One Tree Middle Checkpoint PE", 
     #" One Tree Closeness Checkpoint PE",
     #" One Tree Degree Checkpoint PE", 
     #" One Tree Betweenness Checkpoint PE", 
-    " One Tree Shortest EDP Checkpoint PE", 
+    #" One Tree Shortest EDP Checkpoint PE", 
     
-    " Triple Checkpoint OneTree", 
-    #" Triple Checkpoint MultipleTrees", 
+    #" Triple Checkpoint OneTree", 
+    " Triple Checkpoint MultipleTrees", 
     
-    " SquareOne Cuts", 
+    #" SquareOne Cuts", 
     " MultipleTrees Cuts",
     #" MultipleTrees Faces",
 ]

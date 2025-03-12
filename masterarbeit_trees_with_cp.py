@@ -946,6 +946,423 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths
 
+
+#################################################### MULTIPLETREES INVERS WITH DEGREE CHECKPOINT ################################################
+
+##########################################################################################################################################
+removed_edges_multtrees = []
+
+def multiple_trees_invers_with_degree_checkpoint_pre(graph):
+    paths = {}
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointPre] Start Precomputation")
+    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    combinations = 0
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            
+            if source != destination:
+                combinations += 1
+                #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                
+                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                
+                longest_edp = edps[len(edps)-1]
+
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Calculate Degree Centrality for nodes in the graph
+                degree_centrality = nx.degree_centrality(graph)
+                
+                # Filter out source and destination from the longest EDP
+                filtered_edp = [node for node in longest_edp if node != source and node != destination]
+                
+                # Handle the case where no valid cp is available after filtering
+                if not filtered_edp:
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
+                cp = max(filtered_edp, key=lambda node: degree_centrality[node])
+
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+                
+                #then build multiple trees cp->d
+                
+                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
+                if source in paths:
+                    paths[source][destination] = { 
+                                                'cp': cp,
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'cp': cp,
+                                                'trees_cp_to_s': trees_cp_to_s, 
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                    }
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
+    return paths
+
+
+#################################################### MULTIPLETREES INVERS WITH CLOSENESS CHECKPOINT ################################################
+
+##########################################################################################################################################
+removed_edges_multtrees = []
+
+def multiple_trees_invers_with_closeness_checkpoint_pre(graph):
+    paths = {}
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointPre] Start Precomputation")
+    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    combinations = 0
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            
+            if source != destination:
+                combinations += 1
+                #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                
+                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                
+                longest_edp = edps[len(edps)-1]
+
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Calculate Degree Centrality for nodes in the graph
+                closeness_centrality = nx.closeness_centrality(graph)
+                
+                # Filter out source and destination from the longest EDP
+                filtered_edp = [node for node in longest_edp if node != source and node != destination]
+                
+                # Handle the case where no valid cp is available after filtering
+                if not filtered_edp:
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
+                cp = max(filtered_edp, key=lambda node: closeness_centrality[node])
+
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+                
+                #then build multiple trees cp->d
+                
+                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
+                if source in paths:
+                    paths[source][destination] = { 
+                                                'cp': cp,
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'cp': cp,
+                                                'trees_cp_to_s': trees_cp_to_s, 
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                    }
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
+    return paths
+
+#################################################### MULTIPLETREES INVERS WITH BETWEENNESS CHECKPOINT ################################################
+
+##########################################################################################################################################
+removed_edges_multtrees = []
+
+def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
+    paths = {}
+    #draw_tree_with_highlights(graph)
+    print("[MultipleTreesOneCheckpointPre] Start Precomputation")
+    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    combinations = 0
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            
+            if source != destination:
+                combinations += 1
+                #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                
+                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                
+                longest_edp = edps[len(edps)-1]
+
+                #special case if the s,d pair is connected and this is the only edp
+                if(len(longest_edp) == 2):
+
+                    if source not in paths:
+                        paths[source] = {}
+                    #print("Special case for : ", source, "-", destination)
+
+
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Calculate Degree Centrality for nodes in the graph
+                betweenness_centrality = nx.betweenness_centrality(graph)
+                
+                # Filter out source and destination from the longest EDP
+                filtered_edp = [node for node in longest_edp if node != source and node != destination]
+                
+                # Handle the case where no valid cp is available after filtering
+                if not filtered_edp:
+                    tree_from_s = nx.DiGraph()
+                    tree_from_s.add_node(source)
+                    tree_from_s.add_node(destination)
+                    tree_from_d = nx.DiGraph()
+                    tree_from_d.add_node(source)
+                    tree_from_d.add_node(destination)
+
+                    
+                    tree_from_s.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_d.nodes[source]['pos'] = graph.nodes[source]['pos']
+                    tree_from_s.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_d.nodes[destination]['pos'] = graph.nodes[destination]['pos']
+                    tree_from_s.add_edge(source,destination)
+                    tree_from_d.add_edge(source,destination)
+
+                    paths[source][destination] = {
+                                                'cp': destination,
+                                                'trees_cp_to_s': tree_from_s, 
+                                                'edps_cp_to_s': [[source,destination]],
+                                                'trees_cp_to_d':tree_from_d, 
+                                                'edps_cp_to_d': [[source,destination]],
+                                                'edps_s_to_d':[[source,destination]]
+                                            }
+                    continue
+                
+                # Select the node with the highest Degree Centrality in the filtered EDP as the checkpoint
+                cp = max(filtered_edp, key=lambda node: betweenness_centrality[node])
+
+                edps_cp_to_s = all_edps(cp, source, graph)
+                edps_cp_to_d = all_edps(cp, destination, graph)
+                edps_cp_to_s.sort(key=len)
+                edps_cp_to_d.sort(key=len)
+                
+                trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
+                
+                #then build multiple trees cp->d
+                
+                trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
+                
+                for tree in trees_cp_to_d:
+                    for node in tree:
+                        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+
+                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
+                                                        
+                if source in paths:
+                    paths[source][destination] = { 
+                                                'cp': cp,
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_s': trees_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'cp': cp,
+                                                'trees_cp_to_s': trees_cp_to_s, 
+                                                'edps_cp_to_s': edps_cp_to_s,
+                                                'trees_cp_to_d': trees_cp_to_d, 
+                                                'edps_cp_to_d': edps_cp_to_d,
+                                                'edps_s_to_d': edps
+                    }
+                #if( len(trees_cp_to_s.nodes)>14): 
+                #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
+    return paths
+
+
 ################################################## MULTIPLETREES WITH DEGREE CHECKPOINT ################################################
 
 ##########################################################################################################################################
