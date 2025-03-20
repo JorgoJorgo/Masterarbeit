@@ -123,18 +123,18 @@ def plot_hops(title_prefix, algo_hops):
 # Beispielaufruf:
 directory = 'results'
 selected_algorithms = [
-    #" MaxDAG", 
+    " MaxDAG", 
     #" MultipleTrees Random Checkpoint", 
     #" MultipleTrees Random Checkpoint Parallel", 
     #" MultipleTrees Closeness Checkpoint", 
     #" MultipleTrees Betweenness Checkpoint", 
     #" MultipleTrees Degree Checkpoint", 
     #' MultipleTrees Inverse Degree Checkpoint',
-    #' MultipleTrees Inverse Degree Greedy Checkpoint',
+    ' MultipleTrees Inverse Degree Greedy Checkpoint',
     
-    ' MultipleTrees Inverse Degree Checkpoint',
+    #' MultipleTrees Inverse Degree Checkpoint',
     ' MultipleTrees Inverse Betweenness Checkpoint',
-    ' MultipleTrees Inverse Closeness Checkpoint',
+    #' MultipleTrees Inverse Closeness Checkpoint',
 
     #" One Tree Middle Checkpoint PE", 
     #" One Tree Closeness Checkpoint PE",
@@ -143,10 +143,10 @@ selected_algorithms = [
     #" One Tree Shortest EDP Checkpoint PE", 
     
     #" Triple Checkpoint OneTree", 
-    #" Triple Checkpoint MultipleTrees", 
+    " Triple Checkpoint MultipleTrees", 
     
     #" SquareOne Cuts", 
-    #" MultipleTrees Cuts",
+    " MultipleTrees Cuts",
     #" MultipleTrees Faces",
 ]
 calculate_averages(directory, selected_algorithms)
