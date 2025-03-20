@@ -4,14 +4,14 @@ import time
 
 from networkx import node_connectivity
 from arborescences import reset_arb_attribute
-from cut_algorithms import multipleTrees_with_cuts_pre, squareOne_with_cuts_pre
+from cut_algorithms import multipleTrees_with_cuts_extended_pre, multipleTrees_with_cuts_pre, squareOne_with_cuts_pre
 from extra_links import DegreeMaxDAG, GreedyMaximalDAG, RouteDetCircSkip
 from faces import route_faces_with_paths, route_greedy_faces_with_paths, route_greedy_perimeter
 from objective_function_experiments import *
 from planar_graphs import apply_delaunay_triangulation, apply_gabriel_graph, create_unit_disk_graph
 from trees import multiple_trees_pre, one_tree_pre
 from routing import PrepareSQ1, RouteDetCirc, RouteMultipleTrees, RouteOneTree, RouteSQ1, RouteWithOneCheckpointGREEDYMultipleTrees, RouteWithOneCheckpointMultipleTrees, RouteWithOneCheckpointOneTree, RouteWithTripleCheckpointMultipleTrees, RouteWithTripleCheckpointOneTree, SimulateGraph, Statistic
-from masterarbeit_trees_with_cp import multiple_trees_for_faces_pre, multiple_trees_invers_with_betweenness_checkpoint_pre, multiple_trees_invers_with_closeness_checkpoint_pre, multiple_trees_invers_with_degree_checkpoint_extended_pre, multiple_trees_invers_with_degree_checkpoint_pre, multiple_trees_invers_with_middle_checkpoint_pre, multiple_trees_triple_checkpooint_pre, multiple_trees_with_betweenness_checkpoint_pre, multiple_trees_with_closeness_checkpoint_pre, multiple_trees_with_degree_checkpoint_pre, multiple_trees_with_middle_checkpoint_parallel_pre, multiple_trees_with_middle_checkpoint_pre, one_tree_triple_checkpooint_pre, one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_extended_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
+from masterarbeit_trees_with_cp import multiple_trees_for_faces_extended_pre, multiple_trees_for_faces_pre, multiple_trees_invers_with_betweenness_checkpoint_pre, multiple_trees_invers_with_closeness_checkpoint_pre, multiple_trees_invers_with_degree_checkpoint_extended_pre, multiple_trees_invers_with_degree_checkpoint_pre, multiple_trees_invers_with_middle_checkpoint_pre, multiple_trees_triple_checkpooint_pre, multiple_trees_with_betweenness_checkpoint_pre, multiple_trees_with_closeness_checkpoint_pre, multiple_trees_with_degree_checkpoint_extended_pre, multiple_trees_with_degree_checkpoint_pre, multiple_trees_with_middle_checkpoint_parallel_pre, multiple_trees_with_middle_checkpoint_pre, one_tree_triple_checkpooint_pre, one_tree_with_betweenness_checkpoint_pre, one_tree_with_closeness_checkpoint_pre, one_tree_with_degree_checkpoint_extended_pre, one_tree_with_degree_checkpoint_pre, one_tree_with_middle_checkpoint_pre, one_tree_with_middle_checkpoint_shortest_edp_extended_pre, one_tree_with_middle_checkpoint_shortest_edp_pre
 import matplotlib.pyplot as plt
 DEBUG = True
 
@@ -34,8 +34,12 @@ algos = {
         #   'MultipleTrees Inverse Betweenness Checkpoint':[multiple_trees_invers_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         #   'MultipleTrees Inverse Closeness Checkpoint':[multiple_trees_invers_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         
-        #   'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-           'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
+           'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+           'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+           'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
+           'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
+           'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
+           'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
 
         #   'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #   'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
@@ -51,6 +55,7 @@ algos = {
         #   'MultipleTrees Cuts Greedy': [multipleTrees_with_cuts_pre, route_greedy_faces_with_paths],
 
         #   'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        
         }
 
 def one_experiment(g, seed, out, algo):

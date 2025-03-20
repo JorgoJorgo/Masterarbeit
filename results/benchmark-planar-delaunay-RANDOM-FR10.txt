@@ -1,0 +1,4 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Thu Mar 20 14:58:18 2025
+Delaunay, 30, 2, MultipleTrees Inverse Degree Checkpoint Extended, 8, 4, 2, 7, 0.900000, 0.000244, 51.187429
+Delaunay, 30, 2, MultipleTrees Inverse Degree Checkpoint Extended, 8

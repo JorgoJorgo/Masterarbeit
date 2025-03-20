@@ -24,6 +24,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from datetime import datetime
 from faces import find_faces_pre
+from masterarbeit_trees_with_cp import expand_face_structure
 from trees import all_edps, multiple_trees
 
 def squareOne_with_cuts_pre(graph):
@@ -382,6 +383,47 @@ def multipleTrees_with_cuts(source, destination, graph, cut_edges, cut_nodes):
         print_cut_structure([source, destination], first_face_edges, combined_structure, source, destination, save_plot=False)
 
     return combined_structure
+
+def multipleTrees_with_cuts_extended_pre(graph):
+    paths = {}
+    print("[MT with Cuts] Start Precomputation")
+
+
+    for source in graph.nodes:
+       
+        for destination in graph.nodes:
+            
+            if source != destination:
+                print(f"[MT with cuts] Precomputation for: {source}->{destination}")
+                cut_edges = nx.minimum_edge_cut(graph, source, destination)
+                #print("[MT with Cuts] building structure for", source, destination)
+            
+                cut_nodes = set()
+                for edge in cut_edges:
+                    cut_nodes.add(edge[0])
+                    cut_nodes.add(edge[1])
+
+                
+                structure = multipleTrees_with_cuts(source,destination,graph,cut_edges,cut_nodes)
+
+                fake_structure = nx.Graph()
+                structure = expand_face_structure(source,destination,graph,structure,fake_structure)
+                if source in paths:
+                    paths[source][destination] = { 
+                                                    'structure': structure,
+                                                    'cut_edges': cut_edges,
+                                                    'cut_nodes': cut_nodes
+                                                }
+                else:
+                    paths[source] = {}
+                    paths[source][destination] = {
+                                                'structure': structure,
+                                                'cut_edges': cut_edges,
+                                                'cut_nodes': cut_nodes
+                    }
+
+                #print_cut_structure([source, destination], cut_edges, structure, source, destination, save_plot=False)
+    return paths
 
 
 def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destination, fails=[], current_edge=None, save_plot=False, filename="graphen/graph.png"):
