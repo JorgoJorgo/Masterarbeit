@@ -157,49 +157,49 @@ directory = 'resultsN60R_R_delaunay'
 
 
 selected_algorithms = [
-   ' MaxDAG',
+#   ' MaxDAG',
 #   ' SquareOne',
-   ' SquareOne Cuts',
+#   ' SquareOne Cuts',
   
-#   ' MultipleTrees Cuts',
-#   ' MultipleTrees Cuts Extended',
-#   ' MultipleTrees Cuts Greedy',
-#   ' MultipleTrees Faces',
-#   ' MultipleTrees Faces Extended',
-  
-
-  
-
 #   ' MultipleTrees',
-  
+#   
 #   ' MultipleTrees Betweenness Checkpoint',
 #   ' MultipleTrees Inverse Betweenness Checkpoint',
+
 #   ' MultipleTrees Closeness Checkpoint',
-  
+#   ' MultipleTrees Inverse Closeness Checkpoint',
+
 #   ' MultipleTrees Degree Checkpoint',
 #   ' MultipleTrees Degree Checkpoint Extended',
-  
-#   ' MultipleTrees Inverse Closeness Checkpoint',
 #   ' MultipleTrees Inverse Degree Checkpoint',
 #   ' MultipleTrees Inverse Degree Checkpoint Extended',
+
 #   ' MultipleTrees Inverse Middle Checkpoint',
 #   ' MultipleTrees Inverse Middle Greedy Checkpoint',
+
 #   ' MultipleTrees Random Checkpoint',
 #   ' MultipleTrees Random Checkpoint Parallel',
+
 #   ' MultipleTrees Inverse Degree Greedy Checkpoint'
+
 #   ' Triple Checkpoint MultipleTrees',
 
+   ' MultipleTrees Cuts',
+   ' MultipleTrees Cuts Extended',
+#   ' MultipleTrees Cuts Greedy',
+   ' MultipleTrees Faces',
+   ' MultipleTrees Faces Extended',
+
 #   ' One Tree',
-   ' One Tree Betweenness Checkpoint PE',
-   ' One Tree Closeness Checkpoint PE',  
-   ' One Tree Degree Checkpoint PE',
-   ' One Tree Middle Checkpoint PE',
-   ' One Tree Shortest EDP Checkpoint PE',
-   ' One Tree Shortest EDP Checkpoint Extended PE',
-   ' One Tree Degree Checkpoint Extended PE',
+   #' One Tree Betweenness Checkpoint PE',
+   #' One Tree Closeness Checkpoint PE',  
+   #' One Tree Degree Checkpoint PE',
+   #' One Tree Middle Checkpoint PE',
+   #' One Tree Shortest EDP Checkpoint PE',
+   #' One Tree Shortest EDP Checkpoint Extended PE',
+   #' One Tree Degree Checkpoint Extended PE',
   
-  
-   ' Triple Checkpoint OneTree',
+   #' Triple Checkpoint OneTree',
 
  ]
 calculate_averages(directory, selected_algorithms)

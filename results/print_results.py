@@ -153,7 +153,7 @@ def plot_hops(title_prefix, algo_hops, fr_indices):
         print("Keine Daten für Hops-Werte vorhanden.")
 
 # Beispielaufruf:
-directory = 'combined_resultsN60R_R'
+directory = 'results'
 
 
 selected_algorithms = [
@@ -161,46 +161,46 @@ selected_algorithms = [
 #   ' SquareOne',
    ' SquareOne Cuts',
   
-#   ' MultipleTrees Cuts',
-#   ' MultipleTrees Cuts Extended',
-#   ' MultipleTrees Cuts Greedy',
-#   ' MultipleTrees Faces',
-#   ' MultipleTrees Faces Extended',
-  
-
-  
-#   ' Triple Checkpoint MultipleTrees',
 #   ' MultipleTrees',
-
-
-  
+#   
 #   ' MultipleTrees Betweenness Checkpoint',
 #   ' MultipleTrees Inverse Betweenness Checkpoint',
+
 #   ' MultipleTrees Closeness Checkpoint',
-  
-#   ' MultipleTrees Degree Checkpoint',
-#   ' MultipleTrees Degree Checkpoint Extended',
-  
 #   ' MultipleTrees Inverse Closeness Checkpoint',
+
+#   ' MultipleTrees Degree Checkpoint',
+   ' MultipleTrees Degree Checkpoint Extended',
 #   ' MultipleTrees Inverse Degree Checkpoint',
-#   ' MultipleTrees Inverse Degree Checkpoint Extended',
+   ' MultipleTrees Inverse Degree Checkpoint Extended',
+
 #   ' MultipleTrees Inverse Middle Checkpoint',
 #   ' MultipleTrees Inverse Middle Greedy Checkpoint',
+
 #   ' MultipleTrees Random Checkpoint',
 #   ' MultipleTrees Random Checkpoint Parallel',
 
-   ' One Tree',
-   ' One Tree Betweenness Checkpoint PE',
-   ' One Tree Closeness Checkpoint PE',  
-   ' One Tree Degree Checkpoint PE',
-   ' One Tree Middle Checkpoint PE',
-   ' One Tree Shortest EDP Checkpoint PE',
-   ' One Tree Shortest EDP Checkpoint Extended PE',
-   ' One Tree Degree Checkpoint Extended PE',
+#   ' MultipleTrees Inverse Degree Greedy Checkpoint'
+
+#   ' Triple Checkpoint MultipleTrees',
+
+#   ' MultipleTrees Cuts',
+   ' MultipleTrees Cuts Extended',
+#   ' MultipleTrees Cuts Greedy',
+#   ' MultipleTrees Faces',
+   ' MultipleTrees Faces Extended',
+
+#   ' One Tree',
+   #' One Tree Betweenness Checkpoint PE',
+   #' One Tree Closeness Checkpoint PE',  
+   #' One Tree Degree Checkpoint PE',
+   #' One Tree Middle Checkpoint PE',
+   #' One Tree Shortest EDP Checkpoint PE',
+   #' One Tree Shortest EDP Checkpoint Extended PE',
+   #' One Tree Degree Checkpoint Extended PE',
   
-  
-   ' Triple Checkpoint OneTree',
-#  ' MultipleTrees Inverse Degree Greedy Checkpoint'
+   #' Triple Checkpoint OneTree',
+
  ]
 calculate_averages(directory, selected_algorithms)
 
