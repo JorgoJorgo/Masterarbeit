@@ -84,7 +84,7 @@ def calculate_averages(directory, selected_algorithms=None):
     if selected_algorithms:
         missing_algorithms = set(selected_algorithms) - found_algorithms
         if missing_algorithms:
-            print(f" Warnung: Diese ausgewählten Algorithmen wurden in den Daten nicht gefunden: {missing_algorithms}")
+            print(f"⚠️  Warnung: Diese ausgewählten Algorithmen wurden in den Daten nicht gefunden: {missing_algorithms}")
 
     # Neue Debug-Zeile: Wie viele Werte hat jeder Algorithmus?
     print("\nLängen der Success-Listen pro Algorithmus:")
@@ -153,7 +153,7 @@ def plot_hops(title_prefix, algo_hops, fr_indices):
         print("Keine Daten für Hops-Werte vorhanden.")
 
 # Beispielaufruf:
-directory = 'combined_resultsN60R_R'
+directory = 'resultsN60R_R_delaunay'
 
 
 selected_algorithms = [
@@ -169,10 +169,8 @@ selected_algorithms = [
   
 
   
-#   ' Triple Checkpoint MultipleTrees',
+
 #   ' MultipleTrees',
-
-
   
 #   ' MultipleTrees Betweenness Checkpoint',
 #   ' MultipleTrees Inverse Betweenness Checkpoint',
@@ -188,8 +186,10 @@ selected_algorithms = [
 #   ' MultipleTrees Inverse Middle Greedy Checkpoint',
 #   ' MultipleTrees Random Checkpoint',
 #   ' MultipleTrees Random Checkpoint Parallel',
+#   ' MultipleTrees Inverse Degree Greedy Checkpoint'
+#   ' Triple Checkpoint MultipleTrees',
 
-   ' One Tree',
+#   ' One Tree',
    ' One Tree Betweenness Checkpoint PE',
    ' One Tree Closeness Checkpoint PE',  
    ' One Tree Degree Checkpoint PE',
@@ -200,7 +200,7 @@ selected_algorithms = [
   
   
    ' Triple Checkpoint OneTree',
-#  ' MultipleTrees Inverse Degree Greedy Checkpoint'
+
  ]
 calculate_averages(directory, selected_algorithms)
 

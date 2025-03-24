@@ -1,8 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Fri Mar 21 02:37:21 2025
-Delaunay, 60, 3, MultipleTrees Inverse Degree Checkpoint Extended, 1, 40, 7, 44, 1.000000, 0.001191, 1224.472059
-Delaunay, 60, 5, MultipleTrees Degree Checkpoint Extended, 1, 41, 5, 46, 1.000000, 0.001123, 913.368669
-Delaunay, 60, 5, MultipleTrees Faces Extended, 1, 5, 6, 10, 0.900000, 0.001083, 1193.200875
-Delaunay, 60, 5, One Tree Shortest EDP Checkpoint Extended PE, 1, 45, 6, 51, 0.950000, 0.000812, 627.726296
-Delaunay, 60, 5, One Tree Degree Checkpoint Extended PE, 1, 53, 7, 59, 0.900000, 0.000757, 678.068388
-Delaunay, 60, 5, MultipleTrees Cuts Extended, 1, 20, 9, 24, 0.900000, 0.001247, 1689.282520
