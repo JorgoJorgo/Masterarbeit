@@ -35,11 +35,11 @@ algos = {
         #   'MultipleTrees Inverse Closeness Checkpoint':[multiple_trees_invers_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         
            'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-           'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-           'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
-           'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
-           'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
-           'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
+        #   'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
+        #   'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
+        #   'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
+        #   'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
 
         #   'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #   'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
@@ -86,7 +86,10 @@ def one_experiment(g, seed, out, algo):
     random.seed(seed)
     t = time.time()
     #print("[one_experiment] fails:", g.graph['fails'])
-    SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
+    if attack == "CLUSTER":
+        SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation,targeted=True)
+    else:
+        SimulateGraph(g, True, [stat], f_num, samplesize, precomputation=precomputation)
     print("After simulate")
     rt = (time.time() - t)/samplesize
     success_ratio = stat.succ / samplesize

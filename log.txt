@@ -1,946 +1,401 @@
-Wed Feb 19 15:37:56 2025
+Wed Mar 26 12:58:57 2025
 [main] i :  10
 [main] switch: planar
 [main] seed: 2233
-[main] rep: 1
-[main] n: 20
-[main] samplesize: 7
-[main] attack: RANDOM
+[main] rep: 10
+[main] n: 30
+[main] samplesize: 10
+[main] attack: CLUSTER
 Erstelle Unit-Disk-Graph...
-Anzahl Knoten: 20 Anzahl Kanten: 33
+Anzahl Knoten: 30 Anzahl Kanten: 77
 Wende Delaunay-Triangulation an...
-Delaunay-Triangulation abgeschlossen. Knoten: 20 Kanten: 48
-Ausgewähltes Fehlermuster : RANDOM
+Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Ausgewähltes Fehlermuster : CLUSTER
 [run_planar] Anzahl der Fails:  23
-[run_planar] Fails:  [(6, 13), (7, 1), (18, 19), (13, 12), (7, 16), (18, 14), (1, 8), (1, 4), (6, 2), (0, 15), (12, 4), (9, 10), (3, 10), (14, 18), (10, 6), (12, 5), (15, 0), (17, 2), (9, 0), (8, 13), (13, 3), (2, 12), (12, 14)]
-[planar_experiments] root: 5
-[planar_experiments] len(edges): 96
-[shuffle_and_run] fails: [(6, 13), (7, 1), (18, 19), (13, 12), (7, 16), (18, 14), (1, 8), (1, 4), (6, 2), (0, 15), (12, 4), (9, 10), (3, 10), (14, 18), (10, 6), (12, 5), (15, 0), (17, 2), (9, 0), (8, 13), (13, 3), (2, 12), (12, 14)]
-experiment for  <function multiple_trees_for_faces_pre at 0x72f0dce15620>
-[MultipleTreesForFacesPre] Start Precomputation
-Start building Trees for 0 -> 1
-Start building Trees for 0 -> 2
-Start building Trees for 0 -> 4
-Start building Trees for 0 -> 5
-Start building Trees for 0 -> 6
-Start building Trees for 0 -> 7
-Start building Trees for 0 -> 8
-Start building Trees for 0 -> 11
-Start building Trees for 0 -> 12
-Start building Trees for 0 -> 13
-Start building Trees for 0 -> 14
-Start building Trees for 0 -> 16
-Start building Trees for 0 -> 17
-Start building Trees for 0 -> 18
-Start building Trees for 0 -> 19
-Start building Trees for 1 -> 0
-Start building Trees for 1 -> 2
-Start building Trees for 1 -> 3
-Start building Trees for 1 -> 5
-Start building Trees for 1 -> 6
-Start building Trees for 1 -> 9
-Start building Trees for 1 -> 10
-Start building Trees for 1 -> 11
-Start building Trees for 1 -> 12
-Start building Trees for 1 -> 13
-Start building Trees for 1 -> 14
-Start building Trees for 1 -> 15
-Start building Trees for 1 -> 17
-Start building Trees for 1 -> 18
-Start building Trees for 1 -> 19
-Start building Trees for 2 -> 0
-Start building Trees for 2 -> 1
-Start building Trees for 2 -> 3
-Start building Trees for 2 -> 4
-Start building Trees for 2 -> 5
-Start building Trees for 2 -> 7
-Start building Trees for 2 -> 8
-Start building Trees for 2 -> 9
-Start building Trees for 2 -> 10
-Start building Trees for 2 -> 13
-Start building Trees for 2 -> 15
-Start building Trees for 2 -> 16
-Start building Trees for 2 -> 18
-Start building Trees for 2 -> 19
-Start building Trees for 3 -> 1
-Start building Trees for 3 -> 2
-Start building Trees for 3 -> 4
-Start building Trees for 3 -> 5
-Start building Trees for 3 -> 6
-Start building Trees for 3 -> 7
-Start building Trees for 3 -> 11
-Start building Trees for 3 -> 12
-Start building Trees for 3 -> 14
-Start building Trees for 3 -> 15
-Start building Trees for 3 -> 17
-Start building Trees for 3 -> 18
-Start building Trees for 3 -> 19
-Start building Trees for 4 -> 0
-Start building Trees for 4 -> 2
-Start building Trees for 4 -> 3
-Start building Trees for 4 -> 6
-Start building Trees for 4 -> 9
-Start building Trees for 4 -> 10
-Start building Trees for 4 -> 11
-Start building Trees for 4 -> 13
-Start building Trees for 4 -> 14
-Start building Trees for 4 -> 15
-Start building Trees for 4 -> 16
-Start building Trees for 4 -> 17
-Start building Trees for 4 -> 18
-Start building Trees for 4 -> 19
-Start building Trees for 5 -> 0
-Start building Trees for 5 -> 1
-Start building Trees for 5 -> 2
-Start building Trees for 5 -> 3
-Start building Trees for 5 -> 6
-Start building Trees for 5 -> 8
-Start building Trees for 5 -> 9
-Start building Trees for 5 -> 10
-Start building Trees for 5 -> 11
-Start building Trees for 5 -> 13
-Start building Trees for 5 -> 14
-Start building Trees for 5 -> 15
-Start building Trees for 5 -> 16
-Start building Trees for 5 -> 17
-Start building Trees for 6 -> 0
-Start building Trees for 6 -> 1
-Start building Trees for 6 -> 3
-Start building Trees for 6 -> 4
-Start building Trees for 6 -> 5
-Start building Trees for 6 -> 7
-Start building Trees for 6 -> 8
-Start building Trees for 6 -> 9
-Start building Trees for 6 -> 14
-Start building Trees for 6 -> 16
-Start building Trees for 6 -> 17
-Start building Trees for 6 -> 18
-Start building Trees for 6 -> 19
-Start building Trees for 7 -> 0
-Start building Trees for 7 -> 2
-Start building Trees for 7 -> 3
-Start building Trees for 7 -> 6
-Start building Trees for 7 -> 8
-Start building Trees for 7 -> 9
-Start building Trees for 7 -> 10
-Start building Trees for 7 -> 11
-Start building Trees for 7 -> 12
-Start building Trees for 7 -> 13
-Start building Trees for 7 -> 14
-Start building Trees for 7 -> 15
-Start building Trees for 7 -> 17
-Start building Trees for 7 -> 18
-Start building Trees for 7 -> 19
-Start building Trees for 8 -> 0
-Start building Trees for 8 -> 2
-Start building Trees for 8 -> 5
-Start building Trees for 8 -> 6
-Start building Trees for 8 -> 7
-Start building Trees for 8 -> 9
-Start building Trees for 8 -> 10
-Start building Trees for 8 -> 11
-Start building Trees for 8 -> 14
-Start building Trees for 8 -> 15
-Start building Trees for 8 -> 17
-Start building Trees for 8 -> 18
-Start building Trees for 8 -> 19
-Start building Trees for 9 -> 1
-Start building Trees for 9 -> 2
-Start building Trees for 9 -> 4
-Start building Trees for 9 -> 5
-Start building Trees for 9 -> 6
-Start building Trees for 9 -> 7
-Start building Trees for 9 -> 8
-Start building Trees for 9 -> 11
-Start building Trees for 9 -> 12
-Start building Trees for 9 -> 13
-Start building Trees for 9 -> 14
-Start building Trees for 9 -> 15
-Start building Trees for 9 -> 16
-Start building Trees for 9 -> 17
-Start building Trees for 9 -> 18
-Start building Trees for 9 -> 19
-Start building Trees for 10 -> 1
-Start building Trees for 10 -> 2
-Start building Trees for 10 -> 4
-Start building Trees for 10 -> 5
-Start building Trees for 10 -> 7
-Start building Trees for 10 -> 8
-Start building Trees for 10 -> 11
-Start building Trees for 10 -> 12
-Start building Trees for 10 -> 14
-Start building Trees for 10 -> 16
-Start building Trees for 10 -> 17
-Start building Trees for 10 -> 18
-Start building Trees for 10 -> 19
-Start building Trees for 11 -> 0
-Start building Trees for 11 -> 1
-Start building Trees for 11 -> 3
-Start building Trees for 11 -> 4
-Start building Trees for 11 -> 5
-Start building Trees for 11 -> 7
-Start building Trees for 11 -> 8
-Start building Trees for 11 -> 9
-Start building Trees for 11 -> 10
-Start building Trees for 11 -> 12
-Start building Trees for 11 -> 13
-Start building Trees for 11 -> 14
-Start building Trees for 11 -> 16
-Start building Trees for 11 -> 18
-Start building Trees for 11 -> 19
-Start building Trees for 12 -> 0
-Start building Trees for 12 -> 1
-Start building Trees for 12 -> 3
-Start building Trees for 12 -> 7
-Start building Trees for 12 -> 9
-Start building Trees for 12 -> 10
-Start building Trees for 12 -> 11
-Start building Trees for 12 -> 15
-Start building Trees for 12 -> 16
-Start building Trees for 12 -> 17
-Start building Trees for 12 -> 19
-Start building Trees for 13 -> 0
-Start building Trees for 13 -> 1
-Start building Trees for 13 -> 2
-Start building Trees for 13 -> 4
-Start building Trees for 13 -> 5
-Start building Trees for 13 -> 7
-Start building Trees for 13 -> 9
-Start building Trees for 13 -> 11
-Start building Trees for 13 -> 14
-Start building Trees for 13 -> 15
-Start building Trees for 13 -> 16
-Start building Trees for 13 -> 17
-Start building Trees for 13 -> 18
-Start building Trees for 13 -> 19
-Start building Trees for 14 -> 0
-Start building Trees for 14 -> 1
-Start building Trees for 14 -> 3
-Start building Trees for 14 -> 4
-Start building Trees for 14 -> 5
-Start building Trees for 14 -> 6
-Start building Trees for 14 -> 7
-Start building Trees for 14 -> 8
-Start building Trees for 14 -> 9
-Start building Trees for 14 -> 10
-Start building Trees for 14 -> 11
-Start building Trees for 14 -> 13
-Start building Trees for 14 -> 15
-Start building Trees for 14 -> 16
-Start building Trees for 15 -> 1
-Start building Trees for 15 -> 2
-Start building Trees for 15 -> 3
-Start building Trees for 15 -> 4
-Start building Trees for 15 -> 5
-Start building Trees for 15 -> 7
-Start building Trees for 15 -> 8
-Start building Trees for 15 -> 9
-Start building Trees for 15 -> 12
-Start building Trees for 15 -> 13
-Start building Trees for 15 -> 14
-Start building Trees for 15 -> 16
-Start building Trees for 15 -> 17
-Start building Trees for 15 -> 18
-Start building Trees for 15 -> 19
-Start building Trees for 16 -> 0
-Start building Trees for 16 -> 2
-Start building Trees for 16 -> 4
-Start building Trees for 16 -> 5
-Start building Trees for 16 -> 6
-Start building Trees for 16 -> 9
-Start building Trees for 16 -> 10
-Start building Trees for 16 -> 11
-Start building Trees for 16 -> 12
-Start building Trees for 16 -> 13
-Start building Trees for 16 -> 14
-Start building Trees for 16 -> 15
-Start building Trees for 16 -> 17
-Start building Trees for 16 -> 18
-Start building Trees for 16 -> 19
-Start building Trees for 17 -> 0
-Start building Trees for 17 -> 1
-Start building Trees for 17 -> 3
-Start building Trees for 17 -> 4
-Start building Trees for 17 -> 5
-Start building Trees for 17 -> 6
-Start building Trees for 17 -> 7
-Start building Trees for 17 -> 8
-Start building Trees for 17 -> 9
-Start building Trees for 17 -> 10
-Start building Trees for 17 -> 12
-Start building Trees for 17 -> 13
-Start building Trees for 17 -> 15
-Start building Trees for 17 -> 16
-Start building Trees for 17 -> 18
-Start building Trees for 18 -> 0
-Start building Trees for 18 -> 1
-Start building Trees for 18 -> 2
-Start building Trees for 18 -> 3
-Start building Trees for 18 -> 4
-Start building Trees for 18 -> 6
-Start building Trees for 18 -> 7
-Start building Trees for 18 -> 8
-Start building Trees for 18 -> 9
-Start building Trees for 18 -> 10
-Start building Trees for 18 -> 11
-Start building Trees for 18 -> 13
-Start building Trees for 18 -> 15
-Start building Trees for 18 -> 16
-Start building Trees for 18 -> 17
-Start building Trees for 19 -> 0
-Start building Trees for 19 -> 1
-Start building Trees for 19 -> 2
-Start building Trees for 19 -> 3
-Start building Trees for 19 -> 4
-Start building Trees for 19 -> 6
-Start building Trees for 19 -> 7
-Start building Trees for 19 -> 8
-Start building Trees for 19 -> 9
-Start building Trees for 19 -> 10
-Start building Trees for 19 -> 11
-Start building Trees for 19 -> 12
-Start building Trees for 19 -> 13
-Start building Trees for 19 -> 15
-Start building Trees for 19 -> 16
+[run_planar] Fails:  [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+[planar_experiments] root: 10
+[planar_experiments] len(edges): 154
+[shuffle_and_run] fails: [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+experiment for  <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
 Done with precomputation algo
 Start routing
-[SimulateGraph] nodes: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-[SimulateGraph] dist: {5: 0, 18: 1, 19: 1, 4: 1, 7: 1, 8: 2, 12: 2, 14: 2, 17: 2, 2: 3, 3: 3, 6: 3, 11: 3, 16: 3, 0: 4, 1: 4, 9: 4, 15: 4, 10: 5, 13: 6}
+
+Erste 10 Knoten in 'nodes':
+Knoten an Index 0: 0, Clustering Coefficient: 0.6667
+Knoten an Index 1: 1, Clustering Coefficient: 0.3333
+Knoten an Index 2: 2, Clustering Coefficient: 0.3333
+Knoten an Index 3: 3, Clustering Coefficient: 0.4000
+Knoten an Index 4: 4, Clustering Coefficient: 1.0000
+Knoten an Index 5: 5, Clustering Coefficient: 0.3000
+Knoten an Index 6: 6, Clustering Coefficient: 0.1905
+Knoten an Index 7: 7, Clustering Coefficient: 0.1667
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
+
+Erste 10 Knoten in 'cluster_nodes' (sortiert):
+Knoten an Index 0: 4, Clustering Coefficient: 1.0000
+Knoten an Index 1: 0, Clustering Coefficient: 0.6667
+Knoten an Index 2: 15, Clustering Coefficient: 0.6667
+Knoten an Index 3: 19, Clustering Coefficient: 0.6667
+Knoten an Index 4: 18, Clustering Coefficient: 0.5000
+Knoten an Index 5: 3, Clustering Coefficient: 0.4000
+Knoten an Index 6: 1, Clustering Coefficient: 0.3333
+Knoten an Index 7: 2, Clustering Coefficient: 0.3333
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 16 to 5
-[route Faces] Source edges initialized: [(16, 3)]
-[sorted_neighbors_for_face_routing] All neighbors: [3, 9, 15, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10, 3]
-[route Faces] Current Node: 0
-[route Faces] Previous Node: 3
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 13, 6, 0, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [13, 0, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [13, 15, 0]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 0
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 12, 8, 6, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10]
-[route Faces] Current Node: 13
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 13, 6, 0, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [13, 0, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [0, 15, 13]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 13
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 9, 15, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [3, 10]
-[route Faces] Current Node: 0
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 13, 8, 0, 9, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16, 8, 0, 9]
-[sorted_neighbors_for_face_routing] Final neighbors: [16, 8, 9, 0]
-[route Faces] Current Node: 3
-[route Faces] Previous Node: 0
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [7, 1, 8, 3]
-[sorted_neighbors_for_face_routing] Valid neighbors: [1, 8, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [1, 8, 3]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 3
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 4, 7, 8]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16]
-[sorted_neighbors_for_face_routing] Final neighbors: [16]
-[route Faces] Current Node: 1
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [7, 1, 8, 3]
-[sorted_neighbors_for_face_routing] Valid neighbors: [1, 8, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [8, 3, 1]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 1
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 12, 4, 1, 3, 13]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16, 12, 4, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [12, 4, 3, 16]
-[route Faces] Current Node: 8
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [8, 5, 13, 18, 4, 2, 14, 6]
-[sorted_neighbors_for_face_routing] Valid neighbors: [8, 18, 6]
-[sorted_neighbors_for_face_routing] Final neighbors: [18, 6, 8]
-[route Faces] Current Node: 12
-[route Faces] Previous Node: 8
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [12, 5, 19, 14]
-[sorted_neighbors_for_face_routing] Valid neighbors: [12, 5]
-[sorted_neighbors_for_face_routing] Final neighbors: [5, 12]
-[route Faces] Current Node: 18
-[route Faces] Previous Node: 12
-[route Faces] D: 5
-Loop over samplesize is running
-Loop over stats is running
-[route_faces_with_paths] Routing from 19 to 5
-[route Faces] Routing success with Start Face
-Loop over samplesize is running
-Loop over stats is running
-[route_faces_with_paths] Routing from 12 to 5
-[route Faces] Routing failed with Start Face
-Loop over samplesize is running
-Loop over stats is running
-[route_faces_with_paths] Routing from 11 to 5
+
+Routing with a checkpoint started for :  4  ->  6  ->  10
+Routing MTCP via EDPs started for  4 - 6 - 10
 [route Faces] Routing success via Start Face
+FAIL ANZAHL :  23
+ 
+Routing started for  6  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [6, 2, 14, 25, 4, 1, 8, 3, 12, 22, 19, 23, 17, 27, 24, 16, 20, 26, 13, 21, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 0 to 5
-[route Faces] Source edges initialized: [(0, 15)]
-[sorted_neighbors_for_face_routing] All neighbors: [3, 10, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] All neighbors: [0, 16, 9, 8, 10, 13]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 16, 9, 8]
-[sorted_neighbors_for_face_routing] Final neighbors: [16, 9, 8, 0]
-[route Faces] Current Node: 3
-[route Faces] Previous Node: 0
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 7, 1, 8]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 1, 8]
-[sorted_neighbors_for_face_routing] Final neighbors: [1, 8, 3]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 3
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 7, 8, 4]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16]
-[sorted_neighbors_for_face_routing] Final neighbors: [16]
-[route Faces] Current Node: 1
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 7, 1, 8]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 1, 8]
-[sorted_neighbors_for_face_routing] Final neighbors: [3, 8, 1]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 1
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [0, 16, 9, 8, 10, 13]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 16, 9, 8]
-[sorted_neighbors_for_face_routing] Final neighbors: [0, 9, 8, 16]
-[route Faces] Current Node: 3
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 10, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10, 3]
-[route Faces] Current Node: 0
-[route Faces] Previous Node: 3
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [0, 13, 3, 9, 6, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 13, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [13, 15, 0]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 0
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [10, 12, 3, 8, 6]
-[sorted_neighbors_for_face_routing] Valid neighbors: [10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10]
-[route Faces] Current Node: 13
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [0, 13, 3, 9, 6, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 13, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [0, 15, 13]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 13
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 10, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [3, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [3, 10]
-[route Faces] Current Node: 0
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[route Faces] No valid edge found, routing failed with Clockwise Face Routing
+
+Routing with a checkpoint started for :  0  ->  6  ->  10
+Routing MTCP via EDPs started for  0 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 15 to 5
-[route Faces] Routing success via Start Face
+
+Routing with a checkpoint started for :  15  ->  6  ->  10
+Routing MTCP via EDPs started for  15 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 17 to 5
-[route Faces] Routing success via Start Face
+
+Routing with a checkpoint started for :  19  ->  16  ->  10
+Routing MTCP via EDPs started for  19 - 16 - 10
+FAIL ANZAHL :  23
+ 
+Routing started for  16  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [16, 13, 20, 25, 24, 21, 29, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  27  ->  10
+Routing MTCP via EDPs started for  18 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  3  ->  27  ->  10
+Routing MTCP via EDPs started for  3 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  25  ->  10
+Routing MTCP via EDPs started for  1 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  6  ->  10
+Routing MTCP via EDPs started for  2 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  16  ->  10
+Routing MTCP via EDPs started for  8 - 16 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  25  ->  10
+Routing MTCP via EDPs started for  9 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 After simulate
-success 5 <function multiple_trees_for_faces_pre at 0x72f0dce15620>
-time elapsed 4.679816722869873
-start time Wed Feb 19 15:37:56 2025
-end time Wed Feb 19 15:38:01 2025
-Wed Feb 19 15:38:01 2025
-[main] i :  11
-[main] switch: planar
-[main] seed: 2233
-[main] rep: 1
-[main] n: 20
-[main] samplesize: 7
-[main] attack: RANDOM
+success 10 <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
 Erstelle Unit-Disk-Graph...
-Anzahl Knoten: 20 Anzahl Kanten: 33
+Anzahl Knoten: 30 Anzahl Kanten: 77
 Wende Delaunay-Triangulation an...
-Delaunay-Triangulation abgeschlossen. Knoten: 20 Kanten: 48
-Ausgewähltes Fehlermuster : RANDOM
-[run_planar] Anzahl der Fails:  26
-[run_planar] Fails:  [(6, 13), (7, 1), (18, 19), (13, 12), (7, 16), (18, 14), (1, 8), (1, 4), (6, 2), (0, 15), (12, 4), (9, 10), (3, 10), (14, 18), (10, 6), (12, 5), (15, 0), (17, 2), (9, 0), (8, 13), (13, 3), (2, 12), (12, 14), (3, 0), (12, 6), (19, 5)]
-[planar_experiments] root: 5
-[planar_experiments] len(edges): 96
-[shuffle_and_run] fails: [(6, 13), (7, 1), (18, 19), (13, 12), (7, 16), (18, 14), (1, 8), (1, 4), (6, 2), (0, 15), (12, 4), (9, 10), (3, 10), (14, 18), (10, 6), (12, 5), (15, 0), (17, 2), (9, 0), (8, 13), (13, 3), (2, 12), (12, 14), (3, 0), (12, 6), (19, 5)]
-experiment for  <function multiple_trees_for_faces_pre at 0x72f0dce15620>
-[MultipleTreesForFacesPre] Start Precomputation
-Start building Trees for 0 -> 1
-Start building Trees for 0 -> 2
-Start building Trees for 0 -> 4
-Start building Trees for 0 -> 5
-Start building Trees for 0 -> 6
-Start building Trees for 0 -> 7
-Start building Trees for 0 -> 8
-Start building Trees for 0 -> 11
-Start building Trees for 0 -> 12
-Start building Trees for 0 -> 13
-Start building Trees for 0 -> 14
-Start building Trees for 0 -> 16
-Start building Trees for 0 -> 17
-Start building Trees for 0 -> 18
-Start building Trees for 0 -> 19
-Start building Trees for 1 -> 0
-Start building Trees for 1 -> 2
-Start building Trees for 1 -> 3
-Start building Trees for 1 -> 5
-Start building Trees for 1 -> 6
-Start building Trees for 1 -> 9
-Start building Trees for 1 -> 10
-Start building Trees for 1 -> 11
-Start building Trees for 1 -> 12
-Start building Trees for 1 -> 13
-Start building Trees for 1 -> 14
-Start building Trees for 1 -> 15
-Start building Trees for 1 -> 17
-Start building Trees for 1 -> 18
-Start building Trees for 1 -> 19
-Start building Trees for 2 -> 0
-Start building Trees for 2 -> 1
-Start building Trees for 2 -> 3
-Start building Trees for 2 -> 4
-Start building Trees for 2 -> 5
-Start building Trees for 2 -> 7
-Start building Trees for 2 -> 8
-Start building Trees for 2 -> 9
-Start building Trees for 2 -> 10
-Start building Trees for 2 -> 13
-Start building Trees for 2 -> 15
-Start building Trees for 2 -> 16
-Start building Trees for 2 -> 18
-Start building Trees for 2 -> 19
-Start building Trees for 3 -> 1
-Start building Trees for 3 -> 2
-Start building Trees for 3 -> 4
-Start building Trees for 3 -> 5
-Start building Trees for 3 -> 6
-Start building Trees for 3 -> 7
-Start building Trees for 3 -> 11
-Start building Trees for 3 -> 12
-Start building Trees for 3 -> 14
-Start building Trees for 3 -> 15
-Start building Trees for 3 -> 17
-Start building Trees for 3 -> 18
-Start building Trees for 3 -> 19
-Start building Trees for 4 -> 0
-Start building Trees for 4 -> 2
-Start building Trees for 4 -> 3
-Start building Trees for 4 -> 6
-Start building Trees for 4 -> 9
-Start building Trees for 4 -> 10
-Start building Trees for 4 -> 11
-Start building Trees for 4 -> 13
-Start building Trees for 4 -> 14
-Start building Trees for 4 -> 15
-Start building Trees for 4 -> 16
-Start building Trees for 4 -> 17
-Start building Trees for 4 -> 18
-Start building Trees for 4 -> 19
-Start building Trees for 5 -> 0
-Start building Trees for 5 -> 1
-Start building Trees for 5 -> 2
-Start building Trees for 5 -> 3
-Start building Trees for 5 -> 6
-Start building Trees for 5 -> 8
-Start building Trees for 5 -> 9
-Start building Trees for 5 -> 10
-Start building Trees for 5 -> 11
-Start building Trees for 5 -> 13
-Start building Trees for 5 -> 14
-Start building Trees for 5 -> 15
-Start building Trees for 5 -> 16
-Start building Trees for 5 -> 17
-Start building Trees for 6 -> 0
-Start building Trees for 6 -> 1
-Start building Trees for 6 -> 3
-Start building Trees for 6 -> 4
-Start building Trees for 6 -> 5
-Start building Trees for 6 -> 7
-Start building Trees for 6 -> 8
-Start building Trees for 6 -> 9
-Start building Trees for 6 -> 14
-Start building Trees for 6 -> 16
-Start building Trees for 6 -> 17
-Start building Trees for 6 -> 18
-Start building Trees for 6 -> 19
-Start building Trees for 7 -> 0
-Start building Trees for 7 -> 2
-Start building Trees for 7 -> 3
-Start building Trees for 7 -> 6
-Start building Trees for 7 -> 8
-Start building Trees for 7 -> 9
-Start building Trees for 7 -> 10
-Start building Trees for 7 -> 11
-Start building Trees for 7 -> 12
-Start building Trees for 7 -> 13
-Start building Trees for 7 -> 14
-Start building Trees for 7 -> 15
-Start building Trees for 7 -> 17
-Start building Trees for 7 -> 18
-Start building Trees for 7 -> 19
-Start building Trees for 8 -> 0
-Start building Trees for 8 -> 2
-Start building Trees for 8 -> 5
-Start building Trees for 8 -> 6
-Start building Trees for 8 -> 7
-Start building Trees for 8 -> 9
-Start building Trees for 8 -> 10
-Start building Trees for 8 -> 11
-Start building Trees for 8 -> 14
-Start building Trees for 8 -> 15
-Start building Trees for 8 -> 17
-Start building Trees for 8 -> 18
-Start building Trees for 8 -> 19
-Start building Trees for 9 -> 1
-Start building Trees for 9 -> 2
-Start building Trees for 9 -> 4
-Start building Trees for 9 -> 5
-Start building Trees for 9 -> 6
-Start building Trees for 9 -> 7
-Start building Trees for 9 -> 8
-Start building Trees for 9 -> 11
-Start building Trees for 9 -> 12
-Start building Trees for 9 -> 13
-Start building Trees for 9 -> 14
-Start building Trees for 9 -> 15
-Start building Trees for 9 -> 16
-Start building Trees for 9 -> 17
-Start building Trees for 9 -> 18
-Start building Trees for 9 -> 19
-Start building Trees for 10 -> 1
-Start building Trees for 10 -> 2
-Start building Trees for 10 -> 4
-Start building Trees for 10 -> 5
-Start building Trees for 10 -> 7
-Start building Trees for 10 -> 8
-Start building Trees for 10 -> 11
-Start building Trees for 10 -> 12
-Start building Trees for 10 -> 14
-Start building Trees for 10 -> 16
-Start building Trees for 10 -> 17
-Start building Trees for 10 -> 18
-Start building Trees for 10 -> 19
-Start building Trees for 11 -> 0
-Start building Trees for 11 -> 1
-Start building Trees for 11 -> 3
-Start building Trees for 11 -> 4
-Start building Trees for 11 -> 5
-Start building Trees for 11 -> 7
-Start building Trees for 11 -> 8
-Start building Trees for 11 -> 9
-Start building Trees for 11 -> 10
-Start building Trees for 11 -> 12
-Start building Trees for 11 -> 13
-Start building Trees for 11 -> 14
-Start building Trees for 11 -> 16
-Start building Trees for 11 -> 18
-Start building Trees for 11 -> 19
-Start building Trees for 12 -> 0
-Start building Trees for 12 -> 1
-Start building Trees for 12 -> 3
-Start building Trees for 12 -> 7
-Start building Trees for 12 -> 9
-Start building Trees for 12 -> 10
-Start building Trees for 12 -> 11
-Start building Trees for 12 -> 15
-Start building Trees for 12 -> 16
-Start building Trees for 12 -> 17
-Start building Trees for 12 -> 19
-Start building Trees for 13 -> 0
-Start building Trees for 13 -> 1
-Start building Trees for 13 -> 2
-Start building Trees for 13 -> 4
-Start building Trees for 13 -> 5
-Start building Trees for 13 -> 7
-Start building Trees for 13 -> 9
-Start building Trees for 13 -> 11
-Start building Trees for 13 -> 14
-Start building Trees for 13 -> 15
-Start building Trees for 13 -> 16
-Start building Trees for 13 -> 17
-Start building Trees for 13 -> 18
-Start building Trees for 13 -> 19
-Start building Trees for 14 -> 0
-Start building Trees for 14 -> 1
-Start building Trees for 14 -> 3
-Start building Trees for 14 -> 4
-Start building Trees for 14 -> 5
-Start building Trees for 14 -> 6
-Start building Trees for 14 -> 7
-Start building Trees for 14 -> 8
-Start building Trees for 14 -> 9
-Start building Trees for 14 -> 10
-Start building Trees for 14 -> 11
-Start building Trees for 14 -> 13
-Start building Trees for 14 -> 15
-Start building Trees for 14 -> 16
-Start building Trees for 15 -> 1
-Start building Trees for 15 -> 2
-Start building Trees for 15 -> 3
-Start building Trees for 15 -> 4
-Start building Trees for 15 -> 5
-Start building Trees for 15 -> 7
-Start building Trees for 15 -> 8
-Start building Trees for 15 -> 9
-Start building Trees for 15 -> 12
-Start building Trees for 15 -> 13
-Start building Trees for 15 -> 14
-Start building Trees for 15 -> 16
-Start building Trees for 15 -> 17
-Start building Trees for 15 -> 18
-Start building Trees for 15 -> 19
-Start building Trees for 16 -> 0
-Start building Trees for 16 -> 2
-Start building Trees for 16 -> 4
-Start building Trees for 16 -> 5
-Start building Trees for 16 -> 6
-Start building Trees for 16 -> 9
-Start building Trees for 16 -> 10
-Start building Trees for 16 -> 11
-Start building Trees for 16 -> 12
-Start building Trees for 16 -> 13
-Start building Trees for 16 -> 14
-Start building Trees for 16 -> 15
-Start building Trees for 16 -> 17
-Start building Trees for 16 -> 18
-Start building Trees for 16 -> 19
-Start building Trees for 17 -> 0
-Start building Trees for 17 -> 1
-Start building Trees for 17 -> 3
-Start building Trees for 17 -> 4
-Start building Trees for 17 -> 5
-Start building Trees for 17 -> 6
-Start building Trees for 17 -> 7
-Start building Trees for 17 -> 8
-Start building Trees for 17 -> 9
-Start building Trees for 17 -> 10
-Start building Trees for 17 -> 12
-Start building Trees for 17 -> 13
-Start building Trees for 17 -> 15
-Start building Trees for 17 -> 16
-Start building Trees for 17 -> 18
-Start building Trees for 18 -> 0
-Start building Trees for 18 -> 1
-Start building Trees for 18 -> 2
-Start building Trees for 18 -> 3
-Start building Trees for 18 -> 4
-Start building Trees for 18 -> 6
-Start building Trees for 18 -> 7
-Start building Trees for 18 -> 8
-Start building Trees for 18 -> 9
-Start building Trees for 18 -> 10
-Start building Trees for 18 -> 11
-Start building Trees for 18 -> 13
-Start building Trees for 18 -> 15
-Start building Trees for 18 -> 16
-Start building Trees for 18 -> 17
-Start building Trees for 19 -> 0
-Start building Trees for 19 -> 1
-Start building Trees for 19 -> 2
-Start building Trees for 19 -> 3
-Start building Trees for 19 -> 4
-Start building Trees for 19 -> 6
-Start building Trees for 19 -> 7
-Start building Trees for 19 -> 8
-Start building Trees for 19 -> 9
-Start building Trees for 19 -> 10
-Start building Trees for 19 -> 11
-Start building Trees for 19 -> 12
-Start building Trees for 19 -> 13
-Start building Trees for 19 -> 15
-Start building Trees for 19 -> 16
+Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Ausgewähltes Fehlermuster : CLUSTER
+[run_planar] Anzahl der Fails:  23
+[run_planar] Fails:  [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+[planar_experiments] root: 10
+[planar_experiments] len(edges): 154
+[shuffle_and_run] fails: [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+experiment for  <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
 Done with precomputation algo
 Start routing
-[SimulateGraph] nodes: [1, 3, 4, 7, 8, 9, 12, 16, 18]
-[SimulateGraph] dist: {5: 0, 18: 1, 4: 1, 7: 1, 8: 2, 12: 2, 3: 3, 16: 3, 1: 4, 9: 4, 0: inf, 2: inf, 6: inf, 10: inf, 11: inf, 13: inf, 14: inf, 15: inf, 17: inf, 19: inf}
+
+Erste 10 Knoten in 'nodes':
+Knoten an Index 0: 0, Clustering Coefficient: 0.6667
+Knoten an Index 1: 1, Clustering Coefficient: 0.3333
+Knoten an Index 2: 2, Clustering Coefficient: 0.3333
+Knoten an Index 3: 3, Clustering Coefficient: 0.4000
+Knoten an Index 4: 4, Clustering Coefficient: 1.0000
+Knoten an Index 5: 5, Clustering Coefficient: 0.3000
+Knoten an Index 6: 6, Clustering Coefficient: 0.1905
+Knoten an Index 7: 7, Clustering Coefficient: 0.1667
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
+
+Erste 10 Knoten in 'cluster_nodes' (sortiert):
+Knoten an Index 0: 4, Clustering Coefficient: 1.0000
+Knoten an Index 1: 0, Clustering Coefficient: 0.6667
+Knoten an Index 2: 15, Clustering Coefficient: 0.6667
+Knoten an Index 3: 19, Clustering Coefficient: 0.6667
+Knoten an Index 4: 18, Clustering Coefficient: 0.5000
+Knoten an Index 5: 3, Clustering Coefficient: 0.4000
+Knoten an Index 6: 1, Clustering Coefficient: 0.3333
+Knoten an Index 7: 2, Clustering Coefficient: 0.3333
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 16 to 5
-[route Faces] Source edges initialized: [(16, 3)]
-[sorted_neighbors_for_face_routing] All neighbors: [16, 13, 8, 0, 9, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16, 8, 9]
-[sorted_neighbors_for_face_routing] Final neighbors: [8, 9, 16]
-[route Faces] Current Node: 3
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 12, 4, 1, 3, 13]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16, 12, 4, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [16, 12, 4, 3]
-[route Faces] Current Node: 8
-[route Faces] Previous Node: 3
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [7, 1, 8, 3]
-[sorted_neighbors_for_face_routing] Valid neighbors: [1, 8, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [1, 3, 8]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 8
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 4, 7, 8]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16]
-[sorted_neighbors_for_face_routing] Final neighbors: [16]
-[route Faces] Current Node: 1
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [7, 1, 8, 3]
-[sorted_neighbors_for_face_routing] Valid neighbors: [1, 8, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [8, 3, 1]
-[route Faces] Current Node: 16
-[route Faces] Previous Node: 1
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [16, 12, 4, 1, 3, 13]
-[sorted_neighbors_for_face_routing] Valid neighbors: [16, 12, 4, 3]
-[sorted_neighbors_for_face_routing] Final neighbors: [12, 4, 3, 16]
-[route Faces] Current Node: 8
-[route Faces] Previous Node: 16
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [8, 5, 13, 18, 4, 2, 14, 6]
-[sorted_neighbors_for_face_routing] Valid neighbors: [8, 18]
-[sorted_neighbors_for_face_routing] Final neighbors: [18, 8]
-[route Faces] Current Node: 12
-[route Faces] Previous Node: 8
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [12, 5, 19, 14]
-[sorted_neighbors_for_face_routing] Valid neighbors: [12, 5]
-[sorted_neighbors_for_face_routing] Final neighbors: [5, 12]
-[route Faces] Current Node: 18
-[route Faces] Previous Node: 12
-[route Faces] D: 5
+
+Routing with a checkpoint started for :  4  ->  6  ->  10
+Routing MTCP via EDPs started for  4 - 6 - 10
+[route Faces] Routing success via Start Face
+FAIL ANZAHL :  23
+ 
+Routing started for  6  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [6, 2, 14, 25, 4, 1, 8, 3, 12, 22, 19, 23, 17, 27, 24, 16, 20, 26, 13, 21, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 19 to 5
-[route Faces] Routing failed with Start Face
+
+Routing with a checkpoint started for :  0  ->  6  ->  10
+Routing MTCP via EDPs started for  0 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 12 to 5
-[route Faces] Routing failed with Start Face
+
+Routing with a checkpoint started for :  15  ->  6  ->  10
+Routing MTCP via EDPs started for  15 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 11 to 5
-[route Faces] Source edges initialized: [(11, 17)]
-[sorted_neighbors_for_face_routing] All neighbors: [17, 5, 14, 18]
-[sorted_neighbors_for_face_routing] Valid neighbors: [17, 14]
-[sorted_neighbors_for_face_routing] Final neighbors: [14, 17]
-[route Faces] Current Node: 19
-[route Faces] Previous Node: 17
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [2, 12, 17, 19, 18]
-[sorted_neighbors_for_face_routing] Valid neighbors: [2, 17, 19]
-[sorted_neighbors_for_face_routing] Final neighbors: [2, 17, 19]
-[route Faces] Current Node: 14
-[route Faces] Previous Node: 19
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [11, 12, 17, 14, 6]
-[sorted_neighbors_for_face_routing] Valid neighbors: [11, 14]
-[sorted_neighbors_for_face_routing] Final neighbors: [11, 14]
-[route Faces] Current Node: 2
-[route Faces] Previous Node: 14
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [2, 17, 6, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [2, 17, 6, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [17, 6, 15, 2]
-[route Faces] Current Node: 11
-[route Faces] Previous Node: 2
-[route Faces] D: 5
-[route Faces] No valid edge found, routing failed with Clockwise Face Routing
+
+Routing with a checkpoint started for :  19  ->  16  ->  10
+Routing MTCP via EDPs started for  19 - 16 - 10
+FAIL ANZAHL :  23
+ 
+Routing started for  16  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [16, 13, 20, 25, 24, 21, 29, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 0 to 5
-[route Faces] Source edges initialized: [(0, 15)]
-[sorted_neighbors_for_face_routing] All neighbors: [3, 10, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10]
-[sorted_neighbors_for_face_routing] All neighbors: [0, 13, 3, 9, 6, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 13, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [13, 15, 0]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 0
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [10, 12, 3, 8, 6]
-[sorted_neighbors_for_face_routing] Valid neighbors: [10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10]
-[route Faces] Current Node: 13
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [0, 13, 3, 9, 6, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [0, 13, 15]
-[sorted_neighbors_for_face_routing] Final neighbors: [0, 15, 13]
-[route Faces] Current Node: 10
-[route Faces] Previous Node: 13
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [3, 10, 9, 15]
-[sorted_neighbors_for_face_routing] Valid neighbors: [10]
-[sorted_neighbors_for_face_routing] Final neighbors: [10]
-[route Faces] Current Node: 0
-[route Faces] Previous Node: 10
-[route Faces] D: 5
-[route Faces] No valid edge found, routing failed with Clockwise Face Routing
+
+Routing with a checkpoint started for :  18  ->  27  ->  10
+Routing MTCP via EDPs started for  18 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
 Loop over samplesize is running
 Loop over stats is running
-[route_faces_with_paths] Routing from 15 to 5
-[route Faces] Source edges initialized: [(15, 11)]
-[sorted_neighbors_for_face_routing] All neighbors: [17, 5, 14, 18]
-[sorted_neighbors_for_face_routing] Valid neighbors: [17, 14]
-[sorted_neighbors_for_face_routing] Final neighbors: [14, 17]
-[route Faces] Current Node: 19
-[route Faces] Previous Node: 17
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [12, 2, 19, 17, 18]
-[sorted_neighbors_for_face_routing] Valid neighbors: [2, 19, 17]
-[sorted_neighbors_for_face_routing] Final neighbors: [2, 17, 19]
-[route Faces] Current Node: 14
-[route Faces] Previous Node: 19
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [6, 12, 11, 17, 14]
-[sorted_neighbors_for_face_routing] Valid neighbors: [11, 14]
-[sorted_neighbors_for_face_routing] Final neighbors: [11, 14]
-[route Faces] Current Node: 2
-[route Faces] Previous Node: 14
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [15, 17, 6, 2]
-[sorted_neighbors_for_face_routing] Valid neighbors: [15, 17, 6, 2]
-[sorted_neighbors_for_face_routing] Final neighbors: [15, 17, 6, 2]
-[route Faces] Current Node: 11
-[route Faces] Previous Node: 2
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [6, 11, 0, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [6, 11, 10]
-[sorted_neighbors_for_face_routing] Final neighbors: [6, 10, 11]
-[route Faces] Current Node: 15
-[route Faces] Previous Node: 11
-[route Faces] D: 5
-[sorted_neighbors_for_face_routing] All neighbors: [15, 12, 2, 11, 13, 10]
-[sorted_neighbors_for_face_routing] Valid neighbors: [15, 11]
-[sorted_neighbors_for_face_routing] Final neighbors: [11, 15]
-[route Faces] Current Node: 6
-[route Faces] Previous Node: 15
-[route Faces] D: 5
+
+Routing with a checkpoint started for :  3  ->  27  ->  10
+Routing MTCP via EDPs started for  3 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  25  ->  10
+Routing MTCP via EDPs started for  1 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  6  ->  10
+Routing MTCP via EDPs started for  2 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  16  ->  10
+Routing MTCP via EDPs started for  8 - 16 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  25  ->  10
+Routing MTCP via EDPs started for  9 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 30 Anzahl Kanten: 77
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Ausgewähltes Fehlermuster : CLUSTER
+[run_planar] Anzahl der Fails:  23
+[run_planar] Fails:  [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+[planar_experiments] root: 10
+[planar_experiments] len(edges): 154
+[shuffle_and_run] fails: [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+experiment for  <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+
+Erste 10 Knoten in 'nodes':
+Knoten an Index 0: 0, Clustering Coefficient: 0.6667
+Knoten an Index 1: 1, Clustering Coefficient: 0.3333
+Knoten an Index 2: 2, Clustering Coefficient: 0.3333
+Knoten an Index 3: 3, Clustering Coefficient: 0.4000
+Knoten an Index 4: 4, Clustering Coefficient: 1.0000
+Knoten an Index 5: 5, Clustering Coefficient: 0.3000
+Knoten an Index 6: 6, Clustering Coefficient: 0.1905
+Knoten an Index 7: 7, Clustering Coefficient: 0.1667
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
+
+Erste 10 Knoten in 'cluster_nodes' (sortiert):
+Knoten an Index 0: 4, Clustering Coefficient: 1.0000
+Knoten an Index 1: 0, Clustering Coefficient: 0.6667
+Knoten an Index 2: 15, Clustering Coefficient: 0.6667
+Knoten an Index 3: 19, Clustering Coefficient: 0.6667
+Knoten an Index 4: 18, Clustering Coefficient: 0.5000
+Knoten an Index 5: 3, Clustering Coefficient: 0.4000
+Knoten an Index 6: 1, Clustering Coefficient: 0.3333
+Knoten an Index 7: 2, Clustering Coefficient: 0.3333
+Knoten an Index 8: 8, Clustering Coefficient: 0.3333
+Knoten an Index 9: 9, Clustering Coefficient: 0.3333
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  4  ->  6  ->  10
+Routing MTCP via EDPs started for  4 - 6 - 10
+[route Faces] Routing success via Start Face
+FAIL ANZAHL :  23
+ 
+Routing started for  6  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [6, 2, 14, 25, 4, 1, 8, 3, 12, 22, 19, 23, 17, 27, 24, 16, 20, 26, 13, 21, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  0  ->  6  ->  10
+Routing MTCP via EDPs started for  0 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  6  ->  10
+Routing MTCP via EDPs started for  15 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  19  ->  16  ->  10
+Routing MTCP via EDPs started for  19 - 16 - 10
+FAIL ANZAHL :  23
+ 
+Routing started for  16  to  10
+ 
+Routing via Tree started
+Routing done via the Tree :  [16, 13, 20, 25, 24, 21, 29, 10]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  27  ->  10
+Routing MTCP via EDPs started for  18 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  3  ->  27  ->  10
+Routing MTCP via EDPs started for  3 - 27 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  25  ->  10
+Routing MTCP via EDPs started for  1 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  6  ->  10
+Routing MTCP via EDPs started for  2 - 6 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  16  ->  10
+Routing MTCP via EDPs started for  8 - 16 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  25  ->  10
+Routing MTCP via EDPs started for  9 - 25 - 10
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 30 Anzahl Kanten: 77
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 77
+Ausgewähltes Fehlermuster : CLUSTER
+[run_planar] Anzahl der Fails:  23
+[run_planar] Fails:  [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+[planar_experiments] root: 10
+[planar_experiments] len(edges): 154
+[shuffle_and_run] fails: [(13, 20), (10, 16), (20, 28), (15, 23), (16, 17), (17, 20), (10, 24), (1, 6), (17, 22), (7, 14), (24, 25), (16, 29), (19, 27), (23, 26), (12, 24), (9, 24), (10, 20), (22, 28), (26, 27), (0, 7), (16, 26), (21, 26), (11, 27)]
+experiment for  <function multiple_trees_invers_with_degree_checkpoint_extended_pre at 0x7c624808e2a0>
+[MultipleTreesOneCheckpointPre] Start Precomputation

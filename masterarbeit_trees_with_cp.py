@@ -22,7 +22,7 @@ import os
 
 #ein großer baum für alle edps, längster EDP wird als erstes erweitert, für normale baumstrukturen mit tree routing
 def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
-    print(f"[MultipleTreesWithCheckpoint] Start for {source} -> {destination}")
+    #print(f"[MultipleTreesWithCheckpoint] Start for {source} -> {destination}")
     removed_edges = 0
     trees = [] 
     debug = should_debug(source, destination)
@@ -104,7 +104,7 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
     
     debug = should_debug(source, destination)
 
-    print(f"Start building Trees for {source} -> {destination}")
+    #print(f"Start building Trees for {source} -> {destination}")
 
     #jeder tree besteht anfänglich aus dem edp
     for i in range(len(all_edps)):
@@ -305,12 +305,12 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
 
     while changed:
         changed = False
-        print("Starting a new iteration of expansion")
+        #print("Starting a new iteration of expansion")
         
         for i in range(len(paths_to_extend)):
             checked_all = False
             checked_number = 0
-            print(f"Expanding path {i}")
+            #print(f"Expanding path {i}")
             
             while not checked_all:
                 if it_list[i] >= len(paths_to_extend[i]):
@@ -372,7 +372,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                 
                 #if we checked all nodes of the current path we can switch to the next path
                 if checked_number >= len(paths_to_extend[i]):
-                    print(f"Checked all nodes of {paths_to_extend[i]}")
+                    #print(f"Checked all nodes of {paths_to_extend[i]}")
                     checked_all = True
 
                 #reset the iterator if we checked to the end of the path, in order to start at the beginning of the path again
@@ -608,10 +608,10 @@ def one_tree_with_checkpoint_for_faces(source, destination, graph, longest_edp):
 #geht nachdem ein Algorithmus fertig ist nochmal alle Kanten des Graphen durch und fügt Nachbarn hinzu, wenn S-D-Face da NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
 def expand_face_structure(source, destination, graph, face_structure, tree_structure):
 
-    print("[ExpandFaceStructure] Starting the Expansion")
+    #print("[ExpandFaceStructure] Starting the Expansion")
 
     if isinstance(tree_structure, list) and all(isinstance(item, nx.DiGraph) for item in tree_structure):
-        print("Prüfung True")
+        #print("Prüfung True")
         combined_tree_structure = nx.Graph()
         # für die MultipleTrees Algorithmen müssen erst alle Bäume zu einem hinzugefügt werden
         for tree in tree_structure:
@@ -897,7 +897,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1002,7 +1002,7 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1107,7 +1107,7 @@ def multiple_trees_invers_with_degree_checkpoint_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+    #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1246,7 +1246,7 @@ def multiple_trees_invers_with_closeness_checkpoint_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+   #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1384,7 +1384,7 @@ def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+   #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1523,7 +1523,7 @@ def multiple_trees_invers_with_degree_checkpoint_extended_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+   #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        
@@ -1664,7 +1664,7 @@ def multiple_trees_with_degree_checkpoint_extended_pre(graph):
     paths = {}
     #draw_tree_with_highlights(graph)
     print("[MultipleTreesOneCheckpointPre] Start Precomputation")
-    print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
+   #print("All Combinations: ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
     combinations = 0
     for source in graph.nodes:
        

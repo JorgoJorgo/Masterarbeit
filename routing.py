@@ -3096,8 +3096,8 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
 
     fails = edg[:f]
     
-    if targeted:
-        fails = []
+    #if targeted:
+    #    fails = []
 
     failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
     failures1.update({(v, u): g[u][v]['arb'] for (u, v) in fails})
@@ -3107,7 +3107,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
     g.remove_edges_from(failures1.keys())
 
     nodes = list(set(connected_component_nodes_with_d_after_failures(g, [], d)) - {dest, d})
-    print("[SimulateGraph] nodes:", nodes)
+    #print("[SimulateGraph] nodes:", nodes)
 
     # Falls ein Knoten nicht erreichbar ist, setzen wir ihn in dist mit 'inf'
     try:
@@ -3120,47 +3120,76 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
         if node not in dist:
             dist[node] = float('inf')
 
-    print("[SimulateGraph] dist:", dist)
+    #print("[SimulateGraph] dist:", dist)
 
     nodes = list(set(g.nodes()) - {dest, d})
     random.shuffle(nodes)
     count = 0
 
-    for s in nodes[:samplesize]:
-        print("Loop over samplesize is running")
-        count += 1
+    #normaler algorithmus wie sonst auch immer, knoten zum routen werden random genommen
+    if not targeted:
+        for s in nodes[:samplesize]:
+            print("Loop over samplesize is running")
+            count += 1
 
-        for stat in stats:
-            print("Loop over stats is running")
+            for stat in stats:
+                print("Loop over stats is running")
 
-            if targeted:
-                fails = list(nx.minimum_edge_cut(g, s=s, t=d))[1:]
-                random.shuffle(fails)
-                failures1 = {(u, v): g[u][v]['arb'] for (u, v) in fails}
-                g.remove_edges_from(failures1.keys())
+                # Jetzt gibt es KEIN continue mehr, sondern der Algorithmus wird immer ausgeführt
+                fail, hops = stat.update(s, d, fails, precomputation, dist[s])
 
-                # Falls s nicht erreichbar ist, setze dist auf 'inf'
-                dist[s] = nx.shortest_path_length(g, source=s, target=d) if s in dist else float('inf')
+                if fail:
+                    stat.hops = stat.hops[:-1]
+                    stat.stretch = stat.stretch[:-1]
+                elif hops < 0:
+                    stat.hops = stat.hops[:-1]
+                    stat.stretch = stat.stretch[:-1]
+                    stat.succ -= 1
 
-            # Jetzt gibt es KEIN continue mehr, sondern der Algorithmus wird immer ausgeführt
-            fail, hops = stat.update(s, d, fails, precomputation, dist[s])
+                if stat.succ + stat.fails != count:
+                    print('Problem: Success and failures do not add up', stat.succ, stat.fails, count)
 
-            if fail:
-                stat.hops = stat.hops[:-1]
-                stat.stretch = stat.stretch[:-1]
-            elif hops < 0:
-                stat.hops = stat.hops[:-1]
-                stat.stretch = stat.stretch[:-1]
-                stat.succ -= 1
+    #wenn cluster die fehler sind, dann versucht man auch aus den clustern heraus zu routen
+    if targeted:
 
-            if targeted:
-                for ((u, v), i) in failures1.items():
-                    g.add_edge(u, v)
-                    g[u][v]['arb'] = i
+        # Clustering-Koeffizienten berechnen
+        clustering_coefficients = nx.clustering(g)
 
-            if stat.succ + stat.fails != count:
-                print('Problem: Success and failures do not add up', stat.succ, stat.fails, count)
+        # Sortierte Liste der Knoten nach Clustering-Koeffizient
+        cluster_nodes_with_values = sorted(clustering_coefficients.items(), key=lambda x: x[1], reverse=True)
+        cluster_nodes = [node for node, _ in cluster_nodes_with_values]
 
+        # Alle Knoten in beliebiger Reihenfolge (z. B. aus dem Graph)
+        nodes = list(g.nodes())
+
+
+        for s in cluster_nodes[:samplesize]:
+            print("Loop over samplesize is running")
+            count += 1
+
+            for stat in stats:
+                print("Loop over stats is running")
+
+
+                # Jetzt gibt es KEIN continue mehr, sondern der Algorithmus wird immer ausgeführt
+                fail, hops = stat.update(s, d, fails, precomputation, dist[s])
+
+                if fail:
+                    stat.hops = stat.hops[:-1]
+                    stat.stretch = stat.stretch[:-1]
+                elif hops < 0:
+                    stat.hops = stat.hops[:-1]
+                    stat.stretch = stat.stretch[:-1]
+                    stat.succ -= 1
+
+                # if targeted:
+                #     for ((u, v), i) in failures1.items():
+                #         g.add_edge(u, v)
+                #         g[u][v]['arb'] = i
+
+                if stat.succ + stat.fails != count:
+                    print('Problem: Success and failures do not add up', stat.succ, stat.fails, count)
+    
     if not targeted:
         for ((u, v), i) in failures1.items():
             g.add_edge(u, v)
