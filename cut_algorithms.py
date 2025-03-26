@@ -37,7 +37,7 @@ def squareOne_with_cuts_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
-                print(f"[SQ1 with Cuts] Precomputation: {source} -> {destination}")
+                #print(f"[SQ1 with Cuts] Precomputation: {source} -> {destination}")
                 
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
 
@@ -198,7 +198,7 @@ def multipleTrees_with_cuts_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
-                print(f"[MT with cuts] Precomputation for: {source}->{destination}")
+                #print(f"[MT with cuts] Precomputation for: {source}->{destination}")
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
                 #print("[MT with Cuts] building structure for", source, destination)
             
@@ -394,7 +394,7 @@ def multipleTrees_with_cuts_extended_pre(graph):
         for destination in graph.nodes:
             
             if source != destination:
-                print(f"[MT with cuts] Precomputation for: {source}->{destination}")
+                #print(f"[MT with cuts] Precomputation for: {source}->{destination}")
                 cut_edges = nx.minimum_edge_cut(graph, source, destination)
                 #print("[MT with Cuts] building structure for", source, destination)
             

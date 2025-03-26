@@ -1184,7 +1184,7 @@ def multiple_trees_parallel(source, destination, graph, all_edps):
         #endif
 
     #endfor
-    print("In parallel removed_edges : ", removed_edges)
+    #print("In parallel removed_edges : ", removed_edges)
     removed_edges_parallel.append(removed_edges)
     return trees
 
@@ -1351,7 +1351,7 @@ def multiple_trees_recycling(source, destination, graph, all_edps):
         
         i = i +1
     #endfor
-    print("In parallel removed_edges : ", removed_edges)
+    #print("In parallel removed_edges : ", removed_edges)
     removed_edges_parallel.append(removed_edges)
 
     

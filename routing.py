@@ -40,7 +40,8 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     detour_edges = []
     hops = 0
     switches = 0
-
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     # paths[source][destination] = {
     #                     'cps': [destination],
     #                     'edps_s_to_d': [edps],
@@ -365,7 +366,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     detour_edges = []
     hops = 0
     switches = 0
-
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     edps_for_s_d = paths[s][d]['edps_s_to_d']
 
     cps = paths[s][d]['cps']
@@ -610,7 +612,8 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     detour_edges = []
     hops = 0
     switches = 0
-    
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     cp = paths[s][d]['cp']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
     trees_cp_to_s = paths[s][d]['trees_cp_to_s']
@@ -789,7 +792,8 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
     detour_edges = []
     hops = 0
     switches = 0
-    
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     cp = paths[s][d]['cp']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
     trees_cp_to_s = paths[s][d]['trees_cp_to_s']
@@ -2039,7 +2043,7 @@ def RouteFaces(s,d,fails,faces):
 #in dieser funktion findet das routing eines source-destination-paares für multipletrees statt
 #dies geschieht indem man nach weiterleitung eines pakets an jedem knoten den nächst besten rang bestimmt
 def RouteMultipleTrees(s,d,fails,paths):
-    
+    print('Routing started for ' , s , " to " , d )
     print("FAIL ANZAHL : ", len(fails))
     #########################################   FOR DEBUG ONLY                #####################################################
     skip_edps = False
@@ -2053,16 +2057,19 @@ def RouteMultipleTrees(s,d,fails,paths):
 
     ###############################################################################################################################
 
-
+    
      #alle EDPS entlang routen
     currentNode = s
     last_node = currentNode
     detour_edges = []
     hops = 0
     switches = 0
+
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     trees = paths[s][d]['trees']
     print(" ")
-    print('Routing started for ' , s , " to " , d )
+    
 
     if(not skip_trees):
 
@@ -2561,7 +2568,7 @@ def getRank(tree, el):
 # link failure set fails
 # arborescence decomposition T
 def RouteDetCirc(s, d, fails, T):
-    print("[RouteDetCirc] routing started for", s, "->", d)
+    #print("[RouteDetCirc] routing started for", s, "->", d)
     curT = 0
     detour_edges = []
     hops = 0
@@ -2579,7 +2586,7 @@ def RouteDetCirc(s, d, fails, T):
             print("Bug: too many or to few neighbours")
         nxt = nxt[0]
 
-        print("[RouteDetCirc] current s:", s, "and fails with s:", [fail for fail in fails if s in fail])
+        #print("[RouteDetCirc] current s:", s, "and fails with s:", [fail for fail in fails if s in fail])
 
         
         
@@ -2744,13 +2751,13 @@ def returnSQ1():
 # link failure set fails
 # arborescence decomposition T
 def RouteSQ1(s, d, fails, T):
-    #print(" ")
-    #print("Source :  ", s , " Destination : ", d )
-    #print(" ")
-    #print("SQ1[s][d] : ", SQ1[s][d])
-    #print(" ")
-    curRoute = SQ1[s][d][0]
-    k = len(SQ1[s][d])
+
+
+    print(" ")
+    print("Source :  ", s , " Destination : ", d )
+    print(" ")
+    
+    
     detour_edges = []
     index = 1
     hops = 0
@@ -2762,6 +2769,14 @@ def RouteSQ1(s, d, fails, T):
     #print(" ")
     #print("len(T[0]) : ",n)
     #print(" ")
+    if(s==d):
+        return (False, hops, switches, detour_edges)
+    
+    curRoute = SQ1[s][d][0]
+    k = len(SQ1[s][d])
+
+    print("SQ1[s][d] : ", SQ1[s][d])
+    print(" ")
     while (c != d):
         #print("CurRoute :" , curRoute)
         nxt = curRoute[index]
@@ -3161,7 +3176,8 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
 
         # Alle Knoten in beliebiger Reihenfolge (z. B. aus dem Graph)
         nodes = list(g.nodes())
-
+        if d in cluster_nodes:
+            cluster_nodes.remove(d)
 
         for s in cluster_nodes[:samplesize]:
             print("Loop over samplesize is running")

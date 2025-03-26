@@ -33,7 +33,8 @@ def route_faces_firstFace(s, d, tree, fails):
     hops_faces = 0
     switches = 0
     detour_edges = []
-
+    if(s==d):
+        return (False, hops_faces, switches, detour_edges)
     edges_list = list(tree.edges)
 
     if edges_list == [(s, d)] or edges_list == [(d, s)]:
@@ -354,8 +355,11 @@ def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
 def route_faces_with_paths(s, d, fails, paths):
     print("----------------------------------------------------------------")
     print("[route_faces_with_paths] Routing from", s, "to", d)
-    
-
+    hops= 0
+    switches = 0 
+    detour_edges = []
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     routing_failure, hops, switches, detour_edges = route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
 
 
@@ -372,8 +376,11 @@ def route_faces_with_paths(s, d, fails, paths):
 def route_greedy_faces_with_paths(s,d,fails,paths):
     print("----------------------------------------------------------------")
     print("[route_greedy_faces_with_paths] Routing from", s, "to", d)
-    
-
+    hops= 0
+    switches = 0 
+    detour_edges = []
+    if(s==d):
+        return (False, hops, switches, detour_edges)
     routing_failure, hops, switches, detour_edges = route_greedy_perimeter(s, d, paths[s][d]['structure'], fails)
 
 
@@ -398,7 +405,8 @@ def route_greedy_perimeter(s, d, tree, fails):
     debug = False
     previous_node = s
     max_hops = len(tree.nodes)*len(tree.nodes)
-
+    if(s==d):
+        return (False, hops, switches, detour_edges)
 
     while current_node != d:
 
