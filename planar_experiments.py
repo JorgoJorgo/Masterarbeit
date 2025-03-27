@@ -16,45 +16,45 @@ import matplotlib.pyplot as plt
 DEBUG = True
 
 algos = {
-           'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
-          'SquareOne':[PrepareSQ1,RouteSQ1],
+        #    'MaxDAG': [DegreeMaxDAG, RouteDetCirc],
+        #   'SquareOne':[PrepareSQ1,RouteSQ1],
         
-          'One Tree': [one_tree_pre, RouteOneTree],
-          'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
+        #   'One Tree': [one_tree_pre, RouteOneTree],
+        #   'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
 
-          'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Degree Checkpoint':[multiple_trees_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
 
-          'MultipleTrees Inverse Middle Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Inverse Middle Greedy Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointGREEDYMultipleTrees],
-          'MultipleTrees Inverse Degree Checkpoint':[multiple_trees_invers_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Inverse Betweenness Checkpoint':[multiple_trees_invers_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Inverse Closeness Checkpoint':[multiple_trees_invers_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Inverse Middle Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Inverse Middle Greedy Checkpoint':[multiple_trees_invers_with_middle_checkpoint_pre, RouteWithOneCheckpointGREEDYMultipleTrees],
+        #   'MultipleTrees Inverse Degree Checkpoint':[multiple_trees_invers_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Inverse Betweenness Checkpoint':[multiple_trees_invers_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Inverse Closeness Checkpoint':[multiple_trees_invers_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
         
-          'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-          'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
-          'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
-          'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
-          'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
+        #   'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+        #   'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
+        #   'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
+        #   'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
+        #   'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
 
           'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
-          'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-          'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-          'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-          'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
+        #  'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #   'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #   'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #   'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         
-          'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
-          'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
+        #   'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
+        #   'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
         
-          'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-          'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
-          'MultipleTrees Cuts Greedy': [multipleTrees_with_cuts_pre, route_greedy_faces_with_paths],
+        #   'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+        #   'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
+        #   'MultipleTrees Cuts Greedy': [multipleTrees_with_cuts_pre, route_greedy_faces_with_paths],
 
-          'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+        #   'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         
         }
 

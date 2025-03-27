@@ -17,6 +17,39 @@ from faces import find_faces_pre, draw_graph_with_highlighted_edge
 from trees import all_edps, connect_leaf_to_destination, multiple_trees, multiple_trees_parallel, rank_tree, remove_redundant_paths, remove_single_node_trees
 import os
 
+import matplotlib.pyplot as plt
+import networkx as nx
+
+def draw_complete_structure(faces, tree, graph,s,cp,d, with_labels=True, figsize=(10, 8)):
+    pos = {node: graph.nodes[node]['pos'] for node in graph.nodes if 'pos' in graph.nodes[node]}
+    print("[draw complete] s:",s)
+    print("[draw complete] cp:",cp)
+    print("[draw complete] d:",d)
+    plt.figure(figsize=figsize)
+    print("[draw complete] face edges:",faces.edges)
+    print("[draw complete] tree edges:",tree.edges)
+    # --- Draw base graph ---
+    nx.draw_networkx_edges(graph, pos, edge_color='lightgray', width=1, alpha=0.5)
+    nx.draw_networkx_nodes(graph, pos, node_size=100, node_color='lightgray', alpha=0.7)
+    
+    # --- Draw face structure (as a subgraph, in light blue) ---
+    nx.draw_networkx_edges(faces, pos, edge_color='dodgerblue', width=2, alpha=0.4)
+    nx.draw_networkx_nodes(faces, pos, node_size=120, node_color='dodgerblue', alpha=0.3)
+
+    # --- Draw tree structure (as a subgraph, in dark green) ---
+    nx.draw_networkx_edges(tree, pos, edge_color='forestgreen', width=2.5, alpha=0.9)
+    nx.draw_networkx_nodes(tree, pos, node_size=140, node_color='forestgreen', alpha=0.6)
+
+    # --- Optional: Draw labels ---
+    if with_labels:
+        nx.draw_networkx_labels(graph, pos, font_size=10)
+
+    plt.axis('off')
+    plt.title("Kombinierte Struktur: Faces, Tree und Originalgraph")
+    plt.tight_layout()
+    plt.show()
+
+
 
 #################################################### BASE ALGORITHMS FOR TREE-BUILDING ################################################
 
@@ -460,7 +493,10 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
     #end for
     
     changed = True 
-    
+    for node in tree.nodes:
+        tree.nodes[node]['pos']=graph.nodes[node]['pos']
+
+    #draw_tree_with_highlighted_nodes(tree,[source])
 
     while changed == True: #keep trying to shorten until no more can be shortened 
         
@@ -470,18 +506,21 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
 
     
     
-        rank_tree(tree , source,longest_edp)
-        connect_leaf_to_destination(tree, source, destination)
-        tree.add_edge(longest_edp[len(longest_edp)-2],destination)
-    
-        #add 'rank' property to the added destinaton, -1 for highest priority in routing
-        tree.nodes[destination]["rank"] = -1
+    rank_tree(tree , source,longest_edp)
 
-        for node in tree.nodes:
-            tree.nodes[node]['pos'] = graph.nodes[node]['pos']
-            #node['pos'] = list(graph.nodes)[node]['pos']
+    connect_leaf_to_destination(tree, source, destination)
 
-        return tree    
+    tree.add_edge(longest_edp[len(longest_edp)-2],destination)
+
+    #add 'rank' property to the added destinaton, -1 for highest priority in routing
+    tree.nodes[destination]["rank"] = -1
+
+    for node in tree.nodes:
+        tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+        #node['pos'] = list(graph.nodes)[node]['pos']
+
+    #draw_tree_with_highlighted_nodes(tree,[source])
+    return tree    
         
     #end if
 
@@ -2308,6 +2347,10 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                             }
                 #if( len(tree_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeMiddle_{source}_{cp}.png")
+                #draw_tree_with_highlighted_nodes(tree_cp_to_s,[source,cp])
+                #draw_tree_with_highlighted_nodes(graph,[destination,cp])
+                #draw_tree_with_highlighted_nodes(tree_cp_to_d,[destination,cp])
+                #draw_complete_structure(tree_cp_to_s,tree_cp_to_d,graph,s=source,cp=cp,d=destination)
     return paths
 
 
