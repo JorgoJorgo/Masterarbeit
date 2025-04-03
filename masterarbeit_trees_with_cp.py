@@ -1027,6 +1027,11 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                                                 'edps_cp_to_d': edps_cp_to_d,
                                                 'edps_s_to_d': edps
                     }
+                combined_edges=0
+                for tree in trees_cp_to_d:
+                    combined_edges += len(tree.edges)
+
+                print(f"[MultipleTrees] #Edges:{len(trees_cp_to_s.edges)+combined_edges}")
                 #if( len(trees_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths
@@ -2350,6 +2355,8 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 #draw_tree_with_highlighted_nodes(tree_cp_to_s,[source,cp])
                 #draw_tree_with_highlighted_nodes(graph,[destination,cp])
                 #draw_tree_with_highlighted_nodes(tree_cp_to_d,[destination,cp])
+                #if(source==0 and destination == 30):
+                #print(f"[MiddleCheckpoint] #Edges:{len(tree_cp_to_s.edges)+len(tree_cp_to_d.edges)}")
                 #draw_complete_structure(tree_cp_to_s,tree_cp_to_d,graph,s=source,cp=cp,d=destination)
     return paths
 
@@ -2478,6 +2485,15 @@ def one_tree_with_degree_checkpoint_pre(graph):
                 }
                 #if( len(tree_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeDegree_{source}_{cp}.png")
+                # fake_cp = longest_edp[ int(len(longest_edp)/2)]
+                # if fake_cp != cp:
+                #     print("Fake_cp != cp für :", source ,"-",destination)
+                #     print(f"#Edges:{len(tree_cp_to_s.edges)+len(tree_cp_to_d.edges)}")
+
+                #if(source==0 and destination == 30):
+                #print(f"[Degree Checkpoint] #Edges:{len(tree_cp_to_s.edges)+len(tree_cp_to_d.edges)}")
+                #draw_complete_structure(tree_cp_to_s,tree_cp_to_d,graph,s=source,cp=cp,d=destination)
+                    
     return paths
 
 ########################################################################################################
@@ -2725,7 +2741,7 @@ def one_tree_with_betweenness_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s': tree_cp_to_s
                 }
-
+                #print(f"[Betweenness Checkpoint] #Edges:{len(tree_cp_to_s.edges)+len(tree_cp_to_d.edges)}")
                 # if( len(tree_cp_to_s.nodes)>14): 
                 #     print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeBetween_{source}_{cp}.png")
     return paths
@@ -2851,7 +2867,7 @@ def one_tree_with_closeness_checkpoint_pre(graph):
                     'edps_s_to_d': edps,
                     'tree_cp_to_s':tree_cp_to_s
                 }
-
+                #print(f"[Closeness Checkpoint] #Edges:{len(tree_cp_to_s.edges)+len(tree_cp_to_d.edges)}")
                 #if( len(tree_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=tree_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/OneTreeCloseness_{source}_{cp}.png")
     return paths
@@ -3177,6 +3193,7 @@ def one_tree_triple_checkpooint_pre(graph):
                     'tree_cp3_to_cp2': tree_cp3_to_cp2,
                     'tree_cp3_to_d': tree_cp3_to_d
                 }
+                #print(f"[Triple Checkpoint OneTree] #Edges:{len(tree_cp1_to_s.edges)+len(tree_cp1_to_cp2.edges)+len(tree_cp3_to_cp2.edges)+len(tree_cp3_to_d.edges)}")
                 #plot_paths_element(paths[source][destination],graph,source,destination)
                 # if( len(tree_cp1_to_s.nodes)>14): 
                 #     print_cut_structure(highlighted_nodes=[cp1,source],structure=tree_cp1_to_s,source=source,destination=cp1,save_plot=True,filename=f"graphen/OneTreeTriple_{cp1}_{source}.png")
@@ -3348,6 +3365,13 @@ def multiple_trees_triple_checkpooint_pre(graph):
                     'trees_cp3_to_cp2': trees_cp3_to_cp2,
                     'trees_cp3_to_d': trees_cp3_to_d
                 }
+                # combined_edges1= 0
+                # for tree in trees_cp1_to_cp2:
+                #     combined_edges1 += len(tree.edges)
+                # combined_edges2= 0
+                # for tree in trees_cp3_to_d:
+                #     combined_edges2 += len(tree.edges)
+                # print(f"[Triple Checkpoint MultipleTrees] #Edges:{len(trees_cp1_to_s.edges)+combined_edges1+len(trees_cp3_to_cp2.edges)+combined_edges2}")
                 # #plot_paths_element(paths[source][destination],graph,source,destination)
                 # if( len(trees_cp1_to_s.nodes)>14): 
                 #     print_cut_structure(highlighted_nodes=[cp1,source],structure=trees_cp1_to_s,source=source,destination=cp1,save_plot=True,filename=f"graphen/MultipleTreesTriple_{cp1}_{source}.png")

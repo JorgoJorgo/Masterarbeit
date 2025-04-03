@@ -36,25 +36,25 @@ algos = {
         
         #   'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
         #   'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
-        #   'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
         #   'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
         #   'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
-        #   'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
 
-          'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #  'One Tree Middle Checkpoint PE': [one_tree_with_middle_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #  'One Tree Degree Checkpoint PE': [one_tree_with_degree_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #   'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
-        #   'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #  'One Tree Betweenness Checkpoint PE': [one_tree_with_betweenness_checkpoint_pre, RouteWithOneCheckpointOneTree],
+        #  'One Tree Closeness Checkpoint PE': [one_tree_with_closeness_checkpoint_pre, RouteWithOneCheckpointOneTree],
         #   'One Tree Shortest EDP Checkpoint PE': [one_tree_with_middle_checkpoint_shortest_edp_pre, RouteWithOneCheckpointOneTree],
         
         #   'Triple Checkpoint OneTree': [one_tree_triple_checkpooint_pre,RouteWithTripleCheckpointOneTree],
-        #   'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
+        #    'Triple Checkpoint MultipleTrees': [multiple_trees_triple_checkpooint_pre,RouteWithTripleCheckpointMultipleTrees],
         
-        #   'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
-        #   'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
-        #   'MultipleTrees Cuts Greedy': [multipleTrees_with_cuts_pre, route_greedy_faces_with_paths],
+           'SquareOne Cuts': [squareOne_with_cuts_pre, route_faces_with_paths],
+           'MultipleTrees Cuts': [multipleTrees_with_cuts_pre, route_faces_with_paths],
+           'MultipleTrees Cuts Greedy': [multipleTrees_with_cuts_pre, route_greedy_faces_with_paths],
+           'MultipleTrees Cuts Extended': [multipleTrees_with_cuts_extended_pre, route_faces_with_paths],
+           'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
+           'MultipleTrees Faces Extended': [multiple_trees_for_faces_extended_pre, route_faces_with_paths],
 
-        #   'MultipleTrees Faces': [multiple_trees_for_faces_pre, route_faces_with_paths],
         
         }
 
@@ -304,7 +304,7 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
                 print('intermediate result: %s \t %.5E' % (algoname, np.mean(algo[index_1:index_2])))
 
 # Anpassung der run_planar Funktion
-def run_planar(out=None, seed=0, rep=5, method="Delaunay", num_nodes=50, f_num=0):
+def run_planar(out=None, seed=0, rep=5, method="gabriel", num_nodes=50, f_num=0):
     random.seed(seed)
     
     # Erstelle den Unit-Disk-Graphen mit der gewünschten Anzahl an Knoten
@@ -383,7 +383,7 @@ def draw_graph_with_positions(G, title="Graph"):
     plt.show()
 
 def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop_index=0):
-    method = "delaunay"
+    method = "gabriel"
     
     if switch in ["planar", "all"]:
         
@@ -391,7 +391,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out = start_file(filename)
         
         for i in range(rep):
-            run_planar(out=out, seed=seed, rep=rep, method="Delaunay", num_nodes=num_nodes, f_num=f_num)
+            run_planar(out=out, seed=seed, rep=rep, method=method, num_nodes=num_nodes, f_num=f_num)
 
         out.close()
     
@@ -405,11 +405,11 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 10      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    start_FR = 42      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
     f_num = 2*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 100):
-        f_num = 3 + f_num
+        f_num = 2 + f_num
         #f_num = 0
         n = 80
         k = 5

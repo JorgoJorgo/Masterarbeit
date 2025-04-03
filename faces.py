@@ -71,8 +71,8 @@ def route_faces_firstFace(s, d, tree, fails):
         currentIndex += 1
         hops_faces += 1
         detour_edges.append((previous_node, current_node))
-        #if(debug):
-        #    print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
+        if(debug):
+            print_cut_structure([current_node], [(previous_node, current_node)], tree, s, d, fails=fails, filename=" ", save_plot=False)
         #print(f"[route Faces] Moved to {current_node}")
 
     if current_node == d:
@@ -358,8 +358,7 @@ def route_faces_with_paths(s, d, fails, paths):
     hops= 0
     switches = 0 
     detour_edges = []
-    if(s==d):
-        return (False, hops, switches, detour_edges)
+    
     routing_failure, hops, switches, detour_edges = route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
 
 

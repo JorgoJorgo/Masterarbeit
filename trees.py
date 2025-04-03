@@ -63,7 +63,7 @@ def multiple_trees_pre(graph):
                 else:
                     paths[source] = {}
                     paths[source][destination] = {'trees': trees, 'edps': edps}
-
+                
     #print("Bei einem count von " , count , " und insgesamt Graph Kanten " , all_graph_edge_number, " ergeben sich " , all_tree_edge_number , " Baumkanten bei der normalen Variante")
     #print("Normal durchschnittliche Truncation : ", (sum(removed_edges_multtrees)/(len(removed_edges_multtrees))))
     #input("...")           
