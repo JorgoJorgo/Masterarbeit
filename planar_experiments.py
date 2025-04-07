@@ -387,8 +387,8 @@ def draw_graph_with_positions(G, title="Graph"):
 
 def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop_index=0):
     
-    #method = "delaunay" #HIER DIE METHODE ÄNDERN
-    method = "gabriel"
+    method = "delaunay" #HIER DIE METHODE ÄNDERN
+    #method = "gabriel"
 
     if switch in ["planar", "all"]:
         
