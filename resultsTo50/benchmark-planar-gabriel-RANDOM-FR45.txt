@@ -1,0 +1,27 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Sat Apr  5 17:16:52 2025
+gabriel, 45, 2, MaxDAG, 1, 0, 108, 3, 0.466667, 0.000316, 0.098635
+gabriel, 45, 2, SquareOne, 1, 0, 100, 1, 0.033333, 0.000381, 0.442619
+gabriel, 45, 2, One Tree, 1, 0, 4, 1, 0.033333, 0.000094, 4.049596
+gabriel, 45, 5, MultipleTrees, 1, 0, 2, 1, 0.033333, 0.000110, 11.615252
+gabriel, 45, 5, MultipleTrees Random Checkpoint, 1, -1, 6, 0, 0.033333, 0.000878, 198.023492
+gabriel, 45, 5, MultipleTrees Random Checkpoint Parallel, 1, -1, 4, 0, 0.033333, 0.000457, 139.590834
+gabriel, 45, 5, MultipleTrees Closeness Checkpoint, 1, -1, 5, 0, 0.033333, 0.000628, 27.896684
+gabriel, 45, 5, MultipleTrees Betweenness Checkpoint, 1, -1, 6, 0, 0.033333, 0.000990, 184.011343
+gabriel, 45, 5, MultipleTrees Degree Checkpoint, 1, -1, 5, 0, 0.033333, 0.001061, 153.098591
+gabriel, 45, 5, MultipleTrees Inverse Middle Checkpoint, 1, 0, 7, 1, 0.033333, 0.000840, 238.841207
+gabriel, 45, 5, MultipleTrees Inverse Middle Greedy Checkpoint, 1, 0, 80, 1, 0.033333, 0.000721, 238.640005
+gabriel, 45, 5, MultipleTrees Inverse Degree Checkpoint, 1, 0, 6, 1, 0.033333, 0.001096, 201.285406
+gabriel, 45, 5, MultipleTrees Inverse Betweenness Checkpoint, 1, 0, 7, 1, 0.033333, 0.001007, 238.567084
+gabriel, 45, 5, MultipleTrees Inverse Closeness Checkpoint, 1, 0, 5, 1, 0.033333, 0.001140, 237.858832
+gabriel, 45, 5, MultipleTrees Inverse Degree Checkpoint Extended, 1, 0, 6, 1, 0.033333, 0.001092, 206.436901
+gabriel, 45, 5, MultipleTrees Degree Checkpoint Extended, 1, -1, 5, 0, 0.033333, 0.001155, 156.818840
+gabriel, 45, 5, One Tree Shortest EDP Checkpoint Extended PE, 1, 0, 3, 1, 0.033333, 0.000426, 163.328976
+gabriel, 45, 5, One Tree Degree Checkpoint Extended PE, 1, 0, 5, 1, 0.033333, 0.000532, 168.187263
+gabriel, 45, 5, One Tree Middle Checkpoint PE, 1, 0, 6, 1, 0.033333, 0.000299, 156.433851
+gabriel, 45, 5, One Tree Degree Checkpoint PE, 1, 0, 4, 1, 0.033333, 0.000515, 157.277662
+gabriel, 45, 5, One Tree Betweenness Checkpoint PE, 1, 0, 6, 1, 0.033333, 0.000430, 167.322644
+gabriel, 45, 5, One Tree Closeness Checkpoint PE, 1, 0, 5, 1, 0.033333, 0.000512, 157.136288
+gabriel, 45, 5, One Tree Shortest EDP Checkpoint PE, 1, 0, 3, 1, 0.033333, 0.000405, 152.878225
+gabriel, 45, 5, Triple Checkpoint OneTree, 1, 0, 5, 1, 0.033333, 0.000153, 62.295955
+gabriel, 45, 5, Triple Checkpoint MultipleTrees, 1, 0, 6, 1, 0.033333, 0.000961, 221.600106

@@ -1,0 +1,3 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Mon Apr  7 02:09:34 2025
+gabriel, 45, 2, MaxDAG, 1
