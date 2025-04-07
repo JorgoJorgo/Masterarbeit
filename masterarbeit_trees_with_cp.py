@@ -1031,7 +1031,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 for tree in trees_cp_to_d:
                     combined_edges += len(tree.edges)
 
-                print(f"[MultipleTrees] #Edges:{len(trees_cp_to_s.edges)+combined_edges}")
+                #print(f"[MultipleTrees] #Edges:{len(trees_cp_to_s.edges)+combined_edges}")
                 #if( len(trees_cp_to_s.nodes)>14): 
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths

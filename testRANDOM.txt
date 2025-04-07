@@ -1,0 +1,1810 @@
+Mon Apr  7 14:36:32 2025
+[main] i :  10
+[main] switch: planar
+[main] seed: 34
+[main] rep: 1
+[main] n: 45
+[main] samplesize: 60
+[main] attack: RANDOM
+[run_planar] Method: delaunay
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 45 Anzahl Kanten: 104
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 45 Kanten: 120
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  22
+[run_planar] Fails:  [(10, 12), (26, 30), (17, 24), (12, 14), (9, 17), (23, 22), (5, 40), (2, 39), (12, 38), (23, 41), (34, 30), (15, 14), (36, 33), (19, 23), (31, 1), (34, 27), (37, 42), (18, 2), (38, 12), (40, 27), (19, 22), (25, 5)]
+[planar_experiments] root: 5
+[planar_experiments] len(edges): 240
+[shuffle_and_run] fails: [(10, 12), (26, 30), (17, 24), (12, 14), (9, 17), (23, 22), (5, 40), (2, 39), (12, 38), (23, 41), (34, 30), (15, 14), (36, 33), (19, 23), (31, 1), (34, 27), (37, 42), (18, 2), (38, 12), (40, 27), (19, 22), (25, 5)]
+experiment for  <function one_tree_pre at 0x7c225f0ede40>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  42  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  27  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  32  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  39  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  4  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  26  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  13  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  29  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  14  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  35  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  20  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  40  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  15  to  5
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  6  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  21  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  2  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  41  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  8  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  23  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  1  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  25  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  11  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  38  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  31  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  16  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  33  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  44  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  30  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  37  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  0  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  12  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  7  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  24  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  18  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  34  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  3  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  17  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  28  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  19  to  5
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  10  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  43  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  9  to  5
+Routing via EDPs FAILED
+Routing via Tree started
+Routing done via Tree
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  22  to  5
+Routing done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+Routing OT started for  36  to  5
+Routing done via EDP
+------------------------------------------------------
+After simulate
+success 44 <function one_tree_pre at 0x7c225f0ede40>
+experiment for  <function multiple_trees_pre at 0x7c225f0ed300>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  42  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [42, 2, 6, 40, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  27  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [27, 24, 18, 2, 37, 40, 6, 39, 3, 25, 16, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  32  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [32, 0, 17, 18, 6, 2, 24, 42, 27, 28, 34, 40, 3, 25, 37, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  39  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [39, 6, 18, 24, 2, 27, 40, 42, 34, 25, 3, 37, 22, 16, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  4  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [4, 8, 9, 2, 37, 17, 16, 13, 24, 27, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  26  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [26, 27, 24, 18, 2, 37, 40, 6, 39, 16, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  13  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [13, 31, 30, 22, 41, 24, 27, 23, 25, 18, 40, 16, 9, 3, 2, 37, 6, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  29  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [29, 14, 35, 2, 6, 12, 9, 42, 10, 18, 3, 32, 24, 37, 31, 27, 30, 40, 22, 41, 25, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  14  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [14, 4, 9, 2, 6, 40, 25, 39, 22, 41, 37, 23, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  35  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [35, 4, 38, 17, 24, 40, 14, 6, 34, 29, 22, 25, 44, 23, 41, 28, 16, 3, 37, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  20  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [20, 10, 32, 31, 30, 22, 41, 27, 25, 16, 40, 37, 6, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  40  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [40, 24, 18, 2, 37, 6, 39, 16, 41, 25, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  15  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [15, 36, 33, 2, 39, 21, 9, 44, 17, 28, 13, 24, 3, 31, 6, 37, 26, 27, 34, 40, 22, 23, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  6  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [6, 2, 37, 16, 39, 23, 22, 41, 34, 25, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  21  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [21, 29, 12, 10, 32, 31, 30, 22, 25, 44, 24, 23, 41, 40, 42, 6, 16, 3, 39, 37, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  2  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [2, 18, 6, 40, 25, 33, 22, 21, 23, 42, 16, 41, 28, 3, 37, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  41  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [41, 22, 25, 40, 6, 2, 39, 42, 37, 3, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  8  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [8, 9, 2, 37, 17, 18, 3, 13, 24, 16, 31, 27, 30, 40, 19, 22, 23, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  23  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [23, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  1  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [1, 26, 34, 25, 27, 40, 41, 24, 6, 16, 18, 3, 2, 37, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  25  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [25, 22, 23, 16, 41, 34, 37, 27, 2, 39, 40, 6, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  11  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [11, 20, 38, 4, 9, 2, 39, 37, 6, 16, 40, 41, 25, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  38  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [38, 0, 32, 31, 30, 22, 41, 24, 27, 25, 16, 6, 40, 37, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  31  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [31, 13, 17, 18, 2, 39, 24, 6, 42, 40, 3, 37, 25, 16, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  16  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [16, 3, 37, 39, 6, 40, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  33  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [33, 21, 42, 3, 16, 37, 41, 39, 25, 6, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  44  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [44, 29, 14, 35, 2, 39, 12, 21, 9, 10, 42, 18, 32, 3, 24, 31, 37, 27, 30, 40, 19, 6, 23, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  30  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [30, 31, 24, 6, 32, 17, 40, 10, 9, 12, 2, 44, 39, 28, 3, 16, 37, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  37  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [37, 2, 6, 40, 39, 34, 25, 22, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  0  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [0, 20, 12, 44, 42, 3, 16, 37, 23, 39, 22, 41, 6, 34, 25, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  12  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [12, 20, 0, 17, 9, 2, 39, 13, 18, 37, 24, 6, 27, 40, 34, 25, 22, 41, 23, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  7  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [7, 21, 42, 2, 37, 18, 16, 39, 6, 41, 40, 25, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  24  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [24, 6, 39, 37, 16, 40, 41, 25, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  18  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [18, 6, 40, 25, 39, 41, 37, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  34  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [34, 22, 41, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  3  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 28, 42, 2, 6, 37, 39, 40, 16, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  17  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [17, 0, 32, 31, 30, 22, 41, 27, 25, 16, 40, 37, 6, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  28  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [28, 43, 44, 42, 2, 6, 37, 40, 39, 16, 25, 41, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  19  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [19, 30, 22, 41, 34, 16, 25, 40, 37, 6, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  10  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [10, 11, 32, 31, 30, 22, 41, 24, 27, 25, 16, 6, 40, 37, 39, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  43  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [43, 28, 3, 16, 42, 37, 41, 2, 39, 25, 6, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  9  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [9, 35, 2, 42, 3, 16, 37, 23, 22, 41, 34, 25, 40, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  22  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [22, 30, 31, 24, 6, 34, 18, 40, 39, 25, 2, 42, 3, 37, 16, 5]
+ 
+Loop over samplesize is running
+Loop over stats is running
+Routing started for  36  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [36, 15, 21, 42, 3, 16, 2, 37, 23, 18, 22, 41, 6, 25, 40, 5]
+ 
+After simulate
+success 44 <function multiple_trees_pre at 0x7c225f0ed300>
+[shuffle_and_run] fails: [(10, 12), (26, 30), (17, 24), (12, 14), (9, 17), (23, 22), (5, 40), (2, 39), (12, 38), (23, 41), (34, 30), (15, 14), (36, 33), (19, 23), (31, 1), (34, 27), (37, 42), (18, 2), (38, 12), (40, 27), (19, 22), (25, 5)]
+experiment for  <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7c225f0ef100>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  42  ->  17  ->  5
+Routing MTCP via EDPs started for  42 - 17 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  27  ->  19  ->  5
+Routing MTCP via EDPs started for  27 - 19 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  32  ->  4  ->  5
+Routing MTCP via EDPs started for  32 - 4 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  39  ->  37  ->  5
+Routing MTCP via EDPs started for  39 - 37 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  4  ->  28  ->  5
+Routing MTCP via EDPs started for  4 - 28 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  26  ->  18  ->  5
+Routing MTCP via EDPs started for  26 - 18 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  13  ->  18  ->  5
+Routing MTCP via EDPs started for  13 - 18 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  29  ->  33  ->  5
+Routing MTCP via EDPs started for  29 - 33 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  14  ->  37  ->  5
+Routing MTCP via EDPs started for  14 - 37 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  35  ->  42  ->  5
+Routing MTCP via EDPs started for  35 - 42 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  20  ->  24  ->  5
+Routing MTCP via EDPs started for  20 - 24 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  40  ->  2  ->  5
+Routing MTCP via EDPs started for  40 - 2 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  3  ->  5
+Routing MTCP via EDPs started for  15 - 3 - 5
+[route Greedy] Routing success
+Routing started for  3  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [3, 16, 37, 41, 2, 25, 18, 39, 40, 6, 5]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  6  ->  42  ->  5
+Routing MTCP via EDPs started for  6 - 42 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  21  ->  31  ->  5
+Routing MTCP via EDPs started for  21 - 31 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  37  ->  5
+Routing MTCP via EDPs started for  2 - 37 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  41  ->  25  ->  5
+Routing MTCP via EDPs started for  41 - 25 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  24  ->  5
+Routing MTCP via EDPs started for  8 - 24 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  23  ->  34  ->  5
+Routing MTCP via EDPs started for  23 - 34 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  34  ->  5
+Routing MTCP via EDPs started for  1 - 34 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  25  ->  40  ->  5
+Routing MTCP via EDPs started for  25 - 40 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  11  ->  9  ->  5
+Routing MTCP via EDPs started for  11 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  38  ->  18  ->  5
+Routing MTCP via EDPs started for  38 - 18 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  31  ->  9  ->  5
+Routing MTCP via EDPs started for  31 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  16  ->  22  ->  5
+Routing MTCP via EDPs started for  16 - 22 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  33  ->  2  ->  5
+Routing MTCP via EDPs started for  33 - 2 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  44  ->  35  ->  5
+Routing MTCP via EDPs started for  44 - 35 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  30  ->  24  ->  5
+Routing MTCP via EDPs started for  30 - 24 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  37  ->  18  ->  5
+Routing MTCP via EDPs started for  37 - 18 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  0  ->  42  ->  5
+Routing MTCP via EDPs started for  0 - 42 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  12  ->  9  ->  5
+Routing MTCP via EDPs started for  12 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  7  ->  2  ->  5
+Routing MTCP via EDPs started for  7 - 2 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  24  ->  22  ->  5
+Routing MTCP via EDPs started for  24 - 22 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  24  ->  5
+Routing MTCP via EDPs started for  18 - 24 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  34  ->  40  ->  5
+Routing MTCP via EDPs started for  34 - 40 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  3  ->  2  ->  5
+Routing MTCP via EDPs started for  3 - 2 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  28  ->  5
+Routing MTCP via EDPs started for  17 - 28 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  28  ->  7  ->  5
+Routing MTCP via EDPs started for  28 - 7 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  19  ->  22  ->  5
+Routing MTCP via EDPs started for  19 - 22 - 5
+[route Greedy] Routing success
+Routing started for  22  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [22, 41, 25, 40, 6, 2, 39, 42, 37, 3, 16, 5]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  10  ->  30  ->  5
+Routing MTCP via EDPs started for  10 - 30 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  43  ->  42  ->  5
+Routing MTCP via EDPs started for  43 - 42 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  42  ->  5
+Routing MTCP via EDPs started for  9 - 42 - 5
+[route Greedy] Routing success
+Routing started for  42  to  5
+FAIL ANZAHL :  22
+ 
+ 
+Routing via Tree started
+Routing done via the Tree :  [42, 7, 2, 39, 9, 37, 17, 32, 31, 30, 19, 22, 34, 23, 25, 40, 41, 5]
+ 
+Routing MultipleTrees succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  22  ->  41  ->  5
+Routing MTCP via EDPs started for  22 - 41 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  36  ->  42  ->  5
+Routing MTCP via EDPs started for  36 - 42 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 44 <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7c225f0ef100>
+[shuffle_and_run] fails: [(10, 12), (26, 30), (17, 24), (12, 14), (9, 17), (23, 22), (5, 40), (2, 39), (12, 38), (23, 41), (34, 30), (15, 14), (36, 33), (19, 23), (31, 1), (34, 27), (37, 42), (18, 2), (38, 12), (40, 27), (19, 22), (25, 5)]
+experiment for  <function one_tree_with_middle_checkpoint_shortest_edp_extended_pre at 0x7c225f0efa60>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  42  ->  37  ->  5
+Routing OTCP via EDPs started for  42  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  27  ->  40  ->  5
+Routing OTCP via EDPs started for  27  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  32  ->  24  ->  5
+Routing OTCP via EDPs started for  32  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  39  ->  6  ->  5
+Routing OTCP via EDPs started for  39  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  4  ->  2  ->  5
+Routing OTCP via EDPs started for  4  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  26  ->  25  ->  5
+Routing OTCP via EDPs started for  26  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  13  ->  6  ->  5
+Routing OTCP via EDPs started for  13  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  29  ->  42  ->  5
+Routing OTCP via EDPs started for  29  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  14  ->  24  ->  5
+Routing OTCP via EDPs started for  14  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  35  ->  6  ->  5
+Routing OTCP via EDPs started for  35  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  20  ->  24  ->  5
+Routing OTCP via EDPs started for  20  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  40  ->  25  ->  5
+Routing OTCP via EDPs started for  40  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  2  ->  5
+Routing OTCP via EDPs started for  15  to  5
+[route Faces] Routing success via Start Face
+Routing started for  2  to  5
+[RouteOneTreeCP] EDPs: [[2, 37, 5], [2, 39, 5], [2, 6, 5], [2, 42, 3, 16, 5], [2, 18, 6, 40, 25, 5], [2, 9, 17, 24, 40, 5], [2, 7, 42, 37, 16, 41, 5]]
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  6  ->  39  ->  5
+Routing OTCP via EDPs started for  6  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  21  ->  2  ->  5
+Routing OTCP via EDPs started for  21  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  37  ->  5
+Routing OTCP via EDPs started for  2  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  41  ->  25  ->  5
+Routing OTCP via EDPs started for  41  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  2  ->  5
+Routing OTCP via EDPs started for  8  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  23  ->  16  ->  5
+Routing OTCP via EDPs started for  23  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  40  ->  5
+Routing OTCP via EDPs started for  1  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  25  ->  41  ->  5
+Routing OTCP via EDPs started for  25  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  11  ->  18  ->  5
+Routing OTCP via EDPs started for  11  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  38  ->  24  ->  5
+Routing OTCP via EDPs started for  38  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  31  ->  6  ->  5
+Routing OTCP via EDPs started for  31  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  16  ->  37  ->  5
+Routing OTCP via EDPs started for  16  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  33  ->  6  ->  5
+Routing OTCP via EDPs started for  33  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  44  ->  2  ->  5
+Routing OTCP via EDPs started for  44  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  30  ->  41  ->  5
+Routing OTCP via EDPs started for  30  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  37  ->  16  ->  5
+Routing OTCP via EDPs started for  37  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  0  ->  18  ->  5
+Routing OTCP via EDPs started for  0  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  12  ->  42  ->  5
+Routing OTCP via EDPs started for  12  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  7  ->  6  ->  5
+Routing OTCP via EDPs started for  7  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  24  ->  40  ->  5
+Routing OTCP via EDPs started for  24  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  39  ->  5
+Routing OTCP via EDPs started for  18  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  34  ->  25  ->  5
+Routing OTCP via EDPs started for  34  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  3  ->  16  ->  5
+Routing OTCP via EDPs started for  3  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  6  ->  5
+Routing OTCP via EDPs started for  17  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  28  ->  16  ->  5
+Routing OTCP via EDPs started for  28  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  19  ->  25  ->  5
+Routing OTCP via EDPs started for  19  to  5
+[route Faces] No valid edge found, routing failed with Clockwise Face Routing
+Routing failed via Faces from S to CP 
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  10  ->  42  ->  5
+Routing OTCP via EDPs started for  10  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  43  ->  3  ->  5
+Routing OTCP via EDPs started for  43  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  18  ->  5
+Routing OTCP via EDPs started for  9  to  5
+[route Faces] Routing success via Start Face
+Routing started for  18  to  5
+[RouteOneTreeCP] EDPs: [[18, 2, 39, 5], [18, 24, 6, 5], [18, 6, 40, 25, 5], [18, 9, 2, 37, 5], [18, 17, 24, 40, 5]]
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  22  ->  41  ->  5
+Routing OTCP via EDPs started for  22  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  36  ->  2  ->  5
+Routing OTCP via EDPs started for  36  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 43 <function one_tree_with_middle_checkpoint_shortest_edp_extended_pre at 0x7c225f0efa60>
+[shuffle_and_run] fails: [(10, 12), (26, 30), (17, 24), (12, 14), (9, 17), (23, 22), (5, 40), (2, 39), (12, 38), (23, 41), (34, 30), (15, 14), (36, 33), (19, 23), (31, 1), (34, 27), (37, 42), (18, 2), (38, 12), (40, 27), (19, 22), (25, 5)]
+experiment for  <function one_tree_triple_checkpooint_pre at 0x7c225f0efb00>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  42  ->  [38, 24, 40]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  42  to  5
+[Debug] Exited while loop. currentNode: 42 d: 5
+[Debug] Exited while loop. currentNode: 7 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  27  ->  [30, 23, 16]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  27  to  5
+[Debug] Exited while loop. currentNode: 27 d: 5
+[Debug] Exited while loop. currentNode: 34 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  32  ->  [38, 35, 39]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  32  to  5
+[Debug] Exited while loop. currentNode: 24 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  39  ->  [2, 37, 16]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  39  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  4  ->  [44, 3, 16]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  4  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  26  ->  [27, 24, 18]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  26  to  5
+[Debug] Exited while loop. currentNode: 34 d: 5
+[Debug] Exited while loop. currentNode: 1 d: 5
+[Debug] Exited while loop. currentNode: 26 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  13  ->  [32, 17, 18]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  13  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  29  ->  [15, 36, 33]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  29  to  5
+[Debug] Exited while loop. currentNode: 21 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  14  ->  [42, 16, 41]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  14  to  5
+[Debug] Exited while loop. currentNode: 38 d: 5
+[Debug] Exited while loop. currentNode: 14 d: 5
+[Debug] Exited while loop. currentNode: 35 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  35  ->  [44, 37, 41]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  35  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  20  ->  [13, 6, 39]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  20  to  5
+[Debug] Exited while loop. currentNode: 0 d: 5
+[Debug] Exited while loop. currentNode: 44 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  40  ->  [24, 18, 2]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  40  to  5
+[Debug] Exited while loop. currentNode: 40 d: 5
+[Debug] Exited while loop. currentNode: 40 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  [21, 42, 3]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  15  to  5
+[Debug] Exited while loop. currentNode: 15 d: 5
+[Debug] Exited while loop. currentNode: 44 d: 5
+[Debug] Exited while loop. currentNode: 15 d: 5
+Checking: [15, 14, 35, 2, 6, 5]
+Checking: [15, 29, 44, 42, 37, 5]
+Checking: [15, 36, 33, 2, 39, 5]
+Checking: [15, 21, 42, 3, 16, 5]
+[RouteWithTripleCheckpointOneTree] Face-Routing started S( 15 ) - CP1( 21 )
+[route Faces] Routing success with Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP1( 21 ) - CP2( 42 )
+ConvertedPathsCP1toCP2 tree [21, 36, 35, 2, 7, 44, 28, 3, 37, 42]
+ConvertedPathsCP1toCP2 edps [[21, 7, 42], [21, 15, 14, 12, 44, 43, 28, 42], [21, 42], [21, 33, 2, 37, 42], [21, 29, 44, 42], [21, 44, 28, 3, 42], [21, 36, 35, 2, 42]]
+Routing started for  21  to  42
+[RouteOneTreeCP] EDPs: [[21, 7, 42], [21, 15, 14, 12, 44, 43, 28, 42], [21, 42], [21, 33, 2, 37, 42], [21, 29, 44, 42], [21, 44, 28, 3, 42], [21, 36, 35, 2, 42]]
+Routing done via EDP
+------------------------------------------------------
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 42 ) - CP3( 3 )
+CP2toCP3 tree [3, 28, 42, 37]
+[route Faces] Routing success via Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP3( 3 ) - D( 5 )
+ConvertedPathsCP3toD tree [3, 28, 42, 2, 6, 16, 37, 18, 39, 41, 24, 25, 40, 5]
+ConvertedPathsCP3toD edps [[3, 16, 5], [3, 42, 37, 39, 5], [3, 37, 5], [3, 28, 42, 2, 6, 5]]
+Routing started for  3  to  5
+[RouteOneTreeCP] EDPs: [[3, 16, 5], [3, 42, 37, 39, 5], [3, 37, 5], [3, 28, 42, 2, 6, 5]]
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  6  ->  [18, 2, 42]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  6  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  21  ->  [10, 31, 22]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  21  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  2  ->  [7, 42, 37]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  2  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  41  ->  [22, 25, 40]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  41  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  8  ->  [38, 17, 24]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  8  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  23  ->  [22, 34, 40]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  23  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  [26, 34, 25]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  1  to  5
+[Debug] Exited while loop. currentNode: 1 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  25  ->  [34, 40, 6]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  25  to  5
+[Debug] Exited while loop. currentNode: 25 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  11  ->  [4, 2, 39]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  11  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  38  ->  [17, 2, 37]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  38  to  5
+[Debug] Exited while loop. currentNode: 38 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  31  ->  [32, 17, 9]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  31  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  16  ->  [23, 22, 25]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  16  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  33  ->  [36, 35, 2]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  33  to  5
+[Debug] Exited while loop. currentNode: 6 d: 5
+[Debug] Exited while loop. currentNode: 7 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  44  ->  [29, 14, 35]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  44  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  30  ->  [31, 24, 6]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  30  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  37  ->  [42, 2, 18]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  37  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  0  ->  [44, 3, 16]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  0  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  12  ->  [17, 2, 39]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  12  to  5
+[Debug] Exited while loop. currentNode: 44 d: 5
+[Debug] Exited while loop. currentNode: 12 d: 5
+[Debug] Exited while loop. currentNode: 12 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  7  ->  [21, 42, 2]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  7  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  24  ->  [31, 30, 22]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  24  to  5
+[Debug] Exited while loop. currentNode: 24 d: 5
+[Debug] Exited while loop. currentNode: 24 d: 5
+[Debug] Exited while loop. currentNode: 24 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  [17, 24, 40]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  18  to  5
+[Debug] Exited while loop. currentNode: 18 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  34  ->  [26, 27, 40]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  34  to  5
+[Debug] Exited while loop. currentNode: 34 d: 5
+[Debug] Exited while loop. currentNode: 34 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  3  ->  [28, 42, 2]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  3  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  [44, 3, 16]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  17  to  5
+[Debug] Exited while loop. currentNode: 17 d: 5
+[Debug] Exited while loop. currentNode: 17 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  28  ->  [44, 21, 7]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  28  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  19  ->  [30, 22, 41]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  19  to  5
+[Debug] Exited while loop. currentNode: 19 d: 5
+[Debug] Exited while loop. currentNode: 19 d: 5
+Checking: [19, 22, 25, 5]
+Checking: [19, 23, 16, 5]
+Checking: [19, 30, 22, 41, 5]
+[RouteWithTripleCheckpointOneTree] Face-Routing started S( 19 ) - CP1( 30 )
+[route Faces] Routing success with Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP1( 30 ) - CP2( 22 )
+ConvertedPathsCP1toCP2 tree [30, 31, 24, 6, 5, 41, 19, 34, 25, 23, 22]
+ConvertedPathsCP1toCP2 edps [[30, 19, 22], [30, 22], [30, 26, 34, 25, 22], [30, 34, 22], [30, 31, 24, 6, 5, 41, 22]]
+Routing started for  30  to  22
+[RouteOneTreeCP] EDPs: [[30, 19, 22], [30, 22], [30, 26, 34, 25, 22], [30, 34, 22], [30, 31, 24, 6, 5, 41, 22]]
+Routing done via EDP
+------------------------------------------------------
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 22 ) - CP3( 41 )
+CP2toCP3 tree [41, 25, 22, 23]
+[route Faces] Routing success via Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP3( 41 ) - D( 5 )
+ConvertedPathsCP3toD tree [41, 25, 16, 22, 37, 34, 2, 39, 40, 6, 5]
+ConvertedPathsCP3toD edps [[41, 5], [41, 16, 37, 5], [41, 22, 25, 40, 5], [41, 23, 16, 5], [41, 25, 5]]
+Routing started for  41  to  5
+[RouteOneTreeCP] EDPs: [[41, 5], [41, 16, 37, 5], [41, 22, 25, 40, 5], [41, 23, 16, 5], [41, 25, 5]]
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  10  ->  [31, 22, 41]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  10  to  5
+[Debug] Exited while loop. currentNode: 10 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  43  ->  [44, 42, 37]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  43  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  [35, 2, 42]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  9  to  5
+[Debug] Exited while loop. currentNode: 9 d: 5
+[Debug] Exited while loop. currentNode: 9 d: 5
+[Debug] Exited while loop. currentNode: 40 d: 5
+[Debug] Exited while loop. currentNode: 8 d: 5
+[Debug] Exited while loop. currentNode: 33 d: 5
+Checking: [9, 17, 18, 6, 5]
+Checking: [9, 18, 2, 37, 5]
+Checking: [9, 2, 6, 40, 25, 5]
+Checking: [9, 8, 17, 24, 40, 5]
+Checking: [9, 4, 35, 33, 2, 39, 5]
+Checking: [9, 35, 2, 42, 3, 16, 5]
+[RouteWithTripleCheckpointOneTree] Face-Routing started S( 9 ) - CP1( 35 )
+[route Faces] Routing success with Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP1( 35 ) - CP2( 2 )
+ConvertedPathsCP1toCP2 tree [35, 36, 33, 9, 21, 18, 7, 42, 6, 37, 39, 2]
+ConvertedPathsCP1toCP2 edps [[35, 2], [35, 4, 9, 18, 2], [35, 9, 2], [35, 14, 12, 44, 42, 2], [35, 33, 7, 2], [35, 36, 33, 2]]
+Routing started for  35  to  2
+[RouteOneTreeCP] EDPs: [[35, 2], [35, 4, 9, 18, 2], [35, 9, 2], [35, 14, 12, 44, 42, 2], [35, 33, 7, 2], [35, 36, 33, 2]]
+Routing done via EDP
+------------------------------------------------------
+[RouteWithTripleCheckpointOneTree] Face-Routing started CP2( 2 ) - CP3( 42 )
+CP2toCP3 tree [42, 44, 12, 14, 35, 2, 7, 37, 21, 28, 29, 38]
+[route Faces] Routing success via Start Face
+[RouteWithTripleCheckpointOneTree] Tree-Routing started CP3( 42 ) - D( 5 )
+ConvertedPathsCP3toD tree [42, 44, 12, 38, 17, 24, 40, 2, 37, 27, 6, 39, 16, 34, 41, 25, 5]
+ConvertedPathsCP3toD edps [[42, 2, 6, 40, 25, 5], [42, 3, 37, 16, 41, 5], [42, 7, 2, 39, 5], [42, 21, 33, 2, 18, 6, 5], [42, 28, 3, 16, 5], [42, 37, 5], [42, 44, 12, 38, 17, 24, 40, 5]]
+Routing started for  42  to  5
+[RouteOneTreeCP] EDPs: [[42, 2, 6, 40, 25, 5], [42, 3, 37, 16, 41, 5], [42, 7, 2, 39, 5], [42, 21, 33, 2, 18, 6, 5], [42, 28, 3, 16, 5], [42, 37, 5], [42, 44, 12, 38, 17, 24, 40, 5]]
+Source :  42  Destination :  5
+Edp :  [42, 2, 6, 40, 25, 5]
+EdpIndex-1 :  3
+edp[edpIndex-1] :  40
+ 
+Source :  42  Destination :  5
+Edp :  [42, 2, 6, 40, 25, 5]
+EdpIndex-1 :  2
+edp[edpIndex-1] :  6
+ 
+Source :  42  Destination :  5
+Edp :  [42, 2, 6, 40, 25, 5]
+EdpIndex-1 :  1
+edp[edpIndex-1] :  2
+ 
+Source :  42  Destination :  5
+Edp :  [42, 2, 6, 40, 25, 5]
+EdpIndex-1 :  0
+edp[edpIndex-1] :  42
+ 
+Routing done via EDP
+------------------------------------------------------
+Routing succesful with the Checkpoint
+------------------------------------------------------
+ 
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  22  ->  [19, 23, 41]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  22  to  5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  36  ->  [15, 21, 42]  ->  5
+Routing TripleCheckpointOneTree via EDPs started for  36  to  5
+[Debug] Exited while loop. currentNode: 36 d: 5
+[Debug] Exited while loop. currentNode: 5 d: 5
+[Debug] Routing TripleCheckpointOneTree done via EDP
+------------------------------------------------------

@@ -1,8 +1,0 @@
-#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Fri Apr  4 11:35:11 2025
-gabriel, 45, 2, SquareOne Cuts, 1, 13, 19, 24, 0.833333, 0.000530, 63.792623
-gabriel, 45, 5, MultipleTrees Cuts, 1, 11, 17, 18, 0.833333, 0.000633, 188.578892
-gabriel, 45, 5, MultipleTrees Cuts Greedy, 1, 2, 20, 13, 0.866667, 0.000275, 188.697038
-gabriel, 45, 5, MultipleTrees Cuts Extended, 1, 11, 20, 17, 0.800000, 0.000636, 209.677509
-gabriel, 45, 5, MultipleTrees Faces, 1, 28, 15, 34, 0.800000, 0.000747, 253.105858
-gabriel, 45, 5, MultipleTrees Faces Extended, 1, 28, 15, 34, 0.800000, 0.000755, 266.421953

@@ -2043,6 +2043,7 @@ def RouteFaces(s,d,fails,faces):
 #in dieser funktion findet das routing eines source-destination-paares für multipletrees statt
 #dies geschieht indem man nach weiterleitung eines pakets an jedem knoten den nächst besten rang bestimmt
 def RouteMultipleTrees(s,d,fails,paths):
+    debug = False
     print('Routing started for ' , s , " to " , d )
     print("FAIL ANZAHL : ", len(fails))
     #########################################   FOR DEBUG ONLY                #####################################################
@@ -2069,7 +2070,39 @@ def RouteMultipleTrees(s,d,fails,paths):
         return (False, hops, switches, detour_edges)
     trees = paths[s][d]['trees']
     print(" ")
-    
+
+    if debug == True:
+        combined_tree = nx.DiGraph()
+        for tree in trees:
+            for edge in tree.edges:
+                combined_tree.add_edge(*edge)
+
+
+        import matplotlib.pyplot as plt
+
+        # Knotenpositionen automatisch generieren
+        pos = nx.spring_layout(combined_tree)
+
+        # Normale Kanten (nicht fehlgeschlagen)
+        normal_edges = [edge for edge in combined_tree.edges() if edge not in fails and (edge[1], edge[0]) not in fails]
+
+        # Fehlgeschlagene Kanten (egal in welcher Richtung)
+        failed_edges = [edge for edge in combined_tree.edges() if edge in fails or (edge[1], edge[0]) in fails]
+
+        # Zeichnen
+        plt.figure(figsize=(10, 8))
+        nx.draw_networkx_nodes(combined_tree, pos, node_size=500, node_color="lightblue")
+        nx.draw_networkx_labels(combined_tree, pos)
+
+        # Normale Kanten in schwarz
+        nx.draw_networkx_edges(combined_tree, pos, edgelist=normal_edges, edge_color="black", width=2)
+
+        # Fehlgeschlagene Kanten in rot
+        nx.draw_networkx_edges(combined_tree, pos, edgelist=failed_edges, edge_color="red", width=2)
+
+        plt.title(f"Combined Tree from {s} to {d} with Failed Edges Highlighted")
+        plt.axis("off")
+        plt.show()
 
     if(not skip_trees):
 
@@ -3102,6 +3135,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
         return -1
 
     d = g.graph['root']
+   
     g.graph['k'] = k
 
     if precomputation is None:
@@ -3179,6 +3213,8 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
         if d in cluster_nodes:
             cluster_nodes.remove(d)
 
+        random.shuffle(cluster_nodes)
+
         for s in cluster_nodes[:samplesize]:
             print("Loop over samplesize is running")
             count += 1
@@ -3187,7 +3223,7 @@ def SimulateGraph(g, RANDOM, stats, f, samplesize, precomputation=None, dest=Non
                 print("Loop over stats is running")
 
 
-                # Jetzt gibt es KEIN continue mehr, sondern der Algorithmus wird immer ausgeführt
+                # d
                 fail, hops = stat.update(s, d, fails, precomputation, dist[s])
 
                 if fail:
