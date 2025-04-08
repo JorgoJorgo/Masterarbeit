@@ -22,7 +22,7 @@ algos = {
           'One Tree': [one_tree_pre, RouteOneTree],
           'MultipleTrees':[multiple_trees_pre, RouteMultipleTrees],
 
-          'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
+           'MultipleTrees Random Checkpoint':[multiple_trees_with_middle_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Random Checkpoint Parallel':[multiple_trees_with_middle_checkpoint_parallel_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Closeness Checkpoint':[multiple_trees_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Betweenness Checkpoint':[multiple_trees_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
@@ -411,10 +411,10 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
 
 if __name__ == "__main__":
     start_FR = 1      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
-    f_num = 2*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
+    f_num = 3*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 42):
-        f_num = 2 + f_num
+        f_num = 3 + f_num
         #f_num = 0
         n = 80
         k = 5

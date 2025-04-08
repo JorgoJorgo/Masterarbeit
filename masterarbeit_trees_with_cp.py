@@ -223,8 +223,8 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                         fake_tree.nodes[destination]['pos'] = graph.nodes[destination]['pos']
                     #endif
                     
-                    for node in fake_tree.nodes:
-                        fake_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+                    #for node in fake_tree.nodes:
+                    #    fake_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
                     faces  = find_faces_pre(fake_tree,source,destination)
                     #print("Faces: ", faces)
@@ -250,9 +250,11 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                             nodes.append(destination)
                         #endif
                         
-                        for node in tree.nodes:
-                            tree.nodes[node]['pos'] = graph.nodes[node]['pos']
+                        #for node in tree.nodes:
+                        #    tree.nodes[node]['pos'] = graph.nodes[node]['pos']
                         nodes.append(neighbors[k])
+                        tree.nodes[neighbors[k]]['pos'] = graph.nodes[neighbors[k]]['pos']
+                        tree.nodes[nodes[it]]['pos'] = graph.nodes[nodes[it]]['pos']
                     #endif
                 #endfor   
 
@@ -287,8 +289,8 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                         
                         fake_tree.remove_node(node)
                         
-                        for node2 in fake_tree.nodes:
-                            fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
+                        #for node2 in fake_tree.nodes:
+                        #    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
                         
                         faces = find_faces_pre(fake_tree, source, destination)
                         
@@ -379,9 +381,9 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                         edge_lists[i].append((node, neighbor))
 
                         #check if every edge in the edge list is in the tree
-                        for edge in edge_lists[i]:
-                            assert edge in tree.edges, f"Edge list {edge_lists[i]} not in tree edges!"  
-                            assert edge in fake_tree.edges, f"Edge list {edge_lists[i]} not in fake_tree edges!"  
+                        #for edge in edge_lists[i]:
+                        #    assert edge in tree.edges, f"Edge list {edge_lists[i]} not in tree edges!"  
+                        #    assert edge in fake_tree.edges, f"Edge list {edge_lists[i]} not in fake_tree edges!"  
 
                         # Position des neuen Knotens hinzufügen
                         tree.nodes[neighbor]['pos'] = graph.nodes[neighbor]['pos']
@@ -433,8 +435,8 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                 
                 fake_tree.remove_node(node)
                 
-                for node2 in fake_tree.nodes:
-                    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
+                #for node2 in fake_tree.nodes:
+                #    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
                 
                 faces = find_faces_pre(fake_tree, source, destination)
                 
@@ -618,8 +620,8 @@ def one_tree_with_checkpoint_for_faces(source, destination, graph, longest_edp):
                 
                 fake_tree.remove_node(node)
                 
-                for node2 in fake_tree.nodes:
-                    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
+                #for node2 in fake_tree.nodes:
+                #    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
                 
                 faces = find_faces_pre(fake_tree, source, destination)
                 
@@ -761,8 +763,8 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
                 
                 fake_tree.remove_node(node)
                 
-                for node2 in fake_tree.nodes:
-                    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
+                #for node2 in fake_tree.nodes:
+                #    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
                 
                 faces = find_faces_pre(fake_tree, source, destination)
                 
