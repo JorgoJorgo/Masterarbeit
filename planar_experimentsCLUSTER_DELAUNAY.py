@@ -410,10 +410,10 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 1      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    start_FR = 28      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
     f_num = 3*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
-    for i in range(start_FR, 42):
+    for i in range(start_FR, 45):
         f_num = 3 + f_num
         #f_num = 0
         n = 80
