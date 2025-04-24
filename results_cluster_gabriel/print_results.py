@@ -153,7 +153,7 @@ def plot_hops(title_prefix, algo_hops, fr_indices):
         print("Keine Daten für Hops-Werte vorhanden.")
 
 # Beispielaufruf:
-directory = 'results'
+directory = 'results_cluster_gabriel'
 
 
 selected_algorithms = [

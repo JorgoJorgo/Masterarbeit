@@ -223,8 +223,8 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
     global f_num
     min_connectivity = 2
     original_params = [n, rep, k, samplesize, f_num, seed, name]
-    if DEBUG:
-        print('n_before, n_after, m_after, connectivity, degree')
+    #if DEBUG:
+    #    print('n_before, n_after, m_after, connectivity, degree')
 
     zoo_list = list(glob.glob("./benchmark_graphs/*.graphml"))
 
@@ -233,14 +233,28 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
         g = read_zoo(graph_index, min_connectivity)
 
         # Nur spezifische Graphen auswählen
-        if g is None or (len(g.nodes) < 60 and len(g.nodes) > 90) :
+        if g is None or (len(g.nodes) != 57) :
+        #    print("Skipping Condition 1")
             continue
 
         print("Len(g) = ", len(g.nodes))
         kk = nx.edge_connectivity(g)  # Berechnung der Konnektivität
         nn = len(g.nodes())
 
-        if nn < 200:
+        # Prüfe, ob der Graph planar ist
+        is_planar, planar_embedding = nx.check_planarity(g)
+        if not is_planar:
+            print(f"Graph {graph_index} ist nicht planar, wird übersprungen.")
+            continue
+
+        print(f"Nodes: {len(g.nodes)}")
+        print(f"Edges: {len(g.edges)}")
+        print(f"Connectivity: {kk}")
+        
+        #57
+        #102
+        #57
+        if nn == 57:
             print("Passender Graph")
             mm = len(g.edges())
             ss = min(int(nn / 2), samplesize)
@@ -390,7 +404,7 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
     #method = "delaunay" #HIER DIE METHODE ÄNDERN
     method = "gabriel"
 
-    if switch in ["planar", "all"]:
+    if switch in ["planar"]:
         
         filename = f"results_random_gabriel/benchmark-planar-{method.lower()}-{attack}-FR{main_loop_index}"
         out = start_file(filename)
@@ -400,8 +414,8 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
 
         out.close()
     
-    if switch in ["zoo", "all"]:
-        filename = f"results_random_zoo/benchmark-zoo-{method.lower()}-{attack}-FR{main_loop_index}"
+    if switch in ["zoo"]:
+        filename = f"results_random_zoo/benchmark-zoo-{method.lower()}{57}-{attack}-FR{main_loop_index}"
         out = start_file(filename)
 
         for i in range(rep):
@@ -410,11 +424,11 @@ def experiments(switch="all", seed=33, rep=100, num_nodes=60, f_num=0, main_loop
         out.close()
 
 if __name__ == "__main__":
-    start_FR = 37      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
-    f_num = 3*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
+    start_FR = 1      #Anfangswert um die Anfänglichen Experimente zu skippen, da Algorihtmen erst später Probleme bekommen
+    f_num = 2*start_FR #bei jeder Ausführung des Experiments kommen 4 Fehler dazu
     
     for i in range(start_FR, 45):
-        f_num = 3 + f_num
+        f_num = 2 + f_num
         #f_num = 0
         n = 80
         k = 5
