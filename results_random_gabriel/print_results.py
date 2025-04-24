@@ -35,7 +35,7 @@ def calculate_averages(directory, selected_algorithms=None):
     algo_hops = {}
 
     files = sorted(
-        [f for f in os.listdir(directory) if f.startswith("benchmark-planar-delaunay-RANDOM-FR") and f.endswith(".txt")],
+        [f for f in os.listdir(directory) if f.startswith("benchmark-planar-gabriel-RANDOM-FR") and f.endswith(".txt")],
         key=lambda x: int(re.search(r'FR(\d+)', x).group(1))  # Extrahiere nur FR-Zahl
     )
 
