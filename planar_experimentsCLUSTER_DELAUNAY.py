@@ -33,9 +33,10 @@ algos = {
           'MultipleTrees Inverse Degree Checkpoint':[multiple_trees_invers_with_degree_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Inverse Betweenness Checkpoint':[multiple_trees_invers_with_betweenness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Inverse Closeness Checkpoint':[multiple_trees_invers_with_closeness_checkpoint_pre, RouteWithOneCheckpointMultipleTrees],
-        
           'MultipleTrees Inverse Degree Checkpoint Extended':[multiple_trees_invers_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
           'MultipleTrees Degree Checkpoint Extended':[multiple_trees_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointMultipleTrees],
+         
+         
           'One Tree Shortest EDP Checkpoint Extended PE': [one_tree_with_middle_checkpoint_shortest_edp_extended_pre, RouteWithOneCheckpointOneTree],
           'One Tree Degree Checkpoint Extended PE': [one_tree_with_degree_checkpoint_extended_pre, RouteWithOneCheckpointOneTree],
 

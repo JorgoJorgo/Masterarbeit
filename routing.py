@@ -2595,19 +2595,70 @@ def RouteOneTree (s,d,fails,paths):
 def getRank(tree, el):
     return tree.nodes[el]["rank"]
 
+
+
+
+# Globale Variable für feste Positionen
+_pos_cache = None
+
+def debug_plot(s, d, fails, T):
+    global _pos_cache
+
+    # Erzeuge Visualisierungs-Graphen
+    G_visual = nx.DiGraph()
+    for tree in T:
+        G_visual.add_nodes_from(tree.nodes())
+        G_visual.add_edges_from(tree.edges())
+
+    # Planar-Layout (nur einmal berechnen)
+    if _pos_cache is None:
+        try:
+            _pos_cache = nx.planar_layout(G_visual)
+        except nx.NetworkXException:
+            print("[debug_plot] Warnung: Graph nicht planar, fallback auf spring_layout.")
+            _pos_cache = nx.spring_layout(G_visual, seed=42)
+
+    # Knotenfarben
+    node_colors = []
+    for node in G_visual.nodes():
+        if node == s:
+            node_colors.append('green')
+        elif node == d:
+            node_colors.append('yellow')
+        else:
+            node_colors.append('lightgray')
+
+    # Kantenfarben
+    edge_colors = []
+    for u, v in G_visual.edges():
+        if (u, v) in fails or (v, u) in fails:
+            edge_colors.append('red')
+        else:
+            edge_colors.append('black')
+
+    # Zeichnen
+    plt.figure(figsize=(8, 6))
+    nx.draw(G_visual, _pos_cache, with_labels=True, node_color=node_colors, edge_color=edge_colors, arrows=True)
+    plt.title(f"Debug Routing: {s} -> {d}")
+    plt.show()
+
+
+
 # Route according to deterministic circular routing as described by Chiesa et al.
 # source s
 # destination d
 # link failure set fails
 # arborescence decomposition T
 def RouteDetCirc(s, d, fails, T):
-    #print("[RouteDetCirc] routing started for", s, "->", d)
+    print("[RouteDetCirc] T:", T)
     curT = 0
     detour_edges = []
+    traversed_edges = []  # <<< NEU: Liste aller wirklich genommenen Kanten
     hops = 0
     switches = 0
     n = len(T[0].nodes())
     k = len(T)
+
     while (s != d):
         while (s not in T[curT].nodes()) and switches < k*n:
             curT = (curT+1) % k
@@ -2616,25 +2667,37 @@ def RouteDetCirc(s, d, fails, T):
             break
         nxt = list(T[curT].neighbors(s))
         if len(nxt) != 1:
-            print("Bug: too many or to few neighbours")
+            print("Bug: too many or too few neighbours")
         nxt = nxt[0]
 
-        #print("[RouteDetCirc] current s:", s, "and fails with s:", [fail for fail in fails if s in fail])
-
-        
-        
         if (nxt, s) in fails or (s, nxt) in fails:
             curT = (curT+1) % k
             switches += 1
         else:
+            print(f"Kante traversiert: ({s}, {nxt})")
+
+            traversed_edges.append((s, nxt))  # <<< NEU: speichere den Schritt
+            
             if switches > 0 and curT > 0:
                 detour_edges.append((s, nxt))
             s = nxt
             hops += 1
+
         if hops > n or switches > k*n:
             print("[RouteDetCirc] Routing Failed with RouteDetCirc")
+            # Am Ende trotzdem Traversierungen zeigen, wenn abgebrochen wird
+            print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
+            for u, v in traversed_edges:
+                print(f"  {u} -> {v}")
             return (True, -1, switches, detour_edges)
+
     print("[RouteDetCirc] Routing Success with RouteDetCirc")
+    
+    print("\n[RouteDetCirc] Traversierte Kanten (gesamter Pfad):")
+    for u, v in traversed_edges:
+        print(f"  {u} -> {v}")
+
+    debug_plot(s, d, fails, T)  # Visualisierung zuletzt
     return (False, hops, switches, detour_edges)
 
 #select next arborescence to bounce
