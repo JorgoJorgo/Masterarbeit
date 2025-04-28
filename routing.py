@@ -2651,54 +2651,65 @@ def debug_plot(s, d, fails, T):
 # arborescence decomposition T
 def RouteDetCirc(s, d, fails, T):
     print("[RouteDetCirc] T:", T)
+    start_node = s  # Startknoten speichern für Debug später
     curT = 0
     detour_edges = []
-    traversed_edges = []  # <<< NEU: Liste aller wirklich genommenen Kanten
+    traversed_edges = []  # Liste aller wirklich genommenen Kanten
     hops = 0
     switches = 0
     n = len(T[0].nodes())
     k = len(T)
 
-    while (s != d):
+    while s != d:
         while (s not in T[curT].nodes()) and switches < k*n:
-            curT = (curT+1) % k
+            curT = (curT + 1) % k
             switches += 1
         if switches >= k*n:
             break
-        nxt = list(T[curT].neighbors(s))
-        if len(nxt) != 1:
-            print("Bug: too many or too few neighbours")
-        nxt = nxt[0]
 
-        if (nxt, s) in fails or (s, nxt) in fails:
-            curT = (curT+1) % k
-            switches += 1
-        else:
-            print(f"Kante traversiert: ({s}, {nxt})")
+        nxt_candidates = list(T[curT].neighbors(s))  # Nachbarn im aktuellen Baum
+        # NEU: Gültige Nachbarn filtern, die NICHT fehlerhaft sind
+        valid_nxt = [nxt for nxt in nxt_candidates if (s, nxt) not in fails and (nxt, s) not in fails]
 
-            traversed_edges.append((s, nxt))  # <<< NEU: speichere den Schritt
-            
-            if switches > 0 and curT > 0:
-                detour_edges.append((s, nxt))
-            s = nxt
-            hops += 1
-
-        if hops > n or switches > k*n:
-            print("[RouteDetCirc] Routing Failed with RouteDetCirc")
-            # Am Ende trotzdem Traversierungen zeigen, wenn abgebrochen wird
+        if not valid_nxt:
+            # KEIN gültiger Nachfolger, Routing muss fehlschlagen
+            print("[RouteDetCirc] Keine gültige Kante mehr verfügbar, Routing fehlgeschlagen.")
             print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
             for u, v in traversed_edges:
                 print(f"  {u} -> {v}")
+            debug_plot(start_node, d, fails, T)  # Visualisierung zuletzt
+            return (True, -1, switches, detour_edges)
+
+        if len(valid_nxt) > 1:
+            print("Bug: too many valid neighbours")
+        
+        nxt = valid_nxt[0]  # Nehme den einzigen gültigen Nachfolger
+
+        print(f"Kante traversiert: ({s}, {nxt})")
+        traversed_edges.append((s, nxt))  # speichere den Schritt
+        
+        if switches > 0 and curT > 0:
+            detour_edges.append((s, nxt))
+        
+        s = nxt
+        hops += 1
+
+        if hops > n or switches > k*n:
+            print("[RouteDetCirc] Routing Failed with RouteDetCirc")
+            print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
+            for u, v in traversed_edges:
+                print(f"  {u} -> {v}")
+            debug_plot(start_node, d, fails, T)
             return (True, -1, switches, detour_edges)
 
     print("[RouteDetCirc] Routing Success with RouteDetCirc")
-    
     print("\n[RouteDetCirc] Traversierte Kanten (gesamter Pfad):")
     for u, v in traversed_edges:
         print(f"  {u} -> {v}")
 
-    debug_plot(s, d, fails, T)  # Visualisierung zuletzt
+    debug_plot(start_node, d, fails, T)
     return (False, hops, switches, detour_edges)
+
 
 #select next arborescence to bounce
 def Bounce(s, d, T, cur):
