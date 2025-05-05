@@ -1,0 +1,33 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Wed Apr 30 06:31:30 2025
+120, 57, 2, MaxDAG, 1, 1, 0, 9, 0.277778, 0.119842, 0.664362
+120, 57, 2, SquareOne, 1, 0, 90, 8, 0.277778, 0.000256, 0.841939
+120, 57, 2, One Tree, 1, 0, 4, 8, 0.277778, 0.000170, 7.136097
+120, 57, 2, MultipleTrees, 1, 12, 5, 17, 0.277778, 0.000203, 15.619182
+120, 57, 2, MultipleTrees Random Checkpoint, 1, 56, 9, 61, 0.388889, 0.001877, 416.347170
+120, 57, 2, MultipleTrees Random Checkpoint Parallel, 1, 13, 9, 18, 0.333333, 0.001194, 453.804079
+120, 57, 2, MultipleTrees Closeness Checkpoint, 1, 26, 8, 31, 0.388889, 0.001449, 39.448295
+120, 57, 2, MultipleTrees Betweenness Checkpoint, 1, 51, 9, 56, 0.277778, 0.002098, 459.620537
+120, 57, 2, MultipleTrees Degree Checkpoint, 1, 48, 9, 53, 0.277778, 0.002250, 392.440321
+120, 57, 2, MultipleTrees Inverse Middle Checkpoint, 1, 0, 10, 8, 0.277778, 0.001432, 409.418123
+120, 57, 2, MultipleTrees Inverse Middle Greedy Checkpoint, 1, 0, 82, 8, 0.277778, 0.000939, 409.530766
+120, 57, 2, MultipleTrees Inverse Degree Checkpoint, 1, 0, 8, 8, 0.277778, 0.001891, 351.114666
+120, 57, 2, MultipleTrees Inverse Betweenness Checkpoint, 1, 0, 9, 8, 0.277778, 0.001855, 530.179248
+120, 57, 2, MultipleTrees Inverse Closeness Checkpoint, 1, 0, 10, 8, 0.277778, 0.001626, 472.019288
+120, 57, 2, MultipleTrees Inverse Degree Checkpoint Extended, 1, 0, 8, 8, 0.277778, 0.001903, 362.784711
+120, 57, 2, MultipleTrees Degree Checkpoint Extended, 1, 48, 9, 53, 0.277778, 0.002251, 407.217390
+120, 57, 2, One Tree Shortest EDP Checkpoint Extended PE, 1, 6, 6, 17, 0.388889, 0.000689, 864.377806
+120, 57, 2, One Tree Degree Checkpoint Extended PE, 1, 0, 8, 8, 0.277778, 0.001010, 277.877779
+120, 57, 2, One Tree Middle Checkpoint PE, 1, 0, 3, 8, 0.277778, 0.000360, 464.509928
+120, 57, 2, One Tree Degree Checkpoint PE, 1, 0, 8, 8, 0.277778, 0.000988, 265.760530
+120, 57, 2, One Tree Betweenness Checkpoint PE, 1, 0, 4, 8, 0.277778, 0.000700, 418.088028
+120, 57, 2, One Tree Closeness Checkpoint PE, 1, 0, 2, 8, 0.277778, 0.000536, 435.286148
+120, 57, 2, One Tree Shortest EDP Checkpoint PE, 1, 6, 6, 17, 0.388889, 0.000686, 844.707933
+120, 57, 2, Triple Checkpoint OneTree, 1, 0, 8, 14, 0.333333, 0.000359, 214.084418
+120, 57, 2, Triple Checkpoint MultipleTrees, 1, 0, 8, 15, 0.333333, 0.001393, 553.087126
+120, 57, 2, SquareOne Cuts, 1, 0, 6, 8, 0.277778, 0.000694, 109.202130
+120, 57, 2, MultipleTrees Cuts, 1, 10, 6, 18, 0.333333, 0.000840, 249.893665
+120, 57, 2, MultipleTrees Cuts Greedy, 1, 0, 128, 6, 0.222222, 0.001543, 250.672948
+120, 57, 2, MultipleTrees Cuts Extended, 1, 10, 7, 20, 0.388889, 0.000818, 311.419626
+120, 57, 2, MultipleTrees Faces, 1, 15, 6, 24, 0.388889, 0.001168, 453.894068
+120, 57, 2, MultipleTrees Faces Extended, 1, 15, 6, 24, 0.388889, 0.001162, 481.674065
