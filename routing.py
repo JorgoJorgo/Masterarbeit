@@ -2673,8 +2673,8 @@ def RouteDetCirc(s, d, fails, T):
 
         if not valid_nxt:
             # KEIN gültiger Nachfolger, Routing muss fehlschlagen
-            print("[RouteDetCirc] Keine gültige Kante mehr verfügbar, Routing fehlgeschlagen.")
-            print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
+            #print("[RouteDetCirc] Keine gültige Kante mehr verfügbar, Routing fehlgeschlagen.")
+            #print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
             for u, v in traversed_edges:
                 print(f"  {u} -> {v}")
             debug_plot(start_node, d, fails, T)  # Visualisierung zuletzt
@@ -2685,7 +2685,7 @@ def RouteDetCirc(s, d, fails, T):
         
         nxt = valid_nxt[0]  # Nehme den einzigen gültigen Nachfolger
 
-        print(f"Kante traversiert: ({s}, {nxt})")
+        #print(f"Kante traversiert: ({s}, {nxt})")
         traversed_edges.append((s, nxt))  # speichere den Schritt
         
         if switches > 0 and curT > 0:
@@ -2695,19 +2695,19 @@ def RouteDetCirc(s, d, fails, T):
         hops += 1
 
         if hops > n or switches > k*n:
-            print("[RouteDetCirc] Routing Failed with RouteDetCirc")
-            print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
+            #print("[RouteDetCirc] Routing Failed with RouteDetCirc")
+            #print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
             for u, v in traversed_edges:
                 print(f"  {u} -> {v}")
             debug_plot(start_node, d, fails, T)
             return (True, -1, switches, detour_edges)
 
-    print("[RouteDetCirc] Routing Success with RouteDetCirc")
-    print("\n[RouteDetCirc] Traversierte Kanten (gesamter Pfad):")
+    #print("[RouteDetCirc] Routing Success with RouteDetCirc")
+    #print("\n[RouteDetCirc] Traversierte Kanten (gesamter Pfad):")
     for u, v in traversed_edges:
         print(f"  {u} -> {v}")
 
-    debug_plot(start_node, d, fails, T)
+    #debug_plot(start_node, d, fails, T)
     return (False, hops, switches, detour_edges)
 
 

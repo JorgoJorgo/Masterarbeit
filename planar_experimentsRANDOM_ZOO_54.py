@@ -257,7 +257,7 @@ def run_zoo(out=None, seed=0, rep=2, attack="RANDOM", fr=1):
             print(f"Nodes: {len(g.nodes)}")
             print(f"Edges: {len(g.edges)}")
             print(f"Connectivity: {kk}")
-            input("Press key to continue ...")
+            #input("Press key to continue ...")
 
             mm = len(g.edges())
             ss = min(int(nn / 2), samplesize)
