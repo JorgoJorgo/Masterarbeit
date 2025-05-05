@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.cm as cm
 import re
 
 def process_results_file(filename):
@@ -18,7 +19,7 @@ def process_results_file(filename):
         )
 
         df.replace(['inf', float('inf')], 0, inplace=True)
-        
+
         for col in ['stretch', 'load', 'hops', 'success', 'routing computation time', 'pre-computation time in seconds']:
             df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
 
@@ -79,7 +80,7 @@ def calculate_averages(directory, selected_algorithms=None):
     if selected_algorithms:
         missing_algorithms = set(selected_algorithms) - found_algorithms
         if missing_algorithms:
-            print(f"Warnung: Diese ausgewählten Algorithmen wurden in den Daten nicht gefunden: {missing_algorithms}")
+            print(f" Warnung: Diese ausgewählten Algorithmen wurden in den Daten nicht gefunden: {missing_algorithms}")
 
     print("\nLängen der Success-Listen pro Algorithmus:")
     for algo, values in algo_success.items():
@@ -90,36 +91,35 @@ def calculate_averages(directory, selected_algorithms=None):
     plot_success(title_prefix="RANDOM", algo_success=algo_success, fr_indices=fr_indices)
     plot_hops(title_prefix="RANDOM", algo_hops=algo_hops, fr_indices=fr_indices)
 
+# Feste Farbzuteilung
+def get_algorithm_color_mapping():
+    return {
+        ' One Tree Middle Checkpoint PE': 'red',
+        ' MaxDAG': 'blue',
+        ' SquareOne': 'green'
+    }
+
 def generate_colors(num_colors):
-    if num_colors <= 10:
-        return plt.cm.tab10.colors[:num_colors]
-    else:
-        np.random.seed(42)
-        return [np.random.rand(3,) for _ in range(num_colors)]
+    base_palette = cm.get_cmap('Set1', num_colors)
+    return [base_palette(i) for i in range(num_colors)]
 
 def plot_success(title_prefix, algo_success, fr_indices):
     plt.figure(figsize=(14, 6))
     if algo_success:
         colors = generate_colors(len(algo_success))
+        color_mapping = get_algorithm_color_mapping()
         linestyles = ['-', '--', '-.', ':']
         markers = ['o', 's', 'D', '^', 'v', 'x', '*', 'P', 'H', '8']
-        num_points = len(fr_indices)
 
         for i, (algo, values) in enumerate(algo_success.items()):
-            if len(values) < num_points:
-                print(f"Werte für {algo} unvollständig: {len(values)} → auffüllen auf {num_points}")
-                values += [np.nan] * (num_points - len(values))
-            elif len(values) > num_points:
-                print(f"Werte für {algo} zu lang: {len(values)} → kürzen auf {num_points}")
-                values = values[:num_points]
-
+            color = color_mapping.get(algo, colors[i])
             linestyle = linestyles[i % len(linestyles)]
             marker = markers[i % len(markers)]
-            plt.plot(fr_indices, values, label=f"{algo.strip()} Success", color=colors[i], linestyle=linestyle, marker=marker, alpha=0.8)
+            plt.plot(fr_indices, values, label=f"{algo.strip()}", color=color, linestyle=linestyle, marker=marker, alpha=0.9)
 
-        plt.title(f"{title_prefix} - Durchschnittlicher Success pro FR-Datei")
-        plt.xlabel("FR-Datei Index")
-        plt.ylabel("Durchschnittlicher Success")
+        plt.title("Durchschnittliche Resilienz pro Failure Rate (Gabriel, Geclusterte Fehler)")
+        plt.xlabel("Failure Rate")
+        plt.ylabel("Resilienz")
         plt.legend()
         plt.grid(True, linestyle="--", alpha=0.6)
         plt.show()
@@ -130,24 +130,18 @@ def plot_hops(title_prefix, algo_hops, fr_indices):
     plt.figure(figsize=(14, 6))
     if algo_hops:
         colors = generate_colors(len(algo_hops))
+        color_mapping = get_algorithm_color_mapping()
         linestyles = ['-', '--', '-.', ':']
         markers = ['o', 's', 'D', '^', 'v', 'x', '*', 'P', 'H', '8']
-        num_points = len(fr_indices)
 
         for i, (algo, values) in enumerate(algo_hops.items()):
-            if len(values) < num_points:
-                print(f"Werte für {algo} unvollständig: {len(values)} → auffüllen auf {num_points}")
-                values += [np.nan] * (num_points - len(values))
-            elif len(values) > num_points:
-                print(f"Werte für {algo} zu lang: {len(values)} → kürzen auf {num_points}")
-                values = values[:num_points]
-
+            color = color_mapping.get(algo, colors[i])
             linestyle = linestyles[i % len(linestyles)]
             marker = markers[i % len(markers)]
-            plt.plot(fr_indices, values, label=f"{algo.strip()} Hops", color=colors[i], linestyle=linestyle, marker=marker, alpha=0.8)
+            plt.plot(fr_indices, values, label=f"{algo.strip()}", color=color, linestyle=linestyle, marker=marker, alpha=0.9)
 
-        plt.title(f"{title_prefix} - Durchschnittliche Hops pro FR-Datei")
-        plt.xlabel("FR-Datei Index")
+        plt.title("Durchschnittliche Hops pro Failure Rate (Gabriel, Geclusterte Fehler)")
+        plt.xlabel("Failure Rate")
         plt.ylabel("Durchschnittliche Hops")
         plt.legend()
         plt.grid(True, linestyle="--", alpha=0.6)
@@ -156,15 +150,17 @@ def plot_hops(title_prefix, algo_hops, fr_indices):
         print("Keine Daten für Hops-Werte vorhanden.")
 
 # Beispielaufruf:
-directory = 'results_cluster_delaunay'
+directory = 'results_cluster_gabriel'
 
 selected_algorithms = [
    ' MaxDAG',
-   ' SquareOne Cuts',
-   ' MultipleTrees Degree Checkpoint Extended',
-   ' MultipleTrees Inverse Degree Checkpoint Extended',
+   ' SquareOne',
+   ' MultipleTrees Betweenness Checkpoint',
+   ' MultipleTrees Inverse Middle Greedy Checkpoint',
+   ' MultipleTrees Random Checkpoint',
    ' MultipleTrees Cuts Extended',
    ' MultipleTrees Faces Extended',
+   ' One Tree Middle Checkpoint PE',
 ]
 calculate_averages(directory, selected_algorithms)
 
