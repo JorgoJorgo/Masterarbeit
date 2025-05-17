@@ -361,7 +361,7 @@ def route_faces_with_paths(s, d, fails, paths):
     
     routing_failure, hops, switches, detour_edges = route_faces_firstFace(s, d, paths[s][d]['structure'], fails)
 
-
+    print(f"[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : {len(paths[s][d]['structure'].edges())}")
 
     if routing_failure == False:
         print("[route_faces_with_paths] Routing success")

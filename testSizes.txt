@@ -1,0 +1,2512 @@
+[main] start_fr: 35
+[debug] current graph size: 20
+Fri May 16 15:39:40 2025
+[main] i :  35
+[main] switch: planar
+[main] seed: 3
+[main] attack: RANDOM
+[run_planar] Method: delaunay
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 20 Anzahl Kanten: 32
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 20 Kanten: 49
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  0
+[run_planar] Fails:  []
+[planar_experiments] root: 5
+[planar_experiments] len(edges): 98
+experiment for  <function DegreeMaxDAG at 0x7eeb35e2e340>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  17 -> 7
+  7 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  6 -> 17
+  17 -> 4
+  4 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  15 -> 1
+  1 -> 14
+  14 -> 8
+  8 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  14 -> 8
+  8 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  12 -> 9
+  9 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  11 -> 16
+  16 -> 10
+  10 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  18 -> 12
+  12 -> 9
+  9 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  4 -> 7
+  7 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  9 -> 0
+  0 -> 5
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35db7530>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e4230>, <networkx.classes.digraph.DiGraph object at 0x7eeb370e45f0>, <networkx.classes.digraph.DiGraph object at 0x7eeb35db7080>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+  7 -> 0
+  0 -> 5
+After simulate
+success 10 <function DegreeMaxDAG at 0x7eeb35e2e340>
+experiment for  <function PrepareSQ1 at 0x7eeb35e2c680>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   17  Destination :  5
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   6  Destination :  5
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   15  Destination :  5
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   14  Destination :  5
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   12  Destination :  5
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   11  Destination :  5
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   18  Destination :  5
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   4  Destination :  5
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   9  Destination :  5
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   7  Destination :  5
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+After simulate
+success 10 <function PrepareSQ1 at 0x7eeb35e2c680>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 76
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  7  ->  5
+Routing MTCP via EDPs started for  17 - 7 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 63
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  4  ->  5
+Routing MTCP via EDPs started for  6 - 4 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 76
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  12  ->  5
+Routing MTCP via EDPs started for  15 - 12 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 74
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  9  ->  5
+Routing MTCP via EDPs started for  14 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 75
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  9  ->  5
+Routing MTCP via EDPs started for  12 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 80
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  10  ->  5
+Routing MTCP via EDPs started for  11 - 10 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 74
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  18  ->  9  ->  5
+Routing MTCP via EDPs started for  18 - 9 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  4  ->  5  ->  5
+Routing MTCP via EDPs started for  4 - 5 - 5
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[4, 5]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  9  ->  5  ->  5
+Routing MTCP via EDPs started for  9 - 5 - 5
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[9, 5]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  7  ->  5  ->  5
+Routing MTCP via EDPs started for  7 - 5 - 5
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[7, 5]]
+After simulate
+success 10 <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 83
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  10  ->  5
+Routing MTCP via EDPs started for  17 - 10 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 78
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  17  ->  5
+Routing MTCP via EDPs started for  6 - 17 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 75
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  17  ->  5
+Routing MTCP via EDPs started for  15 - 17 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 77
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  17  ->  5
+Routing MTCP via EDPs started for  14 - 17 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 80
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  14  ->  5
+Routing MTCP via EDPs started for  12 - 14 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 74
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  12  ->  5
+Routing MTCP via EDPs started for  11 - 12 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 75
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  18  ->  17  ->  5
+Routing MTCP via EDPs started for  18 - 17 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 82
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  4  ->  10  ->  5
+Routing MTCP via EDPs started for  4 - 10 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 75
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  9  ->  0  ->  5
+Routing MTCP via EDPs started for  9 - 0 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 73
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  7  ->  4  ->  5
+Routing MTCP via EDPs started for  7 - 4 - 5
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[shuffle_and_run] fails: []
+experiment for  <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  10  ->  5
+[One Tree Middle Checkpoint] sizes 19
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  17  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  6  ->  17  ->  5
+[One Tree Middle Checkpoint] sizes 16
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  6  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  17  ->  5
+[One Tree Middle Checkpoint] sizes 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  15  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  14  ->  17  ->  5
+[One Tree Middle Checkpoint] sizes 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  14  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  12  ->  14  ->  5
+[One Tree Middle Checkpoint] sizes 33
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  12  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  11  ->  12  ->  5
+[One Tree Middle Checkpoint] sizes 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  11  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  18  ->  17  ->  5
+[One Tree Middle Checkpoint] sizes 26
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  18  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  4  ->  10  ->  5
+[One Tree Middle Checkpoint] sizes 21
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  4  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  9  ->  0  ->  5
+[One Tree Middle Checkpoint] sizes 18
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  9  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  7  ->  4  ->  5
+[One Tree Middle Checkpoint] sizes 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  7  to  5
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 159
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  [16, 10, 0]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  17  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 155
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  [2, 16, 17]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  6  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 159
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  [11, 16, 17]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  15  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 160
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  [16, 17, 4]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  14  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 166
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  [13, 18, 14]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  12  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 146
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  [15, 3, 12]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  11  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 172
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  18  ->  [1, 16, 17]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  18  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 157
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  4  ->  [17, 10, 0]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  4  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 20 nodes and 49 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 151
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  9  ->  [8, 0, 7]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  9  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+[<networkx.classes.digraph.DiGraph object at 0x7eeb35c77950>]
+[Triple Checkpoint MultipleTrees] sizes : 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  7  ->  [5]  ->  5
+Routing TripleCheckpointMultipleTrees via EDPs started for  7  to  5
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+[shuffle_and_run] fails: []
+experiment for  <function multipleTrees_with_cuts_extended_pre at 0x7eeb35d787c0>
+[MT with Cuts] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 17 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 48
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 6 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 41
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 15 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 48
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 14 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 45
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 12 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 43
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 11 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 47
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 18 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 43
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 4 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 45
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 9 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 49
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 7 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 49
+[route_faces_with_paths] Routing success
+After simulate
+success 10 <function multipleTrees_with_cuts_extended_pre at 0x7eeb35d787c0>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_for_faces_extended_pre at 0x7eeb363dbc40>
+[MultipleTreesForFacesPre Extended] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 17 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 48
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 6 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 16
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 15 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 34
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 14 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 46
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 12 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 38
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 11 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 47
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 18 to 5
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 41
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 4 to 5
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 9 to 5
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 7 to 5
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+After simulate
+success 10 <function multiple_trees_for_faces_extended_pre at 0x7eeb363dbc40>
+time elapsed 50.79221320152283
+start time Fri May 16 15:39:40 2025
+end time Fri May 16 15:40:31 2025
+[debug] current graph size: 25
+Fri May 16 15:40:31 2025
+[main] i :  36
+[main] switch: planar
+[main] seed: 3
+[main] attack: RANDOM
+[run_planar] Method: delaunay
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 25 Anzahl Kanten: 44
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 25 Kanten: 64
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  0
+[run_planar] Fails:  []
+[planar_experiments] root: 13
+[planar_experiments] len(edges): 128
+experiment for  <function DegreeMaxDAG at 0x7eeb35e2e340>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  24 -> 15
+  15 -> 16
+  16 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  10 -> 15
+  15 -> 16
+  16 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  21 -> 0
+  0 -> 20
+  20 -> 5
+  5 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  15 -> 16
+  16 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  11 -> 24
+  24 -> 5
+  5 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  1 -> 17
+  17 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  17 -> 16
+  16 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  5 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  23 -> 3
+  3 -> 17
+  17 -> 16
+  16 -> 13
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb35d17d40>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d1a660>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16f00>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d14b60>, <networkx.classes.digraph.DiGraph object at 0x7eeb35d16510>]
+[MaxDAG] sizes: 17
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 24
++++++++++++++++++++++++++++++++++++++++++++++++++
+  14 -> 15
+  15 -> 16
+  16 -> 13
+After simulate
+success 10 <function DegreeMaxDAG at 0x7eeb35e2e340>
+experiment for  <function PrepareSQ1 at 0x7eeb35e2c680>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   24  Destination :  13
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   10  Destination :  13
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   21  Destination :  13
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   15  Destination :  13
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   11  Destination :  13
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   1  Destination :  13
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   17  Destination :  13
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   5  Destination :  13
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   23  Destination :  13
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   14  Destination :  13
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+After simulate
+success 10 <function PrepareSQ1 at 0x7eeb35e2c680>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  24  ->  13  ->  13
+Routing MTCP via EDPs started for  24 - 13 - 13
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[24, 13]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 90
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  11  ->  13
+Routing MTCP via EDPs started for  10 - 11 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 107
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  2  ->  13
+Routing MTCP via EDPs started for  21 - 2 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 108
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  16  ->  13
+Routing MTCP via EDPs started for  15 - 16 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  13  ->  13
+Routing MTCP via EDPs started for  11 - 13 - 13
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[11, 13]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 104
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  1  ->  17  ->  13
+Routing MTCP via EDPs started for  1 - 17 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  13  ->  13
+Routing MTCP via EDPs started for  17 - 13 - 13
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[17, 13]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  5  ->  13  ->  13
+Routing MTCP via EDPs started for  5 - 13 - 13
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[5, 13]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 104
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  23  ->  17  ->  13
+Routing MTCP via EDPs started for  23 - 17 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 111
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  24  ->  13
+Routing MTCP via EDPs started for  14 - 24 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 101
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  24  ->  7  ->  13
+Routing MTCP via EDPs started for  24 - 7 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 94
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  20  ->  13
+Routing MTCP via EDPs started for  10 - 20 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 103
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  24  ->  13
+Routing MTCP via EDPs started for  21 - 24 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 108
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  2  ->  13
+Routing MTCP via EDPs started for  15 - 2 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 111
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  24  ->  13
+Routing MTCP via EDPs started for  11 - 24 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 104
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  1  ->  17  ->  13
+Routing MTCP via EDPs started for  1 - 17 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 116
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  0  ->  13
+Routing MTCP via EDPs started for  17 - 0 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 101
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  5  ->  23  ->  13
+Routing MTCP via EDPs started for  5 - 23 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 108
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  23  ->  15  ->  13
+Routing MTCP via EDPs started for  23 - 15 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 81
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  3  ->  13
+Routing MTCP via EDPs started for  14 - 3 - 13
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[shuffle_and_run] fails: []
+experiment for  <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  24  ->  7  ->  13
+[One Tree Middle Checkpoint] sizes 33
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  24  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  10  ->  20  ->  13
+[One Tree Middle Checkpoint] sizes 38
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  10  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  21  ->  24  ->  13
+[One Tree Middle Checkpoint] sizes 23
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  21  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  2  ->  13
+[One Tree Middle Checkpoint] sizes 40
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  15  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  11  ->  24  ->  13
+[One Tree Middle Checkpoint] sizes 21
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  11  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  1  ->  17  ->  13
+[One Tree Middle Checkpoint] sizes 15
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  1  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  0  ->  13
+[One Tree Middle Checkpoint] sizes 40
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  17  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  5  ->  23  ->  13
+[One Tree Middle Checkpoint] sizes 25
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  5  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  23  ->  15  ->  13
+[One Tree Middle Checkpoint] sizes 32
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  23  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  14  ->  3  ->  13
+[One Tree Middle Checkpoint] sizes 35
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  14  to  13
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 201
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  24  ->  [15, 7, 17]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  24  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 218
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  [23, 0, 20]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  10  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 221
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  [8, 14, 24]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  21  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 208
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  [14, 2, 5]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  15  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 213
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  11  ->  [15, 24, 5]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  11  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 195
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  1  ->  [3, 17, 16]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  1  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 238
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  [3, 23, 0]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  17  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 214
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  5  ->  [20, 0, 23]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  5  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 209
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  23  ->  [22, 15, 11]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  23  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 25 nodes and 64 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 220
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  14  ->  [8, 23, 3]  ->  13
+Routing TripleCheckpointMultipleTrees via EDPs started for  14  to  13
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+[shuffle_and_run] fails: []
+experiment for  <function multipleTrees_with_cuts_extended_pre at 0x7eeb35d787c0>
+[MT with Cuts] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 24 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 64
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 10 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 63
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 21 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 50
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 15 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 49
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 11 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 63
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 1 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 59
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 17 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 64
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 5 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 64
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 23 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 64
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 14 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 57
+[route_faces_with_paths] Routing success
+After simulate
+success 10 <function multipleTrees_with_cuts_extended_pre at 0x7eeb35d787c0>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_for_faces_extended_pre at 0x7eeb363dbc40>
+[MultipleTreesForFacesPre Extended] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 24 to 13
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 10 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 57
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 21 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 56
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 15 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 63
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 11 to 13
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 1 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 6
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 17 to 13
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 5 to 13
+[route Faces] Routing success with Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 1
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 23 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 62
+[route_faces_with_paths] Routing success
+Loop over samplesize is running
+Loop over stats is running
+----------------------------------------------------------------
+[route_faces_with_paths] Routing from 14 to 13
+[route Faces] Routing success via Start Face
+[MultipleTrees Cuts Extended / MultipleTrees Faces Extended] sizes : 62
+[route_faces_with_paths] Routing success
+After simulate
+success 10 <function multiple_trees_for_faces_extended_pre at 0x7eeb363dbc40>
+time elapsed 123.00934624671936
+start time Fri May 16 15:40:31 2025
+end time Fri May 16 15:42:34 2025
+[debug] current graph size: 30
+Fri May 16 15:42:34 2025
+[main] i :  37
+[main] switch: planar
+[main] seed: 3
+[main] attack: RANDOM
+[run_planar] Method: delaunay
+Erstelle Unit-Disk-Graph...
+Anzahl Knoten: 30 Anzahl Kanten: 86
+Wende Delaunay-Triangulation an...
+Delaunay-Triangulation abgeschlossen. Knoten: 30 Kanten: 78
+Ausgewähltes Fehlermuster : RANDOM
+[run_planar] Anzahl der Fails:  0
+[run_planar] Fails:  []
+[planar_experiments] root: 11
+[planar_experiments] len(edges): 156
+experiment for  <function DegreeMaxDAG at 0x7eeb35e2e340>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  6 -> 0
+  0 -> 12
+  12 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  15 -> 5
+  5 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  12 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  29 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  17 -> 4
+  4 -> 12
+  12 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  20 -> 1
+  1 -> 23
+  23 -> 12
+  12 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  19 -> 15
+  15 -> 5
+  5 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  10 -> 2
+  2 -> 5
+  5 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  26 -> 4
+  4 -> 12
+  12 -> 0
+  0 -> 11
+Loop over samplesize is running
+Loop over stats is running
+[RouteDetCirc] T: [<networkx.classes.digraph.DiGraph object at 0x7eeb327399d0>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739850>, <networkx.classes.digraph.DiGraph object at 0x7eeb3273ab10>, <networkx.classes.digraph.DiGraph object at 0x7eeb32739bb0>]
+[MaxDAG] sizes: 27
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+[MaxDAG] sizes: 29
++++++++++++++++++++++++++++++++++++++++++++++++++
+  21 -> 17
+  17 -> 4
+  4 -> 12
+  12 -> 0
+  0 -> 11
+After simulate
+success 10 <function DegreeMaxDAG at 0x7eeb35e2e340>
+experiment for  <function PrepareSQ1 at 0x7eeb35e2c680>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   6  Destination :  11
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   15  Destination :  11
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 8
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   12  Destination :  11
+ 
+[SQ1] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   29  Destination :  11
+ 
+[SQ1] sizes: 3
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   17  Destination :  11
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   20  Destination :  11
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   19  Destination :  11
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   10  Destination :  11
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   26  Destination :  11
+ 
+[SQ1] sizes: 4
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 7
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+Loop over samplesize is running
+Loop over stats is running
+ 
+Source :   21  Destination :  11
+ 
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 5
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+[SQ1] sizes: 6
++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+After simulate
+success 10 <function PrepareSQ1 at 0x7eeb35e2c680>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 113
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  0  ->  11
+Routing MTCP via EDPs started for  6 - 0 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 108
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  0  ->  11
+Routing MTCP via EDPs started for  15 - 0 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 2
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  11  ->  11
+Routing MTCP via EDPs started for  12 - 11 - 11
+[route Faces] Routing success with Start Face
+[RouteOneCheckpointMult] edps_s_to_d: [[12, 11]]
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 113
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  29  ->  0  ->  11
+Routing MTCP via EDPs started for  29 - 0 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 107
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  23  ->  11
+Routing MTCP via EDPs started for  17 - 23 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 25
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  20  ->  16  ->  11
+Routing MTCP via EDPs started for  20 - 16 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 109
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  19  ->  4  ->  11
+Routing MTCP via EDPs started for  19 - 4 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 64
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  5  ->  11
+Routing MTCP via EDPs started for  10 - 5 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 94
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  26  ->  23  ->  11
+Routing MTCP via EDPs started for  26 - 23 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesRandomCheckpoint] sizes: 110
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  4  ->  11
+Routing MTCP via EDPs started for  21 - 4 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_with_middle_checkpoint_pre at 0x7eeb363dafc0>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[MultipleTreesOneCheckpointPre] Start Precomputation
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 113
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  0  ->  11
+Routing MTCP via EDPs started for  6 - 0 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 104
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  7  ->  11
+Routing MTCP via EDPs started for  15 - 7 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 109
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  23  ->  11
+Routing MTCP via EDPs started for  12 - 23 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 119
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  29  ->  12  ->  11
+Routing MTCP via EDPs started for  29 - 12 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 106
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  28  ->  11
+Routing MTCP via EDPs started for  17 - 28 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 115
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  20  ->  12  ->  11
+Routing MTCP via EDPs started for  20 - 12 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 85
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  19  ->  7  ->  11
+Routing MTCP via EDPs started for  19 - 7 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 117
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  7  ->  11
+Routing MTCP via EDPs started for  10 - 7 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 113
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  26  ->  7  ->  11
+Routing MTCP via EDPs started for  26 - 7 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+[MultipleTreesInverseMiddleGreedyCheckpoint] sizes 107
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  5  ->  11
+Routing MTCP via EDPs started for  21 - 5 - 11
+Routing MultipleTreesCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_invers_with_middle_checkpoint_pre at 0x7eeb363db060>
+[shuffle_and_run] fails: []
+experiment for  <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  6  ->  0  ->  11
+[One Tree Middle Checkpoint] sizes 16
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  6  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  15  ->  7  ->  11
+[One Tree Middle Checkpoint] sizes 25
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  15  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  12  ->  23  ->  11
+[One Tree Middle Checkpoint] sizes 16
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  12  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  29  ->  12  ->  11
+[One Tree Middle Checkpoint] sizes 20
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  29  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  17  ->  28  ->  11
+[One Tree Middle Checkpoint] sizes 25
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  17  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  20  ->  12  ->  11
+[One Tree Middle Checkpoint] sizes 21
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  20  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  19  ->  7  ->  11
+[One Tree Middle Checkpoint] sizes 33
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  19  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  10  ->  7  ->  11
+[One Tree Middle Checkpoint] sizes 30
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  10  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  26  ->  7  ->  11
+[One Tree Middle Checkpoint] sizes 30
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  26  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Routing with a checkpoint started for :  21  ->  5  ->  11
+[One Tree Middle Checkpoint] sizes 36
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing OTCP via EDPs started for  21  to  11
+Routing OneTreeCP done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function one_tree_with_middle_checkpoint_pre at 0x7eeb363db600>
+[shuffle_and_run] fails: []
+experiment for  <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+Done with precomputation algo
+Start routing
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 225
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  6  ->  [29, 0, 12]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  6  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 79 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 227
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  15  ->  [14, 28, 16]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  15  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 215
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  12  ->  [4, 23, 16]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  12  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 225
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  29  ->  [5, 0, 12]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  29  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 241
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  17  ->  [18, 7, 28]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  17  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 249
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  20  ->  [8, 4, 12]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  20  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 234
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  19  ->  [3, 14, 7]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  19  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 232
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  10  ->  [9, 14, 7]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  10  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 253
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  26  ->  [21, 14, 7]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  26  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+Loop over samplesize is running
+Loop over stats is running
+
+Test3
+Graph with 30 nodes and 78 edges
+Sonderfall1
+[Triple Checkpoint MultipleTrees] sizes : 241
++++++++++++++++++++++++++++++++++++++++++++++++++
+Routing with a checkpoint started for :  21  ->  [19, 15, 5]  ->  11
+Routing TripleCheckpointMultipleTrees via EDPs started for  21  to  11
+[Debug] Routing TripleCheckpointMultipleTrees done via EDP
+------------------------------------------------------
+After simulate
+success 10 <function multiple_trees_triple_checkpooint_pre at 0x7eeb363dbb00>
+[shuffle_and_run] fails: []
+experiment for  <function multipleTrees_with_cuts_extended_pre at 0x7eeb35d787c0>
+[MT with Cuts] Start Precomputation

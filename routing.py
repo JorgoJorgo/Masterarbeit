@@ -23,7 +23,7 @@ f_num = 40
 samplesize=20
 name = "experiment-routing"
 print_fails = False
-
+countSize = True
 #set global variables
 def set_params(params):
     set_routing_params(params)
@@ -377,6 +377,42 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     trees_cp1_to_s  = paths[s][d]['trees_cp1_to_s']
     trees_cp3_to_cp2  = paths[s][d]['trees_cp3_to_cp2']
 
+    if countSize == True:
+        fullsize= 0 
+        print("Test3")
+        print(paths[s][d]['trees_cp1_to_s'])
+        if isinstance(paths[s][d]['trees_cp1_to_s'], nx.Graph) or isinstance(paths[s][d]['trees_cp1_to_s'], nx.DiGraph):
+            print("Sonderfall1")
+            fullsize += len(paths[s][d]['trees_cp1_to_s'].edges())
+        else:
+            for item in paths[s][d]['trees_cp1_to_s']:
+                fullsize = fullsize + len(item.edges())
+        #fullsize = fullsize + len(paths[s][d]['trees_cp1_to_s'].edges())
+        if isinstance(paths[s][d]['trees_cp1_to_cp2'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp1_to_cp2'], nx.Graph):
+            fullsize += len(paths[s][d]['trees_cp1_to_cp2'].edges())
+        else:
+            for item in paths[s][d]['trees_cp1_to_cp2']:
+                fullsize = fullsize + len(item.edges())
+        #for item in paths[s][d]['trees_cp1_to_cp2']:
+        #    fullsize = fullsize + len(item.edges())
+        #fullsize = fullsize + len(paths[s][d]['trees_cp3_to_cp2'].edges())
+
+        if isinstance(paths[s][d]['trees_cp3_to_cp2'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp3_to_cp2'], nx.Graph):
+            fullsize += len(paths[s][d]['trees_cp3_to_cp2'].edges())
+        else:
+            for item in paths[s][d]['trees_cp3_to_cp2']:
+                fullsize = fullsize + len(item.edges())
+        #for item in paths[s][d]['trees_cp3_to_d']:
+        #    fullsize = fullsize + len(item.edges())
+        if isinstance(paths[s][d]['trees_cp3_to_d'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp3_to_d'], nx.Graph):
+            fullsize += len(paths[s][d]['trees_cp3_to_d'].edges())
+        else:
+            for item in paths[s][d]['trees_cp3_to_d']:
+                fullsize = fullsize + len(item.edges())
+
+        print(f"[Triple Checkpoint MultipleTrees] sizes : {fullsize}")
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++")
+
     print("Routing with a checkpoint started for : ", s , " -> " , cps, " -> ",d)  
     currentNode = -1
     edpIndex = 0
@@ -617,6 +653,20 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     cp = paths[s][d]['cp']
     edps_s_to_d = paths[s][d]['edps_s_to_d']
     trees_cp_to_s = paths[s][d]['trees_cp_to_s']
+    if countSize == True:
+        fullsize = 0
+        
+        fullsize = fullsize + len(trees_cp_to_s.edges())
+        
+        #print(paths[s][d]['trees_cp_to_d'])
+        if isinstance(paths[s][d]['trees_cp_to_d'], nx.DiGraph):
+            fullsize += 1
+        else:
+            for item in paths[s][d]['trees_cp_to_d']:
+                fullsize = fullsize + len(item.edges())
+
+        print(f"[MultipleTreesRandomCheckpoint] sizes: {fullsize}")
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++")
 
     #before routing through the structure, the edps are traversed
     print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d)  
@@ -798,6 +848,19 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
     edps_s_to_d = paths[s][d]['edps_s_to_d']
     trees_cp_to_s = paths[s][d]['trees_cp_to_s']
 
+    if countSize == True:
+        fullsize = 0
+        fullsize = fullsize + len(paths[s][d]['trees_cp_to_s'].edges())
+
+        if isinstance(paths[s][d]['trees_cp_to_d'], nx.DiGraph):
+            fullsize += 1
+        else:
+            for item in paths[s][d]['trees_cp_to_d']:
+                fullsize = fullsize + len(item.edges())
+        
+        
+        print(f"[MultipleTreesInverseMiddleGreedyCheckpoint] sizes {fullsize}")
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++")
     #before routing through the structure, the edps are traversed
     print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d)  
     currentNode = -1
@@ -990,6 +1053,13 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     
     edps_for_s_d = edps_s_to_d
 
+    if countSize == True:
+        fullsize = 0
+        fullsize = fullsize + len(paths[s][d]['tree_cp_to_s'].edges())
+        fullsize = fullsize + len(paths[s][d]['tree_cp_to_d'].edges())
+        print(f"[One Tree Middle Checkpoint] sizes {fullsize}")
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++")
+    
     print('Routing OTCP via EDPs started for ' , s , " to " , d )
     #print('EDPs:', edps_for_s_d)
     for edp in edps_for_s_d:
@@ -2659,7 +2729,13 @@ def RouteDetCirc(s, d, fails, T):
     switches = 0
     n = len(T[0].nodes())
     k = len(T)
-
+    if countSize == True:
+        fullsize = 0 
+        for item in T:
+            fullsize += len(item.edges())
+            
+        print(f"[MaxDAG] sizes: {fullsize}")
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++")
     while s != d:
         while (s not in T[curT].nodes()) and switches < k*n:
             curT = (curT + 1) % k
@@ -2677,7 +2753,7 @@ def RouteDetCirc(s, d, fails, T):
             #print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
             for u, v in traversed_edges:
                 print(f"  {u} -> {v}")
-            debug_plot(start_node, d, fails, T)  # Visualisierung zuletzt
+            #debug_plot(start_node, d, fails, T)  # Visualisierung zuletzt
             return (True, -1, switches, detour_edges)
 
         if len(valid_nxt) > 1:
@@ -2699,7 +2775,7 @@ def RouteDetCirc(s, d, fails, T):
             #print("\n[RouteDetCirc] Traversierte Kanten bis Fehler:")
             for u, v in traversed_edges:
                 print(f"  {u} -> {v}")
-            debug_plot(start_node, d, fails, T)
+            #debug_plot(start_node, d, fails, T)
             return (True, -1, switches, detour_edges)
 
     #print("[RouteDetCirc] Routing Success with RouteDetCirc")
@@ -2882,7 +2958,13 @@ def RouteSQ1(s, d, fails, T):
     curRoute = SQ1[s][d][0]
     k = len(SQ1[s][d])
 
-    print("SQ1[s][d] : ", SQ1[s][d])
+    #print("SQ1[s][d] : ", SQ1[s][d])
+    if countSize == True:
+        fullsize = 0 
+        for item in SQ1[s][d]:
+            fullsize += len(item)
+            print("+++++++++++++++++++++++++++++++++++++++++++++++++")
+        print(f"[SQ1] sizes: {fullsize}")
     print(" ")
     while (c != d):
         #print("CurRoute :" , curRoute)
