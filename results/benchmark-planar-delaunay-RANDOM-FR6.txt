@@ -1,10 +1,10 @@
 #graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
-#Sat May 17 12:27:05 2025
-delaunay, 45, 3, MaxDAG, 1, 2, 0, 6, 1.000000, 0.000132, 0.317620
-delaunay, 45, 3, SquareOne, 1, 1, 0, 5, 1.000000, 0.000120, 0.331378
-delaunay, 45, 3, MultipleTrees Random Checkpoint, 1, 3, 0, 7, 1.000000, 0.000167, 148.641641
-delaunay, 45, 5, MultipleTrees Inverse Middle Greedy Checkpoint, 1, 1, 0, 5, 1.000000, 0.000174, 192.978656
-delaunay, 45, 5, One Tree Middle Checkpoint PE, 1, 1, 0, 5, 1.000000, 0.000155, 125.940086
-delaunay, 45, 5, Triple Checkpoint MultipleTrees, 1, 1, 0, 5, 1.000000, 0.000226, 205.275805
-delaunay, 45, 5, MultipleTrees Cuts Extended, 1, 7, 8, 10, 1.000000, 0.000539, 368.290652
-delaunay, 45, 5, MultipleTrees Faces Extended, 1, 2, 5, 5, 1.000000, 0.000503, 188.878929
+#Sat May 17 17:23:50 2025
+delaunay, 45, 2, MaxDAG, 1, 4, 3, 6, 1.000000, 0.000191, 0.420897
+delaunay, 45, 2, SquareOne, 1, 1, 0, 5, 1.000000, 0.000166, 0.633758
+delaunay, 45, 2, MultipleTrees Random Checkpoint, 1, 5, 0, 8, 1.000000, 0.000247, 274.949142
+delaunay, 45, 5, MultipleTrees Inverse Middle Greedy Checkpoint, 1, 1, 0, 5, 1.000000, 0.000266, 361.868751
+delaunay, 45, 5, One Tree Middle Checkpoint PE, 1, 1, 0, 5, 1.000000, 0.000226, 234.727724
+delaunay, 45, 5, Triple Checkpoint MultipleTrees, 1, 1, 0, 5, 1.000000, 0.000290, 362.733496
+delaunay, 45, 5, MultipleTrees Cuts Extended, 1, 7, 3, 9, 1.000000, 0.000897, 568.530416
+delaunay, 45, 5, MultipleTrees Faces Extended, 1, 2, 3, 6, 1.000000, 0.000787, 364.725105
