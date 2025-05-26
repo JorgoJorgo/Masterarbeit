@@ -40,7 +40,7 @@ Explanation of the inputs (from left to right):
 - ```15``` : Number of sources to route a packet to the destination.
 - ```RANDOM``` : Type of failures (else ```CLUSTER```)
 
-The unchanged ```planar``` algorithm then creates random graphs with ```n``` Nodes and is trying to use Delaunay Triangulation or Gabriel-Graph-Method to make it planar. <br />
+The unchanged ```planar``` algorithm then creates random graphs with ```n``` Nodes and is trying to use Delaunay Triangulation or Gabriel-Graph-Method to make it planar (The method is declared it the experiments()-Function <br />
 By changing the limits of the ```for i in range(1,13):```in the main function the user is able to change the limit of the inserted fails. <br />
 In each run of the ```for-loop``` 5 (```f_num```) edges get added to the failed links.
 
