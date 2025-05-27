@@ -101,7 +101,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
                 #print("[Debug] Inside while loop. currentNode:", currentNode, "last_node:", last_node)
 
                 # Check if the edge is faulty
-                #print("Checke ob:",(edp[edpIndex], edp[edpIndex + 1]), "oder", (edp[edpIndex + 1], edp[edpIndex]), "in fails")
+                #print("Check if:",(edp[edpIndex], edp[edpIndex + 1]), "or", (edp[edpIndex + 1], edp[edpIndex]), "in fails")
                 #print("Fails:", fails)
                 if ((edp[edpIndex], edp[edpIndex + 1]) in fails) or ((edp[edpIndex + 1], edp[edpIndex]) in fails):
                     #print("[Debug] Faulty edge detected between:", edp[edpIndex], "and", edp[edpIndex + 1])
@@ -194,7 +194,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     hops = hops_faces_s_to_cp + hops
     switches = switches_faces_s_to_cp + switches
     
-    # Füge die Kanten aus der zweiten Liste hinzu
+    # Add the edges from the second list
     for edge in detour_edges_faces_s_to_cp:
         detour_edges.append(edge)
         
@@ -266,7 +266,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     switches = switches + switches_tree_cp1_to_cp2
     
     #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp1_to_cp2[cp1][cp2]['tree'],nodes=[cp1,cp2],showplot=True)
-    # Füge die Kanten aus der ersten Liste hinzu
+    # Add the edges from the first list
     for edge in detour_edges_tree_cp1_to_cp2:
         detour_edges.append(edge)
 
@@ -298,7 +298,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     hops = hops_faces_cp2_to_cp3 + hops
     switches = switches_faces_cp2_to_cp3 + switches
     
-    # Füge die Kanten aus der zweiten Liste hinzu
+    # Add the edges from the second list
     for edge in detour_edges_faces_cp2_to_cp3:
         detour_edges.append(edge)
         
@@ -336,7 +336,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     switches = switches + switches_tree_cp2_to_cp3
 
 
-    # Füge die Kanten aus der ersten Liste hinzu
+    # Add the edges from the first list
     for edge in detour_edges_tree_cp2_to_cp3:
         detour_edges.append(edge)
     
@@ -358,6 +358,7 @@ def RouteWithTripleCheckpointOneTree(s,d,fails,paths):
     print(" ")
     return (False, hops, switches, detour_edges)
 
+
 ########################################################################################################################
 
 def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
@@ -372,8 +373,8 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
 
     cps = paths[s][d]['cps']
 
-    #das sind 2 variablen die jeweils 1 baum beinhalten
-    #beim facerouting wurden alle bäume zu 1 baum kombiniert, weil dieser ja eh nur mit facerouting funktioinert
+    # these are 2 variables each containing 1 tree
+    # in face routing, all trees were combined into 1 tree because it only works with face routing
     trees_cp1_to_s  = paths[s][d]['trees_cp1_to_s']
     trees_cp3_to_cp2  = paths[s][d]['trees_cp3_to_cp2']
 
@@ -382,27 +383,27 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
         print("Test3")
         print(paths[s][d]['trees_cp1_to_s'])
         if isinstance(paths[s][d]['trees_cp1_to_s'], nx.Graph) or isinstance(paths[s][d]['trees_cp1_to_s'], nx.DiGraph):
-            print("Sonderfall1")
+            print("Special case 1")
             fullsize += len(paths[s][d]['trees_cp1_to_s'].edges())
         else:
             for item in paths[s][d]['trees_cp1_to_s']:
                 fullsize = fullsize + len(item.edges())
-        #fullsize = fullsize + len(paths[s][d]['trees_cp1_to_s'].edges())
+        # fullsize = fullsize + len(paths[s][d]['trees_cp1_to_s'].edges())
         if isinstance(paths[s][d]['trees_cp1_to_cp2'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp1_to_cp2'], nx.Graph):
             fullsize += len(paths[s][d]['trees_cp1_to_cp2'].edges())
         else:
             for item in paths[s][d]['trees_cp1_to_cp2']:
                 fullsize = fullsize + len(item.edges())
-        #for item in paths[s][d]['trees_cp1_to_cp2']:
+        # for item in paths[s][d]['trees_cp1_to_cp2']:
         #    fullsize = fullsize + len(item.edges())
-        #fullsize = fullsize + len(paths[s][d]['trees_cp3_to_cp2'].edges())
+        # fullsize = fullsize + len(paths[s][d]['trees_cp3_to_cp2'].edges())
 
         if isinstance(paths[s][d]['trees_cp3_to_cp2'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp3_to_cp2'], nx.Graph):
             fullsize += len(paths[s][d]['trees_cp3_to_cp2'].edges())
         else:
             for item in paths[s][d]['trees_cp3_to_cp2']:
                 fullsize = fullsize + len(item.edges())
-        #for item in paths[s][d]['trees_cp3_to_d']:
+        # for item in paths[s][d]['trees_cp3_to_d']:
         #    fullsize = fullsize + len(item.edges())
         if isinstance(paths[s][d]['trees_cp3_to_d'], nx.DiGraph) or isinstance(paths[s][d]['trees_cp3_to_d'], nx.Graph):
             fullsize += len(paths[s][d]['trees_cp3_to_d'].edges())
@@ -508,15 +509,15 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
 
     print("[RouteWithTripleCheckpointMultipleTrees] Face-Routing started S(",s,") - CP1(",cp1,")")
 
-    #from here on the structures all contain at least 5 nodes and alternating routing between faces and trees is possible
+    # from here on the structures all contain at least 5 nodes and alternating routing between faces and trees is possible
 
-    #now the first step of the routing consists of face-routing from S to CP
+    # now the first step of the routing consists of face-routing from S to CP
     routing_failure_faces_s_to_cp1, hops_faces_s_to_cp1, switches_faces_s_to_cp1, detour_edges_faces_s_to_cp1 = route_faces_firstFace(s, cps[0], tree=trees_cp1_to_s, fails=fails)
     
     hops = hops_faces_s_to_cp1 + hops
     switches = switches_faces_s_to_cp1 + switches
     
-    # Füge die Kanten aus der zweiten Liste hinzu
+    # Add the edges from the second list
     for edge in detour_edges_faces_s_to_cp1:
         detour_edges.append(edge)
         
@@ -555,13 +556,13 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     hops = hops + hops_trees_cp1_to_cp2
     switches = switches + switches_trees_cp1_to_cp2
     
-    # Füge die Kanten aus der ersten Liste hinzu
+    # Add the edges from the first list
     for edge in detour_edges_trees_cp1_to_cp2:
         detour_edges.append(edge)
 
     if(routing_failure_trees_cp1_to_cp2):
         print("Routing failed via Tree from CP1 to CP2 ")
-        #for tree in paths[s][d]['trees_cp1_to_cp2']:
+        # for tree in paths[s][d]['trees_cp1_to_cp2']:
         if(print_fails):
             draw_multipletree_with_highlights(fails=fails,trees=paths[s][d]['trees_cp1_to_cp2'],nodes=[cp1,cp2],showplot=False,einzeln=False)
         print("fails:", fails)   
@@ -569,7 +570,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
         return (True, hops, switches, detour_edges)    
     
 
-    #input(" ")
+    # input(" ")
     
     ##### routing cp2->cp3 via faces ####
     print("[RouteWithTripleCheckpointOneTree] Face-Routing started CP2(",cp2,") - CP3(",cp3,")")
@@ -577,13 +578,13 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
 
     routing_failure_faces_cp2_to_cp3 = False
        
-    #now the first step of the routing consists of face-routing from S to CP
+    # now the first step of the routing consists of face-routing from S to CP
     routing_failure_faces_cp2_to_cp3, hops_faces_cp2_to_cp3, switches_faces_cp2_to_cp3, detour_edges_faces_cp2_to_cp3 = route_faces_firstFace(cp2, cp3, tree=trees_cp3_to_cp2,fails=fails)
     
     hops = hops_faces_cp2_to_cp3 + hops
     switches = switches_faces_cp2_to_cp3 + switches
     
-    # Füge die Kanten aus der zweiten Liste hinzu
+    # Add the edges from the second list
     for edge in detour_edges_faces_cp2_to_cp3:
         detour_edges.append(edge)
         
@@ -596,7 +597,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
         print(" ")
         return (True, hops, switches, detour_edges)
     
-    #input(" ")
+    # input(" ")
     ##### routing cp3->d via tree ####
 
     print("[RouteWithTripleCheckpointMultipleTrees] Tree-Routing started CP3(",cp3,") - D(",d,")")
@@ -615,16 +616,16 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     switches = switches + switches_trees_cp2_to_cp3
 
 
-    # Füge die Kanten aus der ersten Liste hinzu
+    # Add the edges from the first list
     for edge in detour_edges_trees_cp2_to_cp3:
         detour_edges.append(edge)
     
-    #input(" ")
+    # input(" ")
 
     if(routing_failure_trees_cp2_to_cp3):
         print("Routing failed via Tree from CP3 to D ")
-        #for tree in converted_paths_cp3_to_d[cp3][d]['trees']:
-        #draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False)
+        # for tree in converted_paths_cp3_to_d[cp3][d]['trees']:
+        # draw_tree_with_highlights(fails=fails,tree=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False)
         if(print_fails):
             draw_multipletree_with_highlights(fails=fails,trees=converted_paths_cp3_to_d[cp3][d]['trees'],nodes=[cp3,d],showplot=False, einzeln=False)
         print("fails:", fails)   #    
@@ -633,7 +634,7 @@ def RouteWithTripleCheckpointMultipleTrees(s,d,fails,paths):
     
 
 
-    #if all parts were successfull we got to the destination
+    # if all parts were successful we got to the destination
     print("Routing succesful with the Checkpoint")
     print('------------------------------------------------------')
     print(" ")
@@ -833,6 +834,7 @@ def RouteWithOneCheckpointMultipleTrees(s,d,fails,paths):
     print(" ")
     return (False, hops, switches, detour_edges)
 
+
 ########################################################################################################################
 
 
@@ -861,7 +863,7 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
         
         print(f"[MultipleTreesInverseMiddleGreedyCheckpoint] sizes {fullsize}")
         print("+++++++++++++++++++++++++++++++++++++++++++++++++")
-    #before routing through the structure, the edps are traversed
+    # before routing through the structure, the edps are traversed
     print("Routing with a checkpoint started for : ", s , " -> " , cp, " -> ",d)  
     currentNode = -1
     edpIndex = 0
@@ -883,11 +885,11 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
             currentNode = edp[edpIndex]
 
 
-            #every edp is traversed until d or faulty edge
+            # every edp is traversed until d or faulty edge
             while (currentNode != d):
 
 
-                #since the structure of the edps consists of a line a->b->c-> ... -> n the direct neighbor is checked
+                # since the structure of the edps consists of a line a->b->c-> ... -> n the direct neighbor is checked
                 if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
                 
                     switches += 1
@@ -907,9 +909,9 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
                     hops += 1
                     last_node = currentNode 
                     currentNode = edp[edpIndex]
-                #endif
+                # endif
 
-            #endwhile
+            # endwhile
 
             # breaking out of the while loop potentially has 2 reasons : d reached / faulty edge detected
 
@@ -918,7 +920,7 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
                 print('Routing MultipleTreesCP done via EDP')
                 print('------------------------------------------------------')
                 return (False, hops, switches, detour_edges)
-            #endif
+            # endif
             
             # case : faulty edge detected --> traverse back to s
             while currentNode != s: 
@@ -929,18 +931,18 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
                 edpIndex = edpIndex-1
                 hops += 1
 
-            #endwhile
-        #endif
+            # endwhile
+        # endif
 
-    #endfor
+    # endfor
 
-    #if the routing s->d via edps failed, the routing is partitioned by facerouting s->cp and treerouting cp->d
+    # if the routing s->d via edps failed, the routing is partitioned by facerouting s->cp and treerouting cp->d
     
-    #starting with the facerouting s->cp
+    # starting with the facerouting s->cp
 
     routing_failure_faces = False
 
-    #now the first step of the routing consists of face-routing from S to CP
+    # now the first step of the routing consists of face-routing from S to CP
     routing_failure_faces, hops_faces, switches_faces, detour_edges_faces = route_greedy_perimeter(s, cp, tree=trees_cp_to_s, fails=fails)
 
     hops = hops + hops_faces
@@ -959,9 +961,9 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
             print("[RouteOneCheckpointMult] edps_s_to_d:", edps_s_to_d)
             return (False, hops, switches, detour_edges)
     
-    # face routing succesfull s->cp, next step tree routing cp->d
-    # but for the old routing function of multipletrees to  function, the paths structure needs to be converted
-    #new structure:
+    # face routing successful s->cp, next step tree routing cp->d
+    # but for the old routing function of multipletrees to function, the paths structure needs to be converted
+    # new structure:
    # paths[source][destination] = {
    #                                'cp': cp, 
    #                                'edps_cp_to_s': edps_cp_to_s,
@@ -971,8 +973,8 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
    #                                'trees_cp_to_s':tree_cp_to_s
    #                               }
     
-    #old structure:
-    #paths[source][destination] = {
+    # old structure:
+    # paths[source][destination] = {
     #                             'trees': all trees from s->d,
     #                             'edps': all edps from s->
     #                              }
@@ -981,14 +983,14 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
     # Create a new variable for the converted paths
     converted_paths = {}
 
-    #the first step of the overall routing (s->cp->d) is done
-    #this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
-    #the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
+    # the first step of the overall routing (s->cp->d) is done
+    # this first step (face routing s->cp) required a new paths object structure which does not fit into the second step (tree routing c), this structure had more keys since the face routing needed the faces
+    # the object needed in the second step of the routing needs the tree & the edps of the first structure with the indices cp as the source and the destination as the destination
     
-    #converted_paths[cp][destination]{
+    # converted_paths[cp][destination]{
     #           'tree': paths[source][destination]['tree_cp_to_d'],        
     #           'edps': paths[source][destination]['edps_cp_to_d']
-    #}
+    # }
     for item1 in paths:
 
         for item2 in paths[item1]:
@@ -1004,7 +1006,7 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
                 'edps': paths[item1][item2]['edps_cp_to_d']
             }
 
-    #after that the routing continues from CP to D using the tree-routing
+    # after that the routing continues from CP to D using the tree-routing
     routing_failure_tree, hops_tree, switches_tree, detour_edges_tree = RouteMultipleTrees(cp,d,fails,converted_paths)
 
     hops = hops + hops_tree
@@ -1021,10 +1023,11 @@ def RouteWithOneCheckpointGREEDYMultipleTrees(s,d,fails,paths):
         return (True, hops, switches, detour_edges)    
     
         
-    print("Routing MultipleTrees succesful with the Checkpoint")
+    print("Routing MultipleTrees successful with the Checkpoint")
     print('------------------------------------------------------')
     print(" ")
     return (False, hops, switches, detour_edges)
+
 
 ########################################################################################################################
 
@@ -1143,7 +1146,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     switches = switches_faces
 
     
-    # Füge die Kanten aus der zweiten Liste hinzu
+    # Add the edges from the second list
     for edge in detour_edges_faces:
         detour_edges.append(edge)
 
@@ -1208,7 +1211,7 @@ def RouteWithOneCheckpointOneTree(s,d,fails,paths):
     switches = switches+ switches_tree
     
 
-    # Füge die Kanten aus der ersten Liste hinzu
+    # Add the edges from the first list
     for edge in detour_edges_tree:
         detour_edges.append(edge)
     
@@ -1243,13 +1246,13 @@ def RouteOneTree_CP (s,d,fails,paths):
 
         print('Routing started for ' , s , " to " , d )
         print("[RouteOneTreeCP] EDPs:",edps_for_s_d)
-        #als erstes anhand der EDPs (außer dem längsten, also dem letzten) versuchen zu routen
+        # first try to route using the EDPs (except the longest one, i.e., the last one)
         for edp in edps_for_s_d:
             
             currentNode = s
             last_node = s 
 
-            if len(edp) == 2: #sonderfall wenn der edp nur 2 lang ist
+            if len(edp) == 2: # special case when the EDP is only 2 long
                 if (edp[0], edp[1]) in fails or (edp[1], edp[0]) in fails:
                     continue
                 else:
@@ -1266,53 +1269,52 @@ def RouteOneTree_CP (s,d,fails,paths):
                 currentNode = edp[edpIndex]
 
 
-                #jeder EDP wird so weit durchlaufen bis man mit dem currentNode zum Ziel kommt oder man auf eine kaputte Kante stößt
+                # each EDP is traversed until the currentNode reaches the destination or encounters a faulty edge
                 while (currentNode != d):
 
 
-                    #man prüft ob die nächste Kante im EDP kaputt ist so, indem man guckt ob eine Kante vom currentNode edp[edpIndex] zum nächsten Node im EDP edp[edpIndex+1] in Fails ist
-                    #dies beruht auf lokalen Informationen, da EDPs nur eine eingehende Kante haben ( auf der das Paket ankommt ) und eine ausgehende Kante (auf der das Paket nicht ankommt)
+                    # check if the next edge in the EDP is faulty by checking if an edge from the currentNode edp[edpIndex] to the next node in the EDP edp[edpIndex+1] is in fails
+                    # this is based on local information, as EDPs only have one incoming edge (where the packet arrives) and one outgoing edge (where the packet does not arrive)
                     if (edp[edpIndex], edp[edpIndex +1]) in fails or (edp[edpIndex +1], edp[edpIndex]) in fails:
                         
 
-                        #wenn man auf eine fehlerhafte Kante stößt dann wechselt man den Pfad
+                        # if a faulty edge is encountered, switch the path
                         switches += 1
 
-                        #die kanten die wir wieder zurückgehen sind die kanten die wir schon in dem edp gelaufen sind
+                        # the edges we go back are the edges we have already traversed in the EDP
                         detour_edges.append( (edp[edpIndex], edp[edpIndex +1]) )
 
-                        #wir fangen beim neuen edp ganz am anfang an
-                        tmp_node = currentNode #und gehen eine Kante hoch, also den edp zurück
-                        currentNode = last_node #das "rückwärts den edp gehen" kann so gemacht werden, da die pakete so nur über den port gehen müssen über den sie reingekommen sind
+                        # we start at the beginning of the new EDP
+                        tmp_node = currentNode # and go one edge up, i.e., back along the EDP
+                        currentNode = last_node # "going back along the EDP" can be done this way because the packets only need to go through the port they came in through
                         last_node = tmp_node
                         hops += 1
                         break
 
-                    else :#wenn die kante die man gehen will inordnung ist, die kante gehen und zum nächsten knoten schalten
+                    else :# if the edge to be traversed is fine, traverse the edge and switch to the next node
                         edpIndex += 1
                         hops += 1
                         last_node = currentNode 
-                        currentNode = edp[edpIndex] #man kann hier currentnode direkt so setzen, da es im edp für jeden knoten jeweils 1 ausgehende
-                                                    #und genau eine eingehende Kante gibt
+                        currentNode = edp[edpIndex] # here, currentNode can be set directly because each node in the EDP has exactly one outgoing and one incoming edge
                     #endif
 
                 #endwhile
 
-                #nun gibt es 2 Möglichkeiten aus denen die while-Schleife abgebrochen wurde : Ziel erreicht / EDP hat kaputte Kante 
+                # now there are two possibilities why the while loop was exited: destination reached / EDP has a faulty edge 
 
 
-                if currentNode == d : #wir haben die destination mit einem der edps erreicht
+                if currentNode == d : # we have reached the destination with one of the EDPs
                     print('Routing done via EDP')
                     print('------------------------------------------------------')
                     return (False, hops, switches, detour_edges)
                 #endif
                 
-                #wenn man hier angelangt ist, dann bedeutet dies, dass die while(currentNode != d) beendet wurde weil man auf eine kaputte kante gestoßen ist 
-                #und dass man nicht an der destination angekommen ist, daher muss man jetzt an die source zurück um den nächsten edp zu starten
-                while currentNode != s: #hier findet die Rückführung statt
+                # if we reach here, it means that the while(currentNode != d) loop ended because a faulty edge was encountered 
+                # and that we did not reach the destination, so we now need to return to the source to start the next EDP
+                while currentNode != s: # this is where the return takes place
                     detour_edges.append( (last_node,currentNode) )
 
-                    last_node = currentNode #man geht den edp so weit hoch bis man an der source ist
+                    last_node = currentNode # go up the EDP until reaching the source
                     
                     printIndex = edpIndex-1
                     
@@ -1324,7 +1326,7 @@ def RouteOneTree_CP (s,d,fails,paths):
                     print(" ")
                     
                     
-                    currentNode = edp[edpIndex-1] #man kann auch hier direkt den edp index verwenden da man genau 1 eingehende kante hat
+                    currentNode = edp[edpIndex-1] # here, the EDP index can also be used directly because each node has exactly one incoming edge
                     edpIndex = edpIndex-1
                     hops += 1
 
@@ -1333,7 +1335,7 @@ def RouteOneTree_CP (s,d,fails,paths):
 
         #endfor
 
-        # wenn wir es nicht geschafft haben anhand der edps allein zum ziel zu routen dann geht es am längsten edp weiter
+        # if we did not manage to reach the destination using only the EDPs, continue with the longest EDP
         print('Routing via EDPs FAILED')
         
         currentNode = s
@@ -1341,20 +1343,20 @@ def RouteOneTree_CP (s,d,fails,paths):
         last_node = currentNode
 
 
-        while(currentNode != d):#in dieser Schleife findet das Routing im Tree statt
-                                #die idee hinter dieser schleife ist ein großes switch-case
-                                #bei dem man je nach eingehenden und funktionierenden ausgehenden ports switcht
-                                #nach jedem schritt den man im baum geht folgt die prüfung ob man schon am ziel angekommen ist
+        while(currentNode != d):# in this loop, routing in the tree takes place
+                                # the idea behind this loop is a large switch-case
+                                # where the next step is determined based on incoming and functioning outgoing ports
+                                # after each step in the tree, check if the destination has already been reached
 
 
-            #kommt das paket von einer eingehenden kante an dann wird der kleinste rang der kinder gewählt
-            #denn man war noch nicht an diesem node
+            # if the packet comes from an incoming edge (parent), choose the child with the smallest rank
+            # because this node has not been visited yet
             if last_node == get_parent_node(tree,currentNode) or last_node == currentNode:
 
-                #suche das kind mit dem kleinsten  rang
+                # find the child with the smallest rank
 
                 children = []
-                #es werden alle Kinder gespeichert zu denen der jetzige Knoten einen Verbindung hat und sortiert nach ihren Rängen
+                # all children to which the current node has a connection are stored and sorted by their ranks
                 out_edges_with_fails = tree.out_edges(currentNode)
                 out_edges = []
                 for edge in out_edges_with_fails:
@@ -1370,22 +1372,22 @@ def RouteOneTree_CP (s,d,fails,paths):
                 children.sort(key=lambda x: (getRank(tree, x)))
 
 
-                if len(children) >  0 : #wenn es kinder gibt, zu denen die Kanten nicht kaputt sind
-                    #setze lastnode auf currentnode
-                    #setze current node auf das kind mit dem kleinesten rang
-                    #dadurch "geht man" die kante zum kind
+                if len(children) >  0 : # if there are children to which the edges are not faulty
+                    # set lastnode to currentnode
+                    # set current node to the child with the smallest rank
+                    # thereby "traversing" the edge to the child
                     last_node = currentNode
                     currentNode = children[0]
                     hops += 1
                    
 
-                else: #wenn alle Kanten zu den Kindern kaputt sind dann ist man fertig wenn man an der source ist oder man muss eine kante hoch
+                else: # if all edges to the children are faulty, finish if at the source or go up one edge
                     if currentNode == s: 
-                        break; #das routing ist gescheitert
+                        break; # routing failed
                     #endif
 
 
-                    #man nimmt die eingehende kante des currentnode und "geht eine stufe hoch"
+                    # take the incoming edge of the currentnode and "go up one level"
                     hops += 1
                     detour_edges.append( (currentNode, last_node) )
                     last_node = currentNode
@@ -1402,12 +1404,12 @@ def RouteOneTree_CP (s,d,fails,paths):
                     children_of_currentNode.append(nodes[1])
             #endfor
 
-            #wenn das Paket nicht aus einer eingehenden Kante kommt, dann muss es aus einer ausgehenden kommen
-            #dafür muss man den Rang des Kindes bestimmen von dem das Paket kommt
-            #das Kind mit dem nächsthöheren Rang suchen
+            # if the packet does not come from an incoming edge, it must come from an outgoing edge
+            # for this, determine the rank of the child from which the packet comes
+            # find the child with the next higher rank
             if last_node in children_of_currentNode:
             
-                #alle funktionierenden Kinder finden
+                # find all functioning children
                 children = []
                 out_edges_with_fails = tree.out_edges(currentNode)
                 out_edges = []
@@ -1427,27 +1429,27 @@ def RouteOneTree_CP (s,d,fails,paths):
 
                 
 
-                #wenn es Funktionierende Kinder gibt dann muss man das Kind suchen mit dem nächstgrößeren Rang
+                # if there are functioning children, find the child with the next higher rank
                 if len(children) > 0: 
-                    #prüfen ob es noch kinder gibt mit größerem rang , also ob es noch zu durchlaufene kinder gibt
+                    # check if there are still children with a higher rank, i.e., if there are still children to traverse
                     
 
-                    #welchen index hat das kind nach seinem "rank" in der sortierten liste
+                    # what is the index of the child according to its "rank" in the sorted list
                     index_of_last_node = children.index(last_node) if last_node in children else -1 
                 
-                    #alle  kinder ohne das wo das paket herkommt
+                    # all children except the one where the packet comes from
                     children_without_last = [a for a in children if a != last_node] 
 
                     
 
-                    #es gibt keine möglichen kinder mehr und man ist an der Source
-                    #dann ist das Routing fehlgeschlagen
+                    # there are no possible children left, and we are at the source
+                    # then routing failed
                     if len(children_without_last) == 0 and currentNode == s : 
                         break;
 
-                    #Sonderfall (noch unklar ob nötig)
-                    #wenn man aus einem Kind kommt, zu dem die Kante fehlerhaft ist
-                    #man nimmt trotzdem das nächste Kind
+                    # special case (still unclear if necessary)
+                    # if coming from a child to which the edge is faulty
+                    # still take the next child
                     elif index_of_last_node == -1:
                         
                         hops += 1
@@ -1455,38 +1457,38 @@ def RouteOneTree_CP (s,d,fails,paths):
                         currentNode = children[0]
 
 
-                    #das kind wo das paket herkommt hatte den höchsten rang der kinder, also das letztmögliche
-                    #daher muss man den Baum eine Stufe hoch
+                    # the child where the packet comes from had the highest rank of the children, i.e., the last possible one
+                    # therefore, go up one level in the tree
                     elif index_of_last_node == len(children)-1: 
                         
-                        if currentNode != s: #man muss eine stufe hoch gehen
+                        if currentNode != s: # go up one level
                             hops += 1
                             detour_edges.append( (currentNode, last_node) )
                             last_node = currentNode
                             currentNode = get_parent_node(tree,currentNode)
-                        else:#sonderfall wenn man an der Source ist dann ist das Routing gescheitert
+                        else:# special case if at the source, routing failed
                             break;
 
-                    #es gibt noch mindestens 1 Kind mit höherem Rang
+                    # there is at least one child with a higher rank
                     elif index_of_last_node < len(children)-1 : 
                         
-                        #wenn ja dann nimm das Kind mit dem nächst größeren Rang aus der sortierten Children Liste
+                        # if yes, take the child with the next higher rank from the sorted children list
                         hops += 1
                         last_node = currentNode
                         currentNode = children[index_of_last_node+1]
 
 
-                    #es gibt keine kinder mehr am currentnode
+                    # there are no more children at the currentnode
                     else: 
                         
-                        #wenn nein dann setze currentnode auf den parent
+                        # if not, set currentnode to the parent
                         hops += 1
                         detour_edges.append( (currentNode, last_node) )
                         last_node = currentNode
                         currentNode = get_parent_node(tree,currentNode)
                     #endif
 
-                #wenn es keine funktionierenden Kinder gibt dann geht man eine Stufe hoch
+                # if there are no functioning children, go up one level
                 else: 
                     detour_edges.append( (currentNode, last_node) )
                     hops += 1
@@ -1499,10 +1501,10 @@ def RouteOneTree_CP (s,d,fails,paths):
                 
         #endwhile
 
-        #hier kommt man an wenn die while schleife die den tree durchläuft "gebreakt" wurde und man mit dem tree nicht zum ziel gekommen ist
-        #oder wenn die bedingung nicht mehr gilt (currentNode != d) und man das ziel erreicht hat
+        # here we arrive if the while loop traversing the tree was "broken" and we did not reach the destination with the tree
+        # or if the condition is no longer true (currentNode != d) and we reached the destination
 
-        if currentNode == d : #wir haben die destination mit dem tree erreicht
+        if currentNode == d : # we have reached the destination with the tree
             print('Routing done via Tree')
             print('------------------------------------------------------')
             return (False, hops, switches, detour_edges)
@@ -1618,11 +1620,11 @@ def RouteFaces(s,d,fails,faces):
 
     skipSonderfall = False
 
-    #im letzten index von faces ist der ganze graph drin
+    # in the last index of faces, the entire graph is included
     try:
         faces[len(faces)-1].add_edge(s, d)
         
-    except: #special case where there are no faces for s (special case that didnt get tested earlier and only happens in topology zoo graphs)
+    except: # special case where there are no faces for s (special case that didn't get tested earlier and only happens in topology zoo graphs)
         print("Special case PRE")
         for face in faces:
             print(face.nodes())
@@ -1630,9 +1632,9 @@ def RouteFaces(s,d,fails,faces):
         faces[0].add_edge(s, d)
 
     imaginary_edge = (s,d)
-    #print("Faces : ")
-    #for face in faces:
-    #    print(face.nodes())
+    # print("Faces : ")
+    # for face in faces:
+    #     print(face.nodes())
     
     
     try:
@@ -1647,28 +1649,28 @@ def RouteFaces(s,d,fails,faces):
         for face in faces:
             print(face.nodes())
         
-        # Zeichne den Graphen mit farbig markierten Knoten für source und destination
+        # Draw the graph with colored nodes for source and destination
         graph_to_draw = faces[len(faces) - 1]
-        if len(graph_to_draw.nodes) > 0:  # Prüfen, ob der Graph Knoten enthält
+        if len(graph_to_draw.nodes) > 0:  # Check if the graph contains nodes
             plt.figure(figsize=(8, 6))
 
             # Node positions
             pos = nx.get_node_attributes(graph_to_draw, 'pos')
             if not pos:
-                # Falls keine Positionen vorhanden sind, automatische Layout-Positionen erzeugen
+                # If no positions are available, generate automatic layout positions
                 pos = nx.spring_layout(graph_to_draw)
 
-            # Farben für die Knoten festlegen
+            # Set colors for the nodes
             node_colors = []
             for node in graph_to_draw.nodes:
                 if node == s:
-                    node_colors.append('red')  # Source ist rot
+                    node_colors.append('red')  # Source is red
                 elif node == d:
-                    node_colors.append('blue')  # Destination ist blau
+                    node_colors.append('blue')  # Destination is blue
                 else:
-                    node_colors.append('lightgray')  # Andere Knoten sind hellgrau
+                    node_colors.append('lightgray')  # Other nodes are light gray
             
-            # Graphen zeichnen
+            # Draw the graph
             nx.draw(
                 graph_to_draw, pos, with_labels=True, node_color=node_colors, edge_color="gray", node_size=500
             )
@@ -1682,16 +1684,16 @@ def RouteFaces(s,d,fails,faces):
 
     currentNode = s
 
-    #als erstes muss man das erste Face finden von dem man aus startet, dafür stehen nur die Faces von s zur verfügung
+    # first, the initial face from which to start must be found; only the faces of s are available for this
     possible_start_faces = [face for face in faces[:-1] if s in face]
 
-    #hier speicher ich mir die schnittpunkte von jedem face
+    # here, I store the intersection points of each face
 
     intersection_points_start_faces = []
 
     for i in range(len(possible_start_faces)+1):  
 
-        #positionX intersection , positionY intersection, nodeX , nodeY 
+        # positionX intersection, positionY intersection, nodeX, nodeY 
         item = (-99999999999,-99999999999999 , -99999999999999999999 , -99999999999999999)
 
         intersection_points_start_faces.append(item)
@@ -1706,33 +1708,33 @@ def RouteFaces(s,d,fails,faces):
 
         next_node = list(start_face.neighbors(s))[0]
         
-        #den schnittpunkt von jedem start-face mit der imaginären kante speichern
+        # save the intersection point of each start-face with the imaginary edge
 
-        #-2 weil der letzte Index der ganze Graph ist und man immer +1 auf den Index rechnet
+        # -2 because the last index is the entire graph, and +1 is always added to the index
         for i in range(len(start_face.nodes)-1):
 
            
             
-            #jetzt muss ich hier für jede Kante prüfen ob sie geschnitten wird und den Schnittpunkt speichern
+            # now I need to check for each edge if it is intersected and save the intersection point
             current_edge = (currentNodeInStartFace, next_node)
             
-            # hier bekomme ich die Position der current_edge
+            # here, I get the position of the current_edge
             pos_current_edge = (
                 faces[len(faces) - 1].nodes[currentNodeInStartFace]['pos'],
                 faces[len(faces) - 1].nodes[next_node]['pos']
             )
 
             if(next_node == d):
-                print("Routing succesful via Start-Faces")
+                print("Routing successful via Start-Faces")
                 print('------------------------------------------------------')
                 print(" ")
                 return (False, hops, switches, detour_edges)
             
 
-            #prüfen ob die edge geschnitten wird
+            # check if the edge is intersected
             intersection = intersection_point(pos_current_edge, pos_imaginary_edge)
 
-            #wenn es zu einem Schnittpunkt kommt, dann muss man gucken ob der derzeitige Schnittpunkt besser ist als der neu gefundene
+            # if there is an intersection, check if the current intersection point is better than the newly found one
             if(intersection != None):
 
                 currentNewIntersectionPoint = (intersection[0],intersection[1])
@@ -1753,15 +1755,15 @@ def RouteFaces(s,d,fails,faces):
                 
             detour_edges.append((currentNode,next_node))
 
-            #wenns nicht geklappt hat muss man die nächsten nodes nehmen
-            #dabei schaltet man einen Knoten in jeder Position weiter
+            # if it didn't work, the next nodes must be taken
+            # in doing so, one node is shifted forward in each position
             old_Node = currentNodeInStartFace
 
             currentNodeInStartFace = next_node
             hops= hops+1
 
-            #da es nur 2 Nachbarn in jedem Face in einem Knoten gibt und ich nicht weiß
-            #nach welchem parameter networkx die nachbarn ausgibt
+            # since there are only 2 neighbors in each face at a node, and I don't know
+            # according to which parameter networkx outputs the neighbors
             if list(start_face.neighbors(currentNodeInStartFace))[0] != old_Node:
                 next_node = list(start_face.neighbors(currentNodeInStartFace))[0]
             else:
@@ -1770,15 +1772,15 @@ def RouteFaces(s,d,fails,faces):
         indexJ = indexJ + 1
         switches = switches +1#G = G.copy()
 
-    #nx.draw(G, pos, with_labels=True, node_size=700, node_color="green", font_size=8)
-    #plt.show()
+    # nx.draw(G, pos, with_labels=True, node_size=700, node_color="green", font_size=8)
+    # plt.show()
 
 
     print(" ")
     print("Routing via second Faces started")
     currentFace = []
 
-    #jetzt müssen die faces rausgeworfen werden, die keinen Schnittpunkt haben
+    # now the faces that have no intersection point must be discarded
     update_intersection_points_start_faces = []
 
     for face_intersection in intersection_points_start_faces:
@@ -1789,7 +1791,7 @@ def RouteFaces(s,d,fails,faces):
 
     min_distance = float('inf')
 
-    # hier wird der beste schnittpunkt ermittelt
+    # here, the best intersection point is determined
     for intersection in update_intersection_points_start_faces:
 
         intersection_pos = (intersection[0], intersection[1])
@@ -1803,12 +1805,12 @@ def RouteFaces(s,d,fails,faces):
             best_intersection = intersection
             
             
-    #wenn das Startface keinen Schnittpunkt hat dann wird auf dem outerFace analog geroutet
+    # if the start face has no intersection point, then routing is done analogously on the outer face
     if(len(update_intersection_points_start_faces) == 0):
         
         
-        #da die Bestimmung des OuterFaces nicht so leicht ist müssen alle Faces durchlaufen werden und geprüft,
-        #ob man direkt die destination erreicht
+        # since determining the outer face is not so easy, all faces must be traversed and checked
+        # whether the destination is reached directly
         
         updateFaces = faces[:-1]
         print("Special Case 1: Trying to route on the outer face")
@@ -1818,7 +1820,7 @@ def RouteFaces(s,d,fails,faces):
                
             face_pool.remove(currentFace)
         
-        #jedes Face, in dem dann die Source drin ist könnte das outerFace sein
+        # every face in which the source is then could be the outer face
         
         for face in face_pool:
 
@@ -1833,13 +1835,13 @@ def RouteFaces(s,d,fails,faces):
             detour_edges1 = []
             hops1 = 0
          
-            #hier findet dann das durchlaufen eines Faces statt
+            # here, the traversal of a face takes place
             while(nextNode != currentSource):
             
-                # Finde die Nachbarn des aktuellen Knotens im aktuellen Face
+                # Find the neighbors of the current node in the current face
                 neighbors = list(currentFace.neighbors(currentNode))
 
-                # Überprüfe, welcher Nachbar der nächste ist
+                # Check which neighbor is next
                 if neighbors[0] == lastNode:
                     
                     nextNode = neighbors[1]
@@ -1867,15 +1869,15 @@ def RouteFaces(s,d,fails,faces):
 
             
 
-    #jetzt muss das Face gefunden werden, welches beide knoten enthält
-    #for face in faces:
+    # now the face that contains both nodes must be found
+    # for face in faces:
     for i in range(len(faces)-2):
         
         if(faces[i].has_node(best_intersection[2]) and faces[i].has_node(best_intersection[3])):
 
             currentFace = faces[i]
 
-    #das currentFace bis zum Schnittpunkt durchlaufen
+    # traverse the current face up to the intersection point
     
     currentNode = s
     
@@ -1884,13 +1886,13 @@ def RouteFaces(s,d,fails,faces):
     nextNode = s
 
     
-    #schleife um das jetzige face bis zum besten schnittpunkt durchzugehen
+    # loop to traverse the current face up to the best intersection point
     while currentNode != best_intersection[2]:
         
-        # Finde die Nachbarn des aktuellen Knotens im aktuellen Face
+        # Find the neighbors of the current node in the current face
         neighbors = list(currentFace.neighbors(currentNode))
 
-        # Überprüfe, welcher Nachbar der nächste ist
+        # Check which neighbor is next
         if neighbors[0] == lastNode:
             
             nextNode = neighbors[1]
@@ -1898,17 +1900,17 @@ def RouteFaces(s,d,fails,faces):
         else:
             nextNode = neighbors[0]
 
-        # Aktualisiere die Knoten für die nächste Iteration
+        # Update the nodes for the next iteration
         detour_edges.append((currentNode,next_node))
         hops = hops +1
         lastNode = currentNode
         currentNode = nextNode    
 
 
-    #jetzt muss ich currentFace auf das nächste Face setzen
-    #als erstes hab ich versucht nach der Regel zu gehen: "jede Kante ist in genau 2 Faces drin"
-    #das stimmt leider nicht, da die äußeren Kanten in nur 1 face sind
-    #daher nehme ich jetzt einfach ein anderes Face mit CurrentNode drin 
+    # now I need to set currentFace to the next face
+    # first, I tried to follow the rule: "each edge is in exactly 2 faces"
+    # unfortunately, this is not true, as the outer edges are only in 1 face
+    # so now I just take another face with currentNode in it 
     
     updateFaces = faces[:-1]
 
@@ -1917,20 +1919,20 @@ def RouteFaces(s,d,fails,faces):
     if currentFace in face_pool:     
         face_pool.remove(currentFace)
     
-    #Sonderfall, bei dem die geschnittene Kante vom Startface nicht in 2 verschiedenen Faces liegt
-    #diesen Fall hier könnte man so ausweiten, dass der nächst-beste Schnittpunkt oder Punkt im Face gefunden wird, der auch 
-    #ein weiteres Face besitzt von dem man aus weiter Routen könnte
+    # special case where the intersected edge from the start face is not in 2 different faces
+    # this case here could be extended so that the next-best intersection point or point in the face is found,
+    # which also has another face from which routing could be continued
     else:
         
-        print("Sonderfall 2: Versuche den besten Punkt in den StartFaces zu finden")
+        print("Special Case 2: Trying to find the best point in the start faces")
         skipSonderfall = True
         
-        #hier müsste man die StartFaces nochmal durchgehen und den besten Punkt finden zur Destination,
-        #der auch ein weiteres Face besitzt
+        # here, the start faces would need to be traversed again to find the best point to the destination,
+        # which also has another face
         
-        #(coordX,coordY,nodeID)
+        # (coordX,coordY,nodeID)
         closest_point = (-999,-999,-999)
-        #um nachher durch das beste Face zu routen
+        # to route through the best face later
         best_face = []
         
         coordXd , coordYd = faces[len(faces) - 1].nodes[d]['pos']
@@ -1938,15 +1940,15 @@ def RouteFaces(s,d,fails,faces):
         
         faces_without_start_faces = set(faces[:-1]) - set(possible_start_faces)
         
-        #jedes Start-Face durchgehen
+        # traverse each start face
         for face in possible_start_faces:
             
-            #jeden Knoten im jeweiligen StartFace durchgehen
+            # traverse each node in the respective start face
             for nodeI in face:
                 
-                #test
+                # test
                 
-                #prüfen ob der current_node besser ist als der closest_point
+                # check if the current_node is better than the closest_point
                 current_node = nodeI
                 
                 coordXcurrent, coordYcurrent = faces[len(faces) - 1].nodes[current_node]['pos']
@@ -1954,15 +1956,15 @@ def RouteFaces(s,d,fails,faces):
                 
                 if(closest_point != closer_point(current_node_point,closest_point,destination_point)):
                     
-                    #der jetzige Punkt ist näher an der Destination dran
+                    # the current point is closer to the destination
                     
-                    #jetzt muss geprüft werden ob der jetzige Punkt auch in einem anderen Face drin ist,
-                    #welches nicht zu den StartFaces gehört
+                    # now it must be checked whether the current point is also in another face,
+                    # which does not belong to the start faces
                     
                     for face_without_start in faces_without_start_faces:
                         
-                        #wenn der jetzige beste punkt in einem anderen Face ist, von dem man das Routing aus
-                        #fortsetzen kann dann geht man in dieses Face rein
+                        # if the current best point is in another face, from which routing can be continued,
+                        # then go into this face
                         if(current_node in face_without_start.nodes):
                             
                             closest_point = current_node_point
@@ -1977,7 +1979,7 @@ def RouteFaces(s,d,fails,faces):
             currentFace = best_face
             currentNode = list(best_face.nodes)[0]
     
-    #in dem Fall hätte man regulär den Schnittpunkt gefunden
+    # in this case, the intersection point would have been found regularly
     if(not skipSonderfall):            
         currentFace = face_pool[0]
         currentNode = list(currentFace.nodes)[0]
@@ -1995,14 +1997,14 @@ def RouteFaces(s,d,fails,faces):
     
     faceSwitchCounter = 1
 
-    #danach kommt die schleife über die nächsten faces
+    # after that, the loop over the next faces begins
     while(currentNode != d):
         
-        #als erstes muss gescoutet werden
-        #dabei läuft man das ganze currentface entlang und speichert sich die schnittpunkte
+        # first, scouting must be done
+        # in doing so, the entire current face is traversed, and the intersection points are saved
         if(scouting==True):
             
-            #als  erstes müssen die nodes weitergeschaltet werden
+            # first, the nodes must be shifted forward
 
             neighbors_next_node_scout = list(currentFace.neighbors(currentNode))
             
@@ -2022,23 +2024,23 @@ def RouteFaces(s,d,fails,faces):
             
             hops = hops +1
             
-            #das scouting ist beendet und wir haben die Schnittpunkte alle gespeichert
+            # scouting is finished, and we have saved all the intersection points
             if(nextNodeScout == scoutSource):
 
                 scouting = False
                 lastWalk = True
 
 
-            #dann muss die intersection bestimmt werden
+            # then the intersection must be determined
             pos_current_edge = (
                 faces[len(faces) - 1].nodes[currentNode]['pos'],
                 faces[len(faces) - 1].nodes[nextNodeScout]['pos']
             )
 
-            #prüfen ob die edge geschnitten wird
+            # check if the edge is intersected
             intersection = intersection_point(pos_current_edge, pos_imaginary_edge)
 
-            #wenn es zu einem Schnittpunkt kommt, dann muss man gucken ob der derzeitige Schnittpunkt besser ist als der neu gefundene
+            # if there is an intersection, check if the current intersection point is better than the newly found one
             if(intersection != None):
 
                 currentNewIntersectionPoint = (intersection[0],intersection[1])
@@ -2047,26 +2049,26 @@ def RouteFaces(s,d,fails,faces):
 
                 currentImaginaryPoint = (faces[len(faces) - 1].nodes[d]['pos'][0], faces[len(faces) - 1].nodes[d]['pos'][1])
 
-                #hier wird die jetzige Intersection mit der derzeut besten Intersection verglichen
+                # here, the current intersection is compared with the currently best intersection
                 new_intersection = closer_point(currentNewIntersectionPoint, currentIntersectionPoint ,currentImaginaryPoint)
 
-                #wenn die neu gefundene Intersection besser ist als die alte
+                # if the newly found intersection is better than the old one
                 if(new_intersection == intersection):
                     
                     best_intersection = (intersection[0],intersection[1],currentNode,nextNodeScout)
 
 
-        #dann das face bis zum schnittpunkt durchlaufen und currentface umsetzen
+        # then traverse the face up to the intersection point and set currentFace
         if(lastWalk == True):
             
-            #der letzte Lauf durch das Face ist fertig und es fängt ein neues face an
+            # the last traversal of the face is finished, and a new face begins
 
             if(currentNode == best_intersection[3]):
                 lastWalk = False
                 scouting = True
 
-                #das nächste face wird mit der Methode bestimmt die oben auch verwendet wurde
-                #es wird das erste face genommen, welches einen Knoten der intersection enthält
+                # the next face is determined using the method used above
+                # the first face containing a node of the intersection is taken
 
                 updateFaces = faces[:-1]
 
@@ -2078,7 +2080,7 @@ def RouteFaces(s,d,fails,faces):
 
                 faceSwitchCounter = faceSwitchCounter + 1
 
-            #der letzte Lauf durch das Face ist NOCH NICHT fertig und es geht weiter
+            # the last traversal of the face is NOT yet finished, and it continues
             else: 
                 neighbors_next_node_scout = list(currentFace.neighbors(currentNode))
             
@@ -2101,14 +2103,12 @@ def RouteFaces(s,d,fails,faces):
         break
     
 
-    #hier würde man rauskommen, wenn die currentNode == d wird
-    #das könnte passieren, wenn man beim scouten des Faces auf die Destination stößt
+    # here, one would exit if currentNode == d
+    # this could happen if the destination is encountered while scouting the face
     print("Routing success via Faces")
     print('------------------------------------------------------')
     print(" ")
     return (False, hops, switches, detour_edges)
-
-
 
 #in dieser funktion findet das routing eines source-destination-paares für multipletrees statt
 #dies geschieht indem man nach weiterleitung eines pakets an jedem knoten den nächst besten rang bestimmt

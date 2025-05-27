@@ -5,7 +5,7 @@ import math
 
 def create_unit_disk_graph(num_nodes, initial_radius=0.1):
     """
-    Erzeugt einen zusammenhängenden Unit-Disk-Graph mit Positionsattributen.
+    Creates a connected unit disk graph with position attributes.
     """
     radius = initial_radius
     max_attempts = 100
@@ -25,11 +25,11 @@ def create_unit_disk_graph(num_nodes, initial_radius=0.1):
             return G
         radius += 0.01
         attempt += 1
-    raise ValueError("Kein zusammenhängender Graph gefunden.")
+    raise ValueError("No connected graph found.")
 
 def apply_delaunay_triangulation(G):
     """
-    Wendet die Delaunay-Triangulation auf die gespeicherten Knotenpositionen an.
+    Applies Delaunay triangulation to the stored node positions.
     """
     positions = {i: G.nodes[i]['pos'] for i in G.nodes}
     points = list(positions.values()) 
@@ -45,7 +45,7 @@ def apply_delaunay_triangulation(G):
 
 def apply_gabriel_graph(G):
     """
-    Wendet den Gabriel-Graph auf die gespeicherten Knotenpositionen an.
+    Applies the Gabriel graph to the stored node positions.
     """
     positions = {i: G.nodes[i]['pos'] for i in G.nodes}
     H = nx.Graph()
@@ -62,4 +62,3 @@ def apply_gabriel_graph(G):
                     H.add_edge(i, j)
                 
     return H
-

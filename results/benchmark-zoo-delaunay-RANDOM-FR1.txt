@@ -1,0 +1,7 @@
+#graph, size, connectivity, algorithm, index, stretch, load, hops, success, routing computation time, pre-computation time in seconds
+#Tue May 27 13:15:43 2025
+0, 18, 2, MaxDAG, 1, 4, 5, 7, 0.933333, 0.000069, 0.010498
+0, 18, 2, One Tree, 1, 2, 0, 4, 1.000000, 0.000047, 0.134982
+0, 18, 2, MultipleTrees, 1, 4, 0, 6, 1.000000, 0.000083, 0.228562
+0, 18, 2, MultipleTrees Random Checkpoint, 1, 4, 1, 6, 1.000000, 0.000104, 2.909491
+0, 18, 2, MultipleTrees Random Checkpoint Parallel, 1

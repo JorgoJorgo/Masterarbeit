@@ -45,7 +45,7 @@ def draw_complete_structure(faces, tree, graph,s,cp,d, with_labels=True, figsize
         nx.draw_networkx_labels(graph, pos, font_size=10)
 
     plt.axis('off')
-    plt.title("Kombinierte Struktur: Faces, Tree und Originalgraph")
+    plt.title("combined structure: Faces, Tree und Originalgraph")
     plt.tight_layout()
     plt.show()
 
@@ -126,10 +126,10 @@ def multiple_trees_with_checkpoint(source, destination, graph, all_edps):
     removed_edges_multtrees.append(removed_edges)
     return trees
 
-#ein großer baum für alle edps, längster EDP wird als erstes erweitert, NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
+# a large tree for all edps, the longest EDP is extended first, ONLY FOR STRUCTURES WHERE FACE ROUTING IS USED
 def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edps):
 
-    """Erstellt mehrere Bäume mit einem Checkpoint unter Berücksichtigung der Faces."""
+    """Creates multiple trees with a checkpoint considering the faces."""
 
     debug = False
     tree = nx.Graph()
@@ -137,9 +137,9 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
     
     debug = should_debug(source, destination)
 
-    #print(f"Start building Trees for {source} -> {destination}")
+    # print(f"Start building Trees for {source} -> {destination}")
 
-    #jeder tree besteht anfänglich aus dem edp
+    # each tree initially consists of the edp
     for i in range(len(all_edps)):
 
         current_edp = all_edps[i]
@@ -167,19 +167,19 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
             smallest_face_size = len(face)
 
 
-    #draw_graph_with_highlighted_edge(tree, source, destination, ())
-    #jeden edp durchgehen und ihn erweitern
+    # draw_graph_with_highlighted_edge(tree, source, destination, ())
+    # go through each edp and extend it
     for i in range(len(all_edps)):
 
-        #pathToExtend beinhaltet immer alle Knoten des Trees, damit sie geprüft werden, welche Nachbarn noch hinzugefügt werden können
+        # pathToExtend always contains all nodes of the trees so that it can be checked which neighbors can still be added
 
         pathToExtend = all_edps[i]
         
         nodes = pathToExtend
 
-        #print(f"[Tree {i} Start] Building Tree with {len(nodes)} nodes.")
+        # print(f"[Tree {i} Start] Building Tree with {len(nodes)} nodes.")
 
-        #print(f"Treenodes Nodes: {tree.nodes}")
+        # print(f"Treenodes Nodes: {tree.nodes}")
         previous_edge = None
 
         for j in range(len(pathToExtend)):
@@ -187,15 +187,15 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
             it = 0
             
             while it < len(nodes):
-                #print("Nodes: ", nodes)
-                #print("Nodes[it]", nodes[it])
+                # print("Nodes: ", nodes)
+                # print("Nodes[it]", nodes[it])
 
                 neighbors = list(nx.neighbors(graph, nodes[it]))
 
                 for k in range(len(neighbors)):
                     if ((nodes[it], neighbors[k])in tree.edges) or ((neighbors[k], nodes[it]) in tree.edges):
                          continue
-                    #endif
+                    # endif
                     if (nodes[it], neighbors[k]) == previous_edge or (neighbors[k],nodes[it]) == previous_edge:
                         continue
 
@@ -204,7 +204,7 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                     
                     neighbor_accepted = False 
                     
-                    #füge Kante (nodes[it], neighbors[k]) dem fake_tree hinzu, um zu prüfen ob die face bedingung kaputt geht
+                    # add edge (nodes[it], neighbors[k]) to the fake_tree to check if the face condition is violated
                     
                     fake_tree.add_node(neighbors[k])
                     
@@ -213,7 +213,7 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                     fake_tree.add_edge(nodes[it], neighbors[k])
                     
                     fake_tree.nodes[nodes[it]]['pos'] = graph.nodes[nodes[it]]['pos']
-                    #draw_graph_with_highlighted_edge(fake_tree, source, destination, (nodes[it], neighbors[k]))
+                    # draw_graph_with_highlighted_edge(fake_tree, source, destination, (nodes[it], neighbors[k]))
                     
                     extra_edge = False
                     
@@ -221,13 +221,13 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                         extra_edge = True
                         fake_tree.add_edge(neighbors[k], destination)
                         fake_tree.nodes[destination]['pos'] = graph.nodes[destination]['pos']
-                    #endif
+                    # endif
                     
-                    #for node in fake_tree.nodes:
+                    # for node in fake_tree.nodes:
                     #    fake_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
                     faces  = find_faces_pre(fake_tree,source,destination)
-                    #print("Faces: ", faces)
+                    # print("Faces: ", faces)
                     if(debug):
                         draw_graph_with_highlighted_edge(fake_tree, source, destination, (nodes[it], neighbors[k]))
                     if len(faces) > 0:
@@ -235,11 +235,11 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                             if source in face and destination in face and smallest_face in faces:
                                 neighbor_accepted = True
                                 break
-                            #endif
-                        #endfor
-                    #endif
+                            # endif
+                        # endfor
+                    # endif
 
-                    #wenn der Nachbar akzeptiert werden kann, dann füge die Kante dem OG Tree hinzu
+                    # if the neighbor can be accepted, then add the edge to the original tree
                     if neighbor_accepted:
 
                         
@@ -248,48 +248,48 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                         if extra_edge:
                             tree.add_edge(neighbors[k], destination)
                             nodes.append(destination)
-                        #endif
+                        # endif
                         
-                        #for node in tree.nodes:
+                        # for node in tree.nodes:
                         #    tree.nodes[node]['pos'] = graph.nodes[node]['pos']
                         nodes.append(neighbors[k])
                         tree.nodes[neighbors[k]]['pos'] = graph.nodes[neighbors[k]]['pos']
                         tree.nodes[nodes[it]]['pos'] = graph.nodes[nodes[it]]['pos']
-                    #endif
-                #endfor   
+                    # endif
+                # endfor   
 
                 it += 1
-            #endwhile
-            #draw_graph_with_highlighted_edge(tree, source, destination, ())
+            # endwhile
+            # draw_graph_with_highlighted_edge(tree, source, destination, ())
 
             
-            #pruning the tree by removing redundant paths, which do not lead to the destination
+            # pruning the tree by removing redundant paths, which do not lead to the destination
             
             changed = True
-            #print("Starting Pruning")
+            # print("Starting Pruning")
             while changed:
                 old_edges = len(tree.edges)
                 nodes_to_check = list(tree.nodes)  # Create a list of nodes to iterate over
 
                 for node in nodes_to_check:
-                    #print("checking node: ", node)
+                    # print("checking node: ", node)
                     
                     if node != source and node != destination and tree.degree(node) == 1:
                         accept_removal = False
                         fake_tree = tree.copy()
                         neighbor = list(nx.neighbors(fake_tree, node))[0]
-                        #print("Neighbor: ", neighbor)
+                        # print("Neighbor: ", neighbor)
                         
                         if (node, neighbor) in fake_tree.edges:
-                            #draw_graph_with_highlighted_edge(fake_tree, source, destination, (node, neighbor))
+                            # draw_graph_with_highlighted_edge(fake_tree, source, destination, (node, neighbor))
                             fake_tree.remove_edge(node, neighbor)
                         else:
-                            #draw_graph_with_highlighted_edge(fake_tree, source, destination, (neighbor, node))
+                            # draw_graph_with_highlighted_edge(fake_tree, source, destination, (neighbor, node))
                             fake_tree.remove_edge(neighbor, node)
                         
                         fake_tree.remove_node(node)
                         
-                        #for node2 in fake_tree.nodes:
+                        # for node2 in fake_tree.nodes:
                         #    fake_tree.nodes[node2]['pos'] = graph.nodes[node2]['pos']
                         
                         faces = find_faces_pre(fake_tree, source, destination)
@@ -308,12 +308,12 @@ def multiple_trees_with_checkpoint_for_faces(source, destination, graph, all_edp
                 
                 new_edges = len(tree.edges)
                 changed = old_edges != new_edges
-        #endfor
-    #draw_graph_with_highlighted_edge(tree, source, destination, ())
+        # endfor
+    # draw_graph_with_highlighted_edge(tree, source, destination, ())
     return tree
 
 def multiple_trees_parallel_cp(source, destination, graph, all_edps):
-    """Erstellt mehrere Bäume mit einem Checkpoint unter Berücksichtigung der Faces parallel."""
+    """Creates multiple trees with a checkpoint considering the faces in parallel."""
     
     tree = nx.Graph()
     tree.add_node(source)
@@ -385,7 +385,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                         #    assert edge in tree.edges, f"Edge list {edge_lists[i]} not in tree edges!"  
                         #    assert edge in fake_tree.edges, f"Edge list {edge_lists[i]} not in fake_tree edges!"  
 
-                        # Position des neuen Knotens hinzufügen
+                        # Add position of the new node
                         tree.nodes[neighbor]['pos'] = graph.nodes[neighbor]['pos']
                         
                         
@@ -397,7 +397,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                     if added_edge:
                         break
                 
-                #if no edge was added then we need to increase the iterator an check the next node of the current path
+                #if no edge was added then we need to increase the iterator and check the next node of the current path
                 if not added_edge:
                     it_list[i] += 1
                 
@@ -415,7 +415,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
                     it_list[i] = 0
     
 
-    #now the tree needs to bre pruned
+    #now the tree needs to be pruned
     changed = True
     while changed:
         changed = False
@@ -457,7 +457,7 @@ def multiple_trees_parallel_cp(source, destination, graph, all_edps):
 
     return tree
 
-#ein großer baum, durch die erweiterung des mitgegebenen edps "longest_edp", für normale baumstrukturen mit tree routing
+# A large tree, created by extending the given EDP "longest_edp", for normal tree structures with tree routing
 def one_tree_with_checkpoint(source, destination, graph, longest_edp):
     #print("[one_tree_with_checkpoint] source:",source)
     #print("[one_tree_with_checkpoint] destination:",destination)
@@ -483,7 +483,7 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
 
             neighbors = list(nx.neighbors(graph, nodes[it]))
             for j in neighbors:
-                if (not tree.has_node(j)) and (j!= destination): #not part of tree already and not the destiantion
+                if (not tree.has_node(j)) and (j!= destination): #not part of tree already and not the destination
                     nodes.append(j)
                     tree.add_node(j) #add neighbors[j] to tree
                     tree.nodes[j]['pos'] = graph.nodes[j]['pos']
@@ -514,7 +514,7 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
 
     tree.add_edge(longest_edp[len(longest_edp)-2],destination)
 
-    #add 'rank' property to the added destinaton, -1 for highest priority in routing
+    #add 'rank' property to the added destination, -1 for highest priority in routing
     tree.nodes[destination]["rank"] = -1
 
     for node in tree.nodes:
@@ -526,9 +526,9 @@ def one_tree_with_checkpoint(source, destination, graph, longest_edp):
         
     #end if
 
-#ein großer baum, durch die erweiterung des mitgegebenen edps "longest_edp", NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
+# a large tree, created by extending the given EDP "longest_edp", ONLY FOR STRUCTURES WHERE FACE ROUTING IS USED
 def one_tree_with_checkpoint_for_faces(source, destination, graph, longest_edp):
-    """Erstellt einen Baum aus dem EDP für das Face Routing"""
+    """Creates a tree from the EDP for face routing"""
     #print(f"[one_tree_with_checkpoint_for_faces] Initializing tree from source {source} to destination {destination}")
     
     tree = nx.Graph()
@@ -646,15 +646,15 @@ def one_tree_with_checkpoint_for_faces(source, destination, graph, longest_edp):
     #print("[one_tree_with_checkpoint_for_faces] Final tree constructed")
     return tree
   
-#geht nachdem ein Algorithmus fertig ist nochmal alle Kanten des Graphen durch und fügt Nachbarn hinzu, wenn S-D-Face da NUR FÜR STRUKTUREN BEI DENEN FACE ROUTING BENUTZT WIRD
+# goes through all edges of the graph again after an algorithm is finished and adds neighbors if S-D-face exists ONLY FOR STRUCTURES WHERE FACE ROUTING IS USED
 def expand_face_structure(source, destination, graph, face_structure, tree_structure):
 
     #print("[ExpandFaceStructure] Starting the Expansion")
 
     if isinstance(tree_structure, list) and all(isinstance(item, nx.DiGraph) for item in tree_structure):
-        #print("Prüfung True")
+        #print("Check True")
         combined_tree_structure = nx.Graph()
-        # für die MultipleTrees Algorithmen müssen erst alle Bäume zu einem hinzugefügt werden
+        # for the MultipleTrees algorithms, all trees must first be combined into one
         for tree in tree_structure:
             combined_tree_structure.add_edges_from(tree.edges)
 
@@ -673,12 +673,12 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
 
     #draw_graph_with_highlighted_edge(face_structure, source, destination, ())
 
-    # Originale Kantenlisten ausgeben
+    # Output original edge lists
     #print("Original all_edges_graph:", list(graph.edges))
     #print("Original all_edges_face_structure:", list(face_structure.edges))
     #print("Original all_edges_tree_structure:", list(tree_structure.edges))
 
-    # Listen in Mengen umwandeln und dabei jede Kante symmetrisch speichern
+    # Convert lists to sets and store each edge symmetrically
     all_edges_graph = set((min(u, v), max(u, v)) for u, v in graph.edges)
     all_edges_face_structure = set((min(u, v), max(u, v)) for u, v in face_structure.edges)
 
@@ -687,40 +687,40 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
     
     all_edges_tree_structure = set((min(u, v), max(u, v)) for u, v in tree_structure.edges)
 
-    # Nach Umwandlung in Mengen ausgeben
-    #print("\nMenge all_edges_graph:", all_edges_graph)
-    #print("Menge all_edges_face_structure:", all_edges_face_structure)
-    #print("Menge all_edges_tree_structure:", all_edges_tree_structure)
+    # Output after conversion to sets
+    #print("\nSet all_edges_graph:", all_edges_graph)
+    #print("Set all_edges_face_structure:", all_edges_face_structure)
+    #print("Set all_edges_tree_structure:", all_edges_tree_structure)
 
-    # Kanten entfernen
+    # Remove edges
     all_edges_graph -= all_edges_face_structure
-    #print("\nall_edges_graph nach Entfernung der face_structure-Kanten:", all_edges_graph)
+    #print("\nall_edges_graph after removing face_structure edges:", all_edges_graph)
     
     
     all_edges_graph -= all_edges_tree_structure
-    #print("\nall_edges_graph nach Entfernung der tree_structure-Kanten:", all_edges_graph)
+    #print("\nall_edges_graph after removing tree_structure edges:", all_edges_graph)
 
-    # Falls du wieder eine Liste brauchst
+    # If you need a list again
     all_edges_graph = list(all_edges_graph)
 
-    # Endgültiges Ergebnis ausgeben
-    #print("\nEndgültige all_edges_graph-Liste:", all_edges_graph)
+    # Final result output
+    #print("\nFinal all_edges_graph list:", all_edges_graph)
 
 
     changed = True
     while changed:
         changed = False
-        # Alle Knoten in face_structure erfassen
+        # Capture all nodes in face_structure
         face_nodes = face_nodes = set(face_structure.nodes)
 
-        # Filtern der Kanten in all_edges_graph, bei denen mindestens ein Knoten in face_nodes ist
+        # Filter edges in all_edges_graph where at least one node is in face_nodes
         potential_edges = [edge for edge in all_edges_graph if edge[0] in face_nodes or edge[1] in face_nodes]
 
-        # Ergebnis ausgeben
+        # Output result
         #print("\nNodes in face_structure:", face_nodes)
         #print("\nPotential edges:", potential_edges)
 
-        #jede potentielle kante durchgehen ob sie nach dem hinzufügen noch ein s-d-face bietet
+        # Go through each potential edge to check if it still provides an s-d-face after adding
         for edge in potential_edges:
             fake_face_structure = face_structure.copy()
             fake_face_structure.add_edge(*edge)
@@ -731,7 +731,7 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
             if smallest_face in faces:
                 edge_accepted = True
             
-            #sobald noch das kleinste s-d-face exitstiert, kann man die kante einfügen und prüfen ob der neue knoten auch eine direkte verbindung zu d hat
+            # As soon as the smallest s-d-face still exists, the edge can be added and it can be checked whether the new node also has a direct connection to d
             if edge_accepted:
                 face_structure.add_edge(*edge)
                 added_edges.append(edge)
@@ -740,7 +740,7 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
     #endwhile
 
     changed = True
-    #hier wird die struktur dann gekürzt, um teile zu vermeiden die eh nix bringen
+    # Here the structure is then shortened to avoid parts that are useless anyway
     while changed:
         old_edges = len(face_structure.edges)
         nodes_to_check = list(face_structure.nodes)  # Create a list of nodes to iterate over
@@ -785,11 +785,11 @@ def expand_face_structure(source, destination, graph, face_structure, tree_struc
         changed = old_edges != new_edges
 
     #endwhile
-    # Filtere added_edges, um nur Kanten zu behalten, die noch in face_structure sind
+    # Filter added_edges to keep only edges that are still in face_structure
     added_edges = [edge for edge in added_edges if face_structure.has_edge(*edge)]
 
-    # Endgültige Ausgabe nach der Bereinigung
-    #print("Finale Added Edges:", added_edges)
+    # Final output after cleanup
+    #print("Final Added Edges:", added_edges)
 
     if debug:
         if len(added_edges) > 0:
@@ -812,13 +812,13 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) # Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) # Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
 
                     if source not in paths:
@@ -869,7 +869,7 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -892,7 +892,7 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
                                                 'edps_s_to_d': edps
                     }
                 
-                # Überprüfen, ob der Graph planar ist
+                # Check if the graph is planar
                 # print("Nodes of combined tree:", combined_tree.nodes)
                 # print("Edges of combined tree:", combined_tree.edges)
                 # is_planar, embedding = nx.check_planarity(combined_tree)
@@ -903,10 +903,10 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
                     
                     
                 # else:
-                #     print("Der Graph ist nicht planar!")
+                #     print("The graph is not planar!")
 
-                # #jetzt müssen die Bäume cp->s als planare einbettung hinzugefügt werden
-                # #damit die Faces gefunden werden können
+                # # Now the trees cp->s must be added as planar embedding
+                # # so that the faces can be found
 
 
                
@@ -929,6 +929,7 @@ def multiple_trees_with_middle_checkpoint_parallel_pre(graph):
     return paths
 
 
+
 #################################################### MULTIPLETREES WITH MIDDLE CHECKPOINT ################################################
 
 ##########################################################################################################################################
@@ -948,13 +949,13 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) # Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) # Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
 
                     if source not in paths:
@@ -996,7 +997,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1007,7 +1008,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1039,6 +1040,7 @@ def multiple_trees_with_middle_checkpoint_pre(graph):
     return paths
 
 
+
 #################################################### MULTIPLETREES INVERS WITH MIDDLE CHECKPOINT ################################################
 
 ##########################################################################################################################################
@@ -1058,9 +1060,9 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                edps.sort(key=len, reverse=False) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1106,7 +1108,7 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1117,7 +1119,7 @@ def multiple_trees_invers_with_middle_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1163,9 +1165,9 @@ def multiple_trees_invers_with_degree_checkpoint_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                edps.sort(key=len, reverse=False) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1245,7 +1247,7 @@ def multiple_trees_invers_with_degree_checkpoint_pre(graph):
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1256,7 +1258,7 @@ def multiple_trees_invers_with_degree_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1282,7 +1284,6 @@ def multiple_trees_invers_with_degree_checkpoint_pre(graph):
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths
 
-
 #################################################### MULTIPLETREES INVERS WITH CLOSENESS CHECKPOINT ################################################
 
 ##########################################################################################################################################
@@ -1302,9 +1303,9 @@ def multiple_trees_invers_with_closeness_checkpoint_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                edps.sort(key=len, reverse=False) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1384,7 +1385,7 @@ def multiple_trees_invers_with_closeness_checkpoint_pre(graph):
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1395,7 +1396,7 @@ def multiple_trees_invers_with_closeness_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1440,9 +1441,9 @@ def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                edps.sort(key=len, reverse=False) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1522,7 +1523,7 @@ def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s)
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1533,7 +1534,7 @@ def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1559,7 +1560,6 @@ def multiple_trees_invers_with_betweenness_checkpoint_pre(graph):
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithMiddle_{source}_{cp}.png")
     return paths
 
-
 #################################################### MULTIPLETREES INVERS WITH DEGREE EXTENDED CHECKPOINT ################################################
 
 ##########################################################################################################################################
@@ -1579,9 +1579,9 @@ def multiple_trees_invers_with_degree_checkpoint_extended_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=False) #Sortierung der EDPs
+                edps.sort(key=len, reverse=False) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1663,7 +1663,7 @@ def multiple_trees_invers_with_degree_checkpoint_extended_pre(graph):
 
                 
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1674,7 +1674,7 @@ def multiple_trees_invers_with_degree_checkpoint_extended_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1720,9 +1720,9 @@ def multiple_trees_with_degree_checkpoint_extended_pre(graph):
             if source != destination:
                 combinations += 1
                 #print("Current Combination: ", combinations, " of ", (len(graph.nodes) * len(graph.nodes)) - len(graph.nodes))
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) #Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) #Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
@@ -1804,7 +1804,7 @@ def multiple_trees_with_degree_checkpoint_extended_pre(graph):
 
                 
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 #trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
                 
                 #then build multiple trees cp->d
@@ -1815,7 +1815,7 @@ def multiple_trees_with_degree_checkpoint_extended_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                #EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1842,7 +1842,6 @@ def multiple_trees_with_degree_checkpoint_extended_pre(graph):
     return paths
 
 
-
 ################################################## MULTIPLETREES WITH DEGREE CHECKPOINT ################################################
 
 ##########################################################################################################################################
@@ -1858,13 +1857,13 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) # Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) # Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
 
                     if source not in paths:
@@ -1891,9 +1890,9 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
                                                 'cp': destination,
                                                 'trees_cp_to_s': tree_from_s, 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'trees_cp_to_d':tree_from_d, 
+                                                'trees_cp_to_d': tree_from_d, 
                                                 'edps_cp_to_d': [[source,destination]],
-                                                'edps_s_to_d':[[source,destination]]
+                                                'edps_s_to_d': [[source,destination]]
                                             }
                     continue
 
@@ -1924,9 +1923,9 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
                                                 'cp': destination,
                                                 'trees_cp_to_s': tree_from_s, 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'trees_cp_to_d':tree_from_d, 
+                                                'trees_cp_to_d': tree_from_d, 
                                                 'edps_cp_to_d': [[source,destination]],
-                                                'edps_s_to_d':[[source,destination]]
+                                                'edps_s_to_d': [[source,destination]]
                                             }
                     continue
                 
@@ -1949,7 +1948,7 @@ def multiple_trees_with_degree_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -1990,13 +1989,13 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) # Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) # Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
 
                     if source not in paths:
@@ -2023,9 +2022,9 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                                                 'cp': destination,
                                                 'trees_cp_to_s': tree_from_s, 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'trees_cp_to_d':tree_from_d, 
+                                                'trees_cp_to_d': tree_from_d, 
                                                 'edps_cp_to_d': [[source,destination]],
-                                                'edps_s_to_d':[[source,destination]]
+                                                'edps_s_to_d': [[source,destination]]
                                             }
                     continue
 
@@ -2056,9 +2055,9 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                                                 'cp': destination,
                                                 'trees_cp_to_s': tree_from_s, 
                                                 'edps_cp_to_s': [[source,destination]],
-                                                'trees_cp_to_d':tree_from_d, 
+                                                'trees_cp_to_d': tree_from_d, 
                                                 'edps_cp_to_d': [[source,destination]],
-                                                'edps_s_to_d':[[source,destination]]
+                                                'edps_s_to_d': [[source,destination]]
                                             }
                     continue
                 
@@ -2080,7 +2079,7 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -2106,7 +2105,6 @@ def multiple_trees_with_betweenness_checkpoint_pre(graph):
                 #    print_cut_structure(highlighted_nodes=[source,cp],structure=trees_cp_to_s,source=source,destination=cp,save_plot=True,filename=f"graphen/MultipleTreesWithBetween_{source}_{cp}.png")
     return paths
 
-
 #################################################### MULTIPLETREES WITH CLOSENESS CHECKPOINT ###########################################
 
 ##########################################################################################################################################
@@ -2127,13 +2125,13 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
             
             if source != destination:
                 
-                edps = all_edps(source, destination, graph) #Bildung der EDPs
+                edps = all_edps(source, destination, graph) # Formation of EDPs
                 
-                edps.sort(key=len, reverse=True) #Sortierung der EDPs
+                edps.sort(key=len, reverse=True) # Sorting of EDPs
                 
                 longest_edp = edps[len(edps)-1]
 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
 
                     if source not in paths:
@@ -2208,10 +2206,10 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
                 edps_cp_to_d.sort(key=len)
                 
                 trees_cp_to_s = multiple_trees_with_checkpoint(cp,source,graph,edps_cp_to_s)
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_s = remove_single_node_trees(trees_cp_to_s)
            
-                # da kein tree-routing s->cp stattfindet, sondern face-routing, werden alle bäume (cp->s) zu einem großen baum eingefügt, auf dem  man face-routing machen kann
+                # Since no tree-routing s->cp takes place, but face-routing, all trees (cp->s) are combined into one large tree on which face-routing can be performed
                 # Combine all trees into one large undirected tree
                 combined_tree = nx.Graph()
                 for tree in trees_cp_to_s:
@@ -2223,10 +2221,10 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
                 for node in combined_tree.nodes:
                     combined_tree.nodes[node]['pos'] = graph.nodes[node]['pos']
          
-                #beinhaltet einen nx.Graph planar, alle Trees in einem Graphen mit Koordinaten
+                # Contains an nx.Graph planar, all trees in one graph with coordinates
                 trees_cp_to_s = combined_tree
                 
-                #then build multiple trees cp->d
+                # Then build multiple trees cp->d
                 
                 trees_cp_to_d = multiple_trees_with_checkpoint(cp,destination,graph,edps_cp_to_d)
                 
@@ -2234,7 +2232,7 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp_to_d = remove_single_node_trees(trees_cp_to_d)
                                                         
                 if source in paths:
@@ -2266,8 +2264,8 @@ def multiple_trees_with_closeness_checkpoint_pre(graph):
 
 ##########################################################################################################################################
 
-#function to generate the 2 trees for each s->d pair (s->cp & cp->d)
-#each tree gets generated by expanding the longest edp of each pair
+# Function to generate the 2 trees for each s->d pair (s->cp & cp->d)
+# Each tree gets generated by expanding the longest edp of each pair
 def one_tree_with_middle_checkpoint_pre(graph):
     debug = False
     paths = {}
@@ -2283,15 +2281,15 @@ def one_tree_with_middle_checkpoint_pre(graph):
                 if source not in paths:
                     paths[source] = {}
                 
-                #now compute the chosen checkpoint  
-                #first get the longest edp s->d    
+                # Now compute the chosen checkpoint  
+                # First get the longest edp s->d    
                 edps = all_edps(source, destination, graph)
                 
                 edps.sort(key=len)
                 
                 longest_edp = edps[len(edps)-1]
                 
-                #special case if the s,d pair is connected and this is the only edp
+                # Special case if the s,d pair is connected and this is the only edp
                 if(len(longest_edp) == 2):
                     
                     if source not in paths:
@@ -2324,25 +2322,25 @@ def one_tree_with_middle_checkpoint_pre(graph):
                                             }
                     continue
                 
-                #then select the middle node of the longest_edp
+                # Then select the middle node of the longest_edp
                 
                 cp = longest_edp[ int(len(longest_edp)/2)]
                
-                #then get the edps + longest_edps_cp_s and the longest_edps_cp_d
+                # Then get the edps + longest_edps_cp_s and the longest_edps_cp_d
                 edps_cp_to_s = all_edps(cp, source, graph)
                 edps_cp_to_d = all_edps(cp, destination, graph)
                 edps_cp_to_s.sort(key=len)
                 edps_cp_to_d.sort(key=len)
                 
-                #and build trees out of the longest_edps_cp_s and the longest_edps_cp_d
+                # And build trees out of the longest_edps_cp_s and the longest_edps_cp_d
                 tree_cp_to_s = one_tree_with_checkpoint_for_faces(cp,source,graph,edps_cp_to_s[len(edps_cp_to_s)-1])
 
                 #draw_tree_with_highlighted_nodes(tree_cp_to_s,[source,cp])
 
                 tree_cp_to_d = one_tree_with_checkpoint(cp,destination,graph,edps_cp_to_d[len(edps_cp_to_d)-1])
                 
-                #bc the tree cp->s got build reverse direction the edges need to be reversed again
-                #data structure to give the needed information for the routing (edps, trees, checkpoint)
+                # Because the tree cp->s got built in reverse direction, the edges need to be reversed again
+                # Data structure to give the needed information for the routing (edps, trees, checkpoint)
                 
                 paths[source][destination] = {
                                                 'cp': cp,
@@ -3238,7 +3236,7 @@ def multiple_trees_triple_checkpooint_pre(graph):
                         #print("i:", i)
                         tree_from_s.add_node(edps[0][i])
                         if i > 0:
-                            # Füge eine Kante zwischen zwei aufeinanderfolgenden Knoten hinzu
+                            # Add an edge between two consecutive nodes
                             #print(f"Edge: ({edps[0][i-1]}, {edps[0][i]})")
                             tree_from_s.add_edge(edps[0][i-1], edps[0][i])
 
@@ -3262,7 +3260,7 @@ def multiple_trees_triple_checkpooint_pre(graph):
                 # Select the longest valid EDP (assuming it's already sorted by length)
                 longest_edp = valid_edps[-1]
 
-                # Anzahl der Knoten prüfen
+                # Check the number of nodes
                 if len(longest_edp) < 5:
                     raise ValueError("EDP must have at least 5 nodes for meaningful CP distribution.")
 
@@ -3291,7 +3289,7 @@ def multiple_trees_triple_checkpooint_pre(graph):
                 
                 edps_cp1_to_s = all_edps(cp1,source,graph).sort(key=len)
                 
-                #Special Case if Nodes are directly connected
+                # Special case if nodes are directly connected
                 if edps_cp1_to_s == None:
                     edps_cp1_to_s = [[cp1,source]]
                 
@@ -3336,7 +3334,7 @@ def multiple_trees_triple_checkpooint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp1_to_cp2 = remove_single_node_trees(trees_cp1_to_cp2)
 
                 ##########################################################################
@@ -3351,7 +3349,7 @@ def multiple_trees_triple_checkpooint_pre(graph):
                     for node in tree:
                         tree.nodes[node]['pos'] = graph.nodes[node]['pos']
 
-                #EDPs die nicht erweitert werden konnten, da andere Bäume die Kanten schon vorher verbaut haben, führen nicht zum Ziel und müssen gelöscht werden
+                # EDPs that could not be extended because other trees had already blocked the edges do not lead to the destination and must be deleted
                 trees_cp3_to_d = remove_single_node_trees(trees_cp3_to_d)
 
                 # Save the paths and checkpoints
@@ -3518,18 +3516,18 @@ def multiple_trees_for_faces_extended_pre(graph):
        
     return paths
 
-################################ Hilfsfunktionen #####################################################################
+################################ Helper Functions #####################################################################
 
 def find_faces(G):
     """
-    Findet alle Flächen eines planaren Graphen.
-    Nutzt die vorhandenen Positionsattribute der Knoten.
+    Finds all faces of a planar graph.
+    Uses the existing position attributes of the nodes.
     """
     face_nodes = ()
     half_edges_in_faces = set()
     faces = []
     #print("Checkpoint 5.1")
-    pos = {node: G.nodes[node]['pos'] for node in G.nodes}  # Verwende die Positionen aus dem Graphen
+    pos = {node: G.nodes[node]['pos'] for node in G.nodes}  # Use the positions from the graph
 
     for node in G.nodes:
         for dest in nx.neighbors(G, node):
@@ -3547,13 +3545,13 @@ def find_faces(G):
                 half_edges_in_faces.update(found_half_edges)
                 face_graph = G.subgraph(face_nodes).copy()
 
-                # Nutze die Positionen für die Knoten im Face-Subgraphen
+                # Use the positions for the nodes in the face subgraph
                 for face_node in face_graph.nodes:
                     face_graph.nodes[face_node]['pos'] = pos[face_node]
 
                 faces.append(face_graph)
     #print("Checkpoint 5.2")
-    # Den gesamten Graphen als letztes Face hinzufügen
+    # Add the entire graph as the last face
     graph_last = G.copy()
     for node in graph_last:
         graph_last.nodes[node]['pos'] = pos[node]
@@ -3563,12 +3561,12 @@ def find_faces(G):
 
 def plot_tree_with_highlighted_nodes(tree, source, destination, highlighted_nodes):
     """
-    Zeichnet den Baum mit hervorgehobenen Knoten. Verwendet vorhandene Positionen aus den Knotenattributen.
+    Draws the tree with highlighted nodes. Uses existing positions from the node attributes.
     """
-    # Verwende die vorhandenen Positionen der Knoten im Baum
+    # Use the existing positions of the nodes in the tree
     pos = {node: tree.nodes[node]['pos'] for node in tree.nodes()}
 
-    # Farben für die Knoten je nach Rolle (Quelle, Ziel, hervorgehoben)
+    # Colors for the nodes depending on their role (source, destination, highlighted)
     node_colors = []
     for node in tree.nodes():
         if node == source:
@@ -3580,7 +3578,7 @@ def plot_tree_with_highlighted_nodes(tree, source, destination, highlighted_node
         else:
             node_colors.append('skyblue')
 
-    # Erstelle die Legende
+    # Create the legend
     legend_elements = [
         Patch(facecolor='red', edgecolor='black', label='Source'),
         Patch(facecolor='green', edgecolor='black', label='Destination'),
@@ -3588,60 +3586,60 @@ def plot_tree_with_highlighted_nodes(tree, source, destination, highlighted_node
         Patch(facecolor='skyblue', edgecolor='black', label='Other Nodes')
     ]
 
-    # Zeichne den Graphen mit den vorhandenen Positionen
+    # Draw the graph with the existing positions
     plt.figure(figsize=(10, 10))
     nx.draw(tree, pos=pos, with_labels=True, node_color=node_colors)
 
-    # Titel und Legende hinzufügen
+    # Add title and legend
     plt.title(f"{source} to {destination}")
     plt.legend(handles=legend_elements, loc='upper left')
     plt.show()
 
 def convert_to_planar_embedding(graph):
     """
-    Konvertiert einen planaren Graphen in eine PlanarEmbedding-Struktur.
+    Converts a planar graph into a PlanarEmbedding structure.
     """
     is_planar, embedding = nx.check_planarity(graph)
     if not is_planar:
-        raise ValueError("Graph ist nicht planar und kann nicht in eine PlanarEmbedding umgewandelt werden.")
-    # Übertrage die Knotenpositionen in das PlanarEmbedding-Objekt
+        raise ValueError("Graph is not planar and cannot be converted into a PlanarEmbedding.")
+    # Transfer the node positions into the PlanarEmbedding object
     for node, data in graph.nodes(data=True):
         embedding.add_node(node, **data)
     return embedding
 
 def plot_faces(G, faces, title="Faces Plot"):
     """
-    Visualisiert die Flächen eines Graphen.
+    Visualizes the faces of a graph.
     
     Args:
-    - G: Der Graph (Graph oder PlanarEmbedding), aus dem die Faces stammen.
-    - faces: Liste der Faces, entweder als Knotenlisten oder Subgraphen.
-    - title: Titel für den Plot.
+    - G: The graph (Graph or PlanarEmbedding) from which the faces originate.
+    - faces: List of faces, either as node lists or subgraphs.
+    - title: Title for the plot.
     """
-    # Extrahiere die Positionen der Knoten
+    # Extract the positions of the nodes
     pos = nx.get_node_attributes(G, 'pos')
     if not pos:
-        raise ValueError("Der Graph enthält keine 'pos'-Attribute für die Knoten.")
+        raise ValueError("The graph does not contain 'pos' attributes for the nodes.")
     
-    # Zeichne den Graphen
+    # Draw the graph
     plt.figure(figsize=(8, 8))
     nx.draw(G, pos, with_labels=True, node_size=700, node_color="lightblue", edge_color="gray")
     
-    # Zeichne die Flächen
+    # Draw the faces
     colors = ['blue', 'red', 'green', 'purple', 'orange', 'pink']
     for i, face in enumerate(faces):
         if i == len(faces)-1:
             continue
-        # Wenn die Flächen als Listen von Knoten gegeben sind
+        # If the faces are given as lists of nodes
         if isinstance(face, list):
             face_edges = [(face[j], face[(j + 1) % len(face)]) for j in range(len(face))]
-        # Wenn die Flächen als Subgraphen gegeben sind
+        # If the faces are given as subgraphs
         elif isinstance(face, nx.Graph):
             face_edges = list(face.edges)
         else:
-            raise ValueError("Unbekanntes Format der Face-Daten.")
+            raise ValueError("Unknown format of face data.")
 
-        # Zeichne die Face-Kanten
+        # Draw the face edges
         nx.draw_networkx_edges(G, pos, edgelist=face_edges, edge_color=colors[i % len(colors)], width=2)
     
     plt.title(title)
@@ -3651,67 +3649,67 @@ def draw_tree_with_highlighted_nodes(tree, nodes):
 
 
     """
-    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten hervor.
+    Draws a tree graph and highlights specific nodes.
 
-    Parameter:
-    - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
-    - nodes: Liste von Knoten, die hervorgehoben werden sollen.
+    Parameters:
+    - tree: NetworkX graph object representing the tree.
+    - nodes: List of nodes to be highlighted.
     """
-    # Verwende bereits vorhandene Positionen der Knoten
+    # Use already existing positions of the nodes
     pos = nx.get_node_attributes(tree, 'pos')
 
-    # Zeichne alle Knoten im Baum
+    # Draw all nodes in the tree
     plt.figure(figsize=(8, 6))
     nx.draw(tree, pos, with_labels=True, node_size=500, node_color="lightblue", font_weight="bold")
 
-    # Hervorheben der speziellen Knoten
+    # Highlight the special nodes
     if nodes:
         nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
-        print(f"Hervorgehobene Knoten: {nodes}")
+        print(f"Highlighted nodes: {nodes}")
 
-    # Zeichne den Baum
-    plt.title("Baum mit hervorgehobenen Knoten")
+    # Draw the tree
+    plt.title("Tree with highlighted nodes")
     plt.show()
 
 def draw_tree_with_highlights(tree, nodes=None, fails=None, current_edge=None):
     """
-    Zeichnet einen Baum-Graphen und hebt bestimmte Knoten, fehlerhafte Kanten und die aktuelle Kante hervor.
+    Draws a tree graph and highlights specific nodes, failed edges, and the current edge.
 
-    Parameter:
-    - tree: NetworkX-Graph-Objekt, das den Baum darstellt.
-    - nodes: Liste von Knoten, die hervorgehoben werden sollen (optional).
-    - fails: Liste von fehlerhaften Kanten, die hervorgehoben werden sollen (optional).
-    - current_edge: Aktuelle Kante, die hervorgehoben werden soll (optional).
+    Parameters:
+    - tree: NetworkX graph object representing the tree.
+    - nodes: List of nodes to be highlighted (optional).
+    - fails: List of failed edges to be highlighted (optional).
+    - current_edge: Current edge to be highlighted (optional).
     """
-    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positionen der Knoten
+    pos = {node: tree.nodes[node]['pos'] for node in tree.nodes}  # Positions of the nodes
 
     plt.figure(figsize=(10, 8))
 
-    # Zeichne alle Kanten in Grau
+    # Draw all edges in gray
     nx.draw_networkx_edges(tree, pos, edge_color='gray')
 
-    # Zeichne fehlerhafte Kanten in Rot, falls vorhanden
+    # Draw failed edges in red, if present
     if fails:
         failed_edges = [(u, v) for u, v in fails if tree.has_edge(u, v)]
         nx.draw_networkx_edges(tree, pos, edgelist=failed_edges, edge_color='red', width=2)
-        #print(f"Hervorgehobene Kanten (Fails): {fails}")
+        #print(f"Highlighted edges (Fails): {fails}")
 
-    # Highlight aktuelle Kante in Blau, falls vorhanden
+    # Highlight current edge in blue, if present
     if current_edge:
         if tree.has_edge(*current_edge):
             nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=2)
-            #print(f"Aktuelle Kante hervorgehoben: {current_edge}")
+            #print(f"Current edge highlighted: {current_edge}")
 
-    # Zeichne alle Knoten
+    # Draw all nodes
     nx.draw_networkx_nodes(tree, pos, node_color='lightgray', node_size=500)
     nx.draw_networkx_labels(tree, pos)
 
-    # Hervorheben spezieller Knoten in Orange, falls vorhanden
+    # Highlight special nodes in orange, if present
     if nodes:
         nx.draw_networkx_nodes(tree, pos, nodelist=nodes, node_color="orange", node_size=700)
-        #print(f"Hervorgehobene Knoten: {nodes}")
+        #print(f"Highlighted nodes: {nodes}")
 
-    #plt.title("Baum mit hervorgehobenen Knoten, Kanten und aktueller Kante")
+    #plt.title("Tree with highlighted nodes, edges, and current edge")
     plt.show()
 
 def plot_paths_element(paths_element, tree, source, destination):
@@ -3722,29 +3720,29 @@ def plot_paths_element(paths_element, tree, source, destination):
         paths_element (dict): A single paths[source][destination] element containing cps and tree information.
         tree (nx.Graph): A NetworkX graph containing node positions.
     """
-    # Initialisiere den Graphen
+    # Initialize the graph
     G = nx.DiGraph()
 
-    # Verarbeite die Struktur
-    cps = paths_element.get('cps', [])  # Sicherstellen, dass 'cps' existiert
+    # Process the structure
+    cps = paths_element.get('cps', [])  # Ensure 'cps' exists
 
-    # Füge Kontrollpunkte und Quelle/Ziel als spezielle Knoten hinzu
+    # Add control points and source/destination as special nodes
     special_nodes = {
         source: "yellow",
         destination: "green",
     }
 
-    # Weisen Sie Farben dynamisch zu, wenn CPS vorhanden sind
+    # Dynamically assign colors if CPS are present
     cp_colors = ["orange", "purple", "pink"]
     for idx, cp in enumerate(cps):
         if idx < len(cp_colors):
             special_nodes[cp] = cp_colors[idx]
 
-    # Füge Knoten hinzu
+    # Add nodes
     for cp in cps:
         G.add_node(cp)
 
-    # Füge Kanten aus den Bäumen hinzu
+    # Add edges from the trees
     for key, edges in paths_element.items():
         if key.startswith('tree_'):
             if isinstance(edges, list):
@@ -3757,18 +3755,18 @@ def plot_paths_element(paths_element, tree, source, destination):
             else:
                 raise ValueError(f"Invalid edges format for {key}. Expected a list or a NetworkX Graph, got: {type(edges)}")
 
-    # Bestimme Knotenfarben
+    # Determine node colors
     node_colors = []
     for node in G.nodes():
         if node in special_nodes:
             node_colors.append(special_nodes[node])
         else:
-            node_colors.append("gray")  # Alle anderen Knoten in Grau
+            node_colors.append("gray")  # All other nodes in gray
 
-    # Positionen der Knoten aus dem Baum holen
+    # Get node positions from the tree
     pos = {node: tree.nodes[node]['pos'] for node in tree.nodes() if node in G.nodes()}
 
-    # Zeichne den Graphen
+    # Draw the graph
     nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=700, font_size=10, font_weight="bold")
     plt.show()
 
@@ -3816,27 +3814,27 @@ def print_cut_structure(highlighted_nodes, structure, source, destination,cut_ed
         plt.show()
 
 def build_face_graph(faces):
-    """Erstellt einen Graphen, in dem jedes Face ein Knoten ist und Kanten existieren, wenn Faces gemeinsame Kanten haben."""
+    """Creates a graph where each face is a node and edges exist if faces share common edges."""
     face_graph = nx.Graph()
   
-    face_edges = []  # Speichert alle Kanten eines Faces
+    face_edges = []  # Stores all edges of a face
    
     for i, face in enumerate(faces):
-        face_graph.add_node(i)  # Face als Knoten hinzufügen
+        face_graph.add_node(i)  # Add face as a node
         edges = {tuple(sorted((face[j], face[(j + 1) % len(face)]))) for j in range(len(face))}
         face_edges.append(edges)
-    # Verbinde Faces, die gemeinsame Kanten haben
+    # Connect faces that share common edges
     for i in range(len(faces)):
         for j in range(i + 1, len(faces)):
-             if face_edges[i] & face_edges[j]:  # Falls gemeinsame Kanten existieren
+             if face_edges[i] & face_edges[j]:  # If common edges exist
                 face_graph.add_edge(i, j)
    
     return face_graph
 
 def greedy_coloring(graph):
-    """Weist den Knoten (Faces) im Graphen Farben zu, sodass keine benachbarten Faces dieselbe Farbe haben."""
+    """Assigns colors to the nodes (faces) in the graph such that no adjacent faces have the same color."""
     colors = {}
-    sorted_nodes = sorted(graph.nodes(), key=lambda x: graph.degree(x), reverse=True)  # Welsh-Powell Heuristik
+    sorted_nodes = sorted(graph.nodes(), key=lambda x: graph.degree(x), reverse=True)  # Welsh-Powell heuristic
     
     available_colors = ["red", "blue", "green", "purple", "orange", "cyan", "pink", "yellow", "brown"]
     
@@ -3850,79 +3848,79 @@ def greedy_coloring(graph):
     return colors
 
 def print_faces(G, faces):
-    """Gibt die Faces mit ihren Knoten im Terminal aus."""
+    """Prints the faces with their nodes in the terminal."""
     
-    print("\n===== Gefundene Faces =====")
+    print("\n===== Found Faces =====")
     
     for i, face in enumerate(faces):
         if len(face) < 3:
-            continue  # Überspringe ungültige Faces
+            continue  # Skip invalid faces
         
-        # Sortiere die Knoten zur besseren Übersicht
+        # Sort the nodes for better readability
         sorted_face = sorted(face)
         
-        # Falls Knotenkoordinaten mit ausgegeben werden sollen:
+        # If node coordinates should also be printed:
         coords = [G.nodes[node]['pos'] for node in sorted_face if 'pos' in G.nodes[node]]
         
         print(f"Face {i+1}: {sorted_face}")
-        # Falls du auch die Koordinaten möchtest, entkommentiere die nächste Zeile:
-        # print(f"   -> Koordinaten: {coords}")
+        # If you also want the coordinates, uncomment the next line:
+        # print(f"   -> Coordinates: {coords}")
 
     print("==========================\n")
 
 def draw_graph_with_colored_faces(G, faces, source, destination):
-    """Zeichnet den Graphen und füllt die Faces mit unterschiedlichen Farben (keine zwei benachbarten Faces haben dieselbe Farbe)."""
-    print("\n===== Zeichne Graph mit gefärbten Faces =====")
+    """Draws the graph and fills the faces with different colors (no two adjacent faces have the same color)."""
+    print("\n===== Drawing Graph with Colored Faces =====")
     print(f"source: {source}, destination: {destination}")
     print(f"G.nodes[source]['pos']: {G.nodes[source]['pos']}")
     print(f"G.nodes[destination]['pos']: {G.nodes[destination]['pos']}")
-    # Holen der Knotenpositionen aus den Attributen von G
+    # Retrieve node positions from the attributes of G
     pos = {node: G.nodes[node]['pos'] for node in G.nodes if 'pos' in G.nodes[node]}
 
     plt.figure(figsize=(12, 6))
 
-    # Zeichne alle Knoten und Kanten
+    # Draw all nodes and edges
     nx.draw(G, pos, with_labels=True, node_color="lightgray", edge_color="gray")
 
-    # Erstelle den Face-Graphen und weise Farben zu
+    # Create the face graph and assign colors
     face_graph = build_face_graph(faces)
     face_colors = greedy_coloring(face_graph)
 
     patches = []
     
-    # Zeichne jedes Face als gefülltes Polygon mit der zugewiesenen Farbe
+    # Draw each face as a filled polygon with the assigned color
     for i, face in enumerate(faces):
         if len(face) < 3:
-            continue  # Kein gültiges Polygon
+            continue  # Not a valid polygon
         
-        # Prüfe, ob alle Knoten eine Position haben
+        # Check if all nodes have a position
         if not all(node in pos for node in face):
-            continue  # Falls eine Position fehlt, wird dieses Face übersprungen
+            continue  # Skip this face if a position is missing
         
         polygon_coords = np.array([pos[node] for node in face])
         polygon = Polygon(polygon_coords, closed=True, edgecolor="black", facecolor=face_colors[i], alpha=0.6)
         patches.append(polygon)
 
-    # Zeichne die Faces
+    # Draw the faces
     p = PatchCollection(patches, match_original=True)
     plt.gca().add_collection(p)
 
-    # Zeichne Source und Destination extra hervor
+    # Highlight source and destination separately
     nx.draw_networkx_nodes(G, pos, nodelist=[source], node_color="yellow", node_size=500, label="Source")
     nx.draw_networkx_nodes(G, pos, nodelist=[destination], node_color="red", node_size=500, label="Destination")
 
-    plt.title("Graph mit gefärbten Faces (keine zwei benachbarten Faces haben dieselbe Farbe)")
+    plt.title("Graph with Colored Faces (no two adjacent faces have the same color)")
     plt.show()
 
 def draw_graph(tree, source, destination, graph):
     plt.figure(figsize=(8, 6))
     
-    # Holen der gespeicherten Positionen aus dem ursprünglichen Graphen
+    # Retrieve stored positions from the original graph
     pos = {node: graph.nodes[node]['pos'] for node in graph.nodes if 'pos' in graph.nodes[node]}
     if not pos:
         pos = nx.spring_layout(tree)
     
-    # Zeichne alle Kanten in Schwarz
+    # Draw all edges in black
     nx.draw(tree, pos, with_labels=True, node_color='lightblue', edge_color='black', font_weight='bold')
     nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='yellow', node_size=500)
     nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='yellow', node_size=500)
@@ -3935,10 +3933,10 @@ def should_debug(source, destination):
     return source == 49 and destination == 34
 
 def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, current_edge):
-    """Zeichnet den Graph mit speziellen Farben für Source, Destination, Paths und die aktuell eingefügte Kante."""
+    """Draws the graph with special colors for source, destination, paths, and the currently added edge."""
     
     pos = nx.get_node_attributes(tree, 'pos')
-    #adding the reverse edges to the tree
+    # Adding the reverse edges to the tree
     for edge in tree.edges:
         if (edge[1], edge[0]) not in tree.edges:
             tree.add_edge(edge[1], edge[0])
@@ -3948,10 +3946,10 @@ def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, curr
     
     plt.figure(figsize=(10, 8))
     
-    # Zeichne alle Kanten standardmäßig in Grau
+    # Draw all edges in gray by default
     nx.draw(tree, pos, with_labels=True, edge_color='gray', node_color='lightgray', node_size=500, font_size=10)
     
-    # Zeichne Source und Destination in speziellen Farben
+    # Draw source and destination in special colors
     nx.draw_networkx_nodes(tree, pos, nodelist=[source], node_color='red', node_size=700, label='Source')
     nx.draw_networkx_nodes(tree, pos, nodelist=[destination], node_color='green', node_size=700, label='Destination')
     
@@ -3975,7 +3973,7 @@ def draw_graph_with_highlighted_edge2(tree, source, destination, edge_list, curr
         
         color_index += 1
     
-    # Zeichne die aktuelle Kante in Blau
+    # Draw the current edge in blue
     if current_edge:
         nx.draw_networkx_edges(tree, pos, edgelist=[current_edge], edge_color='blue', width=3, alpha=1.0)
     

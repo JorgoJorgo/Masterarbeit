@@ -128,7 +128,7 @@ def route_faces_firstFace(s, d, tree, fails):
             if (current_node, neighbor) in fails or (neighbor, current_node) in fails:
                 continue
 
-            # Verhindern, dass wir eine Kante doppelt in source_edges speichern
+            # Prevent storing an edge twice in source_edges
             if (current_node, neighbor) in source_edges:
                 break
 
@@ -138,7 +138,7 @@ def route_faces_firstFace(s, d, tree, fails):
             detour_edges.append((previous_node, current_node))
             edge_taken = True
             
-            # Falls die Kante von der Quelle s ausgeht, füge sie in source_edges hinzu
+            # If the edge originates from the source s, add it to source_edges
             if previous_node == s:
                 source_edges.append((previous_node, current_node))
 
@@ -157,48 +157,48 @@ def route_faces_firstFace(s, d, tree, fails):
 
 
 def sorted_neighbors_for_face_routing(graph, node, coming_from=None, fails=[]):
-    """Sortiert die Nachbarn eines Knotens im Uhrzeigersinn für Face Routing."""
+    """Sorts the neighbors of a node clockwise for face routing."""
     
-    # Hole die Koordinaten des aktuellen Knotens
+    # Get the coordinates of the current node
     node_x, node_y = graph.nodes[node]['pos']
     
     all_neighbors = list(graph.neighbors(node))
     #print(f"\n[DEBUG] Current Node: {node}, Coming From: {coming_from}")
     #print(f"[DEBUG] All Neighbors before filtering: {all_neighbors}")
 
-    # Fail-Kanten sauber filtern
+    # Cleanly filter fail edges
     valid_neighbors = [neighbor for neighbor in all_neighbors if (node, neighbor) not in fails and (neighbor, node) not in fails]
     #print(f"[DEBUG] Valid Neighbors after filtering fails: {valid_neighbors}")
     
     if not valid_neighbors:
         return []
     
-    # Falls coming_from existiert, Winkel relativ zu diesem berechnen
+    # If coming_from exists, calculate angles relative to it
     if coming_from and coming_from in graph.nodes:
         from_x, from_y = graph.nodes[coming_from]['pos']
         reference_angle = math.atan2(from_y - node_y, from_x - node_x)
     else:
-        reference_angle = math.atan2(0, 1)  # Standardmäßig positive X-Achse (0°)
+        reference_angle = math.atan2(0, 1)  # Default to positive X-axis (0°)
     
-    # Funktion zur Berechnung des Winkels
+    # Function to calculate the angle
     def angle(neighbor):
         nx, ny = graph.nodes[neighbor]['pos']
         return math.atan2(ny - node_y, nx - node_x)
     
-    # Winkel relativ zur Referenz normalisieren
+    # Normalize angles relative to the reference
     def normalized_angle(neighbor):
         diff = angle(neighbor) - reference_angle
-        return (diff + 2 * math.pi) % (2 * math.pi)  # Wert in [0, 2π] halten
+        return (diff + 2 * math.pi) % (2 * math.pi)  # Keep value in [0, 2π]
     
-    # Winkel berechnen und ausgeben
+    # Calculate and output angles
     neighbor_angles = {neighbor: round(normalized_angle(neighbor), 5) for neighbor in valid_neighbors}
     #print(f"[DEBUG] Normalized Angles (before sorting): {neighbor_angles}")
     
-    # Nachbarn im Uhrzeigersinn sortieren
+    # Sort neighbors clockwise
     valid_neighbors.sort(key=lambda neighbor: neighbor_angles[neighbor], reverse=True)
     #print(f"[DEBUG] Sorted Neighbors (Clockwise Order): {valid_neighbors}")
     
-    # Falls coming_from existiert, sortiere es korrekt ein
+    # If coming_from exists, sort it correctly
     if coming_from is not None and coming_from in graph.nodes:
         if coming_from in valid_neighbors:
             index = valid_neighbors.index(coming_from)
@@ -235,7 +235,6 @@ def prioritize_edges(edges, previous_edge, tree):
         sorted_edges.append(((reverse_edge[0], reverse_edge[1]), reverse_angle))
 
     return sorted_edges
-
 
 def calculate_angle(vec1, vec2):
         dot_product = vec1[0] * vec2[0] + vec1[1] * vec2[1]
@@ -449,23 +448,23 @@ def route_greedy_perimeter(s, d, tree, fails):
     return (False, hops, switches, detour_edges)
 
 def angle_between(p1, p2):
-    """Berechnet den Winkel zwischen zwei Punkten relativ zur x-Achse."""
+    """Calculates the angle between two points relative to the x-axis."""
     return math.atan2(p2[1] - p1[1], p2[0] - p1[0])
 
 def sorted_neighbors(graph, node, coming_from):
-    """Sortiere die Nachbarn eines Knotens basierend auf ihrem Winkel relativ zur vorherigen Kante."""
+    """Sorts the neighbors of a node based on their angle relative to the previous edge."""
     pos = nx.get_node_attributes(graph, 'pos')
     neighbors = list(nx.neighbors(graph, node))
     if coming_from is not None:
         base_angle = angle_between(pos[node], pos[coming_from])
     else:
-        base_angle = 0  # Falls kein vorheriger Knoten vorhanden ist
+        base_angle = 0  # If no previous node is present
     
     neighbors.sort(key=lambda n: (angle_between(pos[node], pos[n]) - base_angle) % (2 * math.pi))
     return neighbors
 
 def trace_face(graph, start, first_neighbor, clockwise=True):
-    """Verfolge ein Face vom Startknoten aus, basierend auf der Sortierung der Kanten."""
+    """Traces a face from the start node based on the sorting of edges."""
     pos = nx.get_node_attributes(graph, 'pos')
     face = [start]
     current = first_neighbor
@@ -482,23 +481,22 @@ def trace_face(graph, start, first_neighbor, clockwise=True):
         
         found_next = False
         for next_node in neighbors:
-            if (current, next_node) not in visited_edges or next_node == start:  # Erlaubt Zurückkehren zum Start
+            if (current, next_node) not in visited_edges or next_node == start:  # Allows returning to the start
                 previous = current
                 current = next_node
                 found_next = True
                 break
         
         if current == start:
-            return face  # Wenn wir zurück am Start sind, ist das Face vollständig
+            return face  # If we are back at the start, the face is complete
         
         if not found_next:
-            break  # Falls keine gültige Fortsetzung gefunden wird, brechen wir ab
+            break  # If no valid continuation is found, break
     
-    return face if len(face) > 2 else []  # Stelle sicher, dass das Face mehr als nur Start und ein Nachbar enthält
+    return face if len(face) > 2 else []  # Ensure the face contains more than just the start and one neighbor
 
 def find_faces_pre(graph, source, destination):
-
-    """Findet alle Faces um den Quellknoten, die die Destination beinhalten."""
+    """Finds all faces around the source node that include the destination."""
     faces = []
     neighbors = list(nx.neighbors(graph, source))
     #print("Neighbors: ", neighbors)
@@ -518,18 +516,18 @@ def find_faces_pre(graph, source, destination):
 
 
 def draw_graph_with_highlighted_edge(graph, source, destination, edge):
-    """Zeichnet den Graphen mit einer hervorgehobenen Kante in Blau und hebt Source und Destination hervor."""
+    """Draws the graph with a highlighted edge in blue and highlights source and destination."""
     pos = nx.get_node_attributes(graph, 'pos')
     plt.figure(figsize=(8, 6))
     
-    # Zeichne den Graphen
+    # Draw the graph
     nx.draw(graph, pos, with_labels=True, edge_color='black', node_color='lightgray', node_size=500, font_size=10)
     
-    # Hebe die Kante hervor
+    # Highlight the edge
     if edge in graph.edges:
         nx.draw_networkx_edges(graph, pos, edgelist=[edge], edge_color='blue', width=2.5)
     
-    # Hebe Source und Destination hervor
+    # Highlight source and destination
     nx.draw_networkx_nodes(graph, pos, nodelist=[source], node_color='red', node_size=700)
     nx.draw_networkx_nodes(graph, pos, nodelist=[destination], node_color='green', node_size=700)
     
@@ -538,22 +536,22 @@ def draw_graph_with_highlighted_edge(graph, source, destination, edge):
 
 
 def sort_neighbors_for_greedy_routing(graph, current_node, previous_node, destination, fails=[]):
-    neighbors = list(graph.neighbors(current_node))  # Nachbarn in eine Liste umwandeln
+    neighbors = list(graph.neighbors(current_node))  # Convert neighbors to a list
     destination_pos = graph.nodes[destination]['pos']
     
-    # Filtere Nachbarn, deren Kante in `fails` ist
+    # Filter neighbors whose edge is in `fails`
     valid_neighbors = [
         neighbor for neighbor in neighbors 
         if (current_node, neighbor) not in fails and (neighbor, current_node) not in fails
     ]
     
-    # Sortiere verbleibende Nachbarn nach euklidischer Distanz zur Destination
+    # Sort remaining neighbors by Euclidean distance to the destination
     sorted_neighbors = sorted(
         valid_neighbors, 
         key=lambda neighbor: euclidean(graph.nodes[neighbor]['pos'], destination_pos)
     )
     
-    # Falls previous_node in der Liste ist, ans Ende verschieben
+    # If previous_node is in the list, move it to the end
     if previous_node in sorted_neighbors:
         sorted_neighbors.remove(previous_node)
         sorted_neighbors.append(previous_node)
@@ -568,24 +566,24 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
     
     plt.figure(figsize=(10, 10))
     
-    # Zeichne den gesamten Graphen mit normalen Kanten in Schwarz
+    # Draw the entire graph with normal edges in black
     nx.draw(structure, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=500, font_size=10)
     
-    # Markiere hervorgehobene Knoten
+    # Highlight specific nodes
     nx.draw_networkx_nodes(structure, pos, nodelist=highlighted_nodes, node_color='red')
     
-    # Markiere Cut-Kanten in Grün
+    # Highlight cut edges in green
     nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='green', width=2)
     
-    # Markiere Source- und Destination-Knoten
+    # Highlight source and destination nodes
     nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
     nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='yellow')
     
-    # Markiere die aktuelle Kante, falls vorhanden
+    # Highlight the current edge, if present
     if current_edge:
         nx.draw_networkx_edges(structure, pos, edgelist=[current_edge], edge_color='blue', width=2)
     
-    # **Fix: Fail-Kanten in beide Richtungen prüfen**
+    # **Fix: Check fail edges in both directions**
     valid_fails = [(u, v) for (u, v) in structure.edges if (u, v) in fails or (v, u) in fails]
     
     if valid_fails:
@@ -600,4 +598,3 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
         plt.show()
 
     plt.close()
-

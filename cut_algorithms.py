@@ -431,24 +431,24 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
     
     plt.figure(figsize=(10, 10))
     
-    # Zeichne den gesamten Graphen mit normalen Kanten in Schwarz
+    # Draw the entire graph with normal edges in black
     nx.draw(structure, pos, with_labels=True, node_color='lightblue', edge_color='black', node_size=500, font_size=10)
     
-    # Markiere hervorgehobene Knoten
+    # Highlight specific nodes
     nx.draw_networkx_nodes(structure, pos, nodelist=highlighted_nodes, node_color='red')
     
-    # Markiere Cut-Kanten in Grün
+    # Highlight cut edges in green
     nx.draw_networkx_edges(structure, pos, edgelist=cut_edges, edge_color='green', width=2)
     
-    # Markiere Source- und Destination-Knoten
+    # Highlight source and destination nodes
     nx.draw_networkx_nodes(structure, pos, nodelist=[source], node_color='green')
     nx.draw_networkx_nodes(structure, pos, nodelist=[destination], node_color='yellow')
     
-    # Markiere die aktuelle Kante, falls vorhanden
+    # Highlight the current edge, if present
     if current_edge:
         nx.draw_networkx_edges(structure, pos, edgelist=[current_edge], edge_color='blue', width=2)
     
-    # **Fix: Fail-Kanten in beide Richtungen prüfen**
+    # **Fix: Check fail edges in both directions**
     valid_fails = [(u, v) for (u, v) in structure.edges if (u, v) in fails or (v, u) in fails]
     
     if valid_fails:
@@ -463,3 +463,4 @@ def print_cut_structure(highlighted_nodes, cut_edges, structure, source, destina
         plt.show()
 
     plt.close()
+
